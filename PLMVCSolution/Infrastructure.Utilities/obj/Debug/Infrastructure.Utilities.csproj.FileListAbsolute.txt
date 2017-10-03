@@ -15,3 +15,21 @@ C:\Users\lep.ridad\Documents\Visual Studio 2013\Projects\PLMVCSolution\Infrastru
 C:\Users\lep.ridad\Documents\Visual Studio 2013\Projects\PLMVCSolution\Infrastructure.Utilities\bin\Debug\System.Web.WebPages.Razor.xml
 C:\Users\lep.ridad\Documents\Visual Studio 2013\Projects\PLMVCSolution\Infrastructure.Utilities\obj\Debug\Infrastructure.Utilities.dll
 C:\Users\lep.ridad\Documents\Visual Studio 2013\Projects\PLMVCSolution\Infrastructure.Utilities\obj\Debug\Infrastructure.Utilities.pdb
+D:\01 - Programming projects\git\PLMVCSolution\Infrastructure.Utilities\bin\Debug\Infrastructure.Utilities.dll
+D:\01 - Programming projects\git\PLMVCSolution\Infrastructure.Utilities\bin\Debug\Infrastructure.Utilities.pdb
+D:\01 - Programming projects\git\PLMVCSolution\Infrastructure.Utilities\bin\Debug\Microsoft.Web.Infrastructure.dll
+D:\01 - Programming projects\git\PLMVCSolution\Infrastructure.Utilities\bin\Debug\System.Web.Helpers.dll
+D:\01 - Programming projects\git\PLMVCSolution\Infrastructure.Utilities\bin\Debug\System.Web.Mvc.dll
+D:\01 - Programming projects\git\PLMVCSolution\Infrastructure.Utilities\bin\Debug\System.Web.Razor.dll
+D:\01 - Programming projects\git\PLMVCSolution\Infrastructure.Utilities\bin\Debug\System.Web.WebPages.Deployment.dll
+D:\01 - Programming projects\git\PLMVCSolution\Infrastructure.Utilities\bin\Debug\System.Web.WebPages.dll
+D:\01 - Programming projects\git\PLMVCSolution\Infrastructure.Utilities\bin\Debug\System.Web.WebPages.Razor.dll
+D:\01 - Programming projects\git\PLMVCSolution\Infrastructure.Utilities\bin\Debug\System.Web.Helpers.xml
+D:\01 - Programming projects\git\PLMVCSolution\Infrastructure.Utilities\bin\Debug\System.Web.Mvc.xml
+D:\01 - Programming projects\git\PLMVCSolution\Infrastructure.Utilities\bin\Debug\System.Web.Razor.xml
+D:\01 - Programming projects\git\PLMVCSolution\Infrastructure.Utilities\bin\Debug\System.Web.WebPages.xml
+D:\01 - Programming projects\git\PLMVCSolution\Infrastructure.Utilities\bin\Debug\System.Web.WebPages.Deployment.xml
+D:\01 - Programming projects\git\PLMVCSolution\Infrastructure.Utilities\bin\Debug\System.Web.WebPages.Razor.xml
+D:\01 - Programming projects\git\PLMVCSolution\Infrastructure.Utilities\obj\Debug\Infrastructure.Utilities.csprojResolveAssemblyReference.cache
+D:\01 - Programming projects\git\PLMVCSolution\Infrastructure.Utilities\obj\Debug\Infrastructure.Utilities.dll
+D:\01 - Programming projects\git\PLMVCSolution\Infrastructure.Utilities\obj\Debug\Infrastructure.Utilities.pdb

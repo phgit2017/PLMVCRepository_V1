@@ -12,3 +12,17 @@ C:\Users\lep.ridad\Documents\Visual Studio 2013\Projects\PLMVCSolution\PL.Infra.
 C:\Users\lep.ridad\Documents\Visual Studio 2013\Projects\PLMVCSolution\PL.Infra.DataAccess.IOBalanceDBV2\obj\Debug\PL.Infra.DataAccess.IOBalanceDBV2.csprojResolveAssemblyReference.cache
 C:\Users\lep.ridad\Documents\Visual Studio 2013\Projects\PLMVCSolution\PL.Infra.DataAccess.IOBalanceDBV2\obj\Debug\PL.Infra.DataAccess.IOBalanceDBV2.dll
 C:\Users\lep.ridad\Documents\Visual Studio 2013\Projects\PLMVCSolution\PL.Infra.DataAccess.IOBalanceDBV2\obj\Debug\PL.Infra.DataAccess.IOBalanceDBV2.pdb
+D:\01 - Programming projects\git\PLMVCSolution\PL.Infra.DataAccess.IOBalanceDBV2\bin\Debug\PL.Infra.DataAccess.IOBalanceDBV2.dll.config
+D:\01 - Programming projects\git\PLMVCSolution\PL.Infra.DataAccess.IOBalanceDBV2\bin\Debug\PL.Infra.DataAccess.IOBalanceDBV2.dll
+D:\01 - Programming projects\git\PLMVCSolution\PL.Infra.DataAccess.IOBalanceDBV2\bin\Debug\PL.Infra.DataAccess.IOBalanceDBV2.pdb
+D:\01 - Programming projects\git\PLMVCSolution\PL.Infra.DataAccess.IOBalanceDBV2\bin\Debug\EntityFramework.dll
+D:\01 - Programming projects\git\PLMVCSolution\PL.Infra.DataAccess.IOBalanceDBV2\bin\Debug\EntityFramework.SqlServer.dll
+D:\01 - Programming projects\git\PLMVCSolution\PL.Infra.DataAccess.IOBalanceDBV2\bin\Debug\PL.Core.Entity.IOBalanceDBV2.dll
+D:\01 - Programming projects\git\PLMVCSolution\PL.Infra.DataAccess.IOBalanceDBV2\bin\Debug\PL.Infra.DbContext.Interface.dll
+D:\01 - Programming projects\git\PLMVCSolution\PL.Infra.DataAccess.IOBalanceDBV2\bin\Debug\PL.Core.Entity.IOBalanceDBV2.pdb
+D:\01 - Programming projects\git\PLMVCSolution\PL.Infra.DataAccess.IOBalanceDBV2\bin\Debug\PL.Infra.DbContext.Interface.pdb
+D:\01 - Programming projects\git\PLMVCSolution\PL.Infra.DataAccess.IOBalanceDBV2\bin\Debug\EntityFramework.xml
+D:\01 - Programming projects\git\PLMVCSolution\PL.Infra.DataAccess.IOBalanceDBV2\bin\Debug\EntityFramework.SqlServer.xml
+D:\01 - Programming projects\git\PLMVCSolution\PL.Infra.DataAccess.IOBalanceDBV2\obj\Debug\PL.Infra.DataAccess.IOBalanceDBV2.csprojResolveAssemblyReference.cache
+D:\01 - Programming projects\git\PLMVCSolution\PL.Infra.DataAccess.IOBalanceDBV2\obj\Debug\PL.Infra.DataAccess.IOBalanceDBV2.dll
+D:\01 - Programming projects\git\PLMVCSolution\PL.Infra.DataAccess.IOBalanceDBV2\obj\Debug\PL.Infra.DataAccess.IOBalanceDBV2.pdb

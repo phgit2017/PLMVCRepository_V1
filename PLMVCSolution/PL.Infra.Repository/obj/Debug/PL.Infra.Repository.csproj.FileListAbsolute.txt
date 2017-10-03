@@ -52,3 +52,21 @@ C:\Users\lep.ridad\Documents\Visual Studio 2013\Projects\PLMVCSolution\PL.Infra.
 C:\Users\lep.ridad\Documents\Visual Studio 2013\Projects\PLMVCSolution\PL.Infra.Repository\obj\Debug\PL.Infra.Repository.csprojResolveAssemblyReference.cache
 C:\Users\lep.ridad\Documents\Visual Studio 2013\Projects\PLMVCSolution\PL.Infra.Repository\obj\Debug\PL.Infra.Repository.dll
 C:\Users\lep.ridad\Documents\Visual Studio 2013\Projects\PLMVCSolution\PL.Infra.Repository\obj\Debug\PL.Infra.Repository.pdb
+D:\01 - Programming projects\git\PLMVCSolution\PL.Infra.Repository\bin\Debug\PL.Infra.Repository.dll.config
+D:\01 - Programming projects\git\PLMVCSolution\PL.Infra.Repository\bin\Debug\PL.Infra.Repository.dll
+D:\01 - Programming projects\git\PLMVCSolution\PL.Infra.Repository\bin\Debug\PL.Infra.Repository.pdb
+D:\01 - Programming projects\git\PLMVCSolution\PL.Infra.Repository\bin\Debug\EntityFramework.BulkInsert.dll
+D:\01 - Programming projects\git\PLMVCSolution\PL.Infra.Repository\bin\Debug\EntityFramework.dll
+D:\01 - Programming projects\git\PLMVCSolution\PL.Infra.Repository\bin\Debug\EntityFramework.MappingAPI.dll
+D:\01 - Programming projects\git\PLMVCSolution\PL.Infra.Repository\bin\Debug\EntityFramework.SqlServer.dll
+D:\01 - Programming projects\git\PLMVCSolution\PL.Infra.Repository\bin\Debug\PL.Core.Entity.Repository.Interface.dll
+D:\01 - Programming projects\git\PLMVCSolution\PL.Infra.Repository\bin\Debug\PL.Infra.DbContext.Interface.dll
+D:\01 - Programming projects\git\PLMVCSolution\PL.Infra.Repository\bin\Debug\PL.Core.Entity.Repository.Interface.pdb
+D:\01 - Programming projects\git\PLMVCSolution\PL.Infra.Repository\bin\Debug\PL.Infra.DbContext.Interface.pdb
+D:\01 - Programming projects\git\PLMVCSolution\PL.Infra.Repository\bin\Debug\EntityFramework.xml
+D:\01 - Programming projects\git\PLMVCSolution\PL.Infra.Repository\bin\Debug\EntityFramework.BulkInsert.pdb
+D:\01 - Programming projects\git\PLMVCSolution\PL.Infra.Repository\bin\Debug\EntityFramework.MappingAPI.pdb
+D:\01 - Programming projects\git\PLMVCSolution\PL.Infra.Repository\bin\Debug\EntityFramework.SqlServer.xml
+D:\01 - Programming projects\git\PLMVCSolution\PL.Infra.Repository\obj\Debug\PL.Infra.Repository.csprojResolveAssemblyReference.cache
+D:\01 - Programming projects\git\PLMVCSolution\PL.Infra.Repository\obj\Debug\PL.Infra.Repository.dll
+D:\01 - Programming projects\git\PLMVCSolution\PL.Infra.Repository\obj\Debug\PL.Infra.Repository.pdb

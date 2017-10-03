@@ -27,3 +27,13 @@ C:\Users\lep.ridad\Documents\Visual Studio 2013\Projects\PLMVCSolution\PL.Core.E
 C:\Users\lep.ridad\Documents\Visual Studio 2013\Projects\PLMVCSolution\PL.Core.Entity.Repository.Interface\bin\Debug\EntityFramework.SqlServer.xml
 C:\Users\lep.ridad\Documents\Visual Studio 2013\Projects\PLMVCSolution\PL.Core.Entity.Repository.Interface\obj\Debug\PL.Core.Entity.Repository.Interface.dll
 C:\Users\lep.ridad\Documents\Visual Studio 2013\Projects\PLMVCSolution\PL.Core.Entity.Repository.Interface\obj\Debug\PL.Core.Entity.Repository.Interface.pdb
+D:\01 - Programming projects\git\PLMVCSolution\PL.Core.Entity.Repository.Interface\bin\Debug\PL.Core.Entity.Repository.Interface.dll.config
+D:\01 - Programming projects\git\PLMVCSolution\PL.Core.Entity.Repository.Interface\bin\Debug\PL.Core.Entity.Repository.Interface.dll
+D:\01 - Programming projects\git\PLMVCSolution\PL.Core.Entity.Repository.Interface\bin\Debug\PL.Core.Entity.Repository.Interface.pdb
+D:\01 - Programming projects\git\PLMVCSolution\PL.Core.Entity.Repository.Interface\bin\Debug\EntityFramework.dll
+D:\01 - Programming projects\git\PLMVCSolution\PL.Core.Entity.Repository.Interface\bin\Debug\EntityFramework.SqlServer.dll
+D:\01 - Programming projects\git\PLMVCSolution\PL.Core.Entity.Repository.Interface\bin\Debug\EntityFramework.xml
+D:\01 - Programming projects\git\PLMVCSolution\PL.Core.Entity.Repository.Interface\bin\Debug\EntityFramework.SqlServer.xml
+D:\01 - Programming projects\git\PLMVCSolution\PL.Core.Entity.Repository.Interface\obj\Debug\PL.Core.Entity.Repository.Interface.csprojResolveAssemblyReference.cache
+D:\01 - Programming projects\git\PLMVCSolution\PL.Core.Entity.Repository.Interface\obj\Debug\PL.Core.Entity.Repository.Interface.dll
+D:\01 - Programming projects\git\PLMVCSolution\PL.Core.Entity.Repository.Interface\obj\Debug\PL.Core.Entity.Repository.Interface.pdb
