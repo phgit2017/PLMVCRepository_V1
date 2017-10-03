@@ -1,0 +1,83 @@
+﻿@model PL.MVC.IOBalance.Areas.ReportManagement.Models.ReportInventoryPerItemSearchModel
+@using Infrastructure.Utilities;
+@using PL.MVC.IOBalance.Infrastructure;
+@using PL.Business.Common;
+@using PL.MVC.IOBalance.Areas.ReportManagement.Models
+@{
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+@{
+    var userTypeId = Session[SessionVariables.UserDetails].GetUserTypeIdFromSession();
+    string formDisplay = userTypeId == Constants.UserTypeAdminId ? "display:block" : "display:none";
+}
+<div>
+    <div class="pull-left">
+        <span class="text-warning"><strong>Products Per Category</strong></span>
+    </div>
+    <div class="pull-right">
+    </div>
+    <div class="clearfix"></div>
+    <br />
+    <hr />
+    <div id="reportperitemform">
+        <form class="form-horizontal col-sm-12" id="frmReportPerItem" action="@Url.Action(IOBALANCEMVC.ReportManagement.InventorySales.ExtractReportToExcel())">
+            <div class="form-group">
+                <div class="col-sm-8">
+                    <div class="form-group">
+                        <label for="" class="control-label col-sm-3">Date Generated</label>
+                        <div class="col-sm-8">
+                            <input id="dpFrom" name="DateGenerated" style="width: 100%" placeholder="yyyy/mm" />
+                            @*<small class="text-muted">Date Gene</small>*@
+                            @Html.ValidationMessageFor(model => model.DateGenerated, "", new { @class = "error" })
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label for="" class="control-label col-sm-3">Category</label>
+                        <div class="control-input col-sm-8">
+                            <input id="SearchProductCategory" style="width:100%" name="CategoryId" />
+                            @Html.ValidationMessageFor(m => m.CategoryID, "", new { @class = "error" })
+                        </div>
+                    </div>
+
+                    <div class="form-group" style="@formDisplay">
+                        <label for="" class="control-label col-sm-3">Branch</label>
+                        <div class="control-input col-sm-8">
+                            <input id="SearchSOProductBranch" style="width:100%" name="BranchID" />
+                            @Html.ValidationMessageFor(m => m.BranchID, "", new { @class = "error" })
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        <div class="control-input col-sm-8 col-sm-offset-3">
+                            <button type="submit" id="extractreport" class="btn btn-sm btn-default"
+                                    data-action-type="extractreport"
+                                    data-url="">
+                                <i class="glyphicon glyphicon-export"></i> Extract to excel
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </form>
+
+    </div>
+</div>
+
+<div id="divResultContainer" style="display:none"></div>
+
+@section scripts{
+    <script type="text/javascript">
+        window.inventorySalesOptions = {
+            categoryGetUrl: "@Url.Action(IOBALANCEMVC.Common.GetCategory())",
+            productGetUrl: "@Url.Action(IOBALANCEMVC.Common.GetProduct())",
+            branchGetUrl: "@Url.Action(IOBALANCEMVC.Common.GetBranch())",
+            extractReportUrl: "@Url.Action(IOBALANCEMVC.ReportManagement.InventorySales.ExtractReportToExcel())"
+        };
+    </script>
+    <script type="text/javascript" src="@IOBALANCELINKS.Scripts.iobalance.functions.reportmanagement.reportmanagement_peritem_js"></script>
+    @Scripts.Render("~/bundles/jqueryval");
+}
+
+
+<link rel="stylesheet" href="@IOBALANCELINKS.Content.kendo.kendo_common_material_min_css" />
+<link rel="stylesheet" href="@IOBALANCELINKS.Content.kendo.kendo_material_min_css" />

@@ -1,0 +1,47 @@
+﻿@model List<PL.Business.Dto.IOBalance.SalesOrderDto>
+
+
+<div id="divSavedSalesOrder">
+    <table id="gvSavedSalesOrder" class="table table-striped">
+        <thead>
+            <tr>
+                <th data-field="salesorderaction">Action</th>
+                <th data-field="salesordernum">Sales Order Number</th>
+                <th data-field="salesordercustomer">Customer</th>
+                <th data-field="salesdatecreated">Date Generated</th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var item in @Model)
+            {
+                <tr>
+                    <td>
+                        <i></i>
+                        <span>
+                            <a href="@Url.Action(IOBALANCEMVC.OrderManagement.SalesOrder.ExtractReceipt(item.SalesOrderID))" target="_blank">
+                                <span class="glyphicon glyphicon-export"></span> Print Receipt
+                            </a>
+                        </span>
+                    </td>
+                    <td>
+                        <i></i>
+                        <span>
+                            @item.SalesOrderNum
+                        </span>
+                    </td>
+                    <td>
+                        <i></i>
+                        <span>
+                            @item.CustomerFullName
+                        </span>
+                    </td>
+                    <td>
+                        <i></i>
+                        <span>@item.DateCreated</span>
+                    </td>
+                    
+                </tr>
+            }
+        </tbody>
+    </table>
+</div>

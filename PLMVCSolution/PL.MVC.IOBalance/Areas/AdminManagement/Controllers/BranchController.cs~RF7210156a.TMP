@@ -1,0 +1,94 @@
+﻿using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Web;
+using System.Web.Mvc;
+
+//Business
+using PL.Business.Common;
+using PL.Business.Dto.IOBalance;
+using PL.Business.Interface.IOBalance;
+
+//MVC
+using PL.MVC.IOBalance.Controllers;
+using PL.MVC.IOBalance.Areas.AdminManagement.Models;
+
+using Infrastructure.Utilities.Extensions;
+using LinqKit;
+
+namespace PL.MVC.IOBalance.Areas.AdminManagement.Controllers
+{
+    public class BranchController : BaseController
+    {
+        #region DeclarationsAndConstructors
+        IBranchService _iBranchService;
+
+        public BranchController(IBranchService iBranchService)
+        {
+            this._iBranchService = iBranchService;
+        }
+        #endregion DeclarationsAndConstructors
+
+        #region ActionMethods
+        public ActionResult Index()
+        {
+            var model = GetBranch();
+            return View(model);
+        }
+
+        [HttpPost]
+        public ActionResult SearchBranch(BranchSearchModel BranchSearchModel)
+        {
+            return PartialView();
+        }
+
+        public ActionResult SaveBranch(BranchDto dto)
+        #endregion ActionMethods
+
+        #region PrivateMethods
+        private List<BranchDto> GetBranch(BranchSearchModel searchModel = null)
+        {
+            List<BranchDto> list = new List<BranchDto>();
+            if (searchModel.IsNull())
+            {
+                list = _iBranchService.GetAll().ToList();
+            }
+            else
+            {
+                var predicate = PredicateBuilder.True<BranchDto>();
+                bool hasOtherFilter = false;
+                
+                //if (!searchModel.BranchName.IsNull())
+                //{
+                //    hasOtherFilter = true;
+                //    predicate = predicate.And(b => b.BranchName.Contains(searchModel.BranchName));
+                //}
+
+                list = _iBranchService.GetAll().Where(b => b.BranchName.Contains(searchModel.BranchName)).ToList();
+
+
+
+
+            }
+
+            return list;
+        }
+        #endregion PrivateMethods
+
+        #region Dispose
+        protected override void Dispose(bool disposing)
+        {
+            if (disposing)
+            {
+                if (!_iBranchService.IsNull())
+                {
+                    _iBranchService = null;
+                }
+            }
+            base.Dispose(disposing);
+        }
+        #endregion Dispose
+
+
+    }
+}

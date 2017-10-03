@@ -1,0 +1,22 @@
+﻿@using Kendo.Mvc.UI;
+@using PL.Business.Common;
+
+@(Html.Kendo().Grid<PL.Business.Dto.IOBalance.ReportCombinationDto>()
+        .Name("gvInventoryReport")
+        .Columns(columns =>
+        {
+            columns.Bound(c => c.ProductFullDisplayWithExtension).Title("Product Name").Width(400).Lockable(false);
+            columns.Bound(c => c.PurchaseOrderQty).Title("(+)").Width(130).Lockable(false);
+            columns.Bound(c => c.SalesOrderQty).Title("(-)").Width(130).Lockable(false);
+            columns.Bound(c => c.ProductQty).Title("Product Qty").Width(130).Lockable(false);
+            columns.Bound(c => c.Remarks).Title("Remarks").Width(200).Lockable(false);
+            columns.Bound(c => c.BranchName).Title("Branch Name").Width(180).Lockable(false);
+        })
+        .Scrollable()
+        .Pageable()
+        .DataSource(dataSource => dataSource
+            .Ajax()
+            .Read(read => read.Action("GetInventoryReport", "InventorySales"))
+            .PageSize(200)
+        )
+)

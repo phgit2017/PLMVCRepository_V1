@@ -1,0 +1,74 @@
+﻿@using PL.Business.Dto.IOBalance;
+@using PL.MVC.IOBalance.Areas.AdminManagement.Models;
+@{
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+@section modals{
+    @Html.Partial(IOBALANCEMVC.AdminManagement.Supplier.Views._ModalEditSupplier, new SupplierDto())
+    @Html.Partial(IOBALANCEMVC.AdminManagement.Supplier.Views._ModalSearchSupplier, new SupplierSearchModel())
+}
+
+<div>
+    <div class="pull-left">
+        <span class="text-warning"><strong>Maintenance - Supplier</strong></span>
+    </div>
+
+    <div class="pull-right">
+        <button id="searchbutton" class="btn btn-sm btn-default"
+                data-action-type="searchbutton">
+            <i class="glyphicon glyphicon-search"></i> Search
+        </button>
+
+        <button id="refreshbutton" class="btn btn-sm btn-default"
+                data-action-type="refreshbutton">
+            <i class="glyphicon glyphicon-refresh"></i> Refresh
+        </button>
+
+        <button id="btndiscard" class="btn btn-default btn-sm" style="display:none;">
+            Discard
+        </button>
+
+        <button id="btnnewform" class="btn btn-sm btn-success">
+            <i class="glyphicon glyphicon-plus-sign"></i> New Supplier
+        </button>
+    </div>
+    <br />
+    <hr />
+
+    <div id="supplier-new-form" style="display:none;">
+        @Html.Partial(IOBALANCEMVC.AdminManagement.Supplier.Views._NewSupplier, new SupplierDto())
+    </div>
+
+    <div id="divSupplier">
+        @*@Html.Partial(IOBALANCEMVC.AdminManagement.Supplier.Views._ListSupplier, Model)*@
+        @*@Html.Partial(IOBALANCEMVC.AdminManagement.Supplier.Views._ListSupplierKendo)*@
+
+    </div>
+</div>
+
+<br />
+
+@*@Html.Partial(IOBALANCEMVC.AdminManagement.Supplier.Views._NewSupplier, new SupplierDto())*@
+
+<div id="divResultContainer" style="display:none"></div>
+
+@section scripts{
+    <script type="text/javascript">
+        window.supplierOptions = {
+            isActiveYesNoUrl: "@Url.Action(IOBALANCEMVC.Common.GetIsActive())",
+            updateActiveItemUrl: "@Url.Action(IOBALANCEMVC.AdminManagement.Supplier.isActiveSupplier())",
+            getKendoUrl: "@Url.Action(IOBALANCEMVC.AdminManagement.Supplier.GetSuppliers())"
+        }
+    </script>
+    <script type="text/javascript" src="@IOBALANCELINKS.Scripts.infrastructure.jquery_pl_kendo_resize_height_js"></script>
+    <script type="text/javascript" src="@IOBALANCELINKS.Scripts.iobalance.functions.adminmanagement.adminmanagement_supplier_js"></script>
+    <script type="text/javascript" src="@IOBALANCELINKS.Scripts.infrastructure.jquery_deserialize_js"></script>
+    @Scripts.Render("~/bundles/jqueryval");
+}
+
+
+
+<link rel="stylesheet" href="@IOBALANCELINKS.Content.kendo.kendo_common_material_min_css" />
+<link rel="stylesheet" href="@IOBALANCELINKS.Content.kendo.kendo_material_min_css" />
+

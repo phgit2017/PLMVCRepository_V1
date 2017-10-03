@@ -1,0 +1,1345 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="12.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProductVersion>
+    </ProductVersion>
+    <SchemaVersion>2.0</SchemaVersion>
+    <ProjectGuid>{96C38742-3C5F-4802-865A-CA36C04DBC6C}</ProjectGuid>
+    <ProjectTypeGuids>{349c5851-65df-11da-9384-00065b846f21};{fae04ec0-301f-11d3-bf4b-00c04f79efbc}</ProjectTypeGuids>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>PL.MVC.IOBalance</RootNamespace>
+    <AssemblyName>PL.MVC.IOBalance</AssemblyName>
+    <TargetFrameworkVersion>v4.5</TargetFrameworkVersion>
+    <MvcBuildViews>false</MvcBuildViews>
+    <UseIISExpress>true</UseIISExpress>
+    <IISExpressSSLPort />
+    <IISExpressAnonymousAuthentication />
+    <IISExpressWindowsAuthentication />
+    <IISExpressUseClassicPipelineMode />
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="Antlr3.Runtime, Version=3.4.1.9004, Culture=neutral, PublicKeyToken=eb42632606e9261f, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\packages\Antlr.3.4.1.9004\lib\Antlr3.Runtime.dll</HintPath>
+    </Reference>
+    <Reference Include="Autofac, Version=4.6.0.0, Culture=neutral, PublicKeyToken=17863af14b0044da, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\packages\Autofac.4.6.0\lib\net45\Autofac.dll</HintPath>
+    </Reference>
+    <Reference Include="Autofac.Integration.Mvc, Version=3.0.0.0, Culture=neutral, PublicKeyToken=17863af14b0044da, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\packages\Autofac.Mvc4.3.1.0\lib\net40\Autofac.Integration.Mvc.dll</HintPath>
+    </Reference>
+    <Reference Include="DotNetOpenAuth.AspNet, Version=4.3.0.0, Culture=neutral, PublicKeyToken=2780ccd10d57b246, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\packages\DotNetOpenAuth.AspNet.4.3.4.13329\lib\net45-full\DotNetOpenAuth.AspNet.dll</HintPath>
+    </Reference>
+    <Reference Include="DotNetOpenAuth.Core, Version=4.3.0.0, Culture=neutral, PublicKeyToken=2780ccd10d57b246, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\packages\DotNetOpenAuth.Core.4.3.4.13329\lib\net45-full\DotNetOpenAuth.Core.dll</HintPath>
+    </Reference>
+    <Reference Include="DotNetOpenAuth.OAuth, Version=4.3.0.0, Culture=neutral, PublicKeyToken=2780ccd10d57b246, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\packages\DotNetOpenAuth.OAuth.Core.4.3.4.13329\lib\net45-full\DotNetOpenAuth.OAuth.dll</HintPath>
+    </Reference>
+    <Reference Include="DotNetOpenAuth.OAuth.Consumer, Version=4.3.0.0, Culture=neutral, PublicKeyToken=2780ccd10d57b246, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\packages\DotNetOpenAuth.OAuth.Consumer.4.3.4.13329\lib\net45-full\DotNetOpenAuth.OAuth.Consumer.dll</HintPath>
+    </Reference>
+    <Reference Include="DotNetOpenAuth.OpenId, Version=4.3.0.0, Culture=neutral, PublicKeyToken=2780ccd10d57b246, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\packages\DotNetOpenAuth.OpenId.Core.4.3.4.13329\lib\net45-full\DotNetOpenAuth.OpenId.dll</HintPath>
+    </Reference>
+    <Reference Include="DotNetOpenAuth.OpenId.RelyingParty, Version=4.3.0.0, Culture=neutral, PublicKeyToken=2780ccd10d57b246, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\packages\DotNetOpenAuth.OpenId.RelyingParty.4.3.4.13329\lib\net45-full\DotNetOpenAuth.OpenId.RelyingParty.dll</HintPath>
+    </Reference>
+    <Reference Include="EntityFramework, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\packages\EntityFramework.6.1.3\lib\net45\EntityFramework.dll</HintPath>
+    </Reference>
+    <Reference Include="EntityFramework.SqlServer, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\packages\EntityFramework.6.1.3\lib\net45\EntityFramework.SqlServer.dll</HintPath>
+    </Reference>
+    <Reference Include="EPPlus, Version=4.1.0.0, Culture=neutral, PublicKeyToken=ea159fdaa78159a1, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\packages\EPPlus.4.1.0\lib\net40\EPPlus.dll</HintPath>
+    </Reference>
+    <Reference Include="Kendo.Mvc, Version=2015.2.827.545, Culture=neutral, PublicKeyToken=121fae78165ba3d4, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\..\..\..\Philip Ridad Files\Projects\FormBuilder\IRISRetina\P247.MVC.IRIS.Retina\bin\Kendo.Mvc.dll</HintPath>
+    </Reference>
+    <Reference Include="LinqKit, Version=1.0.0.0, Culture=neutral, PublicKeyToken=bc217f8844052a91, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>bin\LinqKit.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="Microsoft.Data.Edm, Version=5.8.1.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\packages\Microsoft.Data.Edm.5.8.2\lib\net40\Microsoft.Data.Edm.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.Data.OData, Version=5.8.1.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\packages\Microsoft.Data.OData.5.8.2\lib\net40\Microsoft.Data.OData.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.Web.WebPages.OAuth, Version=3.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\packages\Microsoft.AspNet.WebPages.OAuth.3.2.3\lib\net45\Microsoft.Web.WebPages.OAuth.dll</HintPath>
+    </Reference>
+    <Reference Include="Newtonsoft.Json, Version=6.0.0.0, Culture=neutral, PublicKeyToken=30ad4fe6b2a6aeed, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\packages\Newtonsoft.Json.6.0.4\lib\net45\Newtonsoft.Json.dll</HintPath>
+    </Reference>
+    <Reference Include="System" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Drawing" />
+    <Reference Include="System.Net.Http.Extensions">
+      <HintPath>..\packages\Microsoft.Net.Http.2.2.29\lib\net45\System.Net.Http.Extensions.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Net.Http.Formatting, Version=5.2.3.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\packages\Microsoft.AspNet.WebApi.Client.5.2.3\lib\net45\System.Net.Http.Formatting.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="System.Net.Http.Primitives">
+      <HintPath>..\packages\Microsoft.Net.Http.2.2.29\lib\net45\System.Net.Http.Primitives.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Spatial, Version=5.8.1.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\packages\System.Spatial.5.8.2\lib\net40\System.Spatial.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Web.DynamicData" />
+    <Reference Include="System.Web.Entity" />
+    <Reference Include="System.Web.ApplicationServices" />
+    <Reference Include="System.ComponentModel.DataAnnotations" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="System.Web.Helpers, Version=3.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\packages\Microsoft.AspNet.WebPages.3.2.3\lib\net45\System.Web.Helpers.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Web.Http, Version=5.2.3.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\packages\Microsoft.AspNet.WebApi.Core.5.2.3\lib\net45\System.Web.Http.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="System.Web.Http.OData, Version=5.7.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\packages\Microsoft.AspNet.WebApi.OData.5.7.0\lib\net45\System.Web.Http.OData.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Web.Http.WebHost, Version=5.2.3.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\packages\Microsoft.AspNet.WebApi.WebHost.5.2.3\lib\net45\System.Web.Http.WebHost.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="System.Web.Mvc, Version=5.2.3.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\packages\Microsoft.AspNet.Mvc.5.2.3\lib\net45\System.Web.Mvc.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Web.Optimization, Version=1.1.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\packages\Microsoft.AspNet.Web.Optimization.1.1.3\lib\net40\System.Web.Optimization.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Web.Razor, Version=3.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\packages\Microsoft.AspNet.Razor.3.2.3\lib\net45\System.Web.Razor.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Web.WebPages, Version=3.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\packages\Microsoft.AspNet.WebPages.3.2.3\lib\net45\System.Web.WebPages.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Web.WebPages.Deployment, Version=3.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\packages\Microsoft.AspNet.WebPages.3.2.3\lib\net45\System.Web.WebPages.Deployment.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Web.WebPages.Razor, Version=3.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\packages\Microsoft.AspNet.WebPages.3.2.3\lib\net45\System.Web.WebPages.Razor.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Web" />
+    <Reference Include="System.Web.Extensions" />
+    <Reference Include="System.Web.Abstractions" />
+    <Reference Include="System.Web.Routing" />
+    <Reference Include="System.Xml" />
+    <Reference Include="System.Configuration" />
+    <Reference Include="System.Transactions" />
+    <Reference Include="System.Web.Services" />
+    <Reference Include="System.EnterpriseServices" />
+    <Reference Include="Microsoft.Web.Infrastructure, Version=1.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <Private>True</Private>
+      <HintPath>..\packages\Microsoft.Web.Infrastructure.1.0.0.0\lib\net40\Microsoft.Web.Infrastructure.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Net.Http">
+    </Reference>
+    <Reference Include="System.Net.Http.WebRequest">
+    </Reference>
+    <Reference Include="T4MVCExtensions, Version=3.0.0.0, Culture=neutral, PublicKeyToken=7b26dc2a43f6a0d4, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\packages\T4MVCExtensions.4.0.0\lib\net45\T4MVCExtensions.dll</HintPath>
+    </Reference>
+    <Reference Include="WebGrease, Version=1.6.5135.21930, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\packages\WebGrease.1.6.0\lib\WebGrease.dll</HintPath>
+    </Reference>
+    <Reference Include="WebMatrix.Data, Version=3.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\packages\Microsoft.AspNet.WebPages.Data.3.2.3\lib\net45\WebMatrix.Data.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="WebMatrix.WebData, Version=3.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\packages\Microsoft.AspNet.WebPages.WebData.3.2.3\lib\net45\WebMatrix.WebData.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="Areas\AdminManagement\AdminManagementAreaRegistration.cs" />
+    <Compile Include="Areas\AdminManagement\Controllers\BranchController.cs" />
+    <Compile Include="Areas\AdminManagement\Controllers\CategoryController.cs" />
+    <Compile Include="Areas\AdminManagement\Controllers\CustomerController.cs" />
+    <Compile Include="Areas\AdminManagement\Controllers\CustomerPriceController.cs" />
+    <Compile Include="Areas\AdminManagement\Controllers\DiscountController.cs" />
+    <Compile Include="Areas\AdminManagement\Controllers\ModelController.cs" />
+    <Compile Include="Areas\AdminManagement\Controllers\SupplierController.cs" />
+    <Compile Include="Areas\AdminManagement\Controllers\UnitController.cs" />
+    <Compile Include="Areas\AdminManagement\Controllers\UserController.cs" />
+    <Compile Include="Areas\AdminManagement\Models\BranchSearchModel.cs" />
+    <Compile Include="Areas\AdminManagement\Models\CategorySearchModel.cs" />
+    <Compile Include="Areas\AdminManagement\Models\CustomerPriceSearchModel.cs" />
+    <Compile Include="Areas\AdminManagement\Models\CustomerSearchModel.cs" />
+    <Compile Include="Areas\AdminManagement\Models\DiscountSearchModel.cs" />
+    <Compile Include="Areas\AdminManagement\Models\ModelSearchModel.cs" />
+    <Compile Include="Areas\AdminManagement\Models\SupplierSearchModel.cs" />
+    <Compile Include="Areas\AdminManagement\Models\UnitSearchModel.cs" />
+    <Compile Include="Areas\AdminManagement\Models\UserSearchModel.cs" />
+    <Compile Include="Areas\OrderManagement\Controllers\PurchaseOrderController.cs" />
+    <Compile Include="Areas\OrderManagement\Controllers\SalesOrderController.cs" />
+    <Compile Include="Areas\OrderManagement\Models\BatchSummariesSearchModel.cs" />
+    <Compile Include="Areas\OrderManagement\Models\OrderSearchModel.cs" />
+    <Compile Include="Areas\OrderManagement\Models\ProductSearchModel.cs" />
+    <Compile Include="Areas\OrderManagement\Models\SavedSalesOrderSearchModel.cs" />
+    <Compile Include="Areas\OrderManagement\Models\SOSubmitModel.cs" />
+    <Compile Include="Areas\OrderManagement\OrderManagementAreaRegistration.cs" />
+    <Compile Include="Areas\ReportManagement\Controllers\InventorySalesController.cs" />
+    <Compile Include="Areas\ReportManagement\Models\ReportInventoryPerItemSearchModel.cs" />
+    <Compile Include="Areas\ReportManagement\Models\ReportInventorySearchModel.cs" />
+    <Compile Include="Areas\ReportManagement\Models\ReportPurchaseOrderSearchModel.cs" />
+    <Compile Include="Areas\ReportManagement\ReportManagementAreaRegistration.cs" />
+    <Compile Include="Areas\TemplateOnly\Controllers\TemplateController.cs" />
+    <Compile Include="Areas\TemplateOnly\TemplateOnlyAreaRegistration.cs" />
+    <Compile Include="Controllers\AuthenticationController.cs" />
+    <Compile Include="Controllers\BaseController.cs" />
+    <Compile Include="Controllers\CommonController.cs" />
+    <Compile Include="ExternalPackages\AccountController.generated.cs">
+      <DependentUpon>T4MVC.tt</DependentUpon>
+    </Compile>
+    <Compile Include="App_Start\AuthConfig.cs" />
+    <Compile Include="App_Start\BundleConfig.cs" />
+    <Compile Include="App_Start\FilterConfig.cs" />
+    <Compile Include="App_Start\RouteConfig.cs" />
+    <Compile Include="App_Start\WebApiConfig.cs" />
+    <Compile Include="Controllers\AccountController.cs" />
+    <Compile Include="Controllers\HomeController.cs" />
+    <Compile Include="ExternalPackages\AdminManagement.BranchController.generated.cs">
+      <DependentUpon>T4MVC.tt</DependentUpon>
+    </Compile>
+    <Compile Include="ExternalPackages\AdminManagement.CategoryController.generated.cs">
+      <DependentUpon>T4MVC.tt</DependentUpon>
+    </Compile>
+    <Compile Include="ExternalPackages\AdminManagement.CustomerController.generated.cs">
+      <DependentUpon>T4MVC.tt</DependentUpon>
+    </Compile>
+    <Compile Include="ExternalPackages\AdminManagement.CustomerPriceController.generated.cs">
+      <DependentUpon>T4MVC.tt</DependentUpon>
+    </Compile>
+    <Compile Include="ExternalPackages\AdminManagement.DiscountController.generated.cs">
+      <DependentUpon>T4MVC.tt</DependentUpon>
+    </Compile>
+    <Compile Include="ExternalPackages\AdminManagement.ModelController.generated.cs">
+      <DependentUpon>T4MVC.tt</DependentUpon>
+    </Compile>
+    <Compile Include="ExternalPackages\AdminManagement.SharedController.generated.cs">
+      <DependentUpon>T4MVC.tt</DependentUpon>
+    </Compile>
+    <Compile Include="ExternalPackages\AdminManagement.SupplierController.generated.cs">
+      <DependentUpon>T4MVC.tt</DependentUpon>
+    </Compile>
+    <Compile Include="ExternalPackages\AdminManagement.UnitController.generated.cs">
+      <DependentUpon>T4MVC.tt</DependentUpon>
+    </Compile>
+    <Compile Include="ExternalPackages\AdminManagement.UserController.generated.cs">
+      <DependentUpon>T4MVC.tt</DependentUpon>
+    </Compile>
+    <Compile Include="ExternalPackages\AuthenticationController.generated.cs">
+      <DependentUpon>T4MVC.tt</DependentUpon>
+    </Compile>
+    <Compile Include="ExternalPackages\BaseController.generated.cs">
+      <DependentUpon>T4MVC.tt</DependentUpon>
+    </Compile>
+    <Compile Include="ExternalPackages\CommonController.generated.cs">
+      <DependentUpon>T4MVC.tt</DependentUpon>
+    </Compile>
+    <Compile Include="ExternalPackages\OrderManagement.PurchaseOrderController.generated.cs">
+      <DependentUpon>T4MVC.tt</DependentUpon>
+    </Compile>
+    <Compile Include="ExternalPackages\OrderManagement.SalesOrderController.generated.cs">
+      <DependentUpon>T4MVC.tt</DependentUpon>
+    </Compile>
+    <Compile Include="ExternalPackages\OrderManagement.SharedController.generated.cs">
+      <DependentUpon>T4MVC.tt</DependentUpon>
+    </Compile>
+    <Compile Include="ExternalPackages\ReportManagement.InventorySalesController.generated.cs">
+      <DependentUpon>T4MVC.tt</DependentUpon>
+    </Compile>
+    <Compile Include="ExternalPackages\ReportManagement.SharedController.generated.cs">
+      <DependentUpon>T4MVC.tt</DependentUpon>
+    </Compile>
+    <Compile Include="ExternalPackages\TemplateOnly.SharedController.generated.cs">
+      <DependentUpon>T4MVC.tt</DependentUpon>
+    </Compile>
+    <Compile Include="ExternalPackages\TemplateOnly.TemplateController.generated.cs">
+      <DependentUpon>T4MVC.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Filters\InitializeSimpleMembershipAttribute.cs" />
+    <Compile Include="Global.asax.cs">
+      <DependentUpon>Global.asax</DependentUpon>
+    </Compile>
+    <Compile Include="ExternalPackages\HomeController.generated.cs">
+      <DependentUpon>T4MVC.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Infrastructure\Alert.cs" />
+    <Compile Include="Infrastructure\Common.cs" />
+    <Compile Include="Infrastructure\DependencyInjection.cs" />
+    <Compile Include="Infrastructure\IOBalanceAuthorizeUserAttribute.cs" />
+    <Compile Include="Infrastructure\IOBalanceSessionExpiredAttribute.cs" />
+    <Compile Include="Models\AccountModels.cs" />
+    <Compile Include="Models\TransactionsModel.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="ExternalPackages\SharedController.generated.cs">
+      <DependentUpon>T4MVC.tt</DependentUpon>
+    </Compile>
+    <Compile Include="ExternalPackages\T4MVC.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>T4MVC.tt</DependentUpon>
+    </Compile>
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="bin\Antlr3.Runtime.dll" />
+    <Content Include="bin\Autofac.dll" />
+    <Content Include="bin\Autofac.Integration.Mvc.dll" />
+    <Content Include="bin\Autofac.Integration.Mvc.xml" />
+    <Content Include="bin\Autofac.xml" />
+    <Content Include="bin\de\Microsoft.Data.Edm.resources.dll" />
+    <Content Include="bin\de\Microsoft.Data.OData.resources.dll" />
+    <Content Include="bin\de\System.Spatial.resources.dll" />
+    <Content Include="bin\DotNetOpenAuth.AspNet.dll" />
+    <Content Include="bin\DotNetOpenAuth.AspNet.xml" />
+    <Content Include="bin\DotNetOpenAuth.Core.dll" />
+    <Content Include="bin\DotNetOpenAuth.Core.xml" />
+    <Content Include="bin\DotNetOpenAuth.OAuth.Consumer.dll" />
+    <Content Include="bin\DotNetOpenAuth.OAuth.Consumer.xml" />
+    <Content Include="bin\DotNetOpenAuth.OAuth.dll" />
+    <Content Include="bin\DotNetOpenAuth.OAuth.xml" />
+    <Content Include="bin\DotNetOpenAuth.OpenId.dll" />
+    <Content Include="bin\DotNetOpenAuth.OpenId.RelyingParty.dll" />
+    <Content Include="bin\DotNetOpenAuth.OpenId.RelyingParty.xml" />
+    <Content Include="bin\DotNetOpenAuth.OpenId.xml" />
+    <Content Include="bin\EntityFramework.BulkInsert.dll" />
+    <Content Include="bin\EntityFramework.BulkInsert.pdb" />
+    <Content Include="bin\EntityFramework.dll" />
+    <Content Include="bin\EntityFramework.MappingAPI.dll" />
+    <Content Include="bin\EntityFramework.MappingAPI.pdb" />
+    <Content Include="bin\EntityFramework.SqlServer.dll" />
+    <Content Include="bin\EntityFramework.SqlServer.xml" />
+    <Content Include="bin\EntityFramework.xml" />
+    <Content Include="bin\es\Microsoft.Data.Edm.resources.dll" />
+    <Content Include="bin\es\Microsoft.Data.OData.resources.dll" />
+    <Content Include="bin\es\System.Spatial.resources.dll" />
+    <Content Include="bin\fr\Microsoft.Data.Edm.resources.dll" />
+    <Content Include="bin\fr\Microsoft.Data.OData.resources.dll" />
+    <Content Include="bin\fr\System.Spatial.resources.dll" />
+    <Content Include="bin\Infrastructure.Utilities.dll" />
+    <Content Include="bin\Infrastructure.Utilities.pdb" />
+    <Content Include="bin\it\Microsoft.Data.Edm.resources.dll" />
+    <Content Include="bin\it\Microsoft.Data.OData.resources.dll" />
+    <Content Include="bin\it\System.Spatial.resources.dll" />
+    <Content Include="bin\ja\Microsoft.Data.Edm.resources.dll" />
+    <Content Include="bin\ja\Microsoft.Data.OData.resources.dll" />
+    <Content Include="bin\ja\System.Spatial.resources.dll" />
+    <Content Include="bin\ko\Microsoft.Data.Edm.resources.dll" />
+    <Content Include="bin\ko\Microsoft.Data.OData.resources.dll" />
+    <Content Include="bin\ko\System.Spatial.resources.dll" />
+    <Content Include="bin\LinqKit.dll" />
+    <Content Include="bin\Microsoft.Data.Edm.dll" />
+    <Content Include="bin\Microsoft.Data.Edm.xml" />
+    <Content Include="bin\Microsoft.Data.OData.dll" />
+    <Content Include="bin\Microsoft.Data.OData.xml" />
+    <Content Include="bin\Microsoft.Web.Infrastructure.dll" />
+    <Content Include="bin\Microsoft.Web.Mvc.FixedDisplayModes.dll" />
+    <Content Include="bin\Microsoft.Web.WebPages.OAuth.dll" />
+    <Content Include="bin\Microsoft.Web.WebPages.OAuth.xml" />
+    <Content Include="bin\Newtonsoft.Json.dll" />
+    <Content Include="bin\Newtonsoft.Json.xml" />
+    <Content Include="bin\PL.Business.Common.dll" />
+    <Content Include="bin\PL.Business.Common.pdb" />
+    <Content Include="bin\PL.Business.Dto.IOBalance.dll" />
+    <Content Include="bin\PL.Business.Dto.IOBalance.pdb" />
+    <Content Include="bin\PL.Business.Interface.IOBalance.dll" />
+    <Content Include="bin\PL.Business.Interface.IOBalance.pdb" />
+    <Content Include="bin\PL.Business.IOBalance.dll" />
+    <Content Include="bin\PL.Business.IOBalance.pdb" />
+    <Content Include="bin\PL.Core.Entity.IOBalanceDB.dll" />
+    <Content Include="bin\PL.Core.Entity.IOBalanceDB.pdb" />
+    <Content Include="bin\PL.Core.Entity.Repository.Interface.dll" />
+    <Content Include="bin\PL.Core.Entity.Repository.Interface.pdb" />
+    <Content Include="bin\PL.Infra.DataAccess.IOBalanceDB.dll" />
+    <Content Include="bin\PL.Infra.DataAccess.IOBalanceDB.pdb" />
+    <Content Include="bin\PL.Infra.DbContext.Interface.dll" />
+    <Content Include="bin\PL.Infra.DbContext.Interface.pdb" />
+    <Content Include="bin\PL.Infra.Repository.dll" />
+    <Content Include="bin\PL.Infra.Repository.pdb" />
+    <Content Include="bin\PL.MVC.IOBalance.dll" />
+    <Content Include="bin\PL.MVC.IOBalance.pdb" />
+    <Content Include="bin\ru\Microsoft.Data.Edm.resources.dll" />
+    <Content Include="bin\ru\Microsoft.Data.OData.resources.dll" />
+    <Content Include="bin\ru\System.Spatial.resources.dll" />
+    <Content Include="bin\System.Net.Http.Formatting.dll" />
+    <Content Include="bin\System.Net.Http.Formatting.xml" />
+    <Content Include="bin\System.Spatial.dll" />
+    <Content Include="bin\System.Spatial.xml" />
+    <Content Include="bin\System.Web.Helpers.dll" />
+    <Content Include="bin\System.Web.Helpers.xml" />
+    <Content Include="bin\System.Web.Http.dll" />
+    <Content Include="bin\System.Web.Http.OData.dll" />
+    <Content Include="bin\System.Web.Http.OData.xml" />
+    <Content Include="bin\System.Web.Http.WebHost.dll" />
+    <Content Include="bin\System.Web.Http.WebHost.xml" />
+    <Content Include="bin\System.Web.Http.xml" />
+    <Content Include="bin\System.Web.Mvc.dll" />
+    <Content Include="bin\System.Web.Mvc.xml" />
+    <Content Include="bin\System.Web.Optimization.dll" />
+    <Content Include="bin\System.Web.Razor.dll" />
+    <Content Include="bin\System.Web.Razor.xml" />
+    <Content Include="bin\System.Web.WebPages.Deployment.dll" />
+    <Content Include="bin\System.Web.WebPages.Deployment.xml" />
+    <Content Include="bin\System.Web.WebPages.dll" />
+    <Content Include="bin\System.Web.WebPages.Razor.dll" />
+    <Content Include="bin\System.Web.WebPages.Razor.xml" />
+    <Content Include="bin\System.Web.WebPages.xml" />
+    <Content Include="bin\T4MVCExtensions.dll" />
+    <Content Include="bin\WebGrease.dll" />
+    <Content Include="bin\WebMatrix.Data.dll" />
+    <Content Include="bin\WebMatrix.Data.xml" />
+    <Content Include="bin\WebMatrix.WebData.dll" />
+    <Content Include="bin\WebMatrix.WebData.xml" />
+    <Content Include="bin\zh-Hans\Microsoft.Data.Edm.resources.dll" />
+    <Content Include="bin\zh-Hans\Microsoft.Data.OData.resources.dll" />
+    <Content Include="bin\zh-Hans\System.Spatial.resources.dll" />
+    <Content Include="bin\zh-Hant\Microsoft.Data.Edm.resources.dll" />
+    <Content Include="bin\zh-Hant\Microsoft.Data.OData.resources.dll" />
+    <Content Include="bin\zh-Hant\System.Spatial.resources.dll" />
+    <Content Include="Content\bootstrap-theme.css" />
+    <Content Include="Content\bootstrap-theme.min.css" />
+    <Content Include="Content\bootstrap.css" />
+    <Content Include="Content\bootstrap.min.css" />
+    <Content Include="Content\css\toastr.css" />
+    <Content Include="Content\kendo\Bootstrap\editor.png" />
+    <Content Include="Content\kendo\Bootstrap\imagebrowser.png" />
+    <Content Include="Content\kendo\Bootstrap\indeterminate.gif" />
+    <Content Include="Content\kendo\Bootstrap\loading-image.gif" />
+    <Content Include="Content\kendo\Bootstrap\loading.gif" />
+    <Content Include="Content\kendo\Bootstrap\loading_2x.gif" />
+    <Content Include="Content\kendo\Bootstrap\markers.png" />
+    <Content Include="Content\kendo\Bootstrap\markers_2x.png" />
+    <Content Include="Content\kendo\Bootstrap\slider-h.gif" />
+    <Content Include="Content\kendo\Bootstrap\slider-v.gif" />
+    <Content Include="Content\kendo\Bootstrap\sprite.png" />
+    <Content Include="Content\kendo\Bootstrap\sprite_2x.png" />
+    <Content Include="Content\kendo\Bootstrap\sprite_kpi.png" />
+    <Content Include="Content\kendo\Bootstrap\sprite_kpi_2x.png" />
+    <Content Include="Content\kendo\cultures\kendo.culture.en-PH.min.js" />
+    <Content Include="Content\kendo\cultures\kendo.culture.en-US.min.js" />
+    <Content Include="Content\kendo\Default\editor.png" />
+    <Content Include="Content\kendo\Default\imagebrowser.png" />
+    <Content Include="Content\kendo\Default\indeterminate.gif" />
+    <Content Include="Content\kendo\Default\loading-image.gif" />
+    <Content Include="Content\kendo\Default\loading.gif" />
+    <Content Include="Content\kendo\Default\loading_2x.gif" />
+    <Content Include="Content\kendo\Default\markers.png" />
+    <Content Include="Content\kendo\Default\markers_2x.png" />
+    <Content Include="Content\kendo\Default\slider-h.gif" />
+    <Content Include="Content\kendo\Default\slider-v.gif" />
+    <Content Include="Content\kendo\Default\sprite.png" />
+    <Content Include="Content\kendo\Default\sprite_2x.png" />
+    <Content Include="Content\kendo\Default\sprite_kpi.png" />
+    <Content Include="Content\kendo\Default\sprite_kpi_2x.png" />
+    <Content Include="Content\kendo\images\back.png" />
+    <Content Include="Content\kendo\images\kendoui.svg" />
+    <Content Include="Content\kendo\images\wp8_icons.png" />
+    <Content Include="Content\kendo\images\wp8_inverseicons.png" />
+    <Content Include="Content\kendo\kendo.black.min.css" />
+    <Content Include="Content\kendo\kendo.black.mobile.min.css" />
+    <Content Include="Content\kendo\kendo.blueopal.min.css" />
+    <Content Include="Content\kendo\kendo.blueopal.mobile.min.css" />
+    <Content Include="Content\kendo\kendo.bootstrap.min.css" />
+    <Content Include="Content\kendo\kendo.bootstrap.mobile.min.css" />
+    <Content Include="Content\kendo\kendo.common-bootstrap.core.min.css" />
+    <Content Include="Content\kendo\kendo.common-bootstrap.min.css" />
+    <Content Include="Content\kendo\kendo.common-fiori.core.min.css" />
+    <Content Include="Content\kendo\kendo.common-fiori.min.css" />
+    <Content Include="Content\kendo\kendo.common-material.core.min.css" />
+    <Content Include="Content\kendo\kendo.common-material.min.css" />
+    <Content Include="Content\kendo\kendo.common-nova.core.min.css" />
+    <Content Include="Content\kendo\kendo.common-nova.min.css" />
+    <Content Include="Content\kendo\kendo.common-office365.min.css" />
+    <Content Include="Content\kendo\kendo.common.core.min.css" />
+    <Content Include="Content\kendo\kendo.common.min.css" />
+    <Content Include="Content\kendo\kendo.dataviz.black.min.css" />
+    <Content Include="Content\kendo\kendo.dataviz.blueopal.min.css" />
+    <Content Include="Content\kendo\kendo.dataviz.bootstrap.min.css" />
+    <Content Include="Content\kendo\kendo.dataviz.default.min.css" />
+    <Content Include="Content\kendo\kendo.dataviz.fiori.min.css" />
+    <Content Include="Content\kendo\kendo.dataviz.flat.min.css" />
+    <Content Include="Content\kendo\kendo.dataviz.highcontrast.min.css" />
+    <Content Include="Content\kendo\kendo.dataviz.material.min.css" />
+    <Content Include="Content\kendo\kendo.dataviz.materialblack.min.css" />
+    <Content Include="Content\kendo\kendo.dataviz.metro.min.css" />
+    <Content Include="Content\kendo\kendo.dataviz.metroblack.min.css" />
+    <Content Include="Content\kendo\kendo.dataviz.min.css" />
+    <Content Include="Content\kendo\kendo.dataviz.mobile.min.css" />
+    <Content Include="Content\kendo\kendo.dataviz.moonlight.min.css" />
+    <Content Include="Content\kendo\kendo.dataviz.nova.min.css" />
+    <Content Include="Content\kendo\kendo.dataviz.office365.min.css" />
+    <Content Include="Content\kendo\kendo.dataviz.silver.min.css" />
+    <Content Include="Content\kendo\kendo.dataviz.uniform.min.css" />
+    <Content Include="Content\kendo\kendo.default.min.css" />
+    <Content Include="Content\kendo\kendo.default.mobile.min.css" />
+    <Content Include="Content\kendo\kendo.fiori.min.css" />
+    <Content Include="Content\kendo\kendo.fiori.mobile.min.css" />
+    <Content Include="Content\kendo\kendo.flat.min.css" />
+    <Content Include="Content\kendo\kendo.flat.mobile.min.css" />
+    <Content Include="Content\kendo\kendo.highcontrast.min.css" />
+    <Content Include="Content\kendo\kendo.highcontrast.mobile.min.css" />
+    <Content Include="Content\kendo\kendo.material.min.css" />
+    <Content Include="Content\kendo\kendo.material.mobile.min.css" />
+    <Content Include="Content\kendo\kendo.materialblack.min.css" />
+    <Content Include="Content\kendo\kendo.materialblack.mobile.min.css" />
+    <Content Include="Content\kendo\kendo.metro.min.css" />
+    <Content Include="Content\kendo\kendo.metro.mobile.min.css" />
+    <Content Include="Content\kendo\kendo.metroblack.min.css" />
+    <Content Include="Content\kendo\kendo.metroblack.mobile.min.css" />
+    <Content Include="Content\kendo\kendo.mobile.all.min.css" />
+    <Content Include="Content\kendo\kendo.mobile.android.dark.min.css" />
+    <Content Include="Content\kendo\kendo.mobile.android.light.min.css" />
+    <Content Include="Content\kendo\kendo.mobile.blackberry.min.css" />
+    <Content Include="Content\kendo\kendo.mobile.common.min.css" />
+    <Content Include="Content\kendo\kendo.mobile.fiori.min.css" />
+    <Content Include="Content\kendo\kendo.mobile.flat.min.css" />
+    <Content Include="Content\kendo\kendo.mobile.ios.min.css" />
+    <Content Include="Content\kendo\kendo.mobile.material.min.css" />
+    <Content Include="Content\kendo\kendo.mobile.meego.min.css" />
+    <Content Include="Content\kendo\kendo.mobile.nova.min.css" />
+    <Content Include="Content\kendo\kendo.mobile.office365.min.css" />
+    <Content Include="Content\kendo\kendo.mobile.wp8.min.css" />
+    <Content Include="Content\kendo\kendo.moonlight.min.css" />
+    <Content Include="Content\kendo\kendo.moonlight.mobile.min.css" />
+    <Content Include="Content\kendo\kendo.nova.min.css" />
+    <Content Include="Content\kendo\kendo.nova.mobile.min.css" />
+    <Content Include="Content\kendo\kendo.office365.min.css" />
+    <Content Include="Content\kendo\kendo.office365.mobile.min.css" />
+    <Content Include="Content\kendo\kendo.rtl.css" />
+    <Content Include="Content\kendo\kendo.rtl.min.css" />
+    <Content Include="Content\kendo\kendo.silver.min.css" />
+    <Content Include="Content\kendo\kendo.silver.mobile.min.css" />
+    <Content Include="Content\kendo\kendo.uniform.min.css" />
+    <Content Include="Content\kendo\kendo.uniform.mobile.min.css" />
+    <Content Include="Content\kendo\Material\editor.png" />
+    <Content Include="Content\kendo\Material\imagebrowser.png" />
+    <Content Include="Content\kendo\Material\indeterminate.gif" />
+    <Content Include="Content\kendo\Material\loading-image.gif" />
+    <Content Include="Content\kendo\Material\loading.gif" />
+    <Content Include="Content\kendo\Material\loading_2x.gif" />
+    <Content Include="Content\kendo\Material\markers.png" />
+    <Content Include="Content\kendo\Material\markers_2x.png" />
+    <Content Include="Content\kendo\Material\slider-h.gif" />
+    <Content Include="Content\kendo\Material\slider-v.gif" />
+    <Content Include="Content\kendo\Material\sprite.png" />
+    <Content Include="Content\kendo\Material\sprite_2x.png" />
+    <Content Include="Content\kendo\Material\sprite_kpi.png" />
+    <Content Include="Content\kendo\Material\sprite_kpi_2x.png" />
+    <Content Include="Content\kendo\messages\kendo.messages.en-US.min.js" />
+    <Content Include="Content\kendo\textures\brushed-metal.png" />
+    <Content Include="Content\kendo\textures\dots1.png" />
+    <Content Include="Content\kendo\textures\dots10.png" />
+    <Content Include="Content\kendo\textures\dots11.png" />
+    <Content Include="Content\kendo\textures\dots12.png" />
+    <Content Include="Content\kendo\textures\dots13.png" />
+    <Content Include="Content\kendo\textures\dots2.png" />
+    <Content Include="Content\kendo\textures\dots3.png" />
+    <Content Include="Content\kendo\textures\dots4.png" />
+    <Content Include="Content\kendo\textures\dots5.png" />
+    <Content Include="Content\kendo\textures\dots6.png" />
+    <Content Include="Content\kendo\textures\dots7.png" />
+    <Content Include="Content\kendo\textures\dots8.png" />
+    <Content Include="Content\kendo\textures\dots9.png" />
+    <Content Include="Content\kendo\textures\glass-lighter.png" />
+    <Content Include="Content\kendo\textures\glass.png" />
+    <Content Include="Content\kendo\textures\highlight.png" />
+    <Content Include="Content\kendo\textures\hsv-gradient.png" />
+    <Content Include="Content\kendo\textures\hue.png" />
+    <Content Include="Content\kendo\textures\leather1.png" />
+    <Content Include="Content\kendo\textures\leather2.png" />
+    <Content Include="Content\kendo\textures\noise.png" />
+    <Content Include="Content\kendo\textures\stripe1.png" />
+    <Content Include="Content\kendo\textures\stripe2.png" />
+    <Content Include="Content\kendo\textures\stripe3.png" />
+    <Content Include="Content\kendo\textures\stripe4.png" />
+    <Content Include="Content\kendo\textures\stripe5.png" />
+    <Content Include="Content\kendo\textures\stripe6.png" />
+    <Content Include="Content\kendo\textures\transparency.png" />
+    <Content Include="Content\kendo\textures\transtexture.png" />
+    <Content Include="Content\themes\base\accordion.css" />
+    <Content Include="Content\themes\base\all.css" />
+    <Content Include="Content\themes\base\autocomplete.css" />
+    <Content Include="Content\themes\base\base.css" />
+    <Content Include="Content\themes\base\button.css" />
+    <Content Include="Content\themes\base\core.css" />
+    <Content Include="Content\themes\base\datepicker.css" />
+    <Content Include="Content\themes\base\dialog.css" />
+    <Content Include="Content\themes\base\draggable.css" />
+    <Content Include="Content\themes\base\images\ui-bg_flat_0_aaaaaa_40x100.png" />
+    <Content Include="Content\themes\base\images\ui-bg_flat_75_ffffff_40x100.png" />
+    <Content Include="Content\themes\base\images\ui-bg_glass_55_fbf9ee_1x400.png" />
+    <Content Include="Content\themes\base\images\ui-bg_glass_65_ffffff_1x400.png" />
+    <Content Include="Content\themes\base\images\ui-bg_glass_75_dadada_1x400.png" />
+    <Content Include="Content\themes\base\images\ui-bg_glass_75_e6e6e6_1x400.png" />
+    <Content Include="Content\themes\base\images\ui-bg_glass_95_fef1ec_1x400.png" />
+    <Content Include="Content\themes\base\images\ui-bg_highlight-soft_75_cccccc_1x100.png" />
+    <Content Include="Content\themes\base\images\ui-icons_222222_256x240.png" />
+    <Content Include="Content\themes\base\images\ui-icons_2e83ff_256x240.png" />
+    <Content Include="Content\themes\base\images\ui-icons_444444_256x240.png" />
+    <Content Include="Content\themes\base\images\ui-icons_454545_256x240.png" />
+    <Content Include="Content\themes\base\images\ui-icons_555555_256x240.png" />
+    <Content Include="Content\themes\base\images\ui-icons_777620_256x240.png" />
+    <Content Include="Content\themes\base\images\ui-icons_777777_256x240.png" />
+    <Content Include="Content\themes\base\images\ui-icons_888888_256x240.png" />
+    <Content Include="Content\themes\base\images\ui-icons_cc0000_256x240.png" />
+    <Content Include="Content\themes\base\images\ui-icons_cd0a0a_256x240.png" />
+    <Content Include="Content\themes\base\images\ui-icons_ffffff_256x240.png" />
+    <Content Include="Content\themes\base\jquery-ui.css" />
+    <Content Include="Content\themes\base\jquery-ui.min.css" />
+    <Content Include="Content\themes\base\menu.css" />
+    <Content Include="Content\themes\base\progressbar.css" />
+    <Content Include="Content\themes\base\resizable.css" />
+    <Content Include="Content\themes\base\selectable.css" />
+    <Content Include="Content\themes\base\selectmenu.css" />
+    <Content Include="Content\themes\base\slider.css" />
+    <Content Include="Content\themes\base\sortable.css" />
+    <Content Include="Content\themes\base\spinner.css" />
+    <Content Include="Content\themes\base\tabs.css" />
+    <Content Include="Content\themes\base\theme.css" />
+    <Content Include="Content\themes\base\tooltip.css" />
+    <Content Include="Content\uploads\productimages\1007232016.png" />
+    <Content Include="Content\uploads\productimages\1707202016.png" />
+    <Content Include="Content\uploads\productimages\1807202016.png" />
+    <Content Include="Content\uploads\productimages\1907232016.png" />
+    <Content Include="Content\uploads\productimages\2007202016.png" />
+    <Content Include="Content\uploads\productimages\206272016.jpg" />
+    <Content Include="Content\uploads\productimages\206282016.jpg" />
+    <Content Include="Content\uploads\productimages\207022016.png" />
+    <Content Include="Content\uploads\productimages\207062016.jpg" />
+    <Content Include="Content\uploads\productimages\207092016.jpg" />
+    <Content Include="Content\uploads\productimages\2107232016.png" />
+    <Content Include="Content\uploads\productimages\2207232016.png" />
+    <Content Include="Content\uploads\productimages\306272016.jpg" />
+    <Content Include="Content\uploads\productimages\306282016.jpg" />
+    <Content Include="Content\uploads\productimages\307092016.jpg" />
+    <Content Include="Content\uploads\productimages\307232016.jpg" />
+    <Content Include="Content\uploads\productimages\307232016.png" />
+    <Content Include="Content\uploads\productimages\507092016.jpg" />
+    <Content Include="Content\uploads\productimages\807042016.jpg" />
+    <Content Include="Content\uploads\productimages\default.jpg" />
+    <Content Include="favicon.ico" />
+    <Content Include="fonts\glyphicons-halflings-regular.svg" />
+    <Content Include="Global.asax" />
+    <Content Include="Content\kendo\images\kendoui.ttf" />
+    <Content Include="Content\kendo\images\kendoui.woff" />
+    <Content Include="Areas\AdminManagement\Views\Web.config">
+      <SubType>Designer</SubType>
+    </Content>
+    <Content Include="Areas\AdminManagement\Views\Category\Index.cshtml" />
+    <Content Include="Areas\AdminManagement\Views\Category\_NewCategory.cshtml" />
+    <Content Include="Areas\AdminManagement\Views\Category\_ListCategory.cshtml" />
+    <Content Include="Areas\AdminManagement\Views\Category\_ModalEditCategory.cshtml" />
+    <Content Include="Areas\AdminManagement\Views\Category\_ModalSearchCategory.cshtml" />
+    <Content Include="bin\PL.MVC.IOBalance.dll.config" />
+    <Content Include="Areas\AdminManagement\Views\Supplier\Index.cshtml" />
+    <Content Include="Areas\AdminManagement\Views\Supplier\_ListSupplier.cshtml" />
+    <Content Include="Areas\AdminManagement\Views\Supplier\_NewSupplier.cshtml" />
+    <Content Include="Scripts\bootstrap.js" />
+    <Content Include="Scripts\bootstrap.min.js" />
+    <Content Include="Scripts\infrastructure\jquery-pl-kendo-resize-height.js" />
+    <Content Include="Scripts\infrastructure\jquery-pl-kendo-resize-height.min.js">
+      <DependentUpon>jquery-pl-kendo-resize-height.js</DependentUpon>
+    </Content>
+    <Content Include="Scripts\infrastructure\jquery-pl-loader.js" />
+    <Content Include="Scripts\infrastructure\jquery-pl-loader.min.js">
+      <DependentUpon>jquery-pl-loader.js</DependentUpon>
+    </Content>
+    <Content Include="Scripts\iobalance\functions\adminmanagement\adminmanagement-branch.js" />
+    <Content Include="Scripts\iobalance\functions\adminmanagement\adminmanagement-branch.min.js">
+      <DependentUpon>adminmanagement-branch.js</DependentUpon>
+    </Content>
+    <Content Include="Scripts\iobalance\functions\adminmanagement\adminmanagement-category.min.js.map">
+      <DependentUpon>adminmanagement-category.min.js</DependentUpon>
+    </Content>
+    <Content Include="Scripts\iobalance\functions\adminmanagement\adminmanagement-customer.js" />
+    <Content Include="Scripts\iobalance\functions\adminmanagement\adminmanagement-customer.min.js">
+      <DependentUpon>adminmanagement-customer.js</DependentUpon>
+    </Content>
+    <Content Include="Scripts\iobalance\functions\adminmanagement\adminmanagement-discount.js" />
+    <Content Include="Scripts\iobalance\functions\adminmanagement\adminmanagement-discount.min.js">
+      <DependentUpon>adminmanagement-discount.js</DependentUpon>
+    </Content>
+    <Content Include="Scripts\iobalance\functions\adminmanagement\adminmanagement-models.js" />
+    <Content Include="Scripts\iobalance\functions\adminmanagement\adminmanagement-models.min.js">
+      <DependentUpon>adminmanagement-models.js</DependentUpon>
+    </Content>
+    <Content Include="Scripts\iobalance\functions\adminmanagement\adminmanagement-supplier.min.js.map">
+      <DependentUpon>adminmanagement-supplier.min.js</DependentUpon>
+    </Content>
+    <Content Include="Areas\AdminManagement\Views\Supplier\_ModalEditSupplier.cshtml" />
+    <Content Include="Areas\AdminManagement\Views\Supplier\_ModalSearchSupplier.cshtml" />
+    <Content Include="Areas\AdminManagement\Views\Customer\Index.cshtml" />
+    <Content Include="Scripts\iobalance\functions\adminmanagement\adminmanagement-customer.min.js.map">
+      <DependentUpon>adminmanagement-customer.min.js</DependentUpon>
+    </Content>
+    <Content Include="Areas\AdminManagement\Views\Customer\_ListCustomer.cshtml" />
+    <Content Include="Areas\AdminManagement\Views\Customer\_NewCustomer.cshtml" />
+    <Content Include="Areas\AdminManagement\Views\Customer\_ModalEditCustomer.cshtml" />
+    <Content Include="Areas\AdminManagement\Views\Customer\_ModalSearchCustomer.cshtml" />
+    <Content Include="Areas\AdminManagement\Views\Customer\_FrmCustomer.cshtml" />
+    <Content Include="Areas\AdminManagement\Views\Unit\Index.cshtml" />
+    <Content Include="Areas\TemplateOnly\Views\Web.config" />
+    <Content Include="Areas\TemplateOnly\Views\Template\Index.cshtml" />
+    <Content Include="Scripts\iobalance\functions\adminmanagement\adminmanagement-unit.min.js.map">
+      <DependentUpon>adminmanagement-unit.min.js</DependentUpon>
+    </Content>
+    <Content Include="Areas\AdminManagement\Views\Unit\_ListUnit.cshtml" />
+    <Content Include="Areas\AdminManagement\Views\Unit\_NewUnit.cshtml" />
+    <Content Include="Areas\AdminManagement\Views\Unit\_ModalEditUnit.cshtml" />
+    <Content Include="Areas\AdminManagement\Views\Unit\_ModalSearchUnit.cshtml" />
+    <Content Include="Areas\OrderManagement\Views\Web.config" />
+    <Content Include="Areas\AdminManagement\Views\Branch\Index.cshtml" />
+    <Content Include="Areas\AdminManagement\Views\Branch\_ListBranch.cshtml" />
+    <Content Include="Areas\AdminManagement\Views\Branch\_NewBranch.cshtml" />
+    <Content Include="Areas\AdminManagement\Views\Branch\_ModalEditBranch.cshtml" />
+    <Content Include="Areas\AdminManagement\Views\Branch\_ModalSearchBranch.cshtml" />
+    <Content Include="Areas\OrderManagement\Views\PurchaseOrder\Index.cshtml" />
+    <Content Include="Areas\OrderManagement\Views\PurchaseOrder\_PurchaseOrderForm.cshtml" />
+    <Content Include="Areas\AdminManagement\Views\Model\Index.cshtml" />
+    <Content Include="Scripts\iobalance\functions\adminmanagement\adminmanagement-branch.min.js.map">
+      <DependentUpon>adminmanagement-branch.min.js</DependentUpon>
+    </Content>
+    <Content Include="Scripts\iobalance\functions\adminmanagement\adminmanagement-models.min.js.map">
+      <DependentUpon>adminmanagement-models.min.js</DependentUpon>
+    </Content>
+    <Content Include="Areas\AdminManagement\Views\Model\_ModalSearchModel.cshtml" />
+    <Content Include="Areas\AdminManagement\Views\Model\_EditModel.cshtml" />
+    <Content Include="Areas\AdminManagement\Views\Model\_ListModel.cshtml" />
+    <Content Include="Areas\AdminManagement\Views\Model\_NewModel.cshtml" />
+    <Content Include="Areas\OrderManagement\Views\PurchaseOrder\_ListInventory.cshtml" />
+    <Content Include="Areas\OrderManagement\Views\PurchaseOrder\_ListOfOrders.cshtml" />
+    <Content Include="Areas\OrderManagement\Views\PurchaseOrder\_ModalSearchProduct.cshtml" />
+    <Content Include="Areas\OrderManagement\Views\PurchaseOrder\_ModalAddQtyProduct.cshtml" />
+    <Content Include="Areas\OrderManagement\Views\SalesOrder\Index.cshtml" />
+    <Content Include="Areas\OrderManagement\Views\SalesOrder\_ListOfOrderSales.cshtml" />
+    <Content Include="Areas\OrderManagement\Views\SalesOrder\_SalesOrderForm.cshtml" />
+    <Content Include="Scripts\iobalance\functions\adminmanagement\adminmanagement-user.js" />
+    <Content Include="Scripts\iobalance\functions\adminmanagement\adminmanagement-user.min.js">
+      <DependentUpon>adminmanagement-user.js</DependentUpon>
+    </Content>
+    <Content Include="Scripts\iobalance\functions\ordermanagement\ordermanagement-batchinventory.js" />
+    <Content Include="Scripts\iobalance\functions\ordermanagement\ordermanagement-batchinventory.min.js">
+      <DependentUpon>ordermanagement-batchinventory.js</DependentUpon>
+    </Content>
+    <Content Include="Scripts\iobalance\functions\ordermanagement\ordermanagement-purchaseorder.min.js">
+      <DependentUpon>ordermanagement-purchaseorder.js</DependentUpon>
+    </Content>
+    <Content Include="Areas\AdminManagement\Views\User\Index.cshtml" />
+    <Content Include="Areas\AdminManagement\Views\User\_ListUser.cshtml" />
+    <Content Include="Areas\AdminManagement\Views\User\_FrmUser.cshtml" />
+    <Content Include="Scripts\iobalance\functions\adminmanagement\adminmanagement-user.min.js.map">
+      <DependentUpon>adminmanagement-user.min.js</DependentUpon>
+    </Content>
+    <Content Include="Areas\OrderManagement\Views\SalesOrder\_ListOfProduct.cshtml" />
+    <Content Include="Areas\OrderManagement\Views\PurchaseOrder\_ModalEditProductImage.cshtml" />
+    <Content Include="Areas\OrderManagement\Views\SalesOrder\_ModalSearchProduct.cshtml" />
+    <Content Include="Content\excel\templates\Receipt.xlsx" />
+    <Content Include="Areas\OrderManagement\Views\SalesOrder\_ListOfSavedSalesOrder.cshtml" />
+    <Content Include="Scripts\infrastructure\jquery-pl-kendo-resize-height.min.js.map">
+      <DependentUpon>jquery-pl-kendo-resize-height.min.js</DependentUpon>
+    </Content>
+    <Content Include="Areas\OrderManagement\Views\SalesOrder\_ModalSearchSavedSalesOrder.cshtml" />
+    <Content Include="Areas\OrderManagement\Views\PurchaseOrder\_FormEditProductImage.cshtml" />
+    <Content Include="Areas\OrderManagement\Views\PurchaseOrder\UploadProductImage.cshtml" />
+    <Content Include="Areas\AdminManagement\Views\User\_ModalEditUser.cshtml" />
+    <Content Include="Areas\AdminManagement\Views\User\_ModalSearchUser.cshtml" />
+    <Content Include="Areas\OrderManagement\Views\PurchaseOrder\_PurchaseOrderEditForm.cshtml" />
+    <Content Include="Areas\ReportManagement\Views\Web.config" />
+    <Content Include="Areas\ReportManagement\Views\InventorySales\Index.cshtml" />
+    <Content Include="Scripts\iobalance\functions\ordermanagement\ordermanagement-salesorder.min.js">
+      <DependentUpon>ordermanagement-salesorder.js</DependentUpon>
+    </Content>
+    <Content Include="Scripts\iobalance\functions\reportmanagement\reportmanagement-inventoryreport.js" />
+    <Content Include="Scripts\iobalance\functions\reportmanagement\reportmanagement-inventoryreport.min.js">
+      <DependentUpon>reportmanagement-inventoryreport.js</DependentUpon>
+    </Content>
+    <Content Include="Scripts\iobalance\functions\reportmanagement\reportmanagement-peritem.min.js.map">
+      <DependentUpon>reportmanagement-peritem.min.js</DependentUpon>
+    </Content>
+    <Content Include="Content\excel\templates\ExtremeLotusReportTemplate.xlsx" />
+    <Content Include="Areas\ReportManagement\Views\InventorySales\PurchaseOrderList.cshtml" />
+    <Content Include="Areas\ReportManagement\Views\InventorySales\SalesOrderList.cshtml" />
+    <Content Include="Areas\OrderManagement\Views\PurchaseOrder\_ListInventoryKendo.cshtml" />
+    <Content Include="Areas\OrderManagement\Views\PurchaseOrder\_ModalVoidQtyProduct.cshtml" />
+    <Content Include="Areas\ReportManagement\Views\InventorySales\SalesReport.cshtml" />
+    <Content Include="Areas\ReportManagement\Views\InventorySales\InventoryReport.cshtml" />
+    <Content Include="Areas\ReportManagement\Views\InventorySales\_InventoryReport.cshtml" />
+    <Content Include="Areas\ReportManagement\Views\InventorySales\_ModalSearchInventoryReport.cshtml" />
+    <Content Include="Areas\OrderManagement\Views\SalesOrder\_ListOfProductKendo.cshtml" />
+    <Content Include="Areas\OrderManagement\Views\SalesOrder\_ListOfSavedSalesOrderKendo.cshtml" />
+    <Content Include="Areas\AdminManagement\Views\Discount\Index.cshtml" />
+    <Content Include="Areas\AdminManagement\Views\Discount\_ListDiscount.cshtml" />
+    <Content Include="Areas\AdminManagement\Views\Discount\_ModalSearchDiscount.cshtml" />
+    <Content Include="Areas\AdminManagement\Views\Discount\_NewDiscount.cshtml" />
+    <Content Include="Areas\AdminManagement\Views\Discount\_ModalEditDiscount.cshtml" />
+    <Content Include="Areas\AdminManagement\Views\Category\_ListCategoryKendo.cshtml" />
+    <Content Include="Areas\AdminManagement\Views\Supplier\_ListSupplierKendo.cshtml" />
+    <Content Include="Areas\AdminManagement\Views\Customer\_ListCustomerKendo.cshtml" />
+    <Content Include="Areas\AdminManagement\Views\Branch\_ListBranchKendo.cshtml" />
+    <Content Include="Areas\AdminManagement\Views\User\_ListUserKendo.cshtml" />
+    <Content Include="Areas\OrderManagement\Views\PurchaseOrder\BatchInventory.cshtml" />
+    <Content Include="Areas\OrderManagement\Views\PurchaseOrder\_BatchUpload.cshtml" />
+    <Content Include="Areas\OrderManagement\Views\PurchaseOrder\_BatchSummary.cshtml" />
+    <Content Include="Areas\OrderManagement\Views\PurchaseOrder\_ModalSearchBatchInventory.cshtml" />
+    <Content Include="Content\excel\templates\BatchProduct.xlsx" />
+    <Content Include="Areas\AdminManagement\Views\Category\_ListCategoryJS.cshtml" />
+    <Content Include="fonts\glyphicons-halflings-regular.woff2" />
+    <Content Include="fonts\glyphicons-halflings-regular.woff" />
+    <Content Include="fonts\glyphicons-halflings-regular.ttf" />
+    <Content Include="fonts\glyphicons-halflings-regular.eot" />
+    <Content Include="Content\bootstrap-theme.min.css.map" />
+    <Content Include="Content\bootstrap-theme.css.map" />
+    <Content Include="Content\bootstrap.min.css.map" />
+    <Content Include="Content\bootstrap.css.map" />
+    <None Include="Properties\PublishProfiles\IOBalancePublished.pubxml" />
+    <Content Include="Scripts\iobalance\functions\reportmanagement\reportmanagement-inventoryreport.min.js.map">
+      <DependentUpon>reportmanagement-inventoryreport.min.js</DependentUpon>
+    </Content>
+    <Content Include="Scripts\iobalance\functions\adminmanagement\adminmanagement-discount.min.js.map">
+      <DependentUpon>adminmanagement-discount.min.js</DependentUpon>
+    </Content>
+    <Content Include="Scripts\infrastructure\jquery-pl-loader.min.js.map">
+      <DependentUpon>jquery-pl-loader.min.js</DependentUpon>
+    </Content>
+    <Content Include="Scripts\iobalance\functions\ordermanagement\ordermanagement-purchaseorder.min.js.map">
+      <DependentUpon>ordermanagement-purchaseorder.min.js</DependentUpon>
+    </Content>
+    <Content Include="Scripts\iobalance\functions\ordermanagement\ordermanagement-salesorder.min.js.map">
+      <DependentUpon>ordermanagement-salesorder.min.js</DependentUpon>
+    </Content>
+    <Content Include="Scripts\iobalance\functions\ordermanagement\ordermanagement-batchinventory.min.js.map">
+      <DependentUpon>ordermanagement-batchinventory.min.js</DependentUpon>
+    </Content>
+    <Content Include="Scripts\infrastructure\infrastructure.js" />
+    <Content Include="Scripts\infrastructure\jquery-deserialize.js" />
+    <Content Include="Scripts\infrastructure\jquery-pl-alert-window.js" />
+    <Content Include="Scripts\infrastructure\jquery-pl-alert.js" />
+    <Content Include="Scripts\iobalance\functions\adminmanagement\adminmanagement-category.js" />
+    <Content Include="Scripts\iobalance\functions\adminmanagement\adminmanagement-category.min.js">
+      <DependentUpon>adminmanagement-category.js</DependentUpon>
+    </Content>
+    <Content Include="Scripts\iobalance\functions\adminmanagement\adminmanagement-supplier.js" />
+    <Content Include="Scripts\iobalance\functions\adminmanagement\adminmanagement-supplier.min.js">
+      <DependentUpon>adminmanagement-supplier.js</DependentUpon>
+    </Content>
+    <Content Include="Scripts\iobalance\functions\adminmanagement\adminmanagement-unit.js" />
+    <Content Include="Scripts\iobalance\functions\adminmanagement\adminmanagement-unit.min.js">
+      <DependentUpon>adminmanagement-unit.js</DependentUpon>
+    </Content>
+    <Content Include="Scripts\iobalance\functions\ordermanagement\ordermanagement-purchaseorder.js" />
+    <Content Include="Scripts\iobalance\functions\ordermanagement\ordermanagement-salesorder.js" />
+    <Content Include="Scripts\iobalance\functions\reportmanagement\reportmanagement-peritem.js" />
+    <Content Include="Scripts\iobalance\functions\reportmanagement\reportmanagement-peritem.min.js">
+      <DependentUpon>reportmanagement-peritem.js</DependentUpon>
+    </Content>
+    <None Include="Scripts\jquery-3.1.1.intellisense.js" />
+    <Content Include="Scripts\jquery-3.1.1.js" />
+    <Content Include="Scripts\jquery-3.1.1.min.js" />
+    <Content Include="Scripts\jquery-3.1.1.slim.js" />
+    <Content Include="Scripts\jquery-3.1.1.slim.min.js" />
+    <Content Include="Scripts\jquery-ui-1.12.1.js" />
+    <Content Include="Scripts\jquery-ui-1.12.1.min.js" />
+    <Content Include="Scripts\jquery.mask.js" />
+    <Content Include="Scripts\jquery.mask.min.js">
+      <DependentUpon>jquery.mask.js</DependentUpon>
+    </Content>
+    <Content Include="Scripts\jquery.ui.datepicker.validation.min.js.map">
+      <DependentUpon>jquery.ui.datepicker.validation.min.js</DependentUpon>
+    </Content>
+    <Content Include="Scripts\jquery.mask.min.js.map">
+      <DependentUpon>jquery.mask.min.js</DependentUpon>
+    </Content>
+    <Content Include="Scripts\jquery.ui.datepicker.validation.js" />
+    <Content Include="Scripts\jquery.ui.datepicker.validation.min.js">
+      <DependentUpon>jquery.ui.datepicker.validation.js</DependentUpon>
+    </Content>
+    <Content Include="Scripts\jquery.ui.datepicker.validation.pack.js" />
+    <Content Include="Scripts\jquery.unobtrusive-ajax.js" />
+    <Content Include="Scripts\jquery.unobtrusive-ajax.min.js" />
+    <Content Include="Scripts\jquery-3.1.1.slim.min.map" />
+    <Content Include="Scripts\jquery-3.1.1.min.map" />
+    <None Include="Scripts\jquery.validate-vsdoc.js" />
+    <Content Include="Scripts\jquery.validate.js" />
+    <Content Include="Scripts\jquery.validate.min.js" />
+    <Content Include="Scripts\jquery.validate.unobtrusive.js" />
+    <Content Include="Scripts\jquery.validate.unobtrusive.min.js" />
+    <Content Include="Scripts\kendo\angular.min.js" />
+    <Content Include="Scripts\kendo\cultures\kendo.culture.en-PH.min.js" />
+    <Content Include="Scripts\kendo\cultures\kendo.culture.en-US.min.js" />
+    <Content Include="Scripts\kendo\jquery.min.js" />
+    <Content Include="Scripts\kendo\jszip.min.js" />
+    <Content Include="Scripts\kendo\kendo.all.min.js" />
+    <Content Include="Scripts\kendo\kendo.angular.min.js" />
+    <Content Include="Scripts\kendo\kendo.aspnetmvc.min.js" />
+    <Content Include="Scripts\kendo\kendo.autocomplete.min.js" />
+    <Content Include="Scripts\kendo\kendo.binder.min.js" />
+    <Content Include="Scripts\kendo\kendo.button.min.js" />
+    <Content Include="Scripts\kendo\kendo.calendar.min.js" />
+    <Content Include="Scripts\kendo\kendo.color.min.js" />
+    <Content Include="Scripts\kendo\kendo.colorpicker.min.js" />
+    <Content Include="Scripts\kendo\kendo.columnmenu.min.js" />
+    <Content Include="Scripts\kendo\kendo.columnsorter.min.js" />
+    <Content Include="Scripts\kendo\kendo.combobox.min.js" />
+    <Content Include="Scripts\kendo\kendo.core.min.js" />
+    <Content Include="Scripts\kendo\kendo.data.min.js" />
+    <Content Include="Scripts\kendo\kendo.data.odata.min.js" />
+    <Content Include="Scripts\kendo\kendo.data.signalr.min.js" />
+    <Content Include="Scripts\kendo\kendo.data.xml.min.js" />
+    <Content Include="Scripts\kendo\kendo.dataviz.barcode.min.js" />
+    <Content Include="Scripts\kendo\kendo.dataviz.canvas.min.js" />
+    <Content Include="Scripts\kendo\kendo.dataviz.chart.funnel.min.js" />
+    <Content Include="Scripts\kendo\kendo.dataviz.chart.min.js" />
+    <Content Include="Scripts\kendo\kendo.dataviz.chart.polar.min.js" />
+    <Content Include="Scripts\kendo\kendo.dataviz.core.min.js" />
+    <Content Include="Scripts\kendo\kendo.dataviz.diagram.min.js" />
+    <Content Include="Scripts\kendo\kendo.dataviz.drawing.min.js" />
+    <Content Include="Scripts\kendo\kendo.dataviz.gauge.min.js" />
+    <Content Include="Scripts\kendo\kendo.dataviz.map.min.js" />
+    <Content Include="Scripts\kendo\kendo.dataviz.min.js" />
+    <Content Include="Scripts\kendo\kendo.dataviz.mobile.min.js" />
+    <Content Include="Scripts\kendo\kendo.dataviz.qrcode.min.js" />
+    <Content Include="Scripts\kendo\kendo.dataviz.sparkline.min.js" />
+    <Content Include="Scripts\kendo\kendo.dataviz.stock.min.js" />
+    <Content Include="Scripts\kendo\kendo.dataviz.svg.min.js" />
+    <Content Include="Scripts\kendo\kendo.dataviz.themes.min.js" />
+    <Content Include="Scripts\kendo\kendo.dataviz.treemap.min.js" />
+    <Content Include="Scripts\kendo\kendo.dataviz.vml.min.js" />
+    <Content Include="Scripts\kendo\kendo.datepicker.min.js" />
+    <Content Include="Scripts\kendo\kendo.datetimepicker.min.js" />
+    <Content Include="Scripts\kendo\kendo.dom.min.js" />
+    <Content Include="Scripts\kendo\kendo.draganddrop.min.js" />
+    <Content Include="Scripts\kendo\kendo.drawing.min.js" />
+    <Content Include="Scripts\kendo\kendo.dropdownlist.min.js" />
+    <Content Include="Scripts\kendo\kendo.editable.min.js" />
+    <Content Include="Scripts\kendo\kendo.editor.min.js" />
+    <Content Include="Scripts\kendo\kendo.excel.min.js" />
+    <Content Include="Scripts\kendo\kendo.filebrowser.min.js" />
+    <Content Include="Scripts\kendo\kendo.filtercell.min.js" />
+    <Content Include="Scripts\kendo\kendo.filtermenu.min.js" />
+    <Content Include="Scripts\kendo\kendo.fx.min.js" />
+    <Content Include="Scripts\kendo\kendo.gantt.list.min.js" />
+    <Content Include="Scripts\kendo\kendo.gantt.min.js" />
+    <Content Include="Scripts\kendo\kendo.gantt.timeline.min.js" />
+    <Content Include="Scripts\kendo\kendo.grid.min.js" />
+    <Content Include="Scripts\kendo\kendo.groupable.min.js" />
+    <Content Include="Scripts\kendo\kendo.imagebrowser.min.js" />
+    <Content Include="Scripts\kendo\kendo.list.min.js" />
+    <Content Include="Scripts\kendo\kendo.listview.min.js" />
+    <Content Include="Scripts\kendo\kendo.maskedtextbox.min.js" />
+    <Content Include="Scripts\kendo\kendo.menu.min.js" />
+    <Content Include="Scripts\kendo\kendo.mobile.actionsheet.min.js" />
+    <Content Include="Scripts\kendo\kendo.mobile.application.min.js" />
+    <Content Include="Scripts\kendo\kendo.mobile.button.min.js" />
+    <Content Include="Scripts\kendo\kendo.mobile.buttongroup.min.js" />
+    <Content Include="Scripts\kendo\kendo.mobile.collapsible.min.js" />
+    <Content Include="Scripts\kendo\kendo.mobile.drawer.min.js" />
+    <Content Include="Scripts\kendo\kendo.mobile.listview.min.js" />
+    <Content Include="Scripts\kendo\kendo.mobile.loader.min.js" />
+    <Content Include="Scripts\kendo\kendo.mobile.min.js" />
+    <Content Include="Scripts\kendo\kendo.mobile.modalview.min.js" />
+    <Content Include="Scripts\kendo\kendo.mobile.navbar.min.js" />
+    <Content Include="Scripts\kendo\kendo.mobile.pane.min.js" />
+    <Content Include="Scripts\kendo\kendo.mobile.popover.min.js" />
+    <Content Include="Scripts\kendo\kendo.mobile.scroller.min.js" />
+    <Content Include="Scripts\kendo\kendo.mobile.scrollview.min.js" />
+    <Content Include="Scripts\kendo\kendo.mobile.shim.min.js" />
+    <Content Include="Scripts\kendo\kendo.mobile.splitview.min.js" />
+    <Content Include="Scripts\kendo\kendo.mobile.switch.min.js" />
+    <Content Include="Scripts\kendo\kendo.mobile.tabstrip.min.js" />
+    <Content Include="Scripts\kendo\kendo.mobile.view.min.js" />
+    <Content Include="Scripts\kendo\kendo.multiselect.min.js" />
+    <Content Include="Scripts\kendo\kendo.notification.min.js" />
+    <Content Include="Scripts\kendo\kendo.numerictextbox.min.js" />
+    <Content Include="Scripts\kendo\kendo.ooxml.min.js" />
+    <Content Include="Scripts\kendo\kendo.pager.min.js" />
+    <Content Include="Scripts\kendo\kendo.panelbar.min.js" />
+    <Content Include="Scripts\kendo\kendo.pdf.min.js" />
+    <Content Include="Scripts\kendo\kendo.pivot.configurator.min.js" />
+    <Content Include="Scripts\kendo\kendo.pivot.fieldmenu.min.js" />
+    <Content Include="Scripts\kendo\kendo.pivotgrid.min.js" />
+    <Content Include="Scripts\kendo\kendo.popup.min.js" />
+    <Content Include="Scripts\kendo\kendo.progressbar.min.js" />
+    <Content Include="Scripts\kendo\kendo.reorderable.min.js" />
+    <Content Include="Scripts\kendo\kendo.resizable.min.js" />
+    <Content Include="Scripts\kendo\kendo.responsivepanel.min.js" />
+    <Content Include="Scripts\kendo\kendo.router.min.js" />
+    <Content Include="Scripts\kendo\kendo.scheduler.agendaview.min.js" />
+    <Content Include="Scripts\kendo\kendo.scheduler.dayview.min.js" />
+    <Content Include="Scripts\kendo\kendo.scheduler.min.js" />
+    <Content Include="Scripts\kendo\kendo.scheduler.monthview.min.js" />
+    <Content Include="Scripts\kendo\kendo.scheduler.recurrence.min.js" />
+    <Content Include="Scripts\kendo\kendo.scheduler.timelineview.min.js" />
+    <Content Include="Scripts\kendo\kendo.scheduler.view.min.js" />
+    <Content Include="Scripts\kendo\kendo.selectable.min.js" />
+    <Content Include="Scripts\kendo\kendo.slider.min.js" />
+    <Content Include="Scripts\kendo\kendo.sortable.min.js" />
+    <Content Include="Scripts\kendo\kendo.splitter.min.js" />
+    <Content Include="Scripts\kendo\kendo.tabstrip.min.js" />
+    <Content Include="Scripts\kendo\kendo.timepicker.min.js" />
+    <Content Include="Scripts\kendo\kendo.timezones.min.js" />
+    <Content Include="Scripts\kendo\kendo.toolbar.min.js" />
+    <Content Include="Scripts\kendo\kendo.tooltip.min.js" />
+    <Content Include="Scripts\kendo\kendo.touch.min.js" />
+    <Content Include="Scripts\kendo\kendo.treelist.min.js" />
+    <Content Include="Scripts\kendo\kendo.treeview.draganddrop.min.js" />
+    <Content Include="Scripts\kendo\kendo.treeview.min.js" />
+    <Content Include="Scripts\kendo\kendo.upload.min.js" />
+    <Content Include="Scripts\kendo\kendo.userevents.min.js" />
+    <Content Include="Scripts\kendo\kendo.validator.min.js" />
+    <Content Include="Scripts\kendo\kendo.view.min.js" />
+    <Content Include="Scripts\kendo\kendo.virtuallist.min.js" />
+    <Content Include="Scripts\kendo\kendo.web.min.js" />
+    <Content Include="Scripts\kendo\kendo.window.min.js" />
+    <Content Include="Scripts\kendo\messages\kendo.messages.en-US.min.js" />
+    <Content Include="Scripts\kendo\pako_deflate.min.js" />
+    <None Include="ExternalPackages\T4MVC.tt.settings.xml" />
+    <Content Include="Scripts\knockout-3.4.2.debug.js" />
+    <Content Include="Scripts\knockout-3.4.2.js" />
+    <Content Include="Scripts\modernizr-2.8.3.js" />
+    <Content Include="Scripts\plugins\toastr.js" />
+    <Content Include="Scripts\plugins\toastr.min.js">
+      <DependentUpon>toastr.js</DependentUpon>
+    </Content>
+    <Content Include="Web.config">
+      <SubType>Designer</SubType>
+    </Content>
+    <Content Include="Web.Debug.config">
+      <DependentUpon>Web.config</DependentUpon>
+    </Content>
+    <Content Include="Web.Release.config">
+      <DependentUpon>Web.config</DependentUpon>
+    </Content>
+    <Content Include="Content\Site.css" />
+    <Content Include="Scripts\_references.js" />
+    <Content Include="Images\accent.png" />
+    <Content Include="Images\bullet.png" />
+    <Content Include="Images\heroAccent.png" />
+    <Content Include="Images\orderedList0.png" />
+    <Content Include="Images\orderedList1.png" />
+    <Content Include="Images\orderedList2.png" />
+    <Content Include="Images\orderedList3.png" />
+    <Content Include="Images\orderedList4.png" />
+    <Content Include="Images\orderedList5.png" />
+    <Content Include="Images\orderedList6.png" />
+    <Content Include="Images\orderedList7.png" />
+    <Content Include="Images\orderedList8.png" />
+    <Content Include="Images\orderedList9.png" />
+    <Content Include="Views\_ViewStart.cshtml" />
+    <Content Include="Views\Account\_ChangePasswordPartial.cshtml" />
+    <Content Include="Views\Account\_ExternalLoginsListPartial.cshtml" />
+    <Content Include="Views\Account\_RemoveExternalLoginsPartial.cshtml" />
+    <Content Include="Views\Account\_SetPasswordPartial.cshtml" />
+    <Content Include="Views\Account\Login.cshtml" />
+    <Content Include="Views\Account\Manage.cshtml" />
+    <Content Include="Views\Account\Register.cshtml" />
+    <Content Include="Views\Account\ExternalLoginFailure.cshtml" />
+    <Content Include="Views\Account\ExternalLoginConfirmation.cshtml" />
+    <Content Include="Views\Home\Index.cshtml" />
+    <Content Include="Views\Shared\Error.cshtml" />
+    <Content Include="Views\Shared\_LoginPartial.cshtml" />
+    <Content Include="Views\Shared\_Layout.cshtml" />
+    <Content Include="Views\Web.config" />
+    <None Include="ExternalPackages\T4MVC.tt.hooks.t4" />
+    <None Include="ExternalPackages\T4MVC.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <LastGenOutput>T4MVC.cs</LastGenOutput>
+    </None>
+    <Content Include="Scripts\kendo\jquery.min.map" />
+    <Content Include="Scripts\kendo\kendo.all.min.js.map" />
+    <Content Include="Scripts\kendo\kendo.angular.min.js.map" />
+    <Content Include="Scripts\kendo\kendo.aspnetmvc.min.js.map" />
+    <Content Include="Scripts\kendo\kendo.autocomplete.min.js.map" />
+    <Content Include="Scripts\kendo\kendo.binder.min.js.map" />
+    <Content Include="Scripts\kendo\kendo.button.min.js.map" />
+    <Content Include="Scripts\kendo\kendo.calendar.min.js.map" />
+    <Content Include="Scripts\kendo\kendo.color.min.js.map" />
+    <Content Include="Scripts\kendo\kendo.colorpicker.min.js.map" />
+    <Content Include="Scripts\kendo\kendo.columnmenu.min.js.map" />
+    <Content Include="Scripts\kendo\kendo.columnsorter.min.js.map" />
+    <Content Include="Scripts\kendo\kendo.combobox.min.js.map" />
+    <Content Include="Scripts\kendo\kendo.core.min.js.map" />
+    <Content Include="Scripts\kendo\kendo.data.min.js.map" />
+    <Content Include="Scripts\kendo\kendo.data.odata.min.js.map" />
+    <Content Include="Scripts\kendo\kendo.data.signalr.min.js.map" />
+    <Content Include="Scripts\kendo\kendo.data.xml.min.js.map" />
+    <Content Include="Scripts\kendo\kendo.dataviz.barcode.min.js.map" />
+    <Content Include="Scripts\kendo\kendo.dataviz.canvas.min.js.map" />
+    <Content Include="Scripts\kendo\kendo.dataviz.chart.funnel.min.js.map" />
+    <Content Include="Scripts\kendo\kendo.dataviz.chart.min.js.map" />
+    <Content Include="Scripts\kendo\kendo.dataviz.chart.polar.min.js.map" />
+    <Content Include="Scripts\kendo\kendo.dataviz.core.min.js.map" />
+    <Content Include="Scripts\kendo\kendo.dataviz.diagram.min.js.map" />
+    <Content Include="Scripts\kendo\kendo.dataviz.drawing.min.js.map" />
+    <Content Include="Scripts\kendo\kendo.dataviz.gauge.min.js.map" />
+    <Content Include="Scripts\kendo\kendo.dataviz.map.min.js.map" />
+    <Content Include="Scripts\kendo\kendo.dataviz.min.js.map" />
+    <Content Include="Scripts\kendo\kendo.dataviz.mobile.min.js.map" />
+    <Content Include="Scripts\kendo\kendo.dataviz.qrcode.min.js.map" />
+    <Content Include="Scripts\kendo\kendo.dataviz.sparkline.min.js.map" />
+    <Content Include="Scripts\kendo\kendo.dataviz.stock.min.js.map" />
+    <Content Include="Scripts\kendo\kendo.dataviz.svg.min.js.map" />
+    <Content Include="Scripts\kendo\kendo.dataviz.themes.min.js.map" />
+    <Content Include="Scripts\kendo\kendo.dataviz.treemap.min.js.map" />
+    <Content Include="Scripts\kendo\kendo.dataviz.vml.min.js.map" />
+    <Content Include="Scripts\kendo\kendo.datepicker.min.js.map" />
+    <Content Include="Scripts\kendo\kendo.datetimepicker.min.js.map" />
+    <Content Include="Scripts\kendo\kendo.dom.min.js.map" />
+    <Content Include="Scripts\kendo\kendo.draganddrop.min.js.map" />
+    <Content Include="Scripts\kendo\kendo.drawing.min.js.map" />
+    <Content Include="Scripts\kendo\kendo.dropdownlist.min.js.map" />
+    <Content Include="Scripts\kendo\kendo.editable.min.js.map" />
+    <Content Include="Scripts\kendo\kendo.editor.min.js.map" />
+    <Content Include="Scripts\kendo\kendo.excel.min.js.map" />
+    <Content Include="Scripts\kendo\kendo.filebrowser.min.js.map" />
+    <Content Include="Scripts\kendo\kendo.filtercell.min.js.map" />
+    <Content Include="Scripts\kendo\kendo.filtermenu.min.js.map" />
+    <Content Include="Scripts\kendo\kendo.fx.min.js.map" />
+    <Content Include="Scripts\kendo\kendo.gantt.list.min.js.map" />
+    <Content Include="Scripts\kendo\kendo.gantt.min.js.map" />
+    <Content Include="Scripts\kendo\kendo.gantt.timeline.min.js.map" />
+    <Content Include="Scripts\kendo\kendo.grid.min.js.map" />
+    <Content Include="Scripts\kendo\kendo.groupable.min.js.map" />
+    <Content Include="Scripts\kendo\kendo.imagebrowser.min.js.map" />
+    <Content Include="Scripts\kendo\kendo.list.min.js.map" />
+    <Content Include="Scripts\kendo\kendo.listview.min.js.map" />
+    <Content Include="Scripts\kendo\kendo.maskedtextbox.min.js.map" />
+    <Content Include="Scripts\kendo\kendo.menu.min.js.map" />
+    <Content Include="Scripts\kendo\kendo.mobile.actionsheet.min.js.map" />
+    <Content Include="Scripts\kendo\kendo.mobile.application.min.js.map" />
+    <Content Include="Scripts\kendo\kendo.mobile.button.min.js.map" />
+    <Content Include="Scripts\kendo\kendo.mobile.buttongroup.min.js.map" />
+    <Content Include="Scripts\kendo\kendo.mobile.collapsible.min.js.map" />
+    <Content Include="Scripts\kendo\kendo.mobile.drawer.min.js.map" />
+    <Content Include="Scripts\kendo\kendo.mobile.listview.min.js.map" />
+    <Content Include="Scripts\kendo\kendo.mobile.loader.min.js.map" />
+    <Content Include="Scripts\kendo\kendo.mobile.min.js.map" />
+    <Content Include="Scripts\kendo\kendo.mobile.modalview.min.js.map" />
+    <Content Include="Scripts\kendo\kendo.mobile.navbar.min.js.map" />
+    <Content Include="Scripts\kendo\kendo.mobile.pane.min.js.map" />
+    <Content Include="Scripts\kendo\kendo.mobile.popover.min.js.map" />
+    <Content Include="Scripts\kendo\kendo.mobile.scroller.min.js.map" />
+    <Content Include="Scripts\kendo\kendo.mobile.scrollview.min.js.map" />
+    <Content Include="Scripts\kendo\kendo.mobile.shim.min.js.map" />
+    <Content Include="Scripts\kendo\kendo.mobile.splitview.min.js.map" />
+    <Content Include="Scripts\kendo\kendo.mobile.switch.min.js.map" />
+    <Content Include="Scripts\kendo\kendo.mobile.tabstrip.min.js.map" />
+    <Content Include="Scripts\kendo\kendo.mobile.view.min.js.map" />
+    <Content Include="Scripts\kendo\kendo.multiselect.min.js.map" />
+    <Content Include="Scripts\kendo\kendo.notification.min.js.map" />
+    <Content Include="Scripts\kendo\kendo.numerictextbox.min.js.map" />
+    <Content Include="Scripts\kendo\kendo.ooxml.min.js.map" />
+    <Content Include="Scripts\kendo\kendo.pager.min.js.map" />
+    <Content Include="Scripts\kendo\kendo.panelbar.min.js.map" />
+    <Content Include="Scripts\kendo\kendo.pdf.min.js.map" />
+    <Content Include="Scripts\kendo\kendo.pivot.configurator.min.js.map" />
+    <Content Include="Scripts\kendo\kendo.pivot.fieldmenu.min.js.map" />
+    <Content Include="Scripts\kendo\kendo.pivotgrid.min.js.map" />
+    <Content Include="Scripts\kendo\kendo.popup.min.js.map" />
+    <Content Include="Scripts\kendo\kendo.progressbar.min.js.map" />
+    <Content Include="Scripts\kendo\kendo.reorderable.min.js.map" />
+    <Content Include="Scripts\kendo\kendo.resizable.min.js.map" />
+    <Content Include="Scripts\kendo\kendo.responsivepanel.min.js.map" />
+    <Content Include="Scripts\kendo\kendo.router.min.js.map" />
+    <Content Include="Scripts\kendo\kendo.scheduler.agendaview.min.js.map" />
+    <Content Include="Scripts\kendo\kendo.scheduler.dayview.min.js.map" />
+    <Content Include="Scripts\kendo\kendo.scheduler.min.js.map" />
+    <Content Include="Scripts\kendo\kendo.scheduler.monthview.min.js.map" />
+    <Content Include="Scripts\kendo\kendo.scheduler.recurrence.min.js.map" />
+    <Content Include="Scripts\kendo\kendo.scheduler.timelineview.min.js.map" />
+    <Content Include="Scripts\kendo\kendo.scheduler.view.min.js.map" />
+    <Content Include="Scripts\kendo\kendo.selectable.min.js.map" />
+    <Content Include="Scripts\kendo\kendo.slider.min.js.map" />
+    <Content Include="Scripts\kendo\kendo.sortable.min.js.map" />
+    <Content Include="Scripts\kendo\kendo.splitter.min.js.map" />
+    <Content Include="Scripts\kendo\kendo.tabstrip.min.js.map" />
+    <Content Include="Scripts\kendo\kendo.timepicker.min.js.map" />
+    <Content Include="Scripts\kendo\kendo.toolbar.min.js.map" />
+    <Content Include="Scripts\kendo\kendo.tooltip.min.js.map" />
+    <Content Include="Scripts\kendo\kendo.touch.min.js.map" />
+    <Content Include="Scripts\kendo\kendo.treelist.min.js.map" />
+    <Content Include="Scripts\kendo\kendo.treeview.draganddrop.min.js.map" />
+    <Content Include="Scripts\kendo\kendo.treeview.min.js.map" />
+    <Content Include="Scripts\kendo\kendo.upload.min.js.map" />
+    <Content Include="Scripts\kendo\kendo.userevents.min.js.map" />
+    <Content Include="Scripts\kendo\kendo.validator.min.js.map" />
+    <Content Include="Scripts\kendo\kendo.view.min.js.map" />
+    <Content Include="Scripts\kendo\kendo.virtuallist.min.js.map" />
+    <Content Include="Scripts\kendo\kendo.web.min.js.map" />
+    <Content Include="Scripts\kendo\kendo.window.min.js.map" />
+    <Content Include="Views\Shared\_Alerts.cshtml" />
+    <Content Include="Scripts\plugins\toastr.min.js.map">
+      <DependentUpon>toastr.min.js</DependentUpon>
+    </Content>
+    <Content Include="Views\Authentication\Index.cshtml" />
+    <Content Include="Views\Authentication\Login.cshtml" />
+    <Content Include="Views\Authentication\UnAuthorized.cshtml" />
+    <Content Include="Views\Shared\_LoginLayout.cshtml" />
+    <Content Include="Scripts\jquery.validate.min.js.map">
+      <DependentUpon>jquery.validate.min.js</DependentUpon>
+    </Content>
+    <Content Include="Views\Shared\_LayoutWithoutMenu.cshtml" />
+    <Content Include="Views\Shared\SessionExpired.cshtml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="App_Data\" />
+    <Folder Include="Areas\AdminManagement\Views\Shared\" />
+    <Folder Include="Areas\OrderManagement\Views\Shared\" />
+    <Folder Include="Areas\ReportManagement\Views\Shared\" />
+    <Folder Include="Areas\TemplateOnly\Models\" />
+    <Folder Include="Areas\TemplateOnly\Views\Shared\" />
+    <Folder Include="Content\uploads\batchinventoryuploads\" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="packages.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <Service Include="{508349B6-6B84-4DF5-91F0-309BEEBAD82D}" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\Infrastructure.Utilities\Infrastructure.Utilities.csproj">
+      <Project>{bfc618ed-359e-4755-8d54-b519d3c12d56}</Project>
+      <Name>Infrastructure.Utilities</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\PL.Business.Common\PL.Business.Common.csproj">
+      <Project>{52fb5cb6-da53-44b2-bd71-0a5c1665a1b3}</Project>
+      <Name>PL.Business.Common</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\PL.Business.Dto.IOBalance\PL.Business.Dto.IOBalance.csproj">
+      <Project>{cf2dff33-516a-4043-9a54-65989da94493}</Project>
+      <Name>PL.Business.Dto.IOBalance</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\PL.Business.Interface.IOBalance\PL.Business.Interface.IOBalance.csproj">
+      <Project>{8b479670-95a4-4be9-8578-7962f846050d}</Project>
+      <Name>PL.Business.Interface.IOBalance</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\PL.Business.IOBalance\PL.Business.IOBalance.csproj">
+      <Project>{74987a2c-760b-4e7c-b9ee-9ab58095ca52}</Project>
+      <Name>PL.Business.IOBalance</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\PL.Core.Entity.IOBalanceDB\PL.Core.Entity.IOBalanceDB.csproj">
+      <Project>{ebeae65b-cce1-48f3-b256-082345db696a}</Project>
+      <Name>PL.Core.Entity.IOBalanceDB</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\PL.Core.Entity.Repository.Interface\PL.Core.Entity.Repository.Interface.csproj">
+      <Project>{198b342d-e3b9-440c-82e6-f2efa663f004}</Project>
+      <Name>PL.Core.Entity.Repository.Interface</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\PL.Infra.DataAccess.IOBalanceDB\PL.Infra.DataAccess.IOBalanceDB.csproj">
+      <Project>{46ff7cd0-4a86-4003-be35-5f68aa66216e}</Project>
+      <Name>PL.Infra.DataAccess.IOBalanceDB</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\PL.Infra.DbContext.Interface\PL.Infra.DbContext.Interface.csproj">
+      <Project>{5eea74c6-e694-45ca-a558-eea097656486}</Project>
+      <Name>PL.Infra.DbContext.Interface</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\PL.Infra.Repository\PL.Infra.Repository.csproj">
+      <Project>{79c35712-9e8c-4883-9705-58a282ede598}</Project>
+      <Name>PL.Infra.Repository</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <PropertyGroup>
+    <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>
+    <VSToolsPath Condition="'$(VSToolsPath)' == ''">$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v$(VisualStudioVersion)</VSToolsPath>
+  </PropertyGroup>
+  <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
+  <Import Project="$(VSToolsPath)\WebApplications\Microsoft.WebApplication.targets" Condition="'$(VSToolsPath)' != ''" />
+  <Import Project="$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v10.0\WebApplications\Microsoft.WebApplication.targets" Condition="false" />
+  <Target Name="MvcBuildViews" AfterTargets="AfterBuild" Condition="'$(MvcBuildViews)'=='true'">
+    <AspNetCompiler VirtualPath="temp" PhysicalPath="$(WebProjectOutputDir)" />
+  </Target>
+  <ProjectExtensions>
+    <VisualStudio>
+      <FlavorProperties GUID="{349c5851-65df-11da-9384-00065b846f21}">
+        <WebProjectProperties>
+          <UseIIS>True</UseIIS>
+          <AutoAssignPort>True</AutoAssignPort>
+          <DevelopmentServerPort>9020</DevelopmentServerPort>
+          <DevelopmentServerVPath>/</DevelopmentServerVPath>
+          <IISUrl>http://localhost:9021/</IISUrl>
+          <NTLMAuthentication>False</NTLMAuthentication>
+          <UseCustomServer>False</UseCustomServer>
+          <CustomServerUrl>
+          </CustomServerUrl>
+          <SaveServerSettingsInUserFile>False</SaveServerSettingsInUserFile>
+        </WebProjectProperties>
+      </FlavorProperties>
+    </VisualStudio>
+  </ProjectExtensions>
+  <Import Project="..\packages\Microsoft.Bcl.Build.1.0.14\tools\Microsoft.Bcl.Build.targets" Condition="Exists('..\packages\Microsoft.Bcl.Build.1.0.14\tools\Microsoft.Bcl.Build.targets')" />
+  <Target Name="EnsureBclBuildImported" BeforeTargets="BeforeBuild" Condition="'$(BclBuildImported)' == ''">
+    <Error Condition="!Exists('..\packages\Microsoft.Bcl.Build.1.0.14\tools\Microsoft.Bcl.Build.targets')" Text="This project references NuGet package(s) that are missing on this computer. Enable NuGet Package Restore to download them.  For more information, see http://go.microsoft.com/fwlink/?LinkID=317567." HelpKeyword="BCLBUILD2001" />
+    <Error Condition="Exists('..\packages\Microsoft.Bcl.Build.1.0.14\tools\Microsoft.Bcl.Build.targets')" Text="The build restored NuGet packages. Build the project again to include these packages in the build. For more information, see http://go.microsoft.com/fwlink/?LinkID=317568." HelpKeyword="BCLBUILD2002" />
+  </Target>
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target> -->
+</Project>

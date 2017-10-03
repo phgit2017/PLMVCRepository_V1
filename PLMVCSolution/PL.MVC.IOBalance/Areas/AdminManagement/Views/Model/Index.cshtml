@@ -1,0 +1,75 @@
+﻿@model List<PL.Business.Dto.IOBalance.ModelDto>
+@using PL.Business.Dto.IOBalance;
+@using PL.MVC.IOBalance.Areas.AdminManagement.Models;
+@{
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<div>
+    <h4>Model Page</h4>
+
+    <div class="text-right">
+        <button id="searchbutton" class="btn btn-default"
+                data-action-type="searchbutton">
+            <i class="glyphicon glyphicon-search"></i> Search
+        </button>
+
+        <button id="refreshbutton" class="btn btn-default"
+                data-action-type="refreshbutton"
+                data-url="">
+            <i class="glyphicon glyphicon-refresh"></i> Refresh
+        </button>
+
+        <button id="newbutton" class="btn btn-success"
+                data-action-type="newbutton">
+            <i class="glyphicon glyphicon-plus"></i> New Model
+        </button>
+
+        <button id="discardbutton" class="btn btn-default" style="display:none;"
+                data-action-type="discardbutton">
+            <i class="glyphicon glyphicon-minus"></i> Discard
+        </button>
+
+        <button id="savebutton" class="btn btn-success" style="display:none;"
+                data-action-type="savebutton">
+            <i class="glyphicon glyphicon-plus"></i> Save Model
+        </button>
+
+
+
+    </div>
+
+    <br />
+    <hr />
+
+    <div id="divModel">
+        @Html.Partial(IOBALANCEMVC.AdminManagement.Model.Views._ListModel, @Model)
+    </div>
+
+    <div id="model-form" style="display:none;">
+        @Html.Partial(IOBALANCEMVC.AdminManagement.Model.Views._NewModel, new ModelDto())
+    </div>
+
+    <div id="divResultContainer" style="display:none;"></div>
+</div>
+
+@section scripts{
+    <script type="text/javascript">
+        window.modelOptions = {
+            modelSaveUrl: "@Url.Action(IOBALANCEMVC.AdminManagement.Model.SaveModel())",
+            modelUpdateUrl: "@Url.Action(IOBALANCEMVC.AdminManagement.Model.UpdateModel())",
+            modelSearchUrl: "@Url.Action(IOBALANCEMVC.AdminManagement.Model.SearchModel())",
+            modelRefreshUrl: "@Url.Action(IOBALANCEMVC.AdminManagement.Model.RefreshModel())",
+            modelAction: ""
+        };
+    </script>
+    <script type="text/javascript" src="@IOBALANCELINKS.Scripts.iobalance.functions.adminmanagement.adminmanagement_models_js"></script>
+    <script type="text/javascript" src="@IOBALANCELINKS.Scripts.infrastructure.jquery_deserialize_js"></script>
+    @Scripts.Render("~/bundles/jqueryval");
+}
+
+@section modals{
+    @Html.Partial(IOBALANCEMVC.AdminManagement.Model.Views._ModalSearchModel, new ModelSearchModel())
+}
+<link rel="stylesheet" href="@IOBALANCELINKS.Content.kendo.kendo_common_material_min_css" />
+<link rel="stylesheet" href="@IOBALANCELINKS.Content.kendo.kendo_material_min_css" />

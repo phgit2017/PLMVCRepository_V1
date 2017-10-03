@@ -1,0 +1,18 @@
+﻿@model PL.Business.Dto.IOBalanceV2.SupplierDto
+<div class="col-md-10 col-md-offset-1">
+    <header class="page-header text-primary">
+        <h3><i class="md md-collection-plus"></i> Add new supplier</h3>
+        <div class="panel-widget-controls">
+            <button id="btndiscard" class="btn btn-default btn-sm" tabindex="13">
+                Discard
+            </button>
+
+            <button id="btnSaveform" class="btn btn-sm btn-danger" type="button" tabindex="12">
+                <i class="md md-check"></i> Save
+            </button>
+        </div>
+    </header>
+    <form class="form-horizontal" id="frmSave">
+        @Html.Partial(IOBALANCEMVCV2.AdminManagement.Supplier.Views._Details, Model)
+    </form>
+</div>

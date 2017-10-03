@@ -1,0 +1,174 @@
+﻿using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Web;
+using System.Web.Mvc;
+
+//Business
+using PL.Business.Common;
+using PL.Business.Dto.IOBalance;
+using PL.Business.Interface.IOBalance;
+
+//MVC
+using PL.MVC.IOBalance.Controllers;
+using PL.MVC.IOBalance.Areas.AdminManagement.Models;
+using PL.MVC.IOBalance.Areas.OrderManagement.Models;
+
+using Infrastructure.Utilities.Extensions;
+using LinqKit;
+
+namespace PL.MVC.IOBalance.Areas.OrderManagement.Controllers
+{
+    /// <summary>
+    /// </summary>
+    public partial class SalesOrderController : BaseController
+    {
+
+        #region DeclarationsAndConstructors
+        IInventoryService _inventoryService;
+        IOrderService _orderService;
+        ISalesService _salesService;
+        IUnitService _unitService;
+        public SalesOrderController(IInventoryService inventoryService,
+            IOrderService orderService,
+            ISalesService salesService,
+            IUnitService unitService)
+        {
+            this._inventoryService = inventoryService;
+            this._orderService = orderService;
+            this._salesService = salesService;
+            this._unitService = unitService;
+        }
+        #endregion DeclarationsAndConstructors
+
+        #region ActionMethods
+        public virtual ActionResult Index()
+        {
+            return View();
+        }
+
+        public virtual ActionResult AddSalesOrder(SalesOrderDetailDto dto)
+        {
+            string alertMessage = string.Empty, salesOrder = string.Empty;
+            bool isSuccess = true;
+            List<SalesOrderDetailDto> listOfOrders = new List<SalesOrderDetailDto>();
+
+            var inventoryList = _inventoryService.FindByProductId(dto.ProductID);
+            var unitList = _unitService.FindUnitById((int)dto.UnitID);
+
+            if (inventoryList.IsNull())
+            {
+                isSuccess = false;
+                Danger(Messages.NoProductFound);
+            }
+            else
+            {
+                if (!dto.IsNull())
+                {
+
+                    listOfOrders.Add(new SalesOrderDetailDto()
+                    {
+                        ProductID = dto.ProductID,
+                        ProductCode = inventoryList == null ? string.Empty : inventoryList.ProductCode,
+                        ProductName = inventoryList == null ? string.Empty : inventoryList.ProductName,
+                        ProductExt = inventoryList == null ? string.Empty : inventoryList.ProductExtension,
+                        UnitID = dto.UnitID,
+                        UnitDesc = unitList == null ? string.Empty : unitList.UnitDesc,
+                        UnitPrice = dto.UnitPrice,
+                        Quantity = dto.Quantity
+
+                    });
+                    isSuccess = true;
+                    salesOrder = this.RenderRazorViewToString(IOBALANCEMVC.OrderManagement.SalesOrder.Views._ListOfOrderSales, listOfOrders);
+                }
+            }
+
+
+
+
+            alertMessage = this.RenderRazorViewToString(IOBALANCEMVC.Shared.Views._Alerts, string.Empty);
+            var jsonResult = new
+            {
+                isSuccess = isSuccess,
+                alertMessage = alertMessage,
+                salesOrder = salesOrder
+            };
+
+            return Json(jsonResult, JsonRequestBehavior.AllowGet);
+        }
+
+        public virtual ActionResult SaveSalesOrder(List<SalesOrderDetailDto> salesOrderDetailDto,SalesOrderDto salesOrderDto)
+        {
+            string alertMessage = string.Empty, salesOrder = string.Empty;
+            bool isSuccess = true;
+
+            long identitySalesOrderId = 0;
+
+
+            if (ModelState.IsValid)
+            {
+                if (salesOrderDetailDto.IsNull())
+                {
+                    isSuccess = false;
+                    Danger(Messages.NoRowFound);
+                }
+                else
+                {
+                    ///TODO: put validation if 0 salesorderdetailid
+                    ///TODO: insert in DB the salesorder
+                    ///TODO: edit the quantity of Product
+                    ///
+
+                    identitySalesOrderId = _orderService.SaveSalesOrder(salesOrderDto);
+                    //_orderService.SaveSalesOrderDetail(salesOrderDetailDto);
+                }
+            }
+            else
+            {
+                isSuccess = false;
+            }
+
+
+
+            alertMessage = this.RenderRazorViewToString(IOBALANCEMVC.Shared.Views._Alerts, string.Empty);
+            var jsonResult = new
+            {
+                isSuccess = isSuccess,
+                alertMessage = alertMessage,
+                salesOrder = salesOrder
+            };
+
+            return Json(jsonResult, JsonRequestBehavior.AllowGet);
+        }
+        #endregion ActionMethods
+
+        #region PrivateMethods
+
+        #endregion PrivateMethods
+
+        #region Dispose
+        protected override void Dispose(bool disposing)
+        {
+            if (disposing)
+            {
+                if (!_inventoryService.IsNull())
+                {
+                    _inventoryService = null;
+                }
+
+                if (!_orderService.IsNull())
+                {
+                    _orderService = null;
+                }
+
+                if (!_salesService.IsNull())
+                {
+                    _salesService = null;
+                }
+            }
+            base.Dispose(disposing);
+        }
+        #endregion Dispose
+
+    }
+}

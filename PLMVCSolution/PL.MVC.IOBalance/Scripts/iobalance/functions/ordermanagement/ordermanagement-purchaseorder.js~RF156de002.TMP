@@ -1,0 +1,338 @@
+﻿var ORDERMANAGEMENTPURCHASEORDER = (function () {
+    var _variables = {
+        params: null,
+        loaderMsg: "",
+        UpdateMsg: ""
+    }
+
+    var _doInitializeElements = function () {
+        $('body').on('click', '#newbutton', function () {
+            _doNewItem();
+            _doClearFormField();
+            _variables.params.inventoryAction = "save";
+        });
+
+        $('body').on('click', '#discardbutton', function () {
+            _doDiscardItem();
+            _variables.params.inventoryAction = "";
+        });
+
+        $('body').on('click', '#savebutton', function () {
+            _doSavePurchaseOrderSingle();
+        });
+
+        $('body').on('click', '#addinventory', function () {
+            _doAddItemInOrders();
+        });
+
+        $('body').on('click', '#editbutton', function () {
+            $this = $(this);
+            _doNewItem();
+            _doClearFormField();
+
+            $('#frmInventory #hdfProductID').val($this.data('product-id'));
+            $('#frmInventory #ProductCode').val($this.data('product-code'));
+            $('#frmInventory #ProductName')
+            //$('#frmInventory #ProductDesc')
+            //$('#frmInventory #ProductExtension')
+            //$('#frmInventory #Quantity')
+            //$('#frmInventory #ProductPrice')
+            //$('#frmInventory #Size')
+            //$('#frmInventory #ProductUnit')
+            //$('#frmInventory #ProductCategory')
+            //$('#frmInventory #ProductModel')
+            //$('#frmInventory #ProductSupplier')
+            //$('#frmInventory #Remarks')
+            
+            
+
+            _variables.params.inventoryAction = "save";
+        });
+
+        //$('body').on('click', '#savebutton', function () {
+        //    _doSavePurchaseOrders();
+        //});
+
+    }
+
+    var _doBindTblProduct = function () {
+        var $gvProduct = $('#gvProduct'), schemaField = {}, columns = [],
+            width, field;
+
+
+        $gvProduct.find('th').each(function () {
+            $this = $(this);
+            width = INFRA.ReplaceIfNullOrEmpty($this.data('width'), 100);
+            field = $this.data('field');
+
+            column = {
+                width: width,
+                field: field
+            }
+            columns.push(column);
+        });
+
+        $gvProduct.kendoGrid({
+            sortable: false,
+            scrollable: true,
+            pageable: true,
+            dataSource: {
+                pageSize: 8
+            },
+            columns: columns,
+            dataBound: function () {
+                $('th').each(function () {
+                    $this = $(this);
+                    $this.addClass('strong text-center');
+                });
+
+                $('td').each(function () {
+                    var $this = $(this);
+                    var identifier = $this.find("i").eq(0);
+                    var id, cssClass;
+
+                    if (!INFRA.IsNullOrEmpty(identifier)) {
+                        id = identifier.data('id');
+                        cssClass = identifier.data('css-class');
+
+                        if (!INFRA.IsNullOrEmpty(id)) {
+                            $this.prop('id', id);
+                        }
+
+                        if (!INFRA.IsNullOrEmpty(cssClass)) {
+                            $this.addClass(cssClass);
+                        }
+
+                        identifier.remove();
+                    }
+                });
+            }
+        });
+    }
+
+    var _doAddItemInOrders = function () {
+        $frmInventory = $('#frmInventory');
+        var rowCount, $tblProductOrder = $('#tblProductOrder'), $$curRowToDelete, $productCodeVal;
+
+        $.ajax({
+            url: _variables.params.inventoryAddOrderUrl,
+            type: 'POST',
+            data: $frmInventory.serialize(),
+            success: function (data) {
+                if (data.isSuccess == true) {
+                    rowCount = $('#ProductOrderRow tr').length;
+
+                    if (rowCount === 1) {
+                        $productCodeVal = $tblProductOrder.find('tbody > tr > td').first().find('span').text();
+                        if ($productCodeVal === "") {
+                            $curRowToDelete = $tblProductOrder.find('tbody > tr');
+                            $curRowToDelete.remove();
+                        }
+                    }
+
+                    $('#ProductOrderRow').append(data.inventory);
+
+
+
+                }
+            }
+        });
+    };
+
+    var _doInitializeDropDownElements = function () {
+        $("#ProductUnit").kendoDropDownList({
+            filter: "startswith",
+            optionLabel: 'Select item',
+            dataTextField: "UnitDesc",
+            dataValueField: "UnitID",
+            dataSource: {
+                transport: {
+                    read: {
+                        dataType: "json",
+                        url: _variables.params.unitGetUrl
+                    }
+                }
+            }
+        });
+
+
+        $('#ProductCategory').kendoDropDownList({
+            filter: "startswith",
+            optionLabel: 'Select item',
+            dataTextField: "CategoryDisplay",
+            dataValueField: "CategoryID",
+            dataSource: {
+                transport: {
+                    read: {
+                        dataType: "json",
+                        url: _variables.params.categoryGetUrl
+                    }
+                }
+            }
+        });
+
+        $('#ProductSupplier').kendoDropDownList({
+            filter: "startswith",
+            optionLabel: 'Select item',
+            dataTextField: "SupplierDisplay",
+            dataValueField: "SupplierID",
+            dataSource: {
+                transport: {
+                    read: {
+                        dataType: "json",
+                        url: _variables.params.supplierGetUrl
+                    }
+                }
+            }
+        });
+
+
+        $('#ProductModel').kendoDropDownList({
+            filter: "startswith",
+            optionLabel: 'Select item',
+            dataTextField: "ModelName",
+            dataValueField: "ModelID",
+            dataSource: {
+                transport: {
+                    read: {
+                        dataType: "json",
+                        url: _variables.params.modelGetUrl
+                    }
+                }
+            }
+        });
+    }
+
+    var _doSavePurchaseOrders = function () {
+        var rowCount, $tblProductOrder = $('#tblProductOrder'), $tds;
+        var productCode, productName, productDescription, productExtension, productQuantity, productPrice, productUnit, productCategory, productModel, productSupplier;
+
+        $tblProductOrder.find('tbody > tr').each(function () {
+            $tds = $(this).find('td');
+            productCode = $tds.eq(0).find('span').text();
+            productName = $tds.eq(1).find('span').text();
+            productDescription = $tds.eq(2).find('span').text();
+            productExtension = $tds.eq(3).find('span').text();
+            productQuantity = $tds.eq(4).find('span').text();
+            productPrice = $tds.eq(5).find('span').text();
+            productSize = $tds.eq(6).find('span').text();
+            productUnit = null;
+            productCategory = null;
+            productModel = null;
+            productSupplier = null;
+            productRemarks = null;
+
+            $.ajax({
+                url: _variables.params.inventorySaveOrderUrl,
+                type: 'POST',
+                data: {
+                    productCode: productCode,
+                    productName: productName,
+                    productDesc: productDescription,
+                    productExtension: productExtension,
+                    quantity: productQuantity,
+                    price: productPrice,
+                    size: productSize,
+                    unitId: productUnit,
+                    categoryId: productCategory,
+                    modelId: productModel,
+                    supplierId: productSupplier,
+                    remarks: productRemarks
+                }, success: function (data) {
+                    alert(data.isSuccess);
+                }
+            });
+        });
+
+    }
+
+    var _doSavePurchaseOrderSingle = function () {
+        $frmInventory = $('#frmInventory');
+
+        $.ajax({
+            url: _variables.params.invetnorySaveProductAndPurchaseOrderUrl,
+            type: 'POST',
+            data: $frmInventory.serialize(),
+            success: function (data) {
+                if (data.isSuccess) {
+                    $('#divInventory').html(data.inventory);
+                    _doBindTblProduct();
+                    _doDiscardItem();
+                }
+                $('#divResultContainer').show().html(data.alertMessage);
+            }
+        });
+    }
+
+    var _doDiscardItem = function () {
+        $('#divInventory').show();
+        $('#inventory-form').hide();
+
+        //buttons
+        $('#searchbutton').show();
+        $('#refreshbutton').show();
+        $('#newbutton').show();
+
+        $('#addinventory').hide();
+        $('#discardbutton').hide();
+        $('#savebutton').hide();
+
+        _doClearFormField();
+    }
+
+    var _doClearFormField = function ()
+    {
+        $('#hdfProductID').val(null);
+        $('#ProductCode').val('');
+        $('#ProductName').val('');
+        $('#ProductDesc').val('');
+        $('#ProductExtension').val('');
+        $('#Quantity').val('0');
+        $('#ProductPrice').val('0');
+        $('#Size').val('');
+        $('#Remarks').val('');
+        
+        $('#ProductUnit').data('kendoDropDownList').value(null);
+        $('#ProductCategory').data('kendoDropDownList').value(null);
+        $('#ProductModel').data('kendoDropDownList').value(null);
+        $('#ProductSupplier').data('kendoDropDownList').value(null);
+
+    }
+
+    var _doNewItem = function () {
+        $('#divInventory').hide();
+        $('#inventory-form').show();
+
+        //buttons
+        $('#searchbutton').hide();
+        $('#refreshbutton').hide();
+        $('#newbutton').hide();
+
+        $('#addinventory').show();
+        $('#discardbutton').show();
+        $('#savebutton').show();
+    }
+
+    var initialize = function (options) {
+        try {
+            _variables.params = options || {};
+        } catch (ex) {
+            if (typeof console !== "undefined" && console !== null) {
+                console.error("Error parsing inline options", ex);
+            }
+        }
+        _doInitializeDropDownElements();
+        _doInitializeElements();
+        _doBindTblProduct();
+    }
+
+    return {
+        initialize: initialize
+    }
+
+})();
+
+$(document).ready(function () {
+    var options = window.inventoryOptions;
+    ORDERMANAGEMENTPURCHASEORDER.initialize(options);
+});

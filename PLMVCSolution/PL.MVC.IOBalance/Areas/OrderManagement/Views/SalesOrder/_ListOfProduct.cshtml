@@ -1,0 +1,49 @@
+﻿@model List<PL.Business.Dto.IOBalance.ProductDto>
+@using PL.Business.Common;
+
+<div id="divproducts">
+    <table id="gvProduct" class="table table-striped">
+        <thead>
+            <tr>
+                <th data-width="200" data-field="productimage">Product</th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var products in Model)
+            {
+                var datarowproductid = string.Format("tdproductid_{0}", products.ProductID);
+                //var btnrowproductid = string.Format("btnclickaddsalesorder_{0}", products.ProductID);
+                <tr>
+                    <td>
+                        <i></i>
+                        <span>
+                            @{
+                var dir = string.Format("~/{0}", Constants.ProductImageContentDir);
+                var fileName = products.ProductImage == null ? Constants.DefaultProductImageContent : products.ProductImage;
+                var path = Path.Combine(dir, fileName);
+                
+                var pricewithformat = Convert.ToDecimal(products.Price).ToString("0.00");
+                            }
+                            <span>
+                                <a href="javascript:void(0)" id="btnclickaddsalesorder" data-product-id="@products.ProductID">
+                                    <img src="@Url.Content(@path)" alt="Product Image" />
+                                </a>
+                                <br />
+                                <small><span><strong>@products.ProductFullDisplayWithExtension</strong></span></small>
+                                <br />
+                                <small><span>Quantity: @products.Quantity</span></small>
+                                <br />
+                                <small><span>Price: @pricewithformat</span></small>
+                                <br />
+                                <small><span>Size: @products.Size</span></small>
+                                <br />
+                                <small><span>Branch: @products.BranchName</span></small>
+                            </span>
+
+                        </span>
+                    </td>
+                </tr>
+            }
+        </tbody>
+    </table>
+</div>

@@ -1,0 +1,73 @@
+﻿@using PL.Business.Dto.IOBalance;
+@using PL.MVC.IOBalance.Areas.AdminManagement.Models;
+@{
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+@section modals{
+    @Html.Partial(IOBALANCEMVC.AdminManagement.User.Views._ModalEditUser, new UserDto())
+    @Html.Partial(IOBALANCEMVC.AdminManagement.User.Views._ModalSearchUser, new UserSearchModel())
+}
+
+<div>
+    <div class="pull-left">
+        <span class="text-warning"><strong>User List</strong></span>
+    </div>
+    <div class="pull-right">
+        <button id="searchbutton" class="btn btn-sm btn-default"
+                data-action-type="searchbutton">
+            <i class="glyphicon glyphicon-search"></i> Search
+        </button>
+
+        <button id="refreshbutton" class="btn btn-sm btn-default"
+                data-action-type="refreshbutton"
+                data-url="">
+            <i class="glyphicon glyphicon-refresh"></i> Refresh
+        </button>
+
+        <button id="btnnewform" class="btn btn-sm btn-success"
+                data-action-type="btnnewform"
+                data-url="">
+            <i class="glyphicon glyphicon-plus-sign"></i> New User
+        </button>
+
+        <button id="btndiscard" class="btn btn-sm btn-default" style="display:none;"
+                data-action-type="btndiscard">
+            <i class="glyphicon glyphicon-minus"></i> Discard
+        </button>
+    </div>
+    <br />
+    <hr />
+    <div id="user-new-form" style="display:none;">
+        @Html.Partial(IOBALANCEMVC.AdminManagement.User.Views._FrmUser, new UserDto())
+    </div>
+
+    <div id="divUser">
+        @Html.Partial(IOBALANCEMVC.AdminManagement.User.Views._ListUserKendo)
+    </div>
+    
+</div>
+
+<div id="divResultContainer" style="display:none"></div>
+
+@section scripts{
+    <script type="text/javascript">
+        window.userOptions = {
+            isActiveYesNoUrl: "@Url.Action(IOBALANCEMVC.Common.GetIsActive())",
+            getBranchUrl: "@Url.Action(IOBALANCEMVC.Common.GetBranch())",
+            userTypeUrl: "@Url.Action(IOBALANCEMVC.Common.GetUserType())",
+            saveUserDetailsUrl: "@Url.Action(IOBALANCEMVC.AdminManagement.User.SaveUser())",
+            updateUserDetailsUrl: "@Url.Action(IOBALANCEMVC.AdminManagement.User.UpdateUser())",
+            updateIsActiveDetailsUrl: "@Url.Action(IOBALANCEMVC.AdminManagement.User.isActiveUser())"
+        };
+    </script>
+    <script type="text/javascript" src="@IOBALANCELINKS.Scripts.infrastructure.jquery_pl_kendo_resize_height_js"></script>
+    <script type="text/javascript" src="@IOBALANCELINKS.Scripts.infrastructure.jquery_deserialize_js"></script>
+    <script type="text/javascript" src="@IOBALANCELINKS.Scripts.iobalance.functions.adminmanagement.adminmanagement_user_js"></script>
+    @Scripts.Render("~/bundles/jqueryval");
+}
+
+
+
+<link rel="stylesheet" href="@IOBALANCELINKS.Content.kendo.kendo_common_material_min_css" />
+<link rel="stylesheet" href="@IOBALANCELINKS.Content.kendo.kendo_material_min_css" />

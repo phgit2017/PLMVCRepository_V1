@@ -1,0 +1,30 @@
+﻿@model PL.MVC.IOBalance.Models.TransactionsModel
+@using PL.Business.Common;
+@using Infrastructure.Utilities;
+@using PL.MVC.IOBalance.Infrastructure;
+<div class="jumbotron text-center">
+    <h1>Inventory System</h1>
+    <p>Deployed 10/15/2016 9:23PM</p>
+    <hr />
+    <p>
+        @*»*@
+        
+        <a class="btn btn-lg btn-warning" href="@Url.Action(IOBALANCEMVC.ReportManagement.InventorySales.InventoryReport())" role="button">Inventory Report</a> 
+        @{
+            var userTypeId = Session[SessionVariables.UserDetails].GetUserTypeIdFromSession();
+            if (userTypeId == Constants.UserTypeAdminId)
+            {
+                <a class="btn btn-lg btn-primary" href="@Url.Action(IOBALANCEMVC.OrderManagement.PurchaseOrder.Index())" role="button">Add Inventory </a> 
+            }
+        }
+        
+        <a class="btn btn-lg btn-success" href="@Url.Action(IOBALANCEMVC.OrderManagement.SalesOrder.Index())" role="button">Create Sales Transactions</a>
+    </p>
+    <br />
+    <p>
+        # Customers : @Model.NumCustomers | # Products : @Model.NumQty | # Total Qty : @Model.NumTotalQty | # Sales Orders : @Model.NumSalesOrders
+    </p>
+</div>
+
+
+

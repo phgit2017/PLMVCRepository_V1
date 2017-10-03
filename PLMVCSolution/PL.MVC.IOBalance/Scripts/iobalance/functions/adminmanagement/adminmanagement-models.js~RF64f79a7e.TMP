@@ -1,0 +1,35 @@
+﻿var ADMINMANAGEMENTMODEL = (function () {
+    var _variables = {
+        params: null,
+        loaderMsg: "",
+        UpdateMsg: ""
+    }
+
+    var _doInitializeElements = function ()
+    {
+
+
+    }
+
+    var initialize = function (options)
+    {
+        try {
+            _variables.params = options || {};
+        } catch (ex) {
+            if (typeof console !== "undefined" && console !== null) {
+                console.error("Error parsing inline options", ex);
+            }
+        }
+
+        _doInitializeElements();
+    }
+    
+    
+    return {
+        initialize : initialize
+    }
+});
+
+$(document).ready(function () {
+
+});

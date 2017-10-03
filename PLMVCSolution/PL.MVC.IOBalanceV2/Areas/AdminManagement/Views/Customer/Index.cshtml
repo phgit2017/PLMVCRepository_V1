@@ -1,0 +1,50 @@
+﻿@using PL.Business.Dto.IOBalanceV2;
+@using PL.MVC.IOBalanceV2.Areas.AdminManagement.Models;
+@{
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+@section modals{
+    @Html.Partial(IOBALANCEMVCV2.AdminManagement.Customer.Views._Edit, new CustomerDto())
+    @Html.Partial(IOBALANCEMVCV2.AdminManagement.Customer.Views._Search, new CustomerSearchModel())
+}
+<div>
+    <section class="panel-widget-container">
+        <button id="searchbutton" class="btn btn-default btn-filter" data-action-type="searchbutton">
+            Filter
+        </button>
+        <div class="panel-widget-controls">
+            <button id="refreshbutton" class="btn btn-default"
+                    data-action-type="refreshbutton">
+                <i class="md md-refresh"></i> Refresh
+            </button>
+
+            <button id="btnnewform" class="btn  btn-success">
+                <i class="md md-plus"></i> New Customer
+            </button>
+        </div>
+    </section>
+    
+    <div id="new-form" style="display:none;">
+        @Html.Partial(IOBALANCEMVCV2.AdminManagement.Customer.Views._New, new CustomerDto())
+    </div>
+    <div id="divList">
+        @Html.Partial(IOBALANCEMVCV2.AdminManagement.Customer.Views._List)
+    </div>
+</div>
+
+<div id="divResultContainer" style="display:none"></div>
+
+
+@section scripts{
+    <script type="text/javascript">
+        window.adminOptions = {
+            saveUrl: "@Url.Action(IOBALANCEMVCV2.AdminManagement.Customer.SaveDetails())",
+            updateUrl: "@Url.Action(IOBALANCEMVCV2.AdminManagement.Customer.UpdateDetails())",
+            activateUrl: "@Url.Action(IOBALANCEMVCV2.AdminManagement.Customer.ActivateDetails())",
+            isActiveYesNoUrl: "@Url.Action(IOBALANCEMVCV2.Common.GetIsActive())"
+        };
+    </script>
+    @*<script type="text/javascript" src="@IOBALANCEV2LINKS.Scripts.iobalancev2.adminmanagement_customer_js"></script>*@
+    <script type="text/javascript" src="~/Scripts/iobalancev2/adminmanagement-customer.js"></script>
+    <script type="text/javascript" src="@IOBALANCEV2LINKS.Scripts.infrastructure.jquery_deserialize_js"></script>
+}

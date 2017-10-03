@@ -1,0 +1,28 @@
+﻿@using Kendo.Mvc.UI;
+@using PL.Business.Common;
+
+@(Html.Kendo().Grid<PL.Business.Dto.IOBalance.CategoryDto>()
+            .Name("gvCategory")
+        .Columns(columns =>
+        {   
+            columns.Template(@<text></text>).ClientTemplate("<a href='javascript:void(0)' type='button' class='selected' data-button-type='actionbuttons' data-action-type='editbutton' data-category-id='#=CategoryID#' data-category-code='#=CategoryCode#' data-category-name='#=CategoryName#'> Edit Details</a>" + " | " +
+                            "<a href='javascript:void(0)' type='button' class='selected' data-button-type='actionbuttons' data-action-type='deletebutton' data-category-id='#=CategoryID#' data-category-name='#=CategoryName#' data-category-code='#=CategoryCode#'> Deactivate/Activate </a>")
+                .Title("Actions")
+                .Width(300)
+                .Locked(true)
+                .HeaderHtmlAttributes(new { @class = "bos-grid-text-center" })
+                .HtmlAttributes(new { @class = "bos-grid-text-center" });
+            columns.Bound(c => c.CategoryCode).Title("Category Code").Width(300).Sortable(true).Lockable(true);
+            columns.Bound(c => c.CategoryName).Title("Category Name").Width(300).Sortable(true).Lockable(true);
+            columns.Bound(c => c.IsActive).Title("Active?").Width(210).Sortable(true).Lockable(true);
+        })
+        .Scrollable()
+        .Sortable(sort => sort.AllowUnsort(false))
+        .Pageable()
+        .ColumnMenu()
+        .DataSource(dataSource => dataSource
+            .Ajax()
+                    .Read(read => read.Action("GetCategory", "Category"))
+            .PageSize(50)
+        )
+)

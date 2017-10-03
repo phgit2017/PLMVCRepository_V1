@@ -1,0 +1,64 @@
+﻿@model PL.MVC.IOBalance.Areas.OrderManagement.Models.SavedSalesOrderSearchModel
+@using Infrastructure.Utilities;
+@using PL.MVC.IOBalance.Infrastructure;
+@using PL.Business.Common;
+<div class="modal fade" id="mdlsearchsavedsalesorder" tabindex="-1" role="dialog" aria-labelledby="mdlsearchsavedsalesorder" aria-hidden="true">
+    <div class="modal-dialog modal-lg">
+        <div class="modal-header text-center">
+            <h4 class="modal-title">Search Sales Order</h4>
+            <small>search your query here</small>
+        </div>
+
+        <div class="modal-content">
+            <div class="modal-body">
+                <form class="form-horizontal" id="frmSearchSavedSalesOrder">
+                    <div class="form-group">
+                        <label for="" class="control-label col-sm-3">Date Generated</label>
+                        <div class="col-sm-4">
+                            <input id="dpFrom" name="DateFrom" style="width: 100%" placeholder="mm/dd/yyyy" />
+                            <small class="text-muted">Date From</small>
+                            @Html.ValidationMessageFor(model => model.DateFrom, "", new { @class = "error" })
+                        </div>
+                        <div class="col-sm-4">
+                            <input id="dpTo" name="DateTo" style="width: 100%" placeholder="mm/dd/yyyy" />
+                            <small class="text-muted">Date To</small>
+                            @Html.ValidationMessageFor(model => model.DateTo, "", new { @class = "error" })
+                        </div>
+
+                    </div>
+
+                    <div class="form-group">
+                        <label for="" class="control-label col-sm-3">Receipt #</label>
+                        <div class="control-input col-sm-8">
+                            @Html.TextBoxFor(m => m.ReceiptNumber,
+                        new
+                        {
+                            @class = "form-control",
+                            @id = "ReceiptNumber"
+                        })
+                        </div>
+                    </div>
+                    @{
+                        var userTypeId = Session[SessionVariables.UserDetails].GetUserTypeIdFromSession();
+                        if (userTypeId == Constants.UserTypeAdminId)
+                        {
+                            <div class="form-group">
+                                <label for="" class="control-label col-sm-3">Branch</label>
+                                <div class="control-input col-sm-8">
+                                    <input id="SearchSOProductBranch" style="width:100%" name="BranchId" />
+                                </div>
+                            </div>
+                        }
+                    }
+                    <div class="form-group">
+                        <div class="col-sm-8 col-sm-offset-3 text-right">
+                            <button type="button" data-dismiss="modal" class="btn btn-link">Cancel</button>
+                            <button type="button" class="btn btn-sm btn-default" id="removesofilter">Remove filter</button>
+                            <button id="searchsavedsalesorder" type="button" class="btn btn-sm btn-warning">Submit</button>
+                        </div>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>

@@ -1,0 +1,46 @@
+﻿@using PL.Business.Dto.IOBalanceV2;
+@using PL.MVC.IOBalanceV2.Areas.AdminManagement.Models;
+@{
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+@section modals{
+    @Html.Partial(IOBALANCEMVCV2.AdminManagement.Category.Views._Edit, new CategoryDto())
+    @Html.Partial(IOBALANCEMVCV2.AdminManagement.Category.Views._Search, new CategorySearchModel())
+}
+<div>
+    <section class="panel-widget-container">
+        <button id="searchbutton" class="btn btn-default btn-filter" data-action-type="searchbutton">
+            Filter
+        </button>
+        <div class="panel-widget-controls">
+            <button id="refreshbutton" class="btn btn-default"
+                    data-action-type="refreshbutton">
+                <i class="md md-refresh"></i> Refresh
+            </button>
+
+            <button id="btnnewform" class="btn  btn-success">
+                <i class="md md-plus"></i> New Category
+            </button>
+        </div>
+    </section>
+    <div id="new-form" style="display:none;">
+        @Html.Partial(IOBALANCEMVCV2.AdminManagement.Category.Views._New, new CategoryDto())
+    </div>
+    <div id="divList">
+        @Html.Partial(IOBALANCEMVCV2.AdminManagement.Category.Views._List)
+    </div>
+</div>
+
+<div id="divResultContainer" style="display:none"></div>
+
+
+@section scripts{
+    <script type="text/javascript">
+        window.adminOptions = {
+            saveUrl: "@Url.Action(IOBALANCEMVCV2.AdminManagement.Category.SaveDetails())",
+            updateUrl: "@Url.Action(IOBALANCEMVCV2.AdminManagement.Category.UpdateDetails())"
+        };
+    </script>
+    <script type="text/javascript" src="@IOBALANCEV2LINKS.Scripts.iobalancev2.adminmanagement_category_js"></script>
+    <script type="text/javascript" src="@IOBALANCEV2LINKS.Scripts.infrastructure.jquery_deserialize_js"></script>
+}

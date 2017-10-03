@@ -1,0 +1,47 @@
+﻿@model PL.Business.Dto.IOBalance.CategoryDto
+
+<div class="modal fade" id="mdleditcategory" tabindex="-1" role="dialog" aria-labelledby="mdleditcategory" aria-hidden="true">
+    <div class="modal-dialog modal-lg">
+        <div class="modal-header text-center">
+            <h4 class="modal-title">Update Category</h4>
+            <small>Update category details</small>
+        </div>
+        <div class="modal-content">
+            <div class="modal-body">
+                <form class="form-horizontal" id="frmUpdateCategory">
+                    <div class="form-group">
+                        @Html.HiddenFor(m => m.CategoryID, new { @id = "hdfCategoryId" })
+                        <label for="" class="control-label col-sm-3 required">Category Code</label>
+                        <div class="control-input col-sm-8">
+                            @Html.TextBoxFor(m => m.CategoryCode,
+                        new
+                        {
+                            @class = "form-control",
+                            @id = "CategoryCode"
+                        })
+                            @Html.ValidationMessageFor(m => m.CategoryCode, "", new { @class = "error" })
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label for="" class="control-label col-sm-3 required">Category Name</label>
+                        <div class="control-input col-sm-8">
+                            @Html.TextBoxFor(m => m.CategoryName,
+                        new
+                        {
+                            @class = "form-control",
+                            @id = "CategoryName"
+                        })
+                            @Html.ValidationMessageFor(m => m.CategoryName, "", new { @class = "error" })
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <div class="col-sm-8 col-sm-offset-3 text-right">
+                            <button type="button" data-dismiss="modal" class="btn btn-link">Cancel</button>
+                            <button id="updatedetails" type="button" class="btn btn-sm btn-warning" data-url="@Url.Action(IOBALANCEMVC.AdminManagement.Category.UpdateCategory())">Update Category</button>
+                        </div>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>

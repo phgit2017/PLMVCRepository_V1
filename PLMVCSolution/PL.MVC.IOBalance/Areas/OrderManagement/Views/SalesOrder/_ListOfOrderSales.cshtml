@@ -1,0 +1,69 @@
+﻿@model List<PL.Business.Dto.IOBalance.SalesOrderDetailDto>
+@using Infrastructure.Utilities;
+@using PL.MVC.IOBalance.Infrastructure;
+@{
+    var userName = Session[SessionVariables.UserDetails].GetUserNameFromSession();
+    var userType = Session[SessionVariables.UserDetails].GetUserTypeFromSession();
+}
+<div class="col-sm-12">
+    <div class="pull-left">
+        <small>Items: <span id="salesordercount">0</span></small>
+    </div>
+    <div class="pull-right">
+        <small>Total: <span id="salesordertotal">0</span></small>
+    </div>
+</div>
+<table class="table table-striped" id="gvSalesOrderDetails">
+    <thead>
+        <tr>
+            <th class="text-left"><small>Product</small></th>
+            <th><small>Qty</small></th>
+            <th><small>Unit</small></th>
+            <th><small>Price</small></th>
+            <th><small>SubTotal</small></th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var salesOrderDetails in Model)
+        {
+            <tr data-product-id="@salesOrderDetails.ProductID">
+                <td>
+                    <input type="hidden" value="@salesOrderDetails.ProductID" />
+                    <input type="hidden" value="@salesOrderDetails.UnitID" />
+                    <small><span>@salesOrderDetails.ProductFullDisplayWithExtension</span></small>
+                </td>
+                <td>
+                    <i></i>
+                    <small><span><input type="text" value="@salesOrderDetails.Quantity" id="changeqty" data-product-id="@salesOrderDetails.ProductID" data-product-unit-price="@Convert.ToDecimal(salesOrderDetails.UnitPrice).ToString("0.00")" style="width:50px" /></span></small>
+                </td>
+                <td>
+                    <i></i>
+                    <small>
+                        <span>
+                            @*<input class="SalesUnit" style="width:100%" name="UnitID" />*@
+                            <select>
+                                <option>pc(s)</option>
+                                @*<option>set(s)</option>
+                                    <option>doz(s)</option>
+                                    <option>roll(s)</option>
+                                    <option>cut(s)</option>*@
+                            </select>
+                        </span>
+                    </small>
+                </td>
+                <td>
+                    <i></i>
+                    <small><span>@Convert.ToDecimal(salesOrderDetails.UnitPrice).ToString("0.00")</span></small>
+                </td>
+                <td>
+                    <i></i>
+                    <small><span>@Convert.ToDecimal(salesOrderDetails.TotalPricePerItemQty).ToString("0.00")</span></small>
+                </td>
+                <td>
+                    <i></i>
+                    <span><small><a href="javascript:void(0)" id="removeitem" data-product-id="@salesOrderDetails.ProductID"><span class="glyphicon glyphicon-remove"></span></a></small></span>
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>

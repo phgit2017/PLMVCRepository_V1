@@ -1,0 +1,40 @@
+﻿@model PL.Business.Dto.IOBalanceV2.CustomerDto
+
+<div class="form-group">
+    @Html.HiddenFor(m => m.CustomerId, new { @id = "hdfCustomerId" })
+    @Html.HiddenFor(m => m.IsActive, new { @id = "hdfIsActive"})
+    <label for="" class="control-label col-sm-3 required">Customer Code</label>
+    <div class="control-input col-sm-8">
+        @Html.TextBoxFor(m => m.CustomerCode,
+        new
+        {
+            @class = "form-control",
+            @id = "CustomerCode"
+        })
+        @Html.ValidationMessageFor(m => m.CustomerCode, "", new { @class = "error" })
+    </div>
+</div>
+<div class="form-group">
+    <label for="" class="control-label col-sm-3 required">Customer Name</label>
+    <div class="control-input col-sm-8">
+        @Html.TextBoxFor(m => m.CustomerName,
+        new
+        {
+            @class = "form-control",
+            @id = "CustomerName"
+        })
+        @Html.ValidationMessageFor(m => m.CustomerName, "", new { @class = "error" })
+    </div>
+</div>
+<div class="form-group">
+    <label for="" class="control-label col-sm-3 required">Customer Address</label>
+    <div class="control-input col-sm-8">
+        @Html.TextBoxFor(m => m.CustomerAddress,
+        new
+        {
+            @class = "form-control",
+            @id = "CustomerAddress"
+        })
+        @Html.ValidationMessageFor(m => m.CustomerAddress, "", new { @class = "error" })
+    </div>
+</div>

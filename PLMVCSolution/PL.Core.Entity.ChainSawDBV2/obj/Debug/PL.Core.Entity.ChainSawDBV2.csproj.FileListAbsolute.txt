@@ -1,0 +1,19 @@
+C:\Users\lep.ridad\Desktop\PLMVCSolution\PL.Core.Entity.ChainSawDBV2\bin\Debug\PL.Core.Entity.ChainSawDBV2.dll
+C:\Users\lep.ridad\Desktop\PLMVCSolution\PL.Core.Entity.ChainSawDBV2\bin\Debug\PL.Core.Entity.ChainSawDBV2.pdb
+C:\Users\lep.ridad\Desktop\PLMVCSolution\PL.Core.Entity.ChainSawDBV2\obj\Debug\PL.Core.Entity.ChainSawDBV2.csprojResolveAssemblyReference.cache
+C:\Users\lep.ridad\Desktop\PLMVCSolution\PL.Core.Entity.ChainSawDBV2\obj\Debug\PL.Core.Entity.ChainSawDBV2.dll
+C:\Users\lep.ridad\Desktop\PLMVCSolution\PL.Core.Entity.ChainSawDBV2\obj\Debug\PL.Core.Entity.ChainSawDBV2.pdb
+C:\Users\lep.ridad\Desktop\PLMVCSolution\PL.Core.Entity.ChainSawDBV2\bin\Debug\PL.Core.Entity.ChainSawDBV2.dll.config
+C:\Users\lep.ridad\Desktop\PLMVCSolution\PL.Core.Entity.ChainSawDBV2\bin\Debug\EntityFramework.dll
+C:\Users\lep.ridad\Desktop\PLMVCSolution\PL.Core.Entity.ChainSawDBV2\bin\Debug\EntityFramework.SqlServer.dll
+C:\Users\lep.ridad\Desktop\PLMVCSolution\PL.Core.Entity.ChainSawDBV2\bin\Debug\EntityFramework.xml
+C:\Users\lep.ridad\Desktop\PLMVCSolution\PL.Core.Entity.ChainSawDBV2\bin\Debug\EntityFramework.SqlServer.xml
+C:\Users\lep.ridad\Documents\Visual Studio 2013\Projects\PLMVCSolution\PL.Core.Entity.ChainSawDBV2\bin\Debug\PL.Core.Entity.ChainSawDBV2.dll.config
+C:\Users\lep.ridad\Documents\Visual Studio 2013\Projects\PLMVCSolution\PL.Core.Entity.ChainSawDBV2\bin\Debug\PL.Core.Entity.ChainSawDBV2.dll
+C:\Users\lep.ridad\Documents\Visual Studio 2013\Projects\PLMVCSolution\PL.Core.Entity.ChainSawDBV2\bin\Debug\PL.Core.Entity.ChainSawDBV2.pdb
+C:\Users\lep.ridad\Documents\Visual Studio 2013\Projects\PLMVCSolution\PL.Core.Entity.ChainSawDBV2\bin\Debug\EntityFramework.dll
+C:\Users\lep.ridad\Documents\Visual Studio 2013\Projects\PLMVCSolution\PL.Core.Entity.ChainSawDBV2\bin\Debug\EntityFramework.SqlServer.dll
+C:\Users\lep.ridad\Documents\Visual Studio 2013\Projects\PLMVCSolution\PL.Core.Entity.ChainSawDBV2\bin\Debug\EntityFramework.xml
+C:\Users\lep.ridad\Documents\Visual Studio 2013\Projects\PLMVCSolution\PL.Core.Entity.ChainSawDBV2\bin\Debug\EntityFramework.SqlServer.xml
+C:\Users\lep.ridad\Documents\Visual Studio 2013\Projects\PLMVCSolution\PL.Core.Entity.ChainSawDBV2\obj\Debug\PL.Core.Entity.ChainSawDBV2.dll
+C:\Users\lep.ridad\Documents\Visual Studio 2013\Projects\PLMVCSolution\PL.Core.Entity.ChainSawDBV2\obj\Debug\PL.Core.Entity.ChainSawDBV2.pdb

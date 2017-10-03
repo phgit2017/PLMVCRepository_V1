@@ -1,0 +1,117 @@
+﻿var ADMINMANAGEMENTUSER = (function () {
+    var _variables =
+    {
+        params: null,
+        gvUserHeight: 200
+    };
+
+    var _doInitializeElements = function () {
+        $('body').on('click', '#btnnewform', function () {
+            _doShowNewForm();
+        });
+
+        $('body').on('click', '#btndiscard', function () {
+            _doDiscardNewForm();
+        });
+
+        $('body').on('click', '#removefilter', function () {
+            //$('#frmSearchCategory #CategoryCode').val('');
+            //$('#frmSearchCategory #CategoryName').val('');
+            //$('#frmSearchCategory #SearchCategoryYesNo').data('kendoDropDownList').value(null);
+        });
+    }
+
+    var _doShowNewForm = function () {
+        $('#customer-new-form').show();
+        $('#divCategory').hide();
+
+        $('#searchbutton').hide();
+        $('#refreshbutton').hide();
+        $('#btnnewform').hide();
+
+        $('#btndiscard').show();
+
+    }
+
+    var _doDiscardNewForm = function () {
+        $('#category-new-form').hide();
+        $('#divCategory').show();
+
+        $('#searchbutton').show();
+        $('#refreshbutton').show();
+        $('#btnnewform').show();
+
+        $('#btndiscard').hide();
+
+        $('#frmCategory #CategoryCode').val('');
+        $('#frmCategory #CategoryName').val('');
+    }
+
+    var _doBindTblUser = function () {
+        var $gvUser = $('#gvUser'), schemaField = {}, columns = [],
+            width, field;
+
+
+        $gvUser.find('th').each(function () {
+            $this = $(this);
+            width = INFRA.ReplaceIfNullOrEmpty($this.data('width'), 100);
+            field = $this.data('field');
+
+            column = {
+                width: width,
+                field: field
+            }
+            columns.push(column);
+        });
+
+        $gvUser.kendoGrid({
+            sortable: false,
+            scrollable: true,
+            pageable: true,
+            dataSource: {
+                pageSize: 50
+            }, columns: columns
+        });
+
+        $gvUser.kGridResizeHeight({
+            height: _variables.gvUserHeight,
+            willRefreshGrid: false,
+            isManual: true
+        });
+    }
+
+    var initialize = function (options) {
+        try {
+            _variables.params = options || {};
+            _doInitializeElements();
+            _doBindTblUser();
+            INFRA.doRemoveOpenedModal();
+        } catch (e) {
+            if (typeof console !== "undefined" && console !== null) {
+                console.error("Error parsing inline options", ex);
+            }
+        }
+    }
+
+
+
+
+    return {
+        initialize: initialize,
+        _variables: _variables
+    }
+
+})();
+
+$(document).ready(function () {
+    var options = window.userOptions;
+    ADMINMANAGEMENTUSER.initialize(options);
+
+    $(window).resize(function () {
+        $('#gvUser').kGridResizeHeight({
+            height: ADMINMANAGEMENTUSER._variables.gvUserHeight,
+            willRefreshGrid: false,
+            isManual: true
+        });
+    });
+});

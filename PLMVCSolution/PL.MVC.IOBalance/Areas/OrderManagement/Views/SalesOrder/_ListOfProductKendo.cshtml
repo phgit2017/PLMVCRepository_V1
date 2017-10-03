@@ -1,0 +1,37 @@
+﻿@using Kendo.Mvc.UI;
+@using PL.Business.Common;
+
+@(Html.Kendo().Grid<PL.Business.Dto.IOBalance.ProductDto>()
+        .Name("gvProduct")
+        .Columns(columns =>
+        {
+            columns.Template(@<text></text>).ClientTemplate("<a href='javascript:void(0)' id='btnclickaddsalesorder' data-product-id='#=ProductID#' data-product-barcode='#=BarCode#'>" +
+                    "<img src='#=ProductImagePath#'>" + "<br/>" +
+                    "<small><span><strong>#=ProductFullDisplayWithExtension#</strong></span></small>" + "<br/>" +
+                    "<small><span><strong>Quantity: #=Quantity#</strong></span></small>" + "<br/>" +
+                    "<small><span><strong>Price: #=PriceWithFormat#</strong></span></small>" + "<br/>" +
+                    "<small><span><strong>Size: #=Size#</strong></span></small>" + "<br/>" +
+                    "<small><span><strong>Branch: #=BranchName#</strong></span></small></a>")
+                .Title("Actions")
+                .HtmlAttributes(new { @class = "bos-grid-text-top bos-grid-text-center" })
+                .Width(300);
+            @*columns.Template(@<text></text>).ClientTemplate("<img src='#=ProductImagePath#'>").Title("Product Image").Width(255);
+            columns.Bound(c => c.CategoryFullDisplay).Title("Category").Width(180).Sortable(false).Lockable(false);
+            columns.Bound(c => c.ProductCode).Title("Code").Width(100).Lockable(false);
+            columns.Bound(c => c.ProductName).Title("Name").Width(200).Lockable(false);
+            columns.Bound(c => c.ProductExtension).Title("Extension").Width(150).Lockable(false);
+            columns.Bound(c => c.Quantity).Title("Quantity").Width(100).Lockable(false);
+            columns.Bound(c => c.Price).Title("Price").Width(100).Lockable(false);
+            columns.Bound(c => c.BranchName).Title("Branch").Width(200).Lockable(false);
+            columns.Bound(c => c.Size).Title("Size").Width(100).Lockable(false);
+            columns.Bound(c => c.ProductDesc).Title("Decription").Width(160).Lockable(false);
+            columns.Bound(c => c.Remarks).Title("Remarks").Width(200).Lockable(false);*@
+        })
+        .Scrollable()
+        .Pageable()
+        .DataSource(dataSource => dataSource
+            .Ajax()
+            .Read(read => read.Action("GetProductList", "SalesOrder"))
+            .PageSize(50)
+        )
+)

@@ -1,0 +1,247 @@
+﻿var ADMINMANAGEMENTCUSTOMER = (function () {
+    var _variables =
+    {
+        params: null,
+        defaultModalUpdateValue: null
+    };
+
+    var _doBindTblCustomer = function ()
+    {
+        var $gvCustomer = $('#gvCustomer'), schemaField = {}, columns = [],
+            width, field;
+
+
+        $gvCustomer.find('th').each(function () {
+            $this = $(this);
+            width = INFRA.ReplaceIfNullOrEmpty($this.data('width'), 100);
+            field = $this.data('field');
+
+            column = {
+                width: width,
+                field: field
+            }
+            columns.push(column);
+        });
+
+        $gvCustomer.kendoGrid({
+            sortable: false,
+            scrollable: true,
+            pageable: true,
+            dataSource: {
+                pageSize: 8
+            }, columns: columns
+        });
+    }
+
+    var _doSaveDetails = function (element) {
+        var datas = $('#frmCustomer').serialize(),
+            elementUrl = element.data('url'),
+            $form = $('#frmCustomer');
+
+        $.validator.unobtrusive.parse($form);
+        $form.validate();
+        if ($form.valid()) {
+            $.ajax({
+                url: elementUrl,
+                type: 'POST',
+                data: datas,
+                success: function (data) {
+                    $('#divResultContainer').show().html(data.alertMessage);
+                    if (INFRA.ConvertToBoolean(data.isSuccess)) {
+                        $('#divCustomer').html(data.customer);
+                        _doBindTblCustomer();
+                    }
+                }
+            });
+
+        }
+    }
+
+    var _doUpdateDetails = function (element) {
+        var datas = $('#frmUpdateCustomer').serialize(),
+            elementUrl = element.data('url'),
+            $form = $('#frmUpdateCustomer');
+
+        $.validator.unobtrusive.parse($form);
+        $form.validate();
+
+        if ($form.valid()) {
+            $.ajax({
+                url: elementUrl,
+                type: 'POST',
+                data: datas,
+                success: function (data) {
+                    $('#divResultContainer').show().html(data.alertMessage);
+
+                    if (INFRA.ConvertToBoolean(data.isSuccess)) {
+                        $('#divCustomer').html(data.customer);
+                        _doBindTblCustomer();
+                    }
+                    $('#mdleditcustomer').modal('hide');
+                    INFRA.doRemoveOpenedModal();
+                }
+            });
+        }
+    }
+
+    var _doInactiveDetails = function (element) {
+        var elementUrl = element.data('url'),
+            customerid = element.data('customer-id'),
+            isactive = element.data('customer-is-active');
+
+        $.ajax({
+            url: elementUrl,
+            type: 'POST',
+            data: { customerId: customerid, isActive: INFRA.ConvertToBoolean(isactive) },
+            success: function (data) {
+                $('#divResultContainer').show().html(data.alertMessage);
+
+                if (INFRA.ConvertToBoolean(data.isSuccess)) {
+                    $('#divCustomer').html(data.customer);
+                    _doBindTblCustomer();
+                }
+            }
+        });
+    }
+
+    var _doRefreshDetails = function (element) {
+        var elementUrl = element.data('url');
+
+        $.ajax({
+            url: elementUrl,
+            type: 'POST',
+            success: function (data) {
+                $('#divCustomer').html(data);
+                _doBindTblCustomer();
+            }
+        });
+    }
+
+    var _doSearchDetails = function (element) {
+        var datas = $('#frmSearchCustomer').serialize(),
+            elementUrl = element.data('url'),
+            $form = $('#frmSearchCustomer');
+
+        $.ajax({
+            url: elementUrl,
+            type: 'POST',
+            data: datas,
+            success: function (data) {
+                $('#divCustomer').html(data.customer);
+                _doBindTblCustomer();
+
+                $('#mdlsearchcustomer').modal('hide');
+                INFRA.doRemoveOpenedModal();
+            }
+        });
+    }
+
+    var initialize = function (options)
+    {
+        try {
+            _variables.params = options || {};
+            _doInitializeElements();
+            INFRA.doRemoveOpenedModal();
+            _doBindTblCustomer();
+        } catch (e) {
+            if (typeof console !== "undefined" && console !== null) {
+                console.error("Error parsing inline options", ex);
+            }
+        }
+    }
+
+    var _doInitializeElements = function()
+    {
+        $('body').on('click', '#savedetails', function () {
+            var $elem = $(this);
+            _doSaveDetails($elem);
+        });
+
+        $('body').on('click', '#updatedetails', function () {
+            var $elem = $(this);
+            _doUpdateDetails($elem);
+        });
+
+        $('body').on('click', '#searchdetails', function () {
+            var $elem = $(this);
+            _doSearchDetails($elem);
+        });
+
+        $('body').on('click', '[data-action-type="editbutton"]', function () {
+            var $elem = $(this);
+            $('[data-action-type="editbutton"]').removeClass('selected');
+            $elem.addClass('selected');
+            $('#mdleditcustomer').modal('show');
+        });
+
+        $('body').on('show.bs.modal', '#mdleditcustomer', function () {
+            var $caller = $('[data-action-type="editbutton"].selected');
+            $('#frmUpdateCustomer #hdfCustomerId').val($caller.data('customer-id'));
+            $('#frmUpdateCustomer #CustomerCode').val($caller.data('customer-code'));
+            $('#frmUpdateCustomer #LastName').val($caller.data('customer-lastname'));
+            $('#frmUpdateCustomer #FirstName').val($caller.data('customer-firstname'));
+            $('#frmUpdateCustomer #MiddleName').val($caller.data('customer-middlename'));
+            $('#frmUpdateCustomer #Extension').val($caller.data('customer-extension'));
+            $('#frmUpdateCustomer #BirthDate').val($caller.data('customer-birthdate'));
+            $('#frmUpdateCustomer #Address').val($caller.data('customer-address'));
+            $('#frmUpdateCustomer #City').val($caller.data('customer-city'));
+            $('#frmUpdateCustomer #Region').val($caller.data('customer-region'));
+            $('#frmUpdateCustomer #ZipCode').val($caller.data('customer-zipcode'));
+        });
+
+        $('#mdleditsupplier').on('hidden.bs.modal', function () {
+            $('#frmUpdateCustomer #hdfCustomerId').val(null);
+            $('#frmUpdateCustomer #CustomerCode').val(null);
+            $('#frmUpdateCustomer #LastName').val(null);
+            $('#frmUpdateCustomer #FirstName').val(null);
+            $('#frmUpdateCustomer #MiddleName').val(null);
+            $('#frmUpdateCustomer #Extension').val(null);
+            $('#frmUpdateCustomer #BirthDate').val(null);
+            $('#frmUpdateCustomer #Address').val(null);
+            $('#frmUpdateCustomer #City').val(null);
+            $('#frmUpdateCustomer #Region').val(null);
+            $('#frmUpdateCustomer #ZipCode').val(null);
+        });
+
+        $('body').on('click', '[data-action-type="deletebutton"]', function () {
+            var $elem = $(this), $caller;
+
+            $('[data-action-type="deletebutton"]').removeClass('selected');
+            $elem.addClass('selected');
+
+            $caller = $('[data-action-type="deletebutton"].selected');
+
+            $.alertWindow("Are you sure you want to inactive this record?",
+            function () {
+                _doInactiveDetails($caller);
+            },
+            function () {
+            });
+        });
+
+        $('body').on('click', '#refreshbutton', function () {
+            var $elem = $(this);
+            _doRefreshDetails($elem);
+        });
+
+        $('body').on('click', '#searchbutton', function () {
+            var $elem = $(this);
+            $('#mdlsearchcustomer').modal('show');
+        });
+    }
+
+    return {
+        initialize: initialize
+    }
+
+})();
+
+try {
+    var params = window.customerOptions || {};
+} catch (e) {
+    console.error("Error parsing inline options", ex);
+}
+
+$(document).ready(function () {
+    ADMINMANAGEMENTCUSTOMER.initialize();
+});

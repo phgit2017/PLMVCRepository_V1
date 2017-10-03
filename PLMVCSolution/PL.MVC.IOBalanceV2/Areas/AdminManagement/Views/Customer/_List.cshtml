@@ -1,0 +1,28 @@
+﻿@using Kendo.Mvc.UI;
+@using PL.Business.Common;
+
+@(Html.Kendo().Grid<PL.Business.Dto.IOBalanceV2.CustomerDto>()
+                .Name("gvCustomer")
+        .Columns(columns =>
+        {
+            columns.Template(@<text></text>).ClientTemplate("<div class='btn-group btn-group-xs'><a href='javascript:void(0)' type='button' class='selected btn btn-default' id='edititem' data-button-type='actionbuttons' data-action-type='editbutton' data-customer-id='#=CustomerId#' data-customer-code='#=CustomerCode#' data-customer-name='#=CustomerName#' data-customer-address='#=CustomerAddress#' data-customer-datecreated='#=DateCreatedWithFormat#' data-customer-createdby='#=CreatedBy#' data-customer-dateupdated='#=DateUpdatedWithFormat#' data-customer-updatedby='#=UpdatedBy#' data-customer-isactive='#=IsActive#'> Edit Details</a>" + " " +
+                            "<a href='javascript:void(0)' type='button' class='selected btn btn-default' id='updateactive' data-button-type='actionbuttons' data-action-type='deletebutton' data-customer-id='#=CustomerId#' data-customer-code='#=CustomerCode#' data-customer-name='#=CustomerName#' data-customer-address='#=CustomerAddress#' data-customer-datecreated='#=DateCreatedWithTimeFormat#' data-customer-createdby='#=CreatedBy#' data-customer-dateupdated='#=DateUpdatedWithTimeFormat#' data-customer-updatedby='#=UpdatedBy#' data-customer-isactive='#=IsActive#'> Deactivate/Activate </a></div>")
+                .Title("Actions")
+                .Width(250)
+                .HeaderHtmlAttributes(new { @class = "bos-grid-text-center" })
+                .HtmlAttributes(new { @class = "bos-grid-text-center" });
+            columns.Bound(c => c.CustomerCode).Title("Customer Code").Width(180).Sortable(true).Lockable(true);
+            columns.Bound(c => c.CustomerName).Title("Customer Name").Width(300).Sortable(false).Lockable(true);
+            columns.Bound(c => c.CustomerAddress).Title("Address").Width(300).Sortable(true).Lockable(true);
+            columns.Bound(c => c.IsActive).Title("Active?").Width(180).Sortable(true).Lockable(true);
+        })
+        .Scrollable()
+        .Sortable(sort => sort.AllowUnsort(false))
+        .Pageable()
+        .ColumnMenu()
+        .DataSource(dataSource => dataSource
+            .Ajax()
+            .Read(read => read.Action("GetDetails", "Customer"))
+            .PageSize(50)
+        )
+)

@@ -1,0 +1,31 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8" />
+    <title>IOBalance</title>
+    <link href="~/favicon.ico" rel="shortcut icon" type="image/x-icon" />
+    <meta name="viewport" content="width=device-width" />
+
+    <link rel="stylesheet" href="@IOBALANCELINKS.Content.bootstrap_css">
+    @Styles.Render("~/Content/css")
+    <link rel="stylesheet" href="@IOBALANCELINKS.Content.kendo.kendo_common_bootstrap_min_css">
+    <link rel="stylesheet" href="@IOBALANCELINKS.Content.kendo.kendo_bootstrap_min_css">
+    @Styles.Render(IOBALANCELINKS.Bundles.CSS.plugins)
+    @Scripts.Render("~/bundles/jquery")
+    <script type="text/javascript" src="@IOBALANCELINKS.Scripts.bootstrap_min_js"></script>
+    
+
+    @Scripts.Render(IOBALANCELINKS.Bundles.JS.kendo)
+    @Scripts.Render("~/bundles/modernizr")
+</head>
+<body>
+    <section class="container">
+        @RenderBody()
+    </section>
+    @Scripts.Render("~/bundles/jqueryval")
+    @Scripts.Render(IOBALANCELINKS.Bundles.JS.plugins)
+
+    @RenderSection("scripts", required: false)
+    @RenderSection("modals", required: false)   
+</body>
+</html>

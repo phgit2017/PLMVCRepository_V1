@@ -1,0 +1,48 @@
+﻿@model PL.Business.Dto.IOBalance.ProductDto
+
+<div class="modal fade" id="mdladdqtyproduct" tabindex="-1" role="dialog" aria-labelledby="mdladdqtyproduct" aria-hidden="true">
+    <div class="modal-dialog modal-md">
+        <div class="modal-header text-center">
+            <h4 class="modal-title">Add Qty</h4>
+            <small>Please put the qty to be added in the field</small>
+        </div>
+
+        <div class="modal-content">
+            <div class="modal-body">
+                <form class="form-horizontal" id="frmAddQtyProduct">
+                    <div class="form-group">
+                        <label for="" class="control-label col-sm-3 required">Quantity</label>
+                        <div class="control-input col-sm-8">
+                            @Html.HiddenFor(m => m.ProductID, new { @id = "hdfProductIdAddQty" })
+                            @Html.TextBoxFor(m => m.Quantity,
+                        new
+                        {
+                            @class = "form-control",
+                            @id = "AddQuantity"
+                        })
+                            @Html.ValidationMessageFor(m => m.Quantity, "", "error")
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="" class="control-label col-sm-3 required">Supplier</label>
+                        <div class="control-input col-sm-8">
+                            <input id="AddQtyProductSupplier" style="width:100%" name="SupplierID" />
+                            <button type="button" class="btn btn-sm btn-default" id="addqtyrefreshsupplier">
+                                <i class="glyphicon glyphicon-refresh"></i>
+                            </button>
+                            @Html.ValidationMessageFor(m => m.SupplierID, "", "error")
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        <div class="col-sm-8 col-sm-offset-3 text-right">
+                            <button type="button" data-dismiss="modal" class="btn btn-link">Cancel</button>
+                            <button id="saveqtydetail" type="button" class="btn btn-sm btn-warning">Add Qty</button>
+                        </div>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>

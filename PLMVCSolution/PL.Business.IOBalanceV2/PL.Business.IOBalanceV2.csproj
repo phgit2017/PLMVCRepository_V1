@@ -1,0 +1,102 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="12.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProjectGuid>{56301947-4DFD-49C0-A08D-82A63FF5026C}</ProjectGuid>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>PL.Business.IOBalanceV2</RootNamespace>
+    <AssemblyName>PL.Business.IOBalanceV2</AssemblyName>
+    <TargetFrameworkVersion>v4.5</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="EntityFramework, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\packages\EntityFramework.6.1.3\lib\net45\EntityFramework.dll</HintPath>
+    </Reference>
+    <Reference Include="EntityFramework.SqlServer">
+      <HintPath>..\packages\EntityFramework.6.1.3\lib\net45\EntityFramework.SqlServer.dll</HintPath>
+    </Reference>
+    <Reference Include="System" />
+    <Reference Include="System.ComponentModel.DataAnnotations" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="CategoryService.cs" />
+    <Compile Include="CustomerPriceService.cs" />
+    <Compile Include="CustomerService.cs" />
+    <Compile Include="Extensions\EntityMapper.cs" />
+    <Compile Include="InventoryService.cs" />
+    <Compile Include="OrderService.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="QuantityUnitService.cs" />
+    <Compile Include="SupplierService.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\Infrastructure.Utilities\Infrastructure.Utilities.csproj">
+      <Project>{bfc618ed-359e-4755-8d54-b519d3c12d56}</Project>
+      <Name>Infrastructure.Utilities</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\PL.Business.Common\PL.Business.Common.csproj">
+      <Project>{52fb5cb6-da53-44b2-bd71-0a5c1665a1b3}</Project>
+      <Name>PL.Business.Common</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\PL.Business.Dto.IOBalanceV2\PL.Business.Dto.IOBalanceV2.csproj">
+      <Project>{24087208-bdcc-4bd9-8144-854a8767d656}</Project>
+      <Name>PL.Business.Dto.IOBalanceV2</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\PL.Business.Interface.IOBalanceV2\PL.Business.Interface.IOBalanceV2.csproj">
+      <Project>{b261f9fb-5697-40d3-bd6a-7686a6de920c}</Project>
+      <Name>PL.Business.Interface.IOBalanceV2</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\PL.Core.Entity.IOBalanceDBV2\PL.Core.Entity.IOBalanceDBV2.csproj">
+      <Project>{b68ba009-9f22-401d-afd7-590757c8a139}</Project>
+      <Name>PL.Core.Entity.IOBalanceDBV2</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\PL.Core.Entity.Repository.Interface\PL.Core.Entity.Repository.Interface.csproj">
+      <Project>{198b342d-e3b9-440c-82e6-f2efa663f004}</Project>
+      <Name>PL.Core.Entity.Repository.Interface</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\PL.Infra.DbContext.Interface\PL.Infra.DbContext.Interface.csproj">
+      <Project>{5eea74c6-e694-45ca-a558-eea097656486}</Project>
+      <Name>PL.Infra.DbContext.Interface</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="App.config" />
+    <None Include="packages.config" />
+  </ItemGroup>
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+</Project>

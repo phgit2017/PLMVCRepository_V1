@@ -1,0 +1,14 @@
+c:\users\mypc1\documents\visual studio 2013\Projects\PLMVCSolution\PL.Business.Common\bin\Debug\PL.Business.Common.dll
+c:\users\mypc1\documents\visual studio 2013\Projects\PLMVCSolution\PL.Business.Common\bin\Debug\PL.Business.Common.pdb
+c:\users\mypc1\documents\visual studio 2013\Projects\PLMVCSolution\PL.Business.Common\obj\Debug\PL.Business.Common.dll
+c:\users\mypc1\documents\visual studio 2013\Projects\PLMVCSolution\PL.Business.Common\obj\Debug\PL.Business.Common.pdb
+C:\Users\lep.ridad\Desktop\PLMVCSolution\PL.Business.Common\bin\Debug\PL.Business.Common.dll
+C:\Users\lep.ridad\Desktop\PLMVCSolution\PL.Business.Common\bin\Debug\PL.Business.Common.pdb
+C:\Users\lep.ridad\Desktop\PLMVCSolution\PL.Business.Common\obj\Debug\PL.Business.Common.csprojResolveAssemblyReference.cache
+C:\Users\lep.ridad\Desktop\PLMVCSolution\PL.Business.Common\obj\Debug\PL.Business.Common.dll
+C:\Users\lep.ridad\Desktop\PLMVCSolution\PL.Business.Common\obj\Debug\PL.Business.Common.pdb
+C:\Users\lep.ridad\Documents\Visual Studio 2013\Projects\PLMVCSolution\PL.Business.Common\bin\Debug\PL.Business.Common.dll
+C:\Users\lep.ridad\Documents\Visual Studio 2013\Projects\PLMVCSolution\PL.Business.Common\bin\Debug\PL.Business.Common.pdb
+C:\Users\lep.ridad\Documents\Visual Studio 2013\Projects\PLMVCSolution\PL.Business.Common\obj\Debug\PL.Business.Common.dll
+C:\Users\lep.ridad\Documents\Visual Studio 2013\Projects\PLMVCSolution\PL.Business.Common\obj\Debug\PL.Business.Common.pdb
+C:\Users\lep.ridad\Documents\Visual Studio 2013\Projects\PLMVCSolution\PL.Business.Common\obj\Debug\PL.Business.Common.csprojResolveAssemblyReference.cache

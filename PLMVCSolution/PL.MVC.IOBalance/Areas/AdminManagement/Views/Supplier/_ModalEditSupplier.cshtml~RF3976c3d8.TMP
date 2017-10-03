@@ -1,0 +1,7 @@
+﻿@model PL.Business.Dto.IOBalance.SupplierDto
+
+<div class="modal fade" id="modeleditsupplier" tabindex="-1" role="dialog" aria-labelledby="mdleditsupplier" aria-hidden="true">
+    <div class="modal-dialog">
+        <h4 class=""></h4>
+    </div>
+</div>

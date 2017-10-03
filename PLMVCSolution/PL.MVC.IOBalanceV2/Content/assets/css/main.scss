@@ -1,0 +1,67 @@
+// Import Core variables and mixins
+@import "../../assets-common/css/bootstrap/variables";
+@import "../../assets-common/css/bootstrap/mixins";
+@import "assets-variables.scss";
+
+// Load All IRIS Components
+// Flaticons
+@import "../flaticons/flaticon.scss";
+@include kendo-theme-variant($gray-lighter);
+// Body
+body {
+    // background-size: 40%;
+    // background-image: url(../../assets-common/img/body-bg.png);
+    // background-position: center center; 
+    // background-attachment: fixed;
+    background: $body-bg;
+    color: $gray-dark;
+}
+
+.main-logo {
+    width: 90%;
+    padding: 10px 12px;
+}
+
+.main-nav {
+    position: fixed;
+    width: $main-nav-width;
+    background: #4D4D4D;
+    top: 0;
+    bottom: 0;
+    z-index: 20;
+
+    #mainNavbar {
+        width: 100%;
+        padding: 0;
+    }
+
+    ul.nav {
+        a {
+            color: #fff;
+            letter-spacing: 2px;
+            &:hover,
+            &:focus {
+                background-color: #333;
+            }
+        }
+    }
+}
+
+.main-content {
+    @include calc-sub-two-values(width, 100%, 230px);
+    margin-left: $main-nav-width;
+}
+
+.panel-widget-search {
+    display: inline-block;
+    width: 400px;
+    display: inline-block;
+}
+
+.panel-widget-search + .btn-filter {
+    display: inline-block;
+    vertical-align: top;
+}
+.page-header{
+    position: relative;
+}

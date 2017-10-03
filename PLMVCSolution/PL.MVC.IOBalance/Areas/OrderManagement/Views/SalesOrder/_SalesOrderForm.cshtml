@@ -1,0 +1,48 @@
+﻿@model PL.Business.Dto.IOBalance.SalesOrderDetailDto
+
+<form class="form-horizontal" id="frmSalesOrderDetails">
+    <div class="form-group">
+        <label for="" class="control-label col-sm-3">Category</label>
+        <div class="control-input col-sm-8">
+            <input id="ProductCategory" style="width:100%" />
+        </div>
+    </div>
+
+    <div class="form-group">
+        <label for="" class="control-label col-sm-3 required">Product</label>
+        <div class="control-input col-sm-8">
+            <input id="SalesProduct" style="width:100%" name="ProductID" />
+        </div>
+    </div>
+
+    <div class="form-group ">
+        <label for="" class="control-label col-sm-3 required">Unit</label>
+        <div class="control-input col-sm-8">
+            <input id="SalesUnit" style="width:100%" name="UnitID" />
+        </div>
+    </div>
+
+    <div class="form-group">
+        <label for="" class="control-label col-sm-3 required">Price</label>
+        <div class="control-input col-sm-8">
+            @Html.TextBoxFor(m => m.UnitPrice, new
+                    {
+                        @class = "form-control",
+                        @id = "UnitPrice"
+                    })
+            @Html.ValidationMessageFor(m => m.UnitPrice, "", new { @class = "error" })
+        </div>
+    </div>
+
+    <div class="form-group">
+        <label for="" class="control-label col-sm-3 required">Quantity</label>
+        <div class="control-input col-sm-8">
+            @Html.TextBoxFor(m => m.Quantity, new
+                    {
+                        @class = "form-control",
+                        @id = "Quantity"
+                    })
+            @Html.ValidationMessageFor(m => m.Quantity, "", new { @class = "error" })
+        </div>
+    </div>
+</form>

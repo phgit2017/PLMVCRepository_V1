@@ -1,0 +1,72 @@
+﻿@using PL.MVC.IOBalance.Areas.OrderManagement.Models
+@{
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<div>
+    <div class="pull-left">
+        <span class="text-warning"><strong>Batch Inventory</strong></span>
+    </div>
+    <div class="pull-right">
+
+        <a href="@IOBALANCELINKS.Content.excel.templates.BatchProduct_xlsx" class="btn btn-sm btn-default" id="inventorytemplatebutton"><i class="glyphicon glyphicon-download"></i> Inventory Template</a>
+
+        <button id="refreshbutton" class="btn btn-sm btn-default"
+                data-action-type="refreshbutton"
+                data-url="">
+            <i class="glyphicon glyphicon-refresh"></i> Refresh
+        </button>
+
+        <button id="discardbutton" class="btn btn-sm btn-default" style="display:none;"
+                data-action-type="discardbutton"
+                data-url="">
+            Discard
+        </button>
+
+        @*<button id="searchbutton" class="btn btn-sm btn-default"
+                data-action-type="searchbutton"
+                data-url="">
+            <i class="glyphicon glyphicon-search"></i> Search
+        </button>*@
+
+        <button id="searchbutton" class="btn btn-sm btn-default"
+                data-action-type="searchbutton"
+                data-toggle="modal"
+                data-target="#mdlsearchbatchinventory">
+            <i class="glyphicon glyphicon-search"></i> Search
+        </button>
+
+        <button id="uploadinventory" class="btn btn-sm btn-success"
+                data-action-type="uploadinventory"
+                data-url="">
+            <i class="glyphicon glyphicon-plus-sign"></i> Upload Inventory
+        </button>
+    </div>
+    <div class="clearfix"></div>
+    <hr />
+    <div style="display:none" id="batch-upload-form">
+        @Html.Partial(IOBALANCEMVC.OrderManagement.PurchaseOrder.Views._BatchUpload)
+    </div>
+    <div id="divBatchSummary">
+        @Html.Partial(IOBALANCEMVC.OrderManagement.PurchaseOrder.Views._BatchSummary)
+    </div>
+</div>
+<div id="divResultContainer" style="display:none"></div>
+
+@section scripts{
+    <script type="text/javascript">
+        window.batchInventoryOptions = {
+
+        };
+    </script>
+    <script type="text/javascript" src="@IOBALANCELINKS.Scripts.infrastructure.jquery_pl_kendo_resize_height_js"></script>
+    <script type="text/javascript" src="@IOBALANCELINKS.Scripts.infrastructure.jquery_deserialize_js"></script>
+    <script type="text/javascript" src="@IOBALANCELINKS.Scripts.iobalance.functions.ordermanagement.ordermanagement_batchinventory_js"></script>
+}
+
+@section modals{
+    @Html.Partial(IOBALANCEMVC.OrderManagement.PurchaseOrder.Views._ModalSearchBatchInventory, new BatchSummariesSearchModel())
+}
+
+<link rel="stylesheet" href="@IOBALANCELINKS.Content.kendo.kendo_common_material_min_css" />
+<link rel="stylesheet" href="@IOBALANCELINKS.Content.kendo.kendo_material_min_css" />

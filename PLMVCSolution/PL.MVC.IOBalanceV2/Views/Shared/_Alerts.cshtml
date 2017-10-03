@@ -1,0 +1,47 @@
+﻿@using PL.MVC.IOBalanceV2.Infrastructure;
+@using styles = PL.MVC.IOBalanceV2.Infrastructure.AlertTypes;
+
+@{
+    var alerts = TempData.ContainsKey(Alert.TempDataKey) ? (List<Alert>)TempData[Alert.TempDataKey] : new List<Alert>();
+    var willShowFirstOnly = TempData.ContainsKey(Alert.TempDataDisplay) ? (bool)TempData[Alert.TempDataDisplay] : false;
+    string toasterType = string.Empty;
+    bool isDismissable = false;
+
+    if (willShowFirstOnly)
+    {
+        TempData.Remove(Alert.TempDataKey);
+    }
+
+    foreach (var alert in alerts)
+    {
+        if (alert.Dismissable && !isDismissable)
+        {
+            isDismissable = true;
+        }
+
+        switch (alert.AlertStyle)
+        {
+            case styles.Danger:
+                toasterType = "error";
+                break;
+            case styles.Information:
+                toasterType = "info";
+                break;
+            case styles.Success:
+                toasterType = "success";
+                break;
+            case styles.Warning:
+                toasterType = "warning";
+                break;
+        }
+
+        <div class="js_mvc-alert">
+            @foreach (var message in alert.Messages)
+            {
+                <span data-type="@toasterType">@message</span>
+            }
+        </div>
+    }
+}
+
+<script type="text/javascript" src="@IOBALANCEV2LINKS.Scripts.infrastructure.jquery_pl_alert_js"></script>

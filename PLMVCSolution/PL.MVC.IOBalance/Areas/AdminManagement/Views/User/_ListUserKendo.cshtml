@@ -1,0 +1,31 @@
+﻿@using Kendo.Mvc.UI;
+@using PL.Business.Common;
+
+@(Html.Kendo().Grid<PL.Business.Dto.IOBalance.UserDto>()
+                .Name("gvUser")
+        .Columns(columns =>
+        {
+
+
+            columns.Template(@<text></text>).ClientTemplate("<a href='javascript:void(0)' id='editbutton' type='button' class='selected' data-button-type='actionbuttons' data-action-type='editbutton' data-user-id='#=UserID#' data-user-name='#=UserName#' data-user-type-id='#=UserTypeID#' data-user-branch-id='#=BranchId#'> Edit Details</a>" + " | " +
+                            "<a href='javascript:void(0)' type='button' id='updateactive' class='selected' data-button-type='actionbuttons' data-action-type='deletebutton' data-user-id='#=UserID#' data-user-branch-id='#=BranchId#' data-user-name='#=UserName#' data-user-type-id='#=UserTypeID#'> Deactivate/Activate </a>")
+                .Title("Actions")
+                .Width(300)
+                .Locked(true)
+                .HeaderHtmlAttributes(new { @class = "bos-grid-text-center" })
+                .HtmlAttributes(new { @class = "bos-grid-text-center" });
+            columns.Bound(c => c.UserName).Title("Username").Width(300).Sortable(true).Lockable(true);
+            columns.Bound(c => c.UserTypeName).Title("User Type").Width(300).Sortable(false).Lockable(true);
+            columns.Bound(c => c.BranchName).Title("Branch").Width(300).Sortable(false).Lockable(true);
+            columns.Bound(c => c.IsActive).Title("Active?").Width(300).Sortable(true).Lockable(true);
+        })
+        .Scrollable()
+        .Sortable(sort => sort.AllowUnsort(false))
+        .Pageable()
+        .ColumnMenu()
+        .DataSource(dataSource => dataSource
+            .Ajax()
+            .Read(read => read.Action("GetUsers", "User"))
+            .PageSize(50)
+        )
+)

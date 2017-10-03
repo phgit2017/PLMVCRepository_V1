@@ -1,0 +1,218 @@
+﻿using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Web;
+using System.Web.Mvc;
+
+//Business
+using PL.Business.Common;
+using PL.Business.Dto.IOBalance;
+using PL.Business.Interface.IOBalance;
+
+//MVC
+using PL.MVC.IOBalance.Controllers;
+using PL.MVC.IOBalance.Areas.AdminManagement.Models;
+
+using Infrastructure.Utilities.Extensions;
+using System.Text;
+using LinqKit;
+
+namespace PL.MVC.IOBalance.Areas.AdminManagement.Controllers
+{
+    public partial class CategoryController : BaseController
+    {
+        #region DeclarationAndConstructors
+        ICategoryService _iCategoryService;
+        public CategoryController(ICategoryService iCategoryService)
+        {
+            this._iCategoryService = iCategoryService;
+        }
+        #endregion DeclarationAndConstructors
+
+        #region ActionMethods
+        public virtual ActionResult Index()
+        {
+            var model = GetCategories();
+            return View(model);
+        }
+
+        [HttpPost]
+        public virtual ActionResult SearchCategory(CategorySearchModel searchModel)
+        {
+            //bool isSuccess = true;
+            //string alertMessage = string.Empty, categories = string.Empty;
+
+            //categories = this.RenderRazorViewToString(IOBALANCEMVC.AdminManagement.Category.Views._ListCategory, GetCategories(searchModel));
+
+            //var jsonResult = new
+            //{
+            //    isSuccess = isSuccess,
+            //    alertMessage = alertMessage,
+            //    categories = categories
+            //};
+            var model = GetCategories(searchModel);
+            return PartialView(IOBALANCEMVC.AdminManagement.Category.Views._ListCategory, model);
+        }
+
+        [HttpPost]
+        public virtual ActionResult RefreshCategory()
+        {
+            var model = GetCategories();
+            return PartialView(IOBALANCEMVC.AdminManagement.Category.Views._ListCategory, model);
+        }
+
+        [HttpPost]
+        public virtual ActionResult SaveCategory(CategoryDto dto)
+        {
+            bool isSuccess = true;
+            string categories = string.Empty;
+
+            if (ModelState.IsValid)
+            {
+
+
+                if (!_iCategoryService.SaveCategory(dto))
+                {
+                    isSuccess = false;
+                    Danger(Messages.ErrorOccuredDuringProcessing);
+                }
+                else
+                {
+                    Success(Messages.InsertSuccess);
+                    categories = this.RenderRazorViewToString(IOBALANCEMVC.AdminManagement.Category.Views._ListCategory, GetCategories());
+                }
+
+            }
+            else
+            {
+                isSuccess = false;
+                Danger(Messages.ErrorOccuredDuringProcessing);
+            }
+
+
+            var alertMessage = this.RenderRazorViewToString(IOBALANCEMVC.Shared.Views._Alerts, string.Empty);
+            var jsonResult = new
+            {
+                isSuccess = isSuccess,
+                alertMessage = alertMessage,
+                categories = categories
+            };
+
+
+            return Json(jsonResult, JsonRequestBehavior.AllowGet);
+        }
+
+        [HttpPost]
+        public virtual ActionResult UpdateCategory(CategoryDto dto)
+        {
+            bool isSuccess = true;
+            string categories = string.Empty;
+
+
+            var oldCategory = _iCategoryService.FindCategoryById(dto.CategoryID);
+            dto.CategoryID = oldCategory.CategoryID;
+
+            if (!_iCategoryService.UpdateCategoryDetails(dto))
+            {
+                isSuccess = false;
+                Danger(Messages.ErrorOccuredDuringProcessing);
+            }
+            else
+            {
+                Success(Messages.UpdateSuccess);
+                categories = this.RenderRazorViewToString(IOBALANCEMVC.AdminManagement.Category.Views._ListCategory, GetCategories());
+            }
+
+
+
+            var alertMessage = this.RenderRazorViewToString(IOBALANCEMVC.Shared.Views._Alerts, string.Empty);
+            var jsonResult = new
+            {
+                isSuccess = isSuccess,
+                alertMessage = alertMessage,
+                categories = categories
+            };
+
+            return Json(jsonResult, JsonRequestBehavior.AllowGet);
+        }
+
+        [HttpPost]
+        public virtual ActionResult isActiveCategory(bool isActive, int categoryId)
+        {
+            bool isSuccess = true;
+            string categories = string.Empty;
+
+            if (!_iCategoryService.UpdateInactive(isActive, categoryId))
+            {
+                isSuccess = false;
+                Danger(Messages.ErrorOccuredDuringProcessing);
+            }
+            else
+            {
+                isSuccess = true;
+                Success(Messages.UpdateSuccess);
+                categories = this.RenderRazorViewToString(IOBALANCEMVC.AdminManagement.Category.Views._ListCategory, GetCategories());
+            }
+
+
+            var alertMessage = this.RenderRazorViewToString(IOBALANCEMVC.Shared.Views._Alerts, string.Empty);
+            var jsonResult = new
+            {
+                isSuccess = isSuccess,
+                alertMessage = alertMessage,
+                categories = categories
+            };
+            return Json(jsonResult, JsonRequestBehavior.AllowGet);
+        }
+        #endregion ActionMethods
+
+        #region PrivateMethods
+        private List<CategoryDto> GetCategories(CategorySearchModel searchModel = null)
+        {
+            //var list = _iCategoryService.GetAll().ToList();
+            List<CategoryDto> list = new List<CategoryDto>();
+
+            if (searchModel.IsNull())
+            {
+                list = _iCategoryService.GetAll().ToList();
+            }
+            else
+            {
+                var predicate = PredicateBuilder.True<CategoryDto>();
+                var hasOtherFilter = false;
+
+                if (!searchModel.CategoryCode.IsNull())
+                {
+                    hasOtherFilter = true;
+                    predicate = predicate.And(a => a.CategoryCode.Contains(searchModel.CategoryCode));
+                }
+
+                if (!searchModel.CategoryName.IsNull())
+                {
+                    hasOtherFilter = true;
+                    predicate = predicate.And(a => a.CategoryName.Contains(searchModel.CategoryName));
+                }
+
+                list = _iCategoryService.GetAll().AsExpandable().Where(predicate).ToList();
+            }
+
+            return list;
+        }
+        #endregion PrivateMethods
+
+        #region Dispose
+        protected override void Dispose(bool disposing)
+        {
+            if (disposing)
+            {
+                if (!_iCategoryService.IsNull())
+                {
+                    _iCategoryService = null;
+                }
+            }
+            base.Dispose(disposing);
+        }
+        #endregion Dispose
+
+    }
+}

@@ -1,0 +1,64 @@
+﻿using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Web;
+using System.Web.Mvc;
+
+//Business
+using PL.Business.Common;
+using PL.Business.Dto.IOBalance;
+using PL.Business.Interface.IOBalance;
+
+//MVC
+using PL.MVC.IOBalance.Controllers;
+using PL.MVC.IOBalance.Areas.ReportManagement.Models;
+
+using PL.MVC.IOBalance.Infrastructure;
+using Infrastructure.Utilities.Extensions;
+using LinqKit;
+using System.Drawing;
+using Infrastructure.Utilities;
+
+namespace PL.MVC.IOBalance.Areas.ReportManagement.Controllers
+{
+    public partial class InventorySalesController : Controller
+    {
+        #region DeclarationsAndConstructor
+        IReportCombinationService _reportCombinationService;
+        public InventorySalesController(IReportCombinationService reportCombinationService)
+        {
+            this._reportCombinationService = reportCombinationService;
+        }
+        #endregion DeclarationsAndConstructor
+
+        #region ActionMethods
+        [IOBalanceAuthorizeUser]
+        public virtual ActionResult Index()
+        {
+            List<ReportCombinationDto> list = new List<ReportCombinationDto>();
+            return View(list);
+        }
+
+        
+        #endregion ActionMethods
+
+        #region PrivateMethods
+        private List<ReportCombinationDto> GetReportPerItem(ReportInventoryPerItemSearchModel searchModel)
+        {
+            List<ReportCombinationDto> list = new List<ReportCombinationDto>();
+            if (!searchModel.IsNull())
+            {
+
+            }
+            return list;
+        }
+        #endregion PrivateMethods
+
+        #region Dispose
+
+        #endregion Dispose
+
+        
+
+    }
+}

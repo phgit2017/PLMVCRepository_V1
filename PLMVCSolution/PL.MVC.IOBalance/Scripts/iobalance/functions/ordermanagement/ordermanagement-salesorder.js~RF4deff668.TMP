@@ -1,0 +1,112 @@
+﻿var ORDERMANAGEMENTSALESORDER = (function () {
+    var _variables = {
+        params: null,
+        loaderMsg: "",
+        UpdateMsg: ""
+    }
+
+    var _doInitializeElements = function () {
+        $('body').on('click', '#btnaddsalesorder', function () {
+            _doAddSalesOrder();
+        });
+    }
+
+    var _doAddSalesOrder = function ()
+    {
+        $frmSalesOrder = $('#frmSalesOrder');
+        $gvSalesOrderDetails = $('#gvSalesOrderDetails tbody');
+        var tempTable,curRow;
+
+        $.ajax({
+            url: _variables.params.addSalesOrderUrl,
+            type: 'POST',
+            data: $frmSalesOrder.serialize(),
+            success: function (data) {
+                if (INFRA.ConvertToBoolean(data.isSuccess)) {
+                    debugger;
+                    tempTable.html(data.salesOrder);
+                    curRow = tempTable.find('tbody > tr');
+
+
+                    if ($gvSalesOrderDetails.find('tr') == null) {
+                        $('#divOrders').html(data.salesOrder);
+                    } else {
+                        $gvSalesOrderDetails.find('tr').append(data.salesOrder);
+                    }
+                    
+                    //_doBindTblProduct();
+                }
+                $('#divResultContainer').show().html(data.alertMessage);
+            }
+        });
+    }
+    var _doInitializeDropDownElements = function () {
+        $("#SalesCustomer").kendoDropDownList({
+            filter: "startswith",
+            optionLabel: 'Select item',
+            dataTextField: "DropdownDisplay",
+            dataValueField: "CustomerID",
+            dataSource: {
+                transport: {
+                    read: {
+                        dataType: "json",
+                        url: _variables.params.customerGetUrl
+                    }
+                }
+            }
+        });
+
+        $("#SalesProduct").kendoDropDownList({
+            filter: "startswith",
+            optionLabel: 'Select item',
+            dataTextField: "DropDownDisplay",
+            dataValueField: "ProductID",
+            dataSource: {
+                transport: {
+                    read: {
+                        dataType: "json",
+                        url: _variables.params.productGetUrl
+                    }
+                }
+            }
+        });
+
+        $("#SalesUnit").kendoDropDownList({
+            filter: "startswith",
+            optionLabel: 'Select item',
+            dataTextField: "UnitDesc",
+            dataValueField: "UnitID",
+            dataSource: {
+                transport: {
+                    read: {
+                        dataType: "json",
+                        url: _variables.params.unitGetUrl
+                    }
+                }
+            }
+        });
+    }
+
+    var initialize = function (options) {
+        try {
+            _variables.params = options || {};
+        } catch (ex) {
+            if (typeof console !== "undefined" && console !== null) {
+                console.error("Error parsing inline options", ex);
+            }
+        }
+        _doInitializeDropDownElements();
+        _doInitializeElements();
+        //_doBindTblProduct();
+    }
+
+    return {
+        initialize: initialize
+    }
+
+})();
+
+$(document).ready(function () {
+    var options = window.salesOptions;
+    ORDERMANAGEMENTSALESORDER.initialize(options);
+});

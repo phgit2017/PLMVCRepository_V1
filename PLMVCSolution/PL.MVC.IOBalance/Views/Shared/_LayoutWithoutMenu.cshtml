@@ -1,0 +1,35 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8" />
+    <title>IOBalance</title>
+    <link href="~/favicon.ico" rel="shortcut icon" type="image/x-icon" />
+    <meta name="viewport" content="width=device-width" />
+
+    <link rel="stylesheet" href="@IOBALANCELINKS.Content.bootstrap_css">
+    @Styles.Render("~/Content/css")
+    <link href="@IOBALANCELINKS.Content.kendo.kendo_common_bootstrap_min_css" rel="stylesheet" />
+    <link href="@IOBALANCELINKS.Content.kendo.kendo_bootstrap_min_css" rel="stylesheet" />
+    @Styles.Render(IOBALANCELINKS.Bundles.CSS.plugins)
+
+
+    @Scripts.Render("~/bundles/jquery")
+    <script type="text/javascript" src="@IOBALANCELINKS.Scripts.bootstrap_min_js"></script>
+    <script type="text/javascript" src="@IOBALANCELINKS.Scripts.kendo.kendo_all_min_js"></script>
+    <script type="text/javascript" src="@IOBALANCELINKS.Scripts.kendo.kendo_aspnetmvc_min_js"></script>
+    <script type="text/javascript" src="@IOBALANCELINKS.Scripts.kendo.cultures.kendo_culture_en_PH_min_js"></script>
+    @Scripts.Render("~/bundles/modernizr")
+</head>
+<body>
+    <section class="container">
+        @RenderBody()
+    </section>
+    @Scripts.Render(IOBALANCELINKS.Bundles.JS.plugins)
+    <script type="text/javascript" src="@IOBALANCELINKS.Scripts.infrastructure.infrastructure_js"></script>
+    <script type="text/javascript" src="@IOBALANCELINKS.Scripts.infrastructure.jquery_pl_loader_js"></script>
+    @*data-val-required="The Product Code field is required."*@
+    @Scripts.Render("~/bundles/jqueryval")
+    @RenderSection("scripts", required: false)
+    @RenderSection("modals", required: false)
+</body>
+</html>

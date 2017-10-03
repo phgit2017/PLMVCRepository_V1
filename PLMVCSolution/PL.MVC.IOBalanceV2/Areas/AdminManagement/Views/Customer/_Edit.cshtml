@@ -1,0 +1,23 @@
+﻿@model PL.Business.Dto.IOBalanceV2.CustomerDto
+
+<div class="modal fade" id="mdledit" tabindex="-1" role="dialog" aria-labelledby="mdledit" aria-hidden="true">
+    <div class="modal-dialog modal-lg">
+        <div class="modal-header text-center">
+            <h4 class="modal-title">Edit Details</h4>
+        </div>
+
+        <div class="modal-content">
+            <div class="modal-body">
+                <form class="form-horizontal" id="frmEdit">
+                    @Html.Partial(IOBALANCEMVCV2.AdminManagement.Customer.Views._Details, Model)
+                    @Html.HiddenFor(m => m.DateCreated, new { @id = "hdfDateCreated" })
+                    @Html.HiddenFor(m => m.CreatedBy, new { @id = "hdfCreatedBy" })
+                </form>
+            </div>
+            <div class="modal-footer">
+                <button type="button" data-dismiss="modal" class="btn btn-transparent">Cancel</button>
+                <button id="updatedetails" type="button" class="btn btn-success">Save changes</button>
+            </div>
+        </div>
+    </div>
+</div>

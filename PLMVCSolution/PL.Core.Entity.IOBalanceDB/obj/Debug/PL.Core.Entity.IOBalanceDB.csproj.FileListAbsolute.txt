@@ -1,0 +1,45 @@
+c:\users\mypc1\documents\visual studio 2013\Projects\PLMVCSolution\PL.Core.Entity.IOBalanceDB\bin\Debug\PL.Core.Entity.IOBalanceDB.dll
+c:\users\mypc1\documents\visual studio 2013\Projects\PLMVCSolution\PL.Core.Entity.IOBalanceDB\bin\Debug\PL.Core.Entity.IOBalanceDB.pdb
+c:\users\mypc1\documents\visual studio 2013\Projects\PLMVCSolution\PL.Core.Entity.IOBalanceDB\obj\Debug\PL.Core.Entity.IOBalanceDB.csprojResolveAssemblyReference.cache
+c:\users\mypc1\documents\visual studio 2013\Projects\PLMVCSolution\PL.Core.Entity.IOBalanceDB\obj\Debug\PL.Core.Entity.IOBalanceDB.dll
+c:\users\mypc1\documents\visual studio 2013\Projects\PLMVCSolution\PL.Core.Entity.IOBalanceDB\obj\Debug\PL.Core.Entity.IOBalanceDB.pdb
+c:\users\mypc1\documents\visual studio 2013\Projects\PLMVCSolution\PL.Core.Entity.IOBalanceDB\bin\Debug\PL.Core.Entity.IOBalanceDB.dll.config
+c:\users\mypc1\documents\visual studio 2013\Projects\PLMVCSolution\PL.Core.Entity.IOBalanceDB\bin\Debug\EntityFramework.dll
+c:\users\mypc1\documents\visual studio 2013\Projects\PLMVCSolution\PL.Core.Entity.IOBalanceDB\bin\Debug\EntityFramework.SqlServer.dll
+c:\users\mypc1\documents\visual studio 2013\Projects\PLMVCSolution\PL.Core.Entity.IOBalanceDB\bin\Debug\EntityFramework.xml
+c:\users\mypc1\documents\visual studio 2013\Projects\PLMVCSolution\PL.Core.Entity.IOBalanceDB\bin\Debug\EntityFramework.SqlServer.xml
+C:\Users\lep.ridad\Desktop\PLMVCSolution\PL.Core.Entity.IOBalanceDB\bin\Debug\PL.Core.Entity.IOBalanceDB.dll.config
+C:\Users\lep.ridad\Desktop\PLMVCSolution\PL.Core.Entity.IOBalanceDB\bin\Debug\PL.Core.Entity.IOBalanceDB.dll
+C:\Users\lep.ridad\Desktop\PLMVCSolution\PL.Core.Entity.IOBalanceDB\bin\Debug\PL.Core.Entity.IOBalanceDB.pdb
+C:\Users\lep.ridad\Desktop\PLMVCSolution\PL.Core.Entity.IOBalanceDB\bin\Debug\EntityFramework.dll
+C:\Users\lep.ridad\Desktop\PLMVCSolution\PL.Core.Entity.IOBalanceDB\bin\Debug\EntityFramework.SqlServer.dll
+C:\Users\lep.ridad\Desktop\PLMVCSolution\PL.Core.Entity.IOBalanceDB\bin\Debug\EntityFramework.xml
+C:\Users\lep.ridad\Desktop\PLMVCSolution\PL.Core.Entity.IOBalanceDB\bin\Debug\EntityFramework.SqlServer.xml
+C:\Users\lep.ridad\Desktop\PLMVCSolution\PL.Core.Entity.IOBalanceDB\obj\Debug\PL.Core.Entity.IOBalanceDB.csprojResolveAssemblyReference.cache
+C:\Users\lep.ridad\Desktop\PLMVCSolution\PL.Core.Entity.IOBalanceDB\obj\Debug\PL.Core.Entity.IOBalanceDB.dll
+C:\Users\lep.ridad\Desktop\PLMVCSolution\PL.Core.Entity.IOBalanceDB\obj\Debug\PL.Core.Entity.IOBalanceDB.pdb
+C:\Users\lep.ridad\Documents\Visual Studio 2013\Projects\PLMVCSolution\PL.Core.Entity.IOBalanceDB\bin\Debug\PL.Core.Entity.IOBalanceDB.dll.config
+C:\Users\lep.ridad\Documents\Visual Studio 2013\Projects\PLMVCSolution\PL.Core.Entity.IOBalanceDB\bin\Debug\PL.Core.Entity.IOBalanceDB.dll
+C:\Users\lep.ridad\Documents\Visual Studio 2013\Projects\PLMVCSolution\PL.Core.Entity.IOBalanceDB\bin\Debug\PL.Core.Entity.IOBalanceDB.pdb
+C:\Users\lep.ridad\Documents\Visual Studio 2013\Projects\PLMVCSolution\PL.Core.Entity.IOBalanceDB\bin\Debug\EntityFramework.dll
+C:\Users\lep.ridad\Documents\Visual Studio 2013\Projects\PLMVCSolution\PL.Core.Entity.IOBalanceDB\bin\Debug\EntityFramework.SqlServer.dll
+C:\Users\lep.ridad\Documents\Visual Studio 2013\Projects\PLMVCSolution\PL.Core.Entity.IOBalanceDB\bin\Debug\EntityFramework.xml
+C:\Users\lep.ridad\Documents\Visual Studio 2013\Projects\PLMVCSolution\PL.Core.Entity.IOBalanceDB\bin\Debug\EntityFramework.SqlServer.xml
+C:\Users\lep.ridad\Documents\Visual Studio 2013\Projects\PLMVCSolution\PL.Core.Entity.IOBalanceDB\obj\Debug\PL.Core.Entity.IOBalanceDB.dll
+C:\Users\lep.ridad\Documents\Visual Studio 2013\Projects\PLMVCSolution\PL.Core.Entity.IOBalanceDB\obj\Debug\PL.Core.Entity.IOBalanceDB.pdb
+C:\Users\lep.ridad\Documents\Visual Studio 2013\Projects\PLMVCSolution\PL.Core.Entity.IOBalanceDB\bin\Debug\Microsoft.Web.Helpers.dll
+C:\Users\lep.ridad\Documents\Visual Studio 2013\Projects\PLMVCSolution\PL.Core.Entity.IOBalanceDB\bin\Debug\Microsoft.Web.Infrastructure.dll
+C:\Users\lep.ridad\Documents\Visual Studio 2013\Projects\PLMVCSolution\PL.Core.Entity.IOBalanceDB\bin\Debug\System.Web.Helpers.dll
+C:\Users\lep.ridad\Documents\Visual Studio 2013\Projects\PLMVCSolution\PL.Core.Entity.IOBalanceDB\bin\Debug\System.Web.Razor.dll
+C:\Users\lep.ridad\Documents\Visual Studio 2013\Projects\PLMVCSolution\PL.Core.Entity.IOBalanceDB\bin\Debug\System.Web.WebPages.Deployment.dll
+C:\Users\lep.ridad\Documents\Visual Studio 2013\Projects\PLMVCSolution\PL.Core.Entity.IOBalanceDB\bin\Debug\System.Web.WebPages.dll
+C:\Users\lep.ridad\Documents\Visual Studio 2013\Projects\PLMVCSolution\PL.Core.Entity.IOBalanceDB\bin\Debug\System.Web.WebPages.Razor.dll
+C:\Users\lep.ridad\Documents\Visual Studio 2013\Projects\PLMVCSolution\PL.Core.Entity.IOBalanceDB\bin\Debug\WebMatrix.Data.dll
+C:\Users\lep.ridad\Documents\Visual Studio 2013\Projects\PLMVCSolution\PL.Core.Entity.IOBalanceDB\bin\Debug\WebMatrix.WebData.dll
+C:\Users\lep.ridad\Documents\Visual Studio 2013\Projects\PLMVCSolution\PL.Core.Entity.IOBalanceDB\bin\Debug\System.Web.Helpers.xml
+C:\Users\lep.ridad\Documents\Visual Studio 2013\Projects\PLMVCSolution\PL.Core.Entity.IOBalanceDB\bin\Debug\System.Web.Razor.xml
+C:\Users\lep.ridad\Documents\Visual Studio 2013\Projects\PLMVCSolution\PL.Core.Entity.IOBalanceDB\bin\Debug\System.Web.WebPages.xml
+C:\Users\lep.ridad\Documents\Visual Studio 2013\Projects\PLMVCSolution\PL.Core.Entity.IOBalanceDB\bin\Debug\System.Web.WebPages.Deployment.xml
+C:\Users\lep.ridad\Documents\Visual Studio 2013\Projects\PLMVCSolution\PL.Core.Entity.IOBalanceDB\bin\Debug\System.Web.WebPages.Razor.xml
+C:\Users\lep.ridad\Documents\Visual Studio 2013\Projects\PLMVCSolution\PL.Core.Entity.IOBalanceDB\bin\Debug\WebMatrix.Data.xml
+C:\Users\lep.ridad\Documents\Visual Studio 2013\Projects\PLMVCSolution\PL.Core.Entity.IOBalanceDB\bin\Debug\WebMatrix.WebData.xml

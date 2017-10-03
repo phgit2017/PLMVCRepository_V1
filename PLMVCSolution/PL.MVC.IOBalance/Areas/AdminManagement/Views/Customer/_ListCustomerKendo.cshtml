@@ -1,0 +1,32 @@
+﻿@using Kendo.Mvc.UI;
+@using PL.Business.Common;
+
+@(Html.Kendo().Grid<PL.Business.Dto.IOBalance.CustomerDto>()
+                .Name("gvCustomer")
+        .Columns(columns =>
+        {
+
+            
+            columns.Template(@<text></text>).ClientTemplate("<a href='javascript:void(0)' type='button' class='selected' data-button-type='actionbuttons' data-action-type='editbutton' data-customer-id='#=CustomerID#' data-customer-code='#=CustomerCode#' data-customer-fullname='#=FullName#' data-customer-lastname='#=LastName#' data-customer-firstname='#=FirstName#' data-customer-middlename='#=MiddleName#' data-customer-extension='#=Extension#' data-customer-birthdate='#=BirthDateWithFormat#' data-customer-address='#=Address#' data-customer-city='#=City#' data-customer-region='#=Region#' data-customer-zipcode='#=ZipCode#'> Edit Details</a>" + " | " +
+                            "<a href='javascript:void(0)' type='button' class='selected' data-button-type='actionbuttons' data-action-type='deletebutton' data-customer-id='#=CustomerID#' data-customer-code='#=CustomerCode#'> Deactivate/Activate </a>")
+                .Title("Actions")
+                .Width(300)
+                .Locked(true)
+                .HeaderHtmlAttributes(new { @class = "bos-grid-text-center" })
+                .HtmlAttributes(new { @class = "bos-grid-text-center" });
+            columns.Bound(c => c.CustomerCode).Title("Customer Code").Width(180).Sortable(true).Lockable(true);
+            columns.Bound(c => c.FullName).Title("Full Name").Width(300).Sortable(false).Lockable(true);
+            columns.Bound(c => c.BirthDateWithFormat).Title("Birth Date").Width(160).Sortable(false).Lockable(true);
+            columns.Bound(c => c.Address).Title("Address").Width(300).Sortable(true).Lockable(true);
+            columns.Bound(c => c.IsActive).Title("Active?").Width(210).Sortable(true).Lockable(true);
+        })
+        .Scrollable()
+        .Sortable(sort => sort.AllowUnsort(false))
+        .Pageable()
+        .ColumnMenu()
+        .DataSource(dataSource => dataSource
+            .Ajax()
+                            .Read(read => read.Action("GetCustomers", "Customer"))
+            .PageSize(50)
+        )
+)

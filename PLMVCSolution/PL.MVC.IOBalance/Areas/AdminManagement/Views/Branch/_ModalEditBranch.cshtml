@@ -1,0 +1,59 @@
+﻿@model PL.Business.Dto.IOBalance.BranchDto
+
+<div class="modal fade" id="mdleditbranch" tabindex="-1" role="dialog" aria-labelledby="mdleditbranch" aria-hidden="true">
+    <div class="modal-dialog modal-lg">
+        <div class="modal-header text-center">
+            <h4 class="modal-title">Update Branch</h4>
+            <small>Update branch details</small>
+        </div>
+
+
+        <div class="modal-content">
+            <div class="modal-body">
+                <form class="form-horizontal" id="frmUpdateBranch">
+                    <div class="form-group">
+                        @Html.HiddenFor(m => m.BranchId, new { @id = "hdfBranchId" })
+                        <label for="" class="control-label col-sm-3 required">Branch Name</label>
+                        <div class="control-input col-sm-8">
+                            @Html.TextBoxFor(m => m.BranchName,
+                        new
+                        {
+                            @class = "form-control",
+                            @id = "BranchName"
+                        })
+                            @Html.ValidationMessageFor(m => m.BranchName, "", new { @class = "error" })
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label for="" class="control-label col-sm-3">Branch Address</label>
+                        <div class="control-input col-sm-8">
+                            @Html.TextBoxFor(m => m.BranchAddress, new
+                            {
+                                @class = "form-control",
+                                @id = "BranchAddress"
+                            })
+                            @Html.ValidationMessageFor(m => m.BranchAddress, "", new { @class = "error" })
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label for="" class="control-label col-sm-3">Branch Details</label>
+                        <div class="control-input col-sm-8">
+                            @Html.TextBoxFor(m => m.BranchDetails, new
+                {
+                    @class = "form-control",
+                    @id = "BranchDetails"
+                })
+                            @Html.ValidationMessageFor(m => m.BranchDetails, "", new { @class = "error" })
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <div class="col-sm-8 col-sm-offset-3 text-right">
+                            <button type="button" data-dismiss="modal" class="btn btn-link">Cancel</button>
+                            <button id="updatedetails" type="button" class="btn btn-warning" data-url="@Url.Action(IOBALANCEMVC.AdminManagement.Branch.UpdateBranch())">Update Branch</button>
+                        </div>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>

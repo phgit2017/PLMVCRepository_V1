@@ -1,0 +1,28 @@
+﻿@using Kendo.Mvc.UI;
+@using PL.Business.Common;
+
+@(Html.Kendo().Grid<PL.Business.Dto.IOBalanceV2.OrderDto>()
+        .Name("gvQueueOrders")
+        .Columns(columns =>
+        {
+            columns.Template(@<text></text>).ClientTemplate("<a href='javascript:void(0)' type='button' class='selected' id='edititem' data-button-type='actionbuttons' data-action-type='editbutton' " +
+                                " data-queue-orderid='#=OrderId#' data-queue-salesno='#=SalesNo#' data-queue-isprinted='#=IsPrinted#' data-queue-customerid='#=CustomerId#'> " +
+                                " View</a>")
+                .Title("Actions")
+                .Width(200)
+                .HeaderHtmlAttributes(new { @class = "bos-grid-text-center" })
+                .HtmlAttributes(new { @class = "bos-grid-text-center" });
+            columns.Bound(c => c.SalesNo).Title("Sales No").Width(200).Sortable(true);
+            columns.Bound(c => c.customer.CustomerDropDownDisplay).Title("Customer Name").Width(180).Sortable(true);
+            columns.Bound(c => c.DateCreated).Title("Date Queued").Width(200).Sortable(false);
+        })
+        .Scrollable()
+        .Sortable(sort => sort.AllowUnsort(false))
+        .Pageable()
+        .ColumnMenu()
+        .DataSource(dataSource => dataSource
+            .Ajax()
+                    .Read(read => read.Action("GetQueueOrders", "Home"))
+            .PageSize(50)
+        )
+)

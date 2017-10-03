@@ -1,0 +1,47 @@
+﻿@using PL.Business.Dto.IOBalanceV2;
+@using PL.MVC.IOBalanceV2.Areas.AdminManagement.Models;
+@{
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+@section modals{
+    @Html.Partial(IOBALANCEMVCV2.AdminManagement.Supplier.Views._Edit, new SupplierDto())
+    @Html.Partial(IOBALANCEMVCV2.AdminManagement.Supplier.Views._Search, new SupplierSearchModel())
+}
+<div>
+    <section class="panel-widget-container">
+        <button id="searchbutton" class="btn btn-default btn-filter" data-action-type="searchbutton">
+            Filter
+        </button>
+        <div class="panel-widget-controls">
+            <button id="refreshbutton" class="btn btn-default"
+                    data-action-type="refreshbutton">
+                <i class="md md-refresh"></i> Refresh
+            </button>
+
+            <button id="btnnewform" class="btn  btn-success">
+                <i class="md md-plus"></i> New Supplier
+            </button>
+        </div>
+    </section>
+    <div id="new-form" style="display:none;">
+        @Html.Partial(IOBALANCEMVCV2.AdminManagement.Supplier.Views._New, new SupplierDto())
+    </div>
+    <div id="divList">
+        @Html.Partial(IOBALANCEMVCV2.AdminManagement.Supplier.Views._List)
+    </div>
+</div>
+
+<div id="divResultContainer" style="display:none"></div>
+
+
+@section scripts{
+    <script type="text/javascript">
+        window.adminOptions = {
+            saveUrl: "@Url.Action(IOBALANCEMVCV2.AdminManagement.Supplier.SaveDetails())",
+            updateUrl: "@Url.Action(IOBALANCEMVCV2.AdminManagement.Supplier.UpdateDetails())",
+            isActiveYesNoUrl: "@Url.Action(IOBALANCEMVCV2.Common.GetIsActive())"
+        };
+    </script>
+    <script type="text/javascript" src="@IOBALANCEV2LINKS.Scripts.iobalancev2.adminmanagement_supplier_js"></script>
+    <script type="text/javascript" src="@IOBALANCEV2LINKS.Scripts.infrastructure.jquery_deserialize_js"></script>
+}

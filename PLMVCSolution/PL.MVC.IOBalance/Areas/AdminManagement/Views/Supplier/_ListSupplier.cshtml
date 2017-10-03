@@ -1,0 +1,59 @@
+﻿@model List<PL.Business.Dto.IOBalance.SupplierDto>
+<table id="gvSupplier" class="table table-striped">
+    <thead>
+        <tr>
+            <th data-width="100" data-field="supplieraction">Action</th>
+            <th data-width="120" data-field="suppliercode">Supplier Code</th>
+            <th data-width="150" data-field="suppliername">Supplier Name</th>
+            <th data-width="100" data-field="supplieractive">Active</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var supplier in Model)
+        {
+            var isActivateDisplay = supplier.IsActive ? "Deactivate" : "Activate";
+            var isActivateValue = supplier.IsActive ? false : true;
+            var isActiveClass = supplier.IsActive ? "btn-danger" : "btn-success";
+            var isActiveYesNo = supplier.IsActive ? "Yes" : "No";
+            
+            <tr>
+                <td>
+                    <i></i>
+                    <span>
+                        <a href="javascript:void(0)" type="button" class="selected"
+                                data-button-type="actionbuttons"
+                                data-action-type="editbutton"
+                                data-supplier-id="@supplier.SupplierID"
+                                data-supplier-code="@supplier.SupplierCode"
+                                data-supplier-name="@supplier.SupplierName">
+                            Edit Details
+                        </a>
+                    </span>
+                    |
+                    <span>
+                        <a href="javascript:void(0)" type="button" class="btn btn-xs selected @isActiveClass"
+                                data-button-type="actionbuttons"
+                                data-action-type="deletebutton"
+                                data-supplier-id="@supplier.SupplierID"
+                                data-supplier-is-active="@isActivateValue"
+                                data-url="@Url.Action(IOBALANCEMVC.AdminManagement.Supplier.isActiveSupplier())">
+                            @isActivateDisplay
+                        </a>
+                    </span>
+                </td>
+                <td>
+                    <i></i>
+                    <span>@supplier.SupplierCode</span>
+                </td>
+                <td>
+                    <i></i>
+                    <span>@supplier.SupplierName</span>
+                </td>
+                <td>
+                    <i></i>
+                    <span>@isActiveYesNo</span>
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>

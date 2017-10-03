@@ -1,0 +1,66 @@
+﻿@using PL.Business.Dto.IOBalance;
+@using PL.MVC.IOBalance.Areas.AdminManagement.Models;
+@{
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+@section modals{
+    @Html.Partial(IOBALANCEMVC.AdminManagement.Branch.Views._ModalEditBranch, new BranchDto())
+    @Html.Partial(IOBALANCEMVC.AdminManagement.Branch.Views._ModalSearchBranch, new BranchSearchModel())
+}
+
+<div>
+    <div class="pull-left">
+        <span class="text-warning"><strong>Maintenance - Branch</strong></span>
+    </div>
+
+    <div class="pull-right">
+        <button id="searchbutton" class="btn btn-sm btn-default"
+                data-action-type="searchbutton">
+            <i class="glyphicon glyphicon-search"></i> Search
+        </button>
+
+        <button id="refreshbutton" class="btn btn-sm btn-default"
+                data-action-type="refreshbutton">
+            <i class="glyphicon glyphicon-refresh"></i> Refresh
+        </button>
+
+        <button id="btndiscard" class="btn btn-default btn-sm" style="display:none;">
+            Discard
+        </button>
+
+        <button id="btnnewform" class="btn btn-sm btn-success">
+            <i class="glyphicon glyphicon-plus-sign"></i> New Branch
+        </button>
+    </div>
+    <br />
+    <hr />
+
+    <div id="branch-new-form" style="display:none;">
+        @Html.Partial(IOBALANCEMVC.AdminManagement.Branch.Views._NewBranch, new BranchDto())
+    </div>
+
+    <div id="divBranch">
+        @Html.Partial(IOBALANCEMVC.AdminManagement.Branch.Views._ListBranchKendo)
+    </div>
+    
+</div>
+
+<div id="divResultContainer" style="display:none"></div>
+
+@section scripts{
+    <script type="text/javascript">
+        window.branchOptions = {
+            isActiveYesNoUrl: "@Url.Action(IOBALANCEMVC.Common.GetIsActive())"
+        };
+    </script>
+    <script type="text/javascript" src="@IOBALANCELINKS.Scripts.infrastructure.jquery_pl_kendo_resize_height_js"></script>
+    <script type="text/javascript" src="@IOBALANCELINKS.Scripts.iobalance.functions.adminmanagement.adminmanagement_branch_js"></script>
+    <script type="text/javascript" src="@IOBALANCELINKS.Scripts.infrastructure.jquery_deserialize_js"></script>
+    @Scripts.Render("~/bundles/jqueryval")
+}
+
+
+
+<link rel="stylesheet" href="@IOBALANCELINKS.Content.kendo.kendo_common_material_min_css" />
+<link rel="stylesheet" href="@IOBALANCELINKS.Content.kendo.kendo_material_min_css" />

@@ -1,0 +1,106 @@
+﻿using System;
+using System.Linq;
+
+using PL.Business.Dto.IOBalance;
+using PL.Business.Common;
+using IOBalanceEntity = PL.Core.Entity.IOBalanceDB;
+using Infrastructure.Utilities.Extensions;
+
+namespace PL.Business.IOBalance.Extensions
+{
+    public static class EntityMapper
+    {
+        public static IOBalanceEntity.Category DtoToEntity(this CategoryDto dto)
+        {
+            IOBalanceEntity.Category entity = null;
+
+            if (!dto.IsNull())
+            {
+                entity = new IOBalanceEntity.Category
+                {
+                    CategoryCode = dto.CategoryCode,
+                    CategoryName = dto.CategoryName,
+                    CategoryID = dto.CategoryID,
+                    IsActive = true,
+                    SortOrder = 0
+                };
+            }
+
+            return entity;
+        }
+
+        public static IOBalanceEntity.Unit DtoToEntity(this UnitDto dto)
+        {
+            IOBalanceEntity.Unit entity = null;
+
+            if (!dto.IsNull())
+            {
+                entity = new IOBalanceEntity.Unit()
+                {
+                    UnitDesc = dto.UnitDesc
+                };
+            }
+
+            return entity;
+        }
+
+        public static IOBalanceEntity.Supplier DtoToEntity(this SupplierDto dto)
+        {
+            IOBalanceEntity.Supplier entity = null;
+
+            if (!dto.IsNull())
+            {
+                entity = new IOBalanceEntity.Supplier() 
+                {
+                    SupplierName = dto.SupplierName,
+                    SupplierCode = dto.SupplierCode,
+                    IsActive = true,
+                    CreatedBy = dto.CreatedBy,
+                    DateCreated = System.DateTime.Now,
+                    DateUpdated = dto.DateUpdated,
+                    UpdatedBy = dto.UpdatedBy
+                };
+            }
+
+            return entity;
+        }
+
+        public static IOBalanceEntity.Customer DtoToEntity(this CustomerDto dto)
+        {
+            IOBalanceEntity.Customer entity = null;
+
+            if (!dto.IsNull())
+            {
+                entity = new IOBalanceEntity.Customer
+                {
+                    CustomerCode = dto.CustomerCode,
+                    FirstName = dto.FirstName,
+                    LastName = dto.LastName,
+                    MiddleName = dto.MiddleName,
+                    Extension = dto.Extension,
+                    BirthDate = dto.BirthDate,
+                    Address = dto.Address,
+                    City = dto.City,
+                    Region = dto.Region,
+                    ZipCode = dto.ZipCode,
+                    IsActive = true
+
+                };
+            }
+
+            return entity;
+        }
+
+        public static IOBalanceEntity.Branch DtoToEntity(this BranchDto dto)
+        {
+            IOBalanceEntity.Branch entity = null;
+
+            if (!dto.IsNull())
+            {
+                
+            }
+
+            return entity;
+        }
+    }
+}

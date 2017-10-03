@@ -1,0 +1,18 @@
+C:\Users\lep.ridad\Desktop\PLMVCSolution\PL.Business.Interface.ChainSaw\bin\Debug\PL.Business.Interface.ChainSaw.dll
+C:\Users\lep.ridad\Desktop\PLMVCSolution\PL.Business.Interface.ChainSaw\bin\Debug\PL.Business.Interface.ChainSaw.pdb
+C:\Users\lep.ridad\Desktop\PLMVCSolution\PL.Business.Interface.ChainSaw\obj\Debug\PL.Business.Interface.ChainSaw.dll
+C:\Users\lep.ridad\Desktop\PLMVCSolution\PL.Business.Interface.ChainSaw\obj\Debug\PL.Business.Interface.ChainSaw.pdb
+C:\Users\lep.ridad\Desktop\PLMVCSolution\PL.Business.Interface.ChainSaw\bin\Debug\PL.Business.Common.dll
+C:\Users\lep.ridad\Desktop\PLMVCSolution\PL.Business.Interface.ChainSaw\bin\Debug\PL.Business.Dto.ChainSaw.dll
+C:\Users\lep.ridad\Desktop\PLMVCSolution\PL.Business.Interface.ChainSaw\bin\Debug\PL.Business.Common.pdb
+C:\Users\lep.ridad\Desktop\PLMVCSolution\PL.Business.Interface.ChainSaw\bin\Debug\PL.Business.Dto.ChainSaw.pdb
+C:\Users\lep.ridad\Desktop\PLMVCSolution\PL.Business.Interface.ChainSaw\obj\Debug\PL.Business.Interface.ChainSaw.csprojResolveAssemblyReference.cache
+C:\Users\lep.ridad\Documents\Visual Studio 2013\Projects\PLMVCSolution\PL.Business.Interface.ChainSaw\bin\Debug\PL.Business.Interface.ChainSaw.dll
+C:\Users\lep.ridad\Documents\Visual Studio 2013\Projects\PLMVCSolution\PL.Business.Interface.ChainSaw\bin\Debug\PL.Business.Interface.ChainSaw.pdb
+C:\Users\lep.ridad\Documents\Visual Studio 2013\Projects\PLMVCSolution\PL.Business.Interface.ChainSaw\bin\Debug\PL.Business.Common.dll
+C:\Users\lep.ridad\Documents\Visual Studio 2013\Projects\PLMVCSolution\PL.Business.Interface.ChainSaw\bin\Debug\PL.Business.Dto.ChainSaw.dll
+C:\Users\lep.ridad\Documents\Visual Studio 2013\Projects\PLMVCSolution\PL.Business.Interface.ChainSaw\bin\Debug\PL.Business.Common.pdb
+C:\Users\lep.ridad\Documents\Visual Studio 2013\Projects\PLMVCSolution\PL.Business.Interface.ChainSaw\bin\Debug\PL.Business.Dto.ChainSaw.pdb
+C:\Users\lep.ridad\Documents\Visual Studio 2013\Projects\PLMVCSolution\PL.Business.Interface.ChainSaw\obj\Debug\PL.Business.Interface.ChainSaw.csprojResolveAssemblyReference.cache
+C:\Users\lep.ridad\Documents\Visual Studio 2013\Projects\PLMVCSolution\PL.Business.Interface.ChainSaw\obj\Debug\PL.Business.Interface.ChainSaw.dll
+C:\Users\lep.ridad\Documents\Visual Studio 2013\Projects\PLMVCSolution\PL.Business.Interface.ChainSaw\obj\Debug\PL.Business.Interface.ChainSaw.pdb

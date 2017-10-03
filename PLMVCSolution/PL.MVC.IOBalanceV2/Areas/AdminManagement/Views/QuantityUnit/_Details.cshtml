@@ -1,0 +1,15 @@
+﻿@model PL.Business.Dto.IOBalanceV2.QuantityUnitDto
+
+<div class="form-group">
+    @Html.HiddenFor(m => m.QuantityUnitID, new { @id = "hdfQuantityUnitId" })
+    <label for="" class="control-label col-sm-3 required">Unit Name</label>
+    <div class="control-input col-sm-8">
+        @Html.TextBoxFor(m => m.UnitName,
+        new
+        {
+            @class = "form-control",
+            @id = "UnitName"
+        })
+        @Html.ValidationMessageFor(m => m.UnitName, "", new { @class = "error" })
+    </div>
+</div>

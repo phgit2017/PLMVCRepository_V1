@@ -1,0 +1,179 @@
+﻿var ADMINMANAGEMENTUSER = (function () {
+    var _variables =
+    {
+        params: null,
+        gvUserHeight: 200
+    };
+
+    var _doInitializeElements = function () {
+        $('body').on('click', '#btnnewform', function () {
+            _doShowNewForm();
+        });
+
+        $('body').on('click', '#btndiscard', function () {
+            _doDiscardNewForm();
+        });
+
+        $('body').on('click', '#removefilter', function () {
+            //$('#frmSearchCategory #CategoryCode').val('');
+            //$('#frmSearchCategory #CategoryName').val('');
+            //$('#frmSearchCategory #SearchCategoryYesNo').data('kendoDropDownList').value(null);
+        });
+
+        $('body').on('click', '#savedetails', function () {
+            _doSaveDetails();
+        });
+    }
+
+    var _doInitializeKendoElements = function () {
+        $("#UserTypeId").kendoDropDownList({
+            optionLabel: 'Please Select',
+            dataTextField: "UserTypeName",
+            dataValueField: "UserTypeID",
+            dataSource: {
+                transport: {
+                    read: {
+                        dataType: "json",
+                        url: _variables.params.userTypeUrl
+                    }
+                }
+            }
+        });
+
+
+        $("#UserTypeId").kendoDropDownList({
+            optionLabel: 'Please Select',
+            dataTextField: "UserTypeName",
+            dataValueField: "UserTypeID",
+            dataSource: {
+                transport: {
+                    read: {
+                        dataType: "json",
+                        url: _variables.params.userTypeUrl
+                    }
+                }
+            }
+        });
+        EditUserTypeId
+        //isActiveYesNoUrl
+    }
+
+    var _doShowNewForm = function () {
+        $('#user-new-form').show();
+        $('#divUser').hide();
+
+        $('#searchbutton').hide();
+        $('#refreshbutton').hide();
+        $('#btnnewform').hide();
+
+        $('#btndiscard').show();
+
+    }
+
+    var _doDiscardNewForm = function () {
+        $('#user-new-form').hide();
+        $('#divUser').show();
+
+        $('#searchbutton').show();
+        $('#refreshbutton').show();
+        $('#btnnewform').show();
+
+        $('#btndiscard').hide();
+
+        $('#frmUser #UserName').val('');
+        $('#frmUser #Password').val('');
+        $('#frmUser #UserTypeId').data('kendoDropDownList').value(null);
+    }
+
+    var _doBindTblUser = function () {
+        var $gvUser = $('#gvUser'), schemaField = {}, columns = [],
+            width, field;
+
+
+        $gvUser.find('th').each(function () {
+            $this = $(this);
+            width = INFRA.ReplaceIfNullOrEmpty($this.data('width'), 100);
+            field = $this.data('field');
+
+            column = {
+                width: width,
+                field: field
+            }
+            columns.push(column);
+        });
+
+        $gvUser.kendoGrid({
+            sortable: false,
+            scrollable: true,
+            pageable: true,
+            dataSource: {
+                pageSize: 50
+            }, columns: columns
+        });
+
+        $gvUser.kGridResizeHeight({
+            height: _variables.gvUserHeight,
+            willRefreshGrid: false,
+            isManual: true
+        });
+    }
+
+    var _doSaveDetails = function ()
+    {
+        var $form = $('#frmUser');
+        $.validator.unobtrusive.parse($form);
+        $form.validate();
+        if ($form.valid()) {
+            $.ajax({
+                url: _variables.params.saveUserDetailsUrl,
+                type: 'POST',
+                data: $form.serialize(),
+                success: function (data) {
+                    $('#divResultContainer').show().html(data.alertMessage);
+                    if (INFRA.ConvertToBoolean(data.isSuccess)) {
+                        $('#divUser').html(data.user);
+                        _doBindTblUser();
+                    }
+                    _doDiscardNewForm();
+                }
+            });
+        }
+
+    }
+
+    var initialize = function (options) {
+        try {
+            _variables.params = options || {};
+            _doInitializeElements();
+            _doInitializeKendoElements();
+            _doBindTblUser();
+            INFRA.doRemoveOpenedModal();
+        } catch (e) {
+            if (typeof console !== "undefined" && console !== null) {
+                console.error("Error parsing inline options", ex);
+            }
+        }
+    }
+
+
+
+
+    return {
+        initialize: initialize,
+        _variables: _variables
+    }
+
+})();
+
+$(document).ready(function () {
+    var options = window.userOptions;
+    ADMINMANAGEMENTUSER.initialize(options);
+
+    $(window).resize(function () {
+        $('#gvUser').kGridResizeHeight({
+            height: ADMINMANAGEMENTUSER._variables.gvUserHeight,
+            willRefreshGrid: false,
+            isManual: true
+        });
+    });
+});

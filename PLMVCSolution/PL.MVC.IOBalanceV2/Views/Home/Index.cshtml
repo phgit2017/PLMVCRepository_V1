@@ -1,0 +1,77 @@
+﻿@using PL.Business.Dto.IOBalanceV2;
+@{
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+@section modals{
+    @Html.Partial(IOBALANCEMVCV2.Home.Views._EditOrderList)
+}
+<h3>We suggest the following:</h3>
+
+<h5>Queued Orders</h5>
+
+<section class="panel-widget-container" id="divBtnList" style="display:none;">
+    <div class="panel-widget-controls">
+
+        <button id="btnDiscard" class="btn btn-transparent" type="button">
+            Discard
+        </button>
+
+        <button id="btnAddSalesDetails" class="btn btn-transparent" type="button">
+            Add to product list
+        </button>
+
+        <button id="btnSaveQueueDetails" class="btn  btn-success" type="button">
+            Queue sales order
+        </button>
+
+
+
+        <button id="btnSaveSalesDetails" class="btn btn-success" type="button">
+            Save sales order
+        </button>
+    </div>
+
+    <div class="pull-left">
+        <form class="form-horizontal" id="frmSalesOrder">
+            @Html.Partial(IOBALANCEMVCV2.Home.Views._DetailsSalesOrder, new SalesOrderDto())
+        </form>
+    </div>
+    <div class="pull-right">
+        <form class="form-horizontal" id="frmSalesOrderDetail">
+            @Html.Partial(IOBALANCEMVCV2.Home.Views._DetailsSalesOrderDetail, new SalesOrderDetailDto())
+        </form>
+    </div>
+    <div class="clearfix"></div>
+</section>
+
+
+
+<div id="divListQueue">
+    @Html.Partial(IOBALANCEMVCV2.Home.Views._QueueOrderList)
+</div>
+
+<div id="divListQueueOrderDetail" style="display:none;">
+    <h4>Total: </h4>
+    <h5 id="gridTotal"></h5>
+    <h4>List Count: </h4><h5 id="gridCount"></h5>
+    @Html.Partial(IOBALANCEMVCV2.Home.Views._SalesOrderList)
+</div>
+
+
+
+<div id="divResultContainer" style="display:none"></div>
+
+@section scripts{
+    <script type="text/javascript">
+        window.queueOptions = {
+            getOrderAndOrderDetailsUrl: '@Url.Action(IOBALANCEMVCV2.Home.GetOrderAndOrderDetails())',
+            productUrl: "@Url.Action(IOBALANCEMVCV2.Common.GetProducts())",
+            productByIdUrl: "@Url.Action(IOBALANCEMVCV2.Common.GetProductsPerProductId())",
+            getPriceUrl: "@Url.Action(IOBALANCEMVCV2.OrderManagement.SalesOrder.GetCustomerAndProductPrice())",
+            saveOrderUrl: "@Url.Action(IOBALANCEMVCV2.Home.SaveSalesOrder())",
+            queueOrderUrl: '@Url.Action(IOBALANCEMVCV2.Home.QueueSalesOrder())'
+        }
+    </script>
+    <script type="text/javascript" src="@IOBALANCEV2LINKS.Scripts.iobalancev2.home_ordermanagement_queueorder_js"></script>
+    <script type="text/javascript" src="@IOBALANCEV2LINKS.Scripts.infrastructure.jquery_deserialize_js"></script>
+}

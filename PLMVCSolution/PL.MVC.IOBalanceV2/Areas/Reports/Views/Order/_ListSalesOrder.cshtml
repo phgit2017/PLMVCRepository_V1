@@ -1,0 +1,21 @@
+﻿@using Kendo.Mvc.UI;
+@using PL.Business.Common;
+
+@(Html.Kendo().Grid<PL.Business.Dto.IOBalanceV2.ReportSalesOrderDto>()
+        .Name("gvSO")
+        .Columns(columns =>
+        {
+            columns.Bound(c => c.SalesNo).Title("Sales Number").Width(300).Sortable(false).Lockable(true);
+            columns.Bound(c => c.customer.CustomerDropDownDisplay).Title("Customer Name").Width(300).Sortable(false).Lockable(true);
+            columns.Bound(c => c.DateCreatedWithFormat).Title("Date Created").Width(300).Sortable(false).Lockable(false);
+        })
+        .Scrollable()
+        .Sortable(sort => sort.AllowUnsort(false))
+        .Pageable()
+        .ColumnMenu()
+        .DataSource(dataSource => dataSource
+            .Ajax()
+            .Read(read => read.Action("GetSOReport", "Order"))
+            .PageSize(50)
+        )
+)

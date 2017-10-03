@@ -1,0 +1,57 @@
+﻿@using Kendo.Mvc.UI;
+@using PL.Business.Common;
+
+@(Html.Kendo().Grid<PL.Business.Dto.IOBalance.ProductDto>()
+        .Name("gvProduct")
+        .Columns(columns =>
+        {
+            columns.Template(@<text></text>).ClientTemplate("<a href='javascript:void(0)' id='editbutton' type='button' class='selected' data-button-type='actionbuttons' data-action-type='editbutton' data-product-id='#=ProductID#' data-product-code='#=ProductCode#' data-product-barcode='#=BarCode#' data-product-name='#=ProductName#' data-product-desc='#=ProductDesc#' data-product-extension='#=ProductExtension#' data-product-quantity='#=QtyWithFormat#' data-product-price='#=PriceWithFormat#' data-product-size='#=Size#' data-product-categoryid='#=CategoryID#' data-product-modelid='#=ModelID#' data-product-remarks='#=Remarks#' data-product-branchid='#=BranchID#' data-product-originalprice='#=OriginalPriceWithFormat#'>Edit Details</a> " + "|" + 
+            //"<a href='javascript:void(0)' id='addqtybutton' data-product-id='#=ProductID#'> Edit Quantity</a> "+ "|" +
+            "<a href='javascript:void(0)' id='voidqtybutton' data-product-id='#=ProductID#' data-product-qty='#=Quantity#'> Void Quantity</a> " + "|" +
+            "<a href='javascript:void(0)' id='editproductimage' type='button' class='selected' data-product-id='#=ProductID#'> Edit Image</a>")
+                .Title("Actions")
+                .Width(300)
+                .HeaderHtmlAttributes(new { @class = "bos-grid-text-center" })
+                .HtmlAttributes(new { @class = "bos-grid-text-center" })
+                .Locked(true);
+            columns.Template(@<text></text>).ClientTemplate("<img src='#=ProductImagePath#'>").Title("Product Image").Width(255);
+            columns.Bound(c => c.CategoryFullDisplay).Title("Category").Width(180).Sortable(false).Lockable(false);
+            columns.Bound(c => c.ProductCode).Title("Code").Width(100).Lockable(false);
+            columns.Bound(c => c.ProductName).Title("Name").Width(200).Lockable(false);
+            columns.Bound(c => c.ProductExtension).Title("Extension").Width(150).Lockable(false);
+            columns.Bound(c => c.Quantity).Title("Quantity").Width(100).Lockable(false);
+            columns.Bound(c => c.Price).Title("Price").Width(100).Lockable(false);
+            columns.Bound(c => c.BranchName).Title("Branch").Width(200).Lockable(false);
+            columns.Bound(c => c.Size).Title("Size").Width(100).Lockable(false);
+            columns.Bound(c => c.ProductDesc).Title("Decription").Width(160).Lockable(false);
+            columns.Bound(c => c.Remarks).Title("Remarks").Width(200).Lockable(false);
+        })
+        .Scrollable()
+        .Sortable(sort => sort.AllowUnsort(false))
+        .Pageable()
+        .ColumnMenu()
+        .DataSource(dataSource => dataSource
+            .Ajax()
+                .Read(read => read.Action("GetInventory", "PurchaseOrder"))
+            .PageSize(50)
+        )
+)
+
+@*<a href='javascript:void(0)' id='editbutton' type='button' class='selected'
+         data-button-type='actionbuttons'
+         data-action-type='editbutton'
+         data-product-id='@products.ProductID'
+         data-product-code='@products.ProductCode'
+         data-product-name='@products.ProductName'
+         data-product-desc='@products.ProductDesc'
+         data-product-extension='@products.ProductExtension'
+         data-product-quantity='@qtywithformat'
+         data-product-price='@pricewithformat'
+         data-product-size='@products.Size'
+         data-product-categoryid='@products.CategoryID'
+         data-product-modelid='@products.ModelID'
+         data-product-remarks='@products.Remarks'
+         data-product-branchid='@products.BranchID'
+         data-product-originalprice='@originalpricewithformat'>
+        Edit Details
+    </a>*@

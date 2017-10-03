@@ -1,0 +1,29 @@
+c:\users\mypc1\documents\visual studio 2013\Projects\PLMVCSolution\PL.Infra.DbContext.Interface\bin\Debug\PL.Infra.DbContext.Interface.dll
+c:\users\mypc1\documents\visual studio 2013\Projects\PLMVCSolution\PL.Infra.DbContext.Interface\bin\Debug\PL.Infra.DbContext.Interface.pdb
+c:\users\mypc1\documents\visual studio 2013\Projects\PLMVCSolution\PL.Infra.DbContext.Interface\obj\Debug\PL.Infra.DbContext.Interface.dll
+c:\users\mypc1\documents\visual studio 2013\Projects\PLMVCSolution\PL.Infra.DbContext.Interface\obj\Debug\PL.Infra.DbContext.Interface.pdb
+c:\users\mypc1\documents\visual studio 2013\Projects\PLMVCSolution\PL.Infra.DbContext.Interface\bin\Debug\PL.Infra.DbContext.Interface.dll.config
+c:\users\mypc1\documents\visual studio 2013\Projects\PLMVCSolution\PL.Infra.DbContext.Interface\bin\Debug\EntityFramework.dll
+c:\users\mypc1\documents\visual studio 2013\Projects\PLMVCSolution\PL.Infra.DbContext.Interface\bin\Debug\EntityFramework.SqlServer.dll
+c:\users\mypc1\documents\visual studio 2013\Projects\PLMVCSolution\PL.Infra.DbContext.Interface\bin\Debug\EntityFramework.xml
+c:\users\mypc1\documents\visual studio 2013\Projects\PLMVCSolution\PL.Infra.DbContext.Interface\bin\Debug\EntityFramework.SqlServer.xml
+c:\users\mypc1\documents\visual studio 2013\Projects\PLMVCSolution\PL.Infra.DbContext.Interface\obj\Debug\PL.Infra.DbContext.Interface.csprojResolveAssemblyReference.cache
+C:\Users\lep.ridad\Desktop\PLMVCSolution\PL.Infra.DbContext.Interface\bin\Debug\PL.Infra.DbContext.Interface.dll.config
+C:\Users\lep.ridad\Desktop\PLMVCSolution\PL.Infra.DbContext.Interface\bin\Debug\PL.Infra.DbContext.Interface.dll
+C:\Users\lep.ridad\Desktop\PLMVCSolution\PL.Infra.DbContext.Interface\bin\Debug\PL.Infra.DbContext.Interface.pdb
+C:\Users\lep.ridad\Desktop\PLMVCSolution\PL.Infra.DbContext.Interface\bin\Debug\EntityFramework.dll
+C:\Users\lep.ridad\Desktop\PLMVCSolution\PL.Infra.DbContext.Interface\bin\Debug\EntityFramework.SqlServer.dll
+C:\Users\lep.ridad\Desktop\PLMVCSolution\PL.Infra.DbContext.Interface\bin\Debug\EntityFramework.xml
+C:\Users\lep.ridad\Desktop\PLMVCSolution\PL.Infra.DbContext.Interface\bin\Debug\EntityFramework.SqlServer.xml
+C:\Users\lep.ridad\Desktop\PLMVCSolution\PL.Infra.DbContext.Interface\obj\Debug\PL.Infra.DbContext.Interface.csprojResolveAssemblyReference.cache
+C:\Users\lep.ridad\Desktop\PLMVCSolution\PL.Infra.DbContext.Interface\obj\Debug\PL.Infra.DbContext.Interface.dll
+C:\Users\lep.ridad\Desktop\PLMVCSolution\PL.Infra.DbContext.Interface\obj\Debug\PL.Infra.DbContext.Interface.pdb
+C:\Users\lep.ridad\Documents\Visual Studio 2013\Projects\PLMVCSolution\PL.Infra.DbContext.Interface\bin\Debug\PL.Infra.DbContext.Interface.dll.config
+C:\Users\lep.ridad\Documents\Visual Studio 2013\Projects\PLMVCSolution\PL.Infra.DbContext.Interface\bin\Debug\PL.Infra.DbContext.Interface.dll
+C:\Users\lep.ridad\Documents\Visual Studio 2013\Projects\PLMVCSolution\PL.Infra.DbContext.Interface\bin\Debug\PL.Infra.DbContext.Interface.pdb
+C:\Users\lep.ridad\Documents\Visual Studio 2013\Projects\PLMVCSolution\PL.Infra.DbContext.Interface\bin\Debug\EntityFramework.dll
+C:\Users\lep.ridad\Documents\Visual Studio 2013\Projects\PLMVCSolution\PL.Infra.DbContext.Interface\bin\Debug\EntityFramework.SqlServer.dll
+C:\Users\lep.ridad\Documents\Visual Studio 2013\Projects\PLMVCSolution\PL.Infra.DbContext.Interface\bin\Debug\EntityFramework.xml
+C:\Users\lep.ridad\Documents\Visual Studio 2013\Projects\PLMVCSolution\PL.Infra.DbContext.Interface\bin\Debug\EntityFramework.SqlServer.xml
+C:\Users\lep.ridad\Documents\Visual Studio 2013\Projects\PLMVCSolution\PL.Infra.DbContext.Interface\obj\Debug\PL.Infra.DbContext.Interface.dll
+C:\Users\lep.ridad\Documents\Visual Studio 2013\Projects\PLMVCSolution\PL.Infra.DbContext.Interface\obj\Debug\PL.Infra.DbContext.Interface.pdb

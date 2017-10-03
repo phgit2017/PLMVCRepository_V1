@@ -1,0 +1,216 @@
+//
+// Badges
+// --------------------------------------------------
+
+
+// Base class
+.badge {
+  display: inline-block;
+  min-width: 22px;
+  padding: 5px;
+  font-size: $font-size-small;
+  font-weight: $badge-font-weight;
+  color: $badge-color;
+  line-height: $badge-line-height;
+  vertical-align: baseline;
+  white-space: nowrap;
+  text-align: center;
+  background-color: $badge-bg;
+  border-radius: $badge-border-radius;
+  @include box-shadow(0 2px 0 rgba(0, 0, 0, 0.18));
+
+
+  // Empty badges collapse automatically (not available in IE8)
+  &:empty {
+    display: none;
+  }
+
+  // Quick fix for badges in buttons
+  .btn & {
+    position: relative;
+    top: -1px;
+  }
+  
+  .btn-xs &, .btn-sm &,
+  .btn-group-xs &, .btn-group-sm &{
+    top: 0;
+    padding: 1px 5px;
+  }
+
+  // [converter] extracted a& to a.badge
+
+  // Account for badges in navs
+  .list-group-item.active > &,
+  .nav-pills > .active > a > & {
+    color: $badge-active-color;
+    background-color: $badge-active-bg;
+  }
+  
+  .list-group-item > & {
+    float: right;
+  }
+  
+  .list-group-item > & + & {
+    margin-right: 5px;
+  }
+  
+  .nav-pills > li > a > & {
+    margin-left: 3px;
+  }
+}
+
+// Hover state, but only for links
+a.badge {
+  &:hover,
+  &:focus {
+    color: $badge-link-hover-color;
+    text-decoration: none;
+    cursor: pointer;
+  }
+}
+
+//LMVP BADGE
+
+$avatar-dim: (98px)/2;
+$badge-dim: (146px)/2;
+$arc-height: (190px)/2;
+.lmvp-badge {
+    position: relative;
+    z-index: 3;
+    width: $badge-dim;
+    height: $badge-dim;
+    max-width: $badge-dim;
+    @include border-radius($badge-dim);
+    .img-container {
+        width: $avatar-dim;
+        height: $avatar-dim;
+        max-width: $avatar-dim;
+        display: block;
+        @include border-radius($avatar-dim);
+        position: absolute;
+        left: calc(50% - #{$avatar-dim/2});
+        left: -webkit-calc(50% - #{$avatar-dim/2});
+        left: -moz-calc(50% - #{$avatar-dim/2});
+        top: calc(50% - #{$avatar-dim/2});
+        top: -webkit-calc(50% - #{$avatar-dim/2});
+        top: -moz-calc(50% - #{$avatar-dim/2});
+        z-index: 3;
+        overflow: hidden;
+        border: 2px solid #ffe7a4;
+        @include box-shadow(0 0 0 2px #ffc818);
+        div {
+            display: block;
+            width: 45px;
+            height: 45px;
+            @include border-radius($avatar-dim);
+            position: relative;
+            background-size: cover;
+            background-position: center center;
+            background-repeat: no-repeat;
+            content: '';
+            overflow: hidden;
+        }
+        &:before {
+            position: absolute;
+            content: '';
+            width: 240px;
+            height: 184px;
+            top: -140%;
+            right: 0;
+            z-index: 0;
+            left: -190%;
+            z-index: 0;
+            @include opacity(0.8);
+            background: url(../../assets/img/lmvp/lmvp-badge-shine.png) no-repeat center center;
+            background-size: cover;
+        }
+    }
+    &:before,
+    &:after {
+        content: '';
+        display: block;
+        position: absolute;
+    }
+    &:after {
+        background: white;
+        z-index: 1;
+        top: 3px;
+        left: 3px;
+        right: 3px;
+        bottom: 3px;
+        border-radius: ($badge-dim*2) - 50;
+        @include box-shadow(0px 3px 6px 0px rgba(0, 0, 0, 0.2));
+    }
+    &:before {
+        background: url(../../assets/img/lmvp/lmvp-badge.svg) no-repeat center center;
+        background-size: 100%;
+        top: 0;
+        bottom: 0;
+        left: 0;
+        right: 0;
+        z-index: 2;
+    }
+}
+
+
+.lmvp-logo-badge {
+    $badge-xs-dim: 36px;
+    position: relative;
+    width: 50px;
+    height: 22px;
+    background-color: white;
+    border: #d7b100 1px solid;
+    &:before,
+    &:after {
+        position: absolute;
+        display: block;
+        content: '';
+    }
+    &:before {
+        display: none;
+        width: $badge-xs-dim;
+        height: $badge-xs-dim;
+        top: 0;
+        left: 0;
+        background: url(../../assets/img/lmvp/lmvp-badge.svg) no-repeat center center;
+        background-size: 100%;
+    }
+    &:after {
+        width: 100%;
+        height: 100%;
+        background: url(../../assets/img/lmvp/lmvp-avatar-badge-logo-01.jpg) no-repeat center center;
+        background-color: white;
+        @include border-radius(10px);
+        top: 0;
+        left: 0;
+    }
+}
+
+// From Portfolio
+.profile-avatar {
+    .avatar {
+        position: relative;
+        .lmvp-logo-badge {
+            position: absolute;
+            bottom: 0;
+            right: 0;
+            left: 0;
+            margin: auto;
+        }
+    }
+    &.my-team-item-avatar {
+      .avatar.lmvp-border{
+        padding:2px;
+      }
+        .lmvp-logo-badge {
+            transform: scale(0.8);
+        }
+    }
+}
+
+.avatar-menu .avatar ~ .lmvp-logo-badge {
+  position: absolute;
+  bottom: 0;
+  right: 24px;
+  @include transform(scale(0.5));
+}

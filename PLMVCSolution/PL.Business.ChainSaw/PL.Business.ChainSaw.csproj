@@ -1,0 +1,85 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="12.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProjectGuid>{C507B8DD-40D4-42D7-999B-6181761F51DD}</ProjectGuid>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>PL.Business.ChainSaw</RootNamespace>
+    <AssemblyName>PL.Business.ChainSaw</AssemblyName>
+    <TargetFrameworkVersion>v4.5.1</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="System" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="CustomerService.cs" />
+    <Compile Include="Extensions\EntityMapper.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="SupplierService.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\Infrastructure.Utilities\Infrastructure.Utilities.csproj">
+      <Project>{bfc618ed-359e-4755-8d54-b519d3c12d56}</Project>
+      <Name>Infrastructure.Utilities</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\PL.Business.Common\PL.Business.Common.csproj">
+      <Project>{52fb5cb6-da53-44b2-bd71-0a5c1665a1b3}</Project>
+      <Name>PL.Business.Common</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\PL.Business.Dto.ChainSaw\PL.Business.Dto.ChainSaw.csproj">
+      <Project>{b220f476-5491-4219-8fad-f03a930eaf5f}</Project>
+      <Name>PL.Business.Dto.ChainSaw</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\PL.Business.Interface.ChainSaw\PL.Business.Interface.ChainSaw.csproj">
+      <Project>{9bbf6a62-8354-47ed-849a-39fb2251ad6f}</Project>
+      <Name>PL.Business.Interface.ChainSaw</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\PL.Core.Entity.ChainSawDBV2\PL.Core.Entity.ChainSawDBV2.csproj">
+      <Project>{2f93a414-4d1f-4ef5-a26b-c837d2260ebc}</Project>
+      <Name>PL.Core.Entity.ChainSawDBV2</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\PL.Core.Entity.Repository.Interface\PL.Core.Entity.Repository.Interface.csproj">
+      <Project>{198b342d-e3b9-440c-82e6-f2efa663f004}</Project>
+      <Name>PL.Core.Entity.Repository.Interface</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\PL.Infra.DbContext.Interface\PL.Infra.DbContext.Interface.csproj">
+      <Project>{5eea74c6-e694-45ca-a558-eea097656486}</Project>
+      <Name>PL.Infra.DbContext.Interface</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+</Project>

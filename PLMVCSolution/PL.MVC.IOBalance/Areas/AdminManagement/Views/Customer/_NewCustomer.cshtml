@@ -1,0 +1,11 @@
+﻿@model PL.Business.Dto.IOBalance.CustomerDto
+<div>
+    <form class="form-horizontal" id="frmCustomer">
+        @Html.Partial(IOBALANCEMVC.AdminManagement.Customer.Views._FrmCustomer, Model)
+        <div class="form-group">
+            <div class="col-sm-8 col-sm-offset-3 text-right">
+                <button id="savedetails" type="button" class="btn btn-warning" data-url="@Url.Action(IOBALANCEMVC.AdminManagement.Customer.SaveCustomer())">Save Customer</button>
+            </div>
+        </div>
+    </form>
+</div>

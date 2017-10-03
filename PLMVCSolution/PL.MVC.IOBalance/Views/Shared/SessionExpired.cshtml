@@ -1,0 +1,22 @@
+﻿@{
+    Layout = "~/Views/Shared/_LayoutWithoutMenu.cshtml";
+}
+
+@*@{
+    Layout = "~/Views/Shared/_LoginLayout.cshtml";
+}*@
+
+<br />
+<div class="jumbotron text-center">
+    <h1>Session Expired</h1>
+    <h3>
+        You'll have to log back in
+    </h3>
+    <h6>
+        What caused this? leaving the page idle for a long time would normally result to this
+    </h6>
+    <div>
+        <a class="btn btn-primary btn-lg" href="@Url.Action(IOBALANCEMVC.Authentication.LogOut())"> Return to Login</a>
+    </div>
+</div>
+

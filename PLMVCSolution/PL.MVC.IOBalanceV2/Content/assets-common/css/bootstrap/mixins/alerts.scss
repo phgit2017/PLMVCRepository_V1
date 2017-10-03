@@ -1,0 +1,22 @@
+// Alerts
+
+@mixin alert-variant($background, $border, $text-color) {
+  background-color: $background;
+  border-color: $border;
+  color: $text-color;
+
+  hr {
+    border-top-color: darken($border, 5%);
+  }
+  .alert-link {
+    color: $text-color;
+    border-bottom: 1px solid lighten($background,10%);
+    padding-bottom: 2px;
+    @include transition (all 0.3s $easing);
+
+    &:hover {
+    	border-bottom: 2px solid $text-color;
+    	@include transition (all 0.3s $easing);
+    }
+  }
+}

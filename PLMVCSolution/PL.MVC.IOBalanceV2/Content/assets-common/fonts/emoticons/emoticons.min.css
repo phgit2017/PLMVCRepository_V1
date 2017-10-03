@@ -1,0 +1,71 @@
+@charset "UTF-8";
+
+@font-face {
+  font-family: "emoji";
+  src:url("emoticons.eot");
+  src:url("emoticons.eot?#iefix") format("embedded-opentype"),
+    url("emoticons.woff") format("woff"),
+    url("emoticons.ttf") format("truetype"),
+    url("emoticons.svg") format("svg");
+  font-weight: normal;
+  font-style: normal;
+
+}
+
+
+
+[class^="emoji-"]:before,
+[class*="emoji-"]:before {
+  font-family: emoji !important;
+  font-style: normal !important;
+  font-weight: normal !important;
+  font-variant: normal !important;
+  text-transform: none !important;
+  speak: none;
+  line-height: 1;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+.emoji-happy:before {
+  content: "\61";
+}
+.emoji-sad-solid:before {
+  content: "\62";
+}
+.emoji-angry:before {
+  content: "\63";
+}
+.emoji-emotional:before {
+  content: "\64";
+}
+.emoji-dissappointed:before {
+  content: "\65";
+}
+.emoji-sad:before {
+  content: "\66";
+}
+.emoji-sleepy:before {
+  content: "\67";
+}
+.emoji-superstar:before {
+  content: "\68";
+}
+.emoji-contented:before {
+  content: "\6a";
+}
+.emoji-neutral:before {
+  content: "\6b";
+}
+.emoji-nervous:before {
+  content: "\6c";
+}
+.emoji-furious:before {
+  content: "\6d";
+}
+.emoji-happy-solid:before {
+  content: "\6e";
+}
+.emoji-neutral-solid:before {
+  content: "\6f";
+}

@@ -1,0 +1,29 @@
+﻿@using Kendo.Mvc.UI;
+@using PL.Business.Common;
+
+@(Html.Kendo().Grid<PL.Business.Dto.IOBalance.BranchDto>()
+                .Name("gvBranch")
+        .Columns(columns =>
+        {
+
+
+            columns.Template(@<text></text>).ClientTemplate("<a href='javascript:void(0)' type='button' class='selected' data-button-type='actionbuttons' data-action-type='editbutton' data-branch-id='#=BranchId#' data-branch-name='#=BranchName#' data-branch-details='#=BranchDetails#' data-branch-address='#=BranchAddress#'> Edit Details</a>")
+                .Title("Actions")
+                .Width(300)
+                .Locked(true)
+                .HeaderHtmlAttributes(new { @class = "bos-grid-text-center" })
+                .HtmlAttributes(new { @class = "bos-grid-text-center" });
+            columns.Bound(c => c.BranchName).Title("Branch Name").Width(300).Sortable(true).Lockable(true);
+            columns.Bound(c => c.BranchAddress).Title("Branch Address").Width(300).Sortable(true).Lockable(true);
+            columns.Bound(c => c.BranchDetails).Title("Branch Details").Width(300).Sortable(true).Lockable(true);
+        })
+        .Scrollable()
+        .Sortable(sort => sort.AllowUnsort(false))
+        .Pageable()
+        .ColumnMenu()
+        .DataSource(dataSource => dataSource
+            .Ajax()
+                            .Read(read => read.Action("GetBranches", "Branch"))
+            .PageSize(50)
+        )
+)

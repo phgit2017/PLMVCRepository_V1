@@ -1,0 +1,118 @@
+﻿@model List<PL.Business.Dto.IOBalance.ProductDto>
+@using PL.Business.Common;
+
+
+<!--Old-->
+<table id="gvProduct" class="table table-striped">
+    <thead>
+        <tr>
+            <th data-width="220" data-field="productaction"><strong>Action</strong></th>
+            <th data-width="200" data-field="productimage">Image</th>
+            <th data-width="140" data-field="productcategory"><strong>Category</strong></th>
+            <th data-width="120" data-field="productcode"><strong>Code</strong></th>
+            <th data-width="120" data-field="productname"><strong>Name</strong></th>
+            <th data-width="120" data-field="productextension"><strong>Extension</strong></th>
+            <th data-width="120" data-field="productquantity"><strong>Quantity</strong></th>
+            <th data-width="100" data-field="productprice"><strong>Price</strong></th>
+            <th data-width="130" data-field="productbranch"><strong>Branch Details</strong></th>
+            <th data-width="100" data-field="productsize"><strong>Size</strong></th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var products in Model)
+        {
+            var datarowproductid = string.Format("tdproductid_{0}", products.ProductID);
+            var pricewithformat = Convert.ToDecimal(products.Price).ToString("0.00");
+            var originalpricewithformat = products.OriginalPrice == null ? "" : Convert.ToDecimal(products.OriginalPrice).ToString("0.00");
+            var qtywithformat = Convert.ToDecimal(products.Quantity).ToString("0.00");
+            var qtyclass = products.Quantity >= 0 ? "" : "error";
+
+            var dir = string.Format("~/{0}", Constants.ProductImageContentDir);
+            var fileName = products.ProductImage == null ? Constants.DefaultProductImageContent : products.ProductImage;
+            var path = Path.Combine(dir, fileName);
+            <tr>
+                <td>
+                    <i></i>
+                    <span>
+                        <small>
+                            <a href="javascript:void(0)" id="editbutton" type="button" class="selected"
+                               data-button-type="actionbuttons"
+                               data-action-type="editbutton"
+                               data-product-id="@products.ProductID"
+                               data-product-code="@products.ProductCode"
+                               data-product-name="@products.ProductName"
+                               data-product-desc="@products.ProductDesc"
+                               data-product-extension="@products.ProductExtension"
+                               data-product-quantity="@qtywithformat"
+                               data-product-price="@pricewithformat"
+                               data-product-size="@products.Size"
+                               data-product-categoryid="@products.CategoryID"
+                               data-product-modelid="@products.ModelID"
+                               data-product-remarks="@products.Remarks"
+                               data-product-branchid="@products.BranchID"
+                               data-product-originalprice="@originalpricewithformat">
+                                Edit Details
+                            </a>
+                        </small>
+                    </span>
+                    |
+                    <span>
+                        <small>
+                            <a href="javascript:void(0)" id="addqtybutton" type="button" class="selected"
+                               data-product-id="@products.ProductID">
+                                Edit Quantity
+                            </a>
+                        </small>
+                    </span>
+                    |
+                    <span>
+                        <small>
+                            <a href="javascript:void(0)" id="editproductimage" type="button" class="selected"
+                               data-product-id="@products.ProductID">
+                                Edit Image
+                            </a>
+                        </small>
+                    </span>
+                </td>
+                <td>
+                    <i></i>
+                    <span>
+                        <img src="@Url.Content(@path)" alt="Product Image" />
+                    </span>
+                </td>
+                <td>
+                    <i data-id="tdcategoryname"></i>
+                    <span><small>@products.CategoryFullDisplay</small></span>
+                </td>
+                <td>
+                    <i data-css-class="text-center" data-id="tdproductcode"></i>
+                    <span><small>@products.ProductCode</small></span>
+                </td>
+                <td>
+                    <i data-id="tdproductname"></i>
+                    <span><small>@products.ProductName</small></span>
+                </td>
+                <td>
+                    <i data-id="tdproductextension"></i>
+                    <span><small>@products.ProductExtension</small></span>
+                </td>
+                <td>
+                    <i data-id="tdproductqty"></i>
+                    <span class="@qtyclass"><small>@qtywithformat</small></span>
+                </td>
+                <td>
+                    <i data-id="tdproductprice"></i>
+                    <span><small>@pricewithformat</small></span>
+                </td>
+                <td>
+                    <i data-id="tdproductbranch"></i>
+                    <span><small>@products.BranchName</small></span>
+                </td>
+                <td>
+                    <i data-id="tdproductsize"></i>
+                    <span><small>@products.Size</small></span>
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>

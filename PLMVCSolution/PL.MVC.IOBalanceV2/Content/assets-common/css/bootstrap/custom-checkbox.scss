@@ -1,0 +1,91 @@
+//
+// Checkboxes
+// --------------------------------------------------
+
+/* Base for label styling */
+.custom-input[type="checkbox"]:not(:checked),
+.custom-input[type="checkbox"]:checked,
+.custom-input[type="radio"]:not(:checked),
+.custom-input[type="radio"]:checked {
+  position: absolute;
+  left: -9999px;
+}
+.custom-input[type="checkbox"]:not(:checked) + label,
+.custom-input[type="checkbox"]:checked + label,
+.custom-input[type="radio"]:not(:checked) + label,
+.custom-input[type="radio"]:checked + label {
+  position: relative;
+  padding-left: 25px;
+  cursor: pointer;
+  font-family: $font-family-sans-serif;
+  margin-bottom: 0;
+}
+
+/* checkbox aspect */
+.custom-input[type="checkbox"]:not(:checked) + label:before,
+.custom-input[type="checkbox"]:checked + label:before,
+.custom-input[type="radio"]:not(:checked) + label:before,
+.custom-input[type="radio"]:checked + label:before {
+  content: '';
+  position: absolute;
+  left:0; top: calc(50% - 9px);
+  width: 18px; height: 18px;
+  border: 2px solid darken($gray-lighter,5%);
+  background: #f8f8f8;
+  border-radius: 18px;
+  // box-shadow: inset 0 1px 3px rgba(0,0,0,.3)
+}
+/* checked mark aspect */
+.custom-input[type="checkbox"]:not(:checked) + label:after,
+.custom-input[type="checkbox"]:checked + label:after,
+.custom-input[type="radio"]:not(:checked) + label:after,
+.custom-input[type="radio"]:checked + label:after {
+  font-family: 'Material Design Iconic Font';
+  content: '\f26b';
+  position: absolute;
+  top: calc(50% - 11px); left: 2px;
+  font-size: 24px;
+  line-height: 0.8;
+  color: $brand-success;
+  @include transition(all .3s $easing);
+}
+/* checked mark aspect changes */
+.custom-input[type="checkbox"]:not(:checked) + label:after,
+.custom-input[type="radio"]:not(:checked) + label:after {
+  opacity: 0;
+  @include transform(scale(0));
+}
+.custom-input[type="checkbox"]:checked + label:after,
+.custom-input[type="radio"]:checked + label:after {
+  opacity: 1;
+  @include transform(scale(1));
+}
+/* disabled checkbox */
+.custom-input[type="checkbox"]:disabled:not(:checked) + label:before,
+.custom-input[type="checkbox"]:disabled:checked + label:before,
+.custom-input[type="radio"]:disabled:not(:checked) + label:before,
+.custom-input[type="radio"]:disabled:checked + label:before {
+  box-shadow: none;
+  border-color: #bbb;
+  background-color: #ddd;
+}
+.custom-input[type="checkbox"]:disabled:checked + label:after,
+.custom-input[type="radio"]:disabled:checked + label:after {
+  color: #999;
+}
+.custom-input[type="checkbox"]:disabled + label,
+.custom-input[type="radio"]:disabled + label {
+  color: $gray-lighter;
+}
+/* accessibility */
+.custom-input[type="checkbox"]:checked:focus + label:before,
+.custom-input[type="checkbox"]:not(:checked):focus + label:before,
+.custom-input[type="radio"]:checked:focus + label:before,
+.custom-input[type="radio"]:not(:checked):focus + label:before {
+  border: 1px dotted $brand-cyan;
+}
+
+/* hover style just for information */
+label:hover:before {
+  border: 2px solid $brand-cyan !important;
+}

@@ -1,0 +1,72 @@
+﻿
+$('body').on('click', '#clickme', function () {
+    $elem = $(this);
+
+    $.ajax({
+        url: $elem.data('url'),
+        type: 'POST',
+        success: function (data) {
+            $('#divResultContainer').show().html(data.alertMessage);
+        }
+    });
+});
+
+$('body').on('click', '#savedetails', function () {
+    var $elem = $(this),
+        url = $elem.data('url'),
+        datas = $('#frmCategory').serialize();
+    _doSaveDetails(datas, url);
+});
+
+var ADMINMANAGEMENTCATEGORY = (function () {
+    var _variables =
+    {
+        params : null
+    };
+
+    var _doBindTblCategory = function () {
+        var $gvCategory = $('#gvCategory');
+
+        $gvCategory.kendoGrid({
+            sortable: false,
+            scrollable: true,
+            pageable: true
+        });
+    }
+
+    var _doSaveDetails = function (serializedData, elementUrl) {
+        debugger;
+        $.ajax({
+            url: elementUrl,
+            type: 'POST',
+            data: serializedData
+        });
+    }
+
+    var initialize = function (options) {
+        try {
+            _variables.params = options || {};
+            _doBindTblCategory();
+        } catch (ex) {
+            if (typeof console !== "undefined" && console !== null) {
+                console.error("Error parsing inline options", ex);
+            }
+        }
+    };
+
+    return {
+        initialize: initialize
+    };
+
+})();
+
+
+try {
+    var params = window.categoryOptions || {};
+} catch (e) {
+    console.error("Error parsing inline options", ex);
+}
+
+$(document).ready(function () {
+    ADMINMANAGEMENTCATEGORY.initialize();
+});

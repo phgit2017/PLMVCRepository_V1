@@ -1,0 +1,561 @@
+//
+// Utility classes
+// --------------------------------------------------
+// Floats
+// -------------------------
+.clearfix {
+    @include clearfix;
+}
+
+.center-block {
+    @include center-block;
+}
+
+.pull-right {
+    float: right !important;
+}
+
+.pull-left {
+    float: left !important;
+}
+
+// Toggling content
+// -------------------------
+// Note: Deprecated .hide in favor of .hidden or .sr-only (as appropriate) in v3.0.1
+.hide {
+    display: none !important;
+}
+
+.show {
+    display: block !important;
+}
+
+.invisible {
+    visibility: hidden;
+}
+
+.text-hide {
+    @include text-hide;
+}
+
+// Hide from screenreaders and browsers
+//
+// Credit: HTML5 Boilerplate
+.hidden {
+    display: none !important;
+    visibility: hidden !important;
+}
+
+// For Affix plugin
+// -------------------------
+.affix {
+    position: fixed;
+}
+
+// Required Fields
+.required:after {
+    font-size: 1.8em;
+    display: inline-block;
+    position: absolute;
+    content: '*';
+    color: $brand-danger;
+    margin-right: -9px;
+    margin-top: -9px;
+    top: 0;
+    right: 15px;
+    @media (min-width: $screen-desktop){
+        right: auto;
+    }
+}
+
+// Attach Unit Values
+// -------------------------
+*[class^="unit-"] {
+    font-style: normal;
+    &:after,
+    &:before {
+        color: inherit;
+        font-size: inherit;
+    }
+}
+
+.unit-percent:after {
+    content: "%";
+}
+
+.unit-peso:before {
+    content: 'Php';
+}
+
+.unit-second:after {
+    content: 'sec/s';
+}
+
+.unit-minute:after {
+    content: 'min/s';
+}
+
+.unit-hour:after {
+    content: 'hrs';
+}
+
+.unit-millisecond:after {
+    content: 'ms';
+}
+
+.unit-day:after {
+    content: 'day/s';
+}
+
+.unit-kilo:after {
+    content: 'kg/s';
+}
+
+.unit-piece:after {
+    content: 'pc/s';
+}
+
+// Hovers and Cursors
+// -------------------------
+.hoverable {
+    &:hover,
+    &:active,
+    &:focus {
+        color: $brand-blue;
+        cursor: default;
+    }
+    &.help {
+        cursor: context-menu;
+    }
+}
+
+// Break Word
+.break-word {
+    white-space: normal;
+    word-wrap: break-word;
+    word-break: break-word;
+}
+
+// Ellipsis
+.truncate-ellipsis{
+    @include truncate-ellipsis();
+}
+
+// ===================== Read More ================ //
+%reset-read-more {
+    overflow: visible;
+    max-height: inherit;
+    white-space: pre-line;
+}
+
+*[data-target="read-more"] {
+    overflow: hidden;
+    position: relative;
+    cursor: pointer;
+    // initial state (no read more)
+    .read-more {
+        @extend %reset-read-more;
+    }
+    .trigger-read-more {
+        position: absolute;
+        top: 0;
+        left: 0;
+        right: 0;
+        bottom: 0;
+        z-index: 20;
+        display: block;
+        &:after {
+            display: block;
+            content: 'Click to read more';
+            text-transform: uppercase;
+            text-align: center;
+            background-color: #616161;
+            color: white;
+            font-size: 11px;
+            padding: 2px 4px;
+            width: 130px;
+            @include border-radius(1px);
+            @include opacity(0);
+            @include transition(all .3s $easing);
+            position: absolute;
+            bottom: 0;
+            left: calc(50% - 65px);
+            left: -webkit-calc(50% - 65px);
+            left: -moz-calc(50% - 65px);
+        }
+    }
+    // activate read more
+    &.read-more-activate {
+        .read-more {
+            display: block;
+            clear: both;
+            width: auto;
+            position: relative;
+            margin: 0;
+            min-height: $grid-gutter-width;
+            max-height: 100px;
+            overflow: hidden;
+            > * {
+                z-index: 0;
+            }
+            &:after {
+                display: block;
+                position: absolute;
+                bottom: 0;
+                left: 0;
+                right: 0;
+                content: '';
+                height: 60px;
+                z-index: 2;
+                @include gradient-vertical(transparent, white, 0%, 100%)
+            }
+        }
+        // open readmore
+        &.in {
+            .trigger-read-more {
+                position: absolute;
+                top: auto;
+                left: 0;
+                right: 0;
+                bottom: 10px;
+                &:after {
+                    //display: inline-block;
+                    //display: none;
+                    content: 'Click to read less';
+                    @include box-shadow(0 2px 6px 2px #bdbdbd);
+                }
+            }
+            .read-more {
+                @extend %reset-read-more;
+                &:after {
+                    background-image: none!important;
+                }
+            }
+        }
+        // hovered readmore
+        &:hover {
+            .trigger-read-more:after {
+                @include opacity(1);
+                @include transition(all .3s $easing);
+                bottom: 10%;
+            }
+        }
+        // color of gradient
+        &.bg-muted,
+        .table-striped.table-hover tr:hover & {
+            .read-more:after {
+                @include gradient-vertical(transparent, lighten($gray-base, 95%), 0%, 100%);
+            }
+        }
+    }
+}
+
+// ===================== Read More ================ //
+// ===================== Scroll to top ================ //
+*[data-target="scroll-top"] {
+    line-height: 1;
+    text-transform: uppercase;
+    padding: 6px;
+    background-color: rgba(0, 0, 0, 0.5);
+    color: white;
+    @media (max-width: $screen-xs-max) {
+        display: none !important;
+    }
+    @media (min-width: $screen-sm-min) {
+        position: fixed;
+        right: 15px;
+        bottom: 15px;
+        z-index: $zindex-modal + 2;
+        @include opacity(0);
+        @include translate(80px, 0);
+        @include transition(0.3s $easing);
+        &.in {
+            @include opacity(1);
+            @include translate(0, 0);
+            @include transition(0.3s $easing);
+        }
+    }
+    > i {
+        height: 0px;
+        line-height: 1;
+        margin-bottom: 30px;
+        display: block;
+        margin-top: -10px;
+    }
+    > *:not(i) {
+        font-size: 10px;
+        white-space: normal;
+        width: 40px;
+    }
+    &:hover {
+        background-color: rgba(0, 0, 0, 0.7);
+        color: white;
+    }
+    &:active,
+    &:focus {
+        outline: none !important;
+        background-color: rgba(0, 0, 0, 0.8);
+        color: white;
+    }
+}
+
+// ===================== Scroll to top ================ //
+// ===================== Reset textbox value ================ //
+*[data-target="reset-search"] {
+    margin-left: -10px;
+    right: 38px;
+    max-width: 0;
+    width: auto;
+    position: relative;
+    display: table-cell;
+    vertical-align: middle;
+    z-index: 20;
+    .btn-close {
+        position: absolute;
+        top: 0;
+        bottom: 0;
+        display: none;
+    }
+    .close {
+        opacity: 1;
+        line-height: 0;
+    }
+}
+
+// ===================== Reset textbox value ================ //
+// ===================== Placeholder (see OOTT initial state) ================ //
+.placeholder-initial {
+    width: 390px;
+    margin: 190px auto 0;
+    text-align: center;
+    button {
+        width: 70%;
+        margin: 20px auto;
+    }
+}
+
+.placeholder-header {
+    text-align: center;
+    margin-bottom: 40px;
+    font-size: 53px;
+}
+
+// ===================== Placeholder initial (see OOTT initial state) ================ //
+// ===================== Jquery Counter ================ //
+.jqEasyCounterMsg {
+    color: #fff !important;
+    width: 145px !important;
+    padding: 0px 5px;
+    border-bottom-left-radius: 3px;
+    border-bottom-right-radius: 3px;
+    margin-left: 3px;
+    position: absolute;
+    background: $gray-base;
+    font-size: 12px !important;
+    text-align: left !important;
+    z-index: 10;
+}
+
+// ===================== Jquery Counter ================ //
+// ===================== Carousel Nav ================ //
+%carousel-nav {
+    position: absolute;
+    top: calc(50% - 1em);
+    padding: 0;
+    z-index: 2;
+    // width: .7em;
+    // height: 2.2em;
+    font-size: 29px !important;
+}
+
+.carousel-nav-left {
+    left: 0;
+    // border-top-left-radius: 0;
+    // border-bottom-left-radius: 0;
+    @extend %carousel-nav;
+}
+
+.carousel-nav-right {
+    right: 0;
+    // border-top-right-radius: 0;
+    // border-bottom-right-radius: 0;
+    @extend %carousel-nav;
+}
+
+.owl-nav {
+    position: absolute;
+    left: 0;
+    right: 0;
+    top: 40%;
+    .owl-prev {
+        position: absolute;
+        left: 0;
+    }
+    .owl-next {
+        position: absolute;
+        right: 0;
+    }
+}
+
+.owl-dots {
+    margin-top: 15px;
+}
+
+.owl-dot {
+    width: 10px;
+    height: 10px;
+    display: inline-block;
+    border-radius: 20px;
+    margin: 3px;
+    background: #d4d4d4;
+    &.active {
+        background: #aaa;
+    }
+}
+
+// ===================== Carousel Nav ================ //
+// ===================== Notif Indicator ================ //
+.notif-indicator {
+    display: block;
+    position: absolute;
+    top: 10px;
+    right: 15px;
+    padding: 1px 3px;
+    background-color: red;
+    min-width: 16.5px;
+    /* height: 16px; */
+    border-radius: 3px;
+    text-align: center;
+    font-size: .7em;
+    color: #fff;
+    line-height: 1;
+    &.new {
+        &:before {
+            content: 'NEW';
+        }
+    }
+    &.beta {
+        &:before {
+            content: 'BETA';
+        }
+    }
+}
+
+// ===================== Notif Indicator ================ //
+// ===================== Environment Indicator ================ //
+.navbar-brand {
+    position: relative;
+}
+
+@include env-indicator('.local ', "This is a LOCAL site only.");
+@include env-indicator('.dev ', "This is a DEV site only.");
+@include env-indicator('.qa ', "This is a QA site only.");
+@include env-indicator('.uat ', "This is a UAT site only.");
+// ===================== Environment Indicator ================ //
+// ===================== Breadcrumb Arrow Hierarchy ================ //
+.btn-group-hierarchy {
+    .btn {
+        background-image: none;
+        text-shadow: none;
+        padding-left: 20px;
+        border-color: $btn-default-border;
+        background-color: $btn-default-bg;
+        color: $text-color;
+        @include box-shadow(none);
+        > span {
+            display: block;
+            max-width: 120px;
+            float: left;
+            white-space: nowrap;
+            overflow: hidden;
+            text-overflow: ellipsis;
+        }
+        &:before,
+        &:hover:before,
+        &:active:before,
+        &:focus:before {
+            border-left-color: darken($btn-default-bg, 2%);
+            @include transition (border-left-color 0.3s $easing);
+        }
+        &:hover,
+        &:active,
+        &:focus {
+            background-color: darken($btn-default-bg, 2%);
+        }
+        .btn-group:first-child > &:first-child {
+            padding-left: $padding-small-horizontal;
+        }
+    }
+    > .btn-group,
+    > .btn {
+        &:after,
+        &:before {
+            width: 0;
+            height: 0;
+            border-style: solid;
+            display: block;
+            content: '';
+            position: absolute;
+        }
+    }
+    > .btn-group {
+        &.open .dropdown-toggle {
+            @include box-shadow(none);
+            background-image: none;
+            &:before,
+            &:hover:before,
+            &:active:before,
+            &:focus:before {
+                border-left-color: darken($btn-default-bg, 2%);
+                @include transition (border-left-color 0.3s $easing);
+            }
+        }
+        &:after {
+            border-color: transparent transparent transparent $btn-default-border;
+            top: 0;
+            bottom: 0;
+            border-width: 16px 0 16px 12px;
+            left: -webkit-calc(100% - 1px);
+            left: -moz-calc(100% - 1px);
+            left: calc(100% - 1px);
+            z-index: 20;
+        }
+        &:before {
+            border-width: 15px 0 15px 11px;
+            border-color: transparent transparent transparent $btn-default-bg;
+            position: absolute;
+            top: 1px;
+            left: -webkit-calc(100% - 1px);
+            left: -moz-calc(100% - 1px);
+            left: calc(100% - 1px);
+            z-index: 21;
+            bottom: 1px;
+            @include transition (border-left-color 0.3s $easing);
+        }
+        &:hover:before,
+        &:active:before {
+            border-left-color: darken($btn-default-bg, 2%);
+            @include transition (border-left-color 0.3s $easing);
+        }
+    }
+    > .btn {
+        &:after {
+            border-color: transparent transparent transparent $btn-default-border;
+            top: -1px;
+            left: 100%;
+            border-width: 16px 0 16px 13px;
+            z-index: 20;
+        }
+        &:before {
+            border-width: 15px 0 15px 12px;
+            border-color: transparent transparent transparent $btn-default-bg;
+            position: absolute;
+            top: 0;
+            left: 100%;
+            z-index: 21;
+            @include transition (border-left-color 0.3s $easing);
+        }
+    }
+}
+
+// ===================== Breadcrumb Arrow Hierarchy ================ //

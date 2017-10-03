@@ -1,0 +1,158 @@
+﻿@model PL.MVC.IOBalance.Areas.OrderManagement.Models.SOSubmitModel
+@using PL.Business.Dto.IOBalance;
+@using PL.MVC.IOBalance.Areas.OrderManagement.Models;
+@using Infrastructure.Utilities;
+@using PL.MVC.IOBalance.Infrastructure;
+@using PL.Business.Common;
+@{
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+<link rel="stylesheet" href="@IOBALANCELINKS.Content.kendo.kendo_common_material_min_css" />
+<link rel="stylesheet" href="@IOBALANCELINKS.Content.kendo.kendo_material_min_css" />
+@{
+    var userTypeId = Session[SessionVariables.UserDetails].GetUserTypeIdFromSession();
+    string formDisplay = userTypeId == Constants.UserTypeAdminId ? "display:block" : "display:none";
+}
+
+<div class="pull-right">
+    @*<button id="btnaddsalesorder" class="btn btn-sm btn-default">Add Product</button>
+        &nbsp;*@
+    <button id="btnlistofsalesorder" class="btn btn-default btn-sm">List of Sales Order</button>
+    <button id="btnsalesorderform" class="btn btn-default btn-sm" style="display:none">Create SO</button>
+    <button id="btnsavesalesorder" class="btn btn-sm btn-success"><span class="glyphicon glyphicon-ok"></span> Save Order</button>
+</div>
+<br />
+<span class="text-warning">
+    <strong>
+        Sales Order (POS)
+        <br />
+        Discount: <span id="discountValue">@Model.DiscountAmount</span>%
+    </strong>
+</span>
+<hr />
+<div id="divsalesorderform">
+    <div class="col-sm-6">
+        <form id="frmSalesOrder">
+            <input type="hidden" value="@userTypeId" id="hdfUserTypeId" />
+            <div class="form-group">
+                <input id="SalesCustomer" style="width:100%" name="CustomerId" />
+                <button type="button" class="btn btn-sm btn-default" id="refreshcustomer">
+                    <i class="glyphicon glyphicon-refresh"></i>
+                </button>
+                @Html.ValidationMessageFor(m => m.CustomerId, "", new { @class = "error" })
+            </div>
+            <div class="form-group" style="@formDisplay">
+                <input id="SalesBranch" style="width:100%" name="BranchID" />
+                <button type="button" class="btn btn-sm btn-default" id="refreshbranch">
+                    <i class="glyphicon glyphicon-refresh"></i>
+                </button>
+                @Html.ValidationMessageFor(m => m.BranchID, "", new { @class = "error" })
+            </div>
+
+            @*<div class="form-group">
+                    @Html.TextBoxFor(m => m.Messenger, new
+                                {
+                                    @class = "form-control",
+                                    @id = "Messenger",
+                                    @placeholder = "Messenger"
+                                })
+                    @Html.ValidationMessageFor(m => m.Messenger, "", new { @class = "error" })
+                </div>
+
+                <div class="form-group">
+                    @Html.TextBoxFor(m => m.PaymentTerms, new
+                                {
+                                    @class = "form-control",
+                                    @id = "PaymentTerms",
+                                    @placeholder = "Payment Terms"
+                                })
+                    @Html.ValidationMessageFor(m => m.PaymentTerms, "", new { @class = "error" })
+                </div>*@
+        </form>
+        <div class="panel panel-default">
+            <div class="panel-body">
+                <div id="divOrders" class="table-responsive">
+                    <div style="height:260px">
+                        @Html.Partial(IOBALANCEMVC.OrderManagement.SalesOrder.Views._ListOfOrderSales, new List<SalesOrderDetailDto>())
+                    </div>
+                </div>
+            </div>
+        </div>
+
+
+    </div>
+    <div class="col-sm-6">
+        <div class="pull-right">
+            <div class="col-sm-12 text-center">
+                <input type="text" value="" id="txtBarCode" class="form-control" placeholder="Barcode...." />
+                <button type="button" id="btnBarCode" style="display:none">click for barcode</button>
+            </div>
+            <div class="col-sm-12 text-right">
+                <button class="btn btn-default btn-sm" id="searchproduct" data-action-type="searchbutton">
+                    <i class="glyphicon glyphicon-search"></i> Filter Products
+                </button>
+                <button class="btn btn-default btn-sm" id="refreshproduct" data-action-type="refreshbutton">
+                    <i class="glyphicon glyphicon-refresh"></i> Refresh Products
+                </button>
+            </div>
+        </div>
+        <div class="clearfix"></div>
+        <br />
+        @*@Html.Partial(IOBALANCEMVC.OrderManagement.SalesOrder.Views._ListOfProduct, @Model.productDto)*@
+        @Html.Partial(IOBALANCEMVC.OrderManagement.SalesOrder.Views._ListOfProductKendo)
+        @*<br />*@
+        @*@Html.Partial(IOBALANCEMVC.OrderManagement.SalesOrder.Views._SalesOrderForm, new SalesOrderDetailDto())*@
+    </div>
+</div>
+<div class="col-sm-12" id="divlistofsalesorders" style="display:none;">
+    <div class="pull-right">
+        <button id="btnfiltersalesorder" class="btn btn-sm btn-default">
+            <i class="glyphicon glyphicon-search"></i> Filter Sales Order
+        </button>
+        <button id="btnrefreshsalesorder" class="btn btn-sm btn-default">
+            <i class="glyphicon glyphicon-refresh"></i> Refresh Sales Order
+        </button>
+    </div>
+
+    <div class="clearfix"></div>
+    <br />
+    @Html.Partial(IOBALANCEMVC.OrderManagement.SalesOrder.Views._ListOfSavedSalesOrderKendo)
+    @*@Html.Partial(IOBALANCEMVC.OrderManagement.SalesOrder.Views._ListOfSavedSalesOrder, @Model.salesOrderDto)*@
+</div>
+
+<div id="divResultContainer" style="display:none"></div>
+
+@section scripts{
+    <script type="text/javascript">
+        window.salesOptions = {
+            modelGetUrl: "@Url.Action(IOBALANCEMVC.Common.GetModel())",
+            categoryGetUrl: "@Url.Action(IOBALANCEMVC.Common.GetCategory())",
+            unitGetUrl: "@Url.Action(IOBALANCEMVC.Common.GetUnit())",
+            productGetUrl: "@Url.Action(IOBALANCEMVC.Common.GetProduct())",
+            productByCategoryIdUrl: "@Url.Action(IOBALANCEMVC.Common.GetProductByCategoryId())",
+            customerGetUrl: "@Url.Action(IOBALANCEMVC.Common.GetCustomer())",
+            addSalesOrderUrl: "@Url.Action(IOBALANCEMVC.OrderManagement.SalesOrder.AddSalesOrder())",
+            addClickSalesOrderUrl: "@Url.Action(IOBALANCEMVC.OrderManagement.SalesOrder.ClickAddSalesOrder())",
+            saveSalesOrderUrl: "@Url.Action(IOBALANCEMVC.OrderManagement.SalesOrder.SaveSalesOrder())",
+            searchProductUrl: "@Url.Action(IOBALANCEMVC.OrderManagement.SalesOrder.SearchProductDetails())",
+            searchSavedSalesOrderUrl: "@Url.Action(IOBALANCEMVC.OrderManagement.SalesOrder.SearchSavedSalesOrder())",
+            inventoryRefreshUrl: "@Url.Action(IOBALANCEMVC.OrderManagement.SalesOrder.RefreshProductDetails())",
+            savedSalesOrderRefreshUrl: "@Url.Action(IOBALANCEMVC.OrderManagement.SalesOrder.RefreshSavedSalesOrder())",
+            extractSalesOrderReceiptUrl: "@Url.Action(IOBALANCEMVC.OrderManagement.SalesOrder.ExtractReceipt())",
+            branchGetUrl: "@Url.Action(IOBALANCEMVC.Common.GetBranch())",
+            searchProductPerBarCodeUrl : "@Url.Action(IOBALANCEMVC.OrderManagement.SalesOrder.SearchProductPerBarCode())"
+        };
+    </script>
+
+    <script type="text/javascript" src="@IOBALANCELINKS.Scripts.infrastructure.jquery_pl_kendo_resize_height_js"></script>
+    <script type="text/javascript" src="@IOBALANCELINKS.Scripts.infrastructure.jquery_deserialize_js"></script>
+    <script type="text/javascript" src="@IOBALANCELINKS.Scripts.iobalance.functions.ordermanagement.ordermanagement_salesorder_js"></script>
+
+    @Scripts.Render("~/bundles/jqueryval")
+}
+
+@section modals{
+    @Html.Partial(IOBALANCEMVC.OrderManagement.SalesOrder.Views._ModalSearchProduct, new ProductSearchModel())
+    @Html.Partial(IOBALANCEMVC.OrderManagement.SalesOrder.Views._ModalSearchSavedSalesOrder, new SavedSalesOrderSearchModel())
+}
+

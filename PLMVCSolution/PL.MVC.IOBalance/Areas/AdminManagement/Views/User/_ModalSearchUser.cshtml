@@ -1,0 +1,53 @@
+﻿@model PL.MVC.IOBalance.Areas.AdminManagement.Models.UserSearchModel
+
+<div class="modal fade" id="mdlsearchuser" tabindex="-1" role="dialog" aria-labelledby="mdlsearchuser" aria-hidden="true">
+    <div class="modal-dialog modal-lg">
+        <div class="modal-header text-center">
+            <h4 class="modal-title text-center">Search User</h4>
+            <small>search your query here</small>
+        </div>
+
+        <div class="modal-content">
+            <div class="modal-body">
+                <form class="form-horizontal" id="frmSearchUser">
+                    <div class="form-group">
+                        <label for="" class="control-label col-sm-3">User Name</label>
+                        <div class="control-input col-sm-8">
+                            @Html.TextBoxFor(m => m.UserName,
+                        new
+                        {
+                            @class = "form-control",
+                            @id = "UserName"
+                        })
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label for="" class="control-label col-sm-3">User Type</label>
+                        <div class="control-input col-sm-8">
+                            <input id="SearchUserTypeId" style="width:100%" name="UserTypeId" />
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label for="" class="control-label col-sm-3">Branch</label>
+                        <div class="control-input col-sm-8">
+                            <input id="SearchBranchID" style="width:100%" name="BranchId" />
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label for="" class="control-label col-sm-3">Active?</label>
+                        <div class="control-input col-sm-8">
+                            <input id="SearchUserYesNo" style="width:100%" name="isActive" />
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <div class="col-sm-8 col-sm-offset-3 text-right">
+                            <button type="button" data-dismiss="modal" class="btn btn-sm btn-link">Cancel</button>
+                            <button type="button" id="removefilter" class="btn btn-sm btn-default">Remove Filter</button>
+                            <button id="searchdetails" type="button" class="btn btn-sm btn-warning">Search User</button>
+                        </div>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>

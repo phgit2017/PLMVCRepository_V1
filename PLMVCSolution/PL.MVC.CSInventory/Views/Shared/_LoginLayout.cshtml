@@ -1,0 +1,53 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8" />
+    <title>IOBalance</title>
+    <link href="~/favicon.ico" rel="shortcut icon" type="image/x-icon" />
+    <meta name="viewport" content="width=device-width" />
+    <!-- TODO: insert bootstrap not minified .css -->
+    @Styles.Render("~/Content/css")
+
+    @Scripts.Render("~/bundles/jquery")
+    <!-- TODO: insert bootstrap minified .js -->
+    @Scripts.Render("~/bundles/modernizr")
+</head>
+<body style="background-color:#fafafa">
+    <!--Menu-->
+    <nav class="navbar navbar-default">
+        <div class="container-fluid">
+            <!-- Collect the nav links, forms, and other content for toggling -->
+            <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+
+
+            </div><!-- /.navbar-collapse -->
+        </div><!-- /.container-fluid -->
+    </nav>
+    <!--End Menu-->
+    <div class="container">
+        @RenderBody()
+    </div>
+
+    <!-- TODO: insert infrastructure angular version .js -->
+    <!-- TODO: insert infrastructure alert window .js -->
+    @Scripts.Render("~/bundles/jqueryval");
+    <script type="text/javascript">
+        $(document).ready(function () {
+            $('*[data-target="password"]').each(function (index) {
+                $(this).on('click', function () {
+                    var input_pass = $(this).prev('*[data-element="password"]');
+                    if (input_pass.attr('type') === 'password') {
+                        $(this).html('HIDE');
+                        input_pass.attr('type', 'text');
+                    }
+
+                    else if (input_pass.attr('type') === 'text') {
+                        $(this).html('SHOW');
+                        input_pass.attr('type', 'password');
+                    }
+                });
+            });
+        });
+    </script>
+</body>
+</html>

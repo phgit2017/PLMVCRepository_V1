@@ -1,0 +1,27 @@
+﻿
+@using Kendo.Mvc.UI;
+@using PL.Business.Common;
+
+@(Html.Kendo().Grid<PL.Business.Dto.IOBalanceV2.SupplierDto>()
+                .Name("gvSupplier")
+        .Columns(columns =>
+        {
+            columns.Template(@<text></text>).ClientTemplate("<div class='btn-group btn-group-xs'><a href='javascript:void(0)' type='button' class='selected btn btn-default' id='edititem' data-button-type='actionbuttons' data-action-type='editbutton' " +
+                            "data-supplier-id='#=SupplierId#' data-supplier-code='#=SupplierCode#' data-supplier-name='#=SupplierName#' data-supplier-datecreated='#=DateCreatedWithFormat#' data-supplier-createdby='#=CreatedBy#' data-supplier-dateupdated='#=DateUpdatedWithFormat#' data-supplier-updatedby='#=UpdatedBy#'> Edit Details</a></div>")
+                .Title("Actions")
+                .Width(220)
+                .HeaderHtmlAttributes(new { @class = "bos-grid-text-center" })
+                .HtmlAttributes(new { @class = "bos-grid-text-center" });
+            columns.Bound(c => c.SupplierCode).Title("Supplier Code").Width(180).Sortable(true).Lockable(true);
+            columns.Bound(c => c.SupplierName).Title("Supplier Name").Width(300).Sortable(false).Lockable(true);
+        })
+        .Scrollable()
+        .Sortable(sort => sort.AllowUnsort(false))
+        .Pageable()
+        .ColumnMenu()
+        .DataSource(dataSource => dataSource
+            .Ajax()
+            .Read(read => read.Action("GetDetails", "Supplier"))
+            .PageSize(50)
+        )
+)

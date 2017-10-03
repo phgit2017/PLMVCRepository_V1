@@ -1,0 +1,17 @@
+C:\Users\lep.ridad\Documents\Visual Studio 2013\Projects\PLMVCSolution\PL.Business.Dto.IOBalanceV2\bin\Debug\PL.Business.Dto.IOBalanceV2.dll
+C:\Users\lep.ridad\Documents\Visual Studio 2013\Projects\PLMVCSolution\PL.Business.Dto.IOBalanceV2\bin\Debug\PL.Business.Dto.IOBalanceV2.pdb
+C:\Users\lep.ridad\Documents\Visual Studio 2013\Projects\PLMVCSolution\PL.Business.Dto.IOBalanceV2\bin\Debug\Infrastructure.Utilities.dll
+C:\Users\lep.ridad\Documents\Visual Studio 2013\Projects\PLMVCSolution\PL.Business.Dto.IOBalanceV2\bin\Debug\PL.Business.Common.dll
+C:\Users\lep.ridad\Documents\Visual Studio 2013\Projects\PLMVCSolution\PL.Business.Dto.IOBalanceV2\bin\Debug\System.Web.Razor.dll
+C:\Users\lep.ridad\Documents\Visual Studio 2013\Projects\PLMVCSolution\PL.Business.Dto.IOBalanceV2\bin\Debug\System.Web.WebPages.Razor.dll
+C:\Users\lep.ridad\Documents\Visual Studio 2013\Projects\PLMVCSolution\PL.Business.Dto.IOBalanceV2\bin\Debug\System.Web.WebPages.dll
+C:\Users\lep.ridad\Documents\Visual Studio 2013\Projects\PLMVCSolution\PL.Business.Dto.IOBalanceV2\bin\Debug\System.Web.WebPages.Deployment.dll
+C:\Users\lep.ridad\Documents\Visual Studio 2013\Projects\PLMVCSolution\PL.Business.Dto.IOBalanceV2\bin\Debug\Infrastructure.Utilities.pdb
+C:\Users\lep.ridad\Documents\Visual Studio 2013\Projects\PLMVCSolution\PL.Business.Dto.IOBalanceV2\bin\Debug\PL.Business.Common.pdb
+C:\Users\lep.ridad\Documents\Visual Studio 2013\Projects\PLMVCSolution\PL.Business.Dto.IOBalanceV2\bin\Debug\System.Web.Razor.xml
+C:\Users\lep.ridad\Documents\Visual Studio 2013\Projects\PLMVCSolution\PL.Business.Dto.IOBalanceV2\bin\Debug\System.Web.WebPages.Razor.xml
+C:\Users\lep.ridad\Documents\Visual Studio 2013\Projects\PLMVCSolution\PL.Business.Dto.IOBalanceV2\bin\Debug\System.Web.WebPages.xml
+C:\Users\lep.ridad\Documents\Visual Studio 2013\Projects\PLMVCSolution\PL.Business.Dto.IOBalanceV2\bin\Debug\System.Web.WebPages.Deployment.xml
+C:\Users\lep.ridad\Documents\Visual Studio 2013\Projects\PLMVCSolution\PL.Business.Dto.IOBalanceV2\obj\Debug\PL.Business.Dto.IOBalanceV2.csprojResolveAssemblyReference.cache
+C:\Users\lep.ridad\Documents\Visual Studio 2013\Projects\PLMVCSolution\PL.Business.Dto.IOBalanceV2\obj\Debug\PL.Business.Dto.IOBalanceV2.dll
+C:\Users\lep.ridad\Documents\Visual Studio 2013\Projects\PLMVCSolution\PL.Business.Dto.IOBalanceV2\obj\Debug\PL.Business.Dto.IOBalanceV2.pdb

@@ -1,0 +1,22 @@
+﻿@using Kendo.Mvc.UI;
+@using PL.Business.Common;
+
+@(Html.Kendo().Grid<PL.Business.Dto.IOBalanceV2.ReportPurchaseOrderDto>()
+        .Name("gvPO")
+        .Columns(columns =>
+        {
+            columns.Bound(c => c.product.ProductId).Visible(false);
+            columns.Bound(c => c.product.ProductInfoDisplay).Title("Product Name").Width(300).Sortable(false).Lockable(true);
+            columns.Bound(c => c.supplier.SupplierInfoDisplay).Title("Supplier").Width(300).Sortable(false).Lockable(false);
+            columns.Bound(c => c.DateCreatedWithFormat).Title("Date Created").Width(300).Sortable(false).Lockable(false);
+        })
+        .Scrollable()
+        .Sortable(sort => sort.AllowUnsort(false))
+        .Pageable()
+        .ColumnMenu()
+        .DataSource(dataSource => dataSource
+            .Ajax()
+            .Read(read => read.Action("GetPOReport", "Order"))
+            .PageSize(50)
+        )
+)

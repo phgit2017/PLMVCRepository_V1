@@ -1,0 +1,158 @@
+﻿using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Web;
+using System.Web.Mvc;
+
+//Business
+using PL.Business.Common;
+using PL.Business.Dto.IOBalance;
+using PL.Business.Interface.IOBalance;
+
+//MVC
+using PL.MVC.IOBalance.Controllers;
+using PL.MVC.IOBalance.Areas.AdminManagement.Models;
+
+using Infrastructure.Utilities.Extensions;
+using LinqKit;
+
+namespace PL.MVC.IOBalance.Areas.AdminManagement.Controllers
+{
+    public partial class UnitController : BaseController
+    {
+        #region DeclarationsAndConstructors
+        public IUnitService _iUnitService;
+
+        public UnitController(IUnitService iUnitService)
+        {
+            this._iUnitService = iUnitService;
+        }
+        #endregion DeclarationsAndConstructors
+
+        #region ActionMethods
+        public virtual ActionResult Index()
+        {
+            var model = GetUnit();
+            return View(model);
+        }
+
+        [HttpPost]
+        public virtual ActionResult SearchUnit()
+        {
+            string unit = string.Empty;
+            
+            var jsonResult = new 
+            {
+                unit = unit
+            };
+            return Json(jsonResult, JsonRequestBehavior.AllowGet);
+        }
+
+        [HttpPost]
+        public virtual ActionResult SaveUnit(UnitDto dto)
+        {
+            bool isSuccess = true;
+            string unit = string.Empty, alertMessage = string.Empty;
+
+            if (ModelState.IsValid)
+            {
+                if (!_iUnitService.SaveUnit(dto))
+                {
+                    isSuccess = false;
+                    Danger(Messages.ErrorOccuredDuringProcessing);
+                }
+                else
+                {
+                    Success(Messages.InsertSuccess);
+                    //TODO:
+                    //put unit list here
+                }
+            }
+            else
+            {
+                isSuccess = false;
+                Danger(Messages.ErrorOccuredDuringProcessing);
+            }
+
+
+            alertMessage = this.RenderRazorViewToString(IOBALANCEMVC.Shared.Views._Alerts, string.Empty);
+            var jsonResult = new 
+            {
+                isSuccess = isSuccess,
+                alertMessage = alertMessage,
+                unit = unit
+            };
+
+            return Json(jsonResult, JsonRequestBehavior.AllowGet);
+        }
+
+        [HttpPost]
+        public virtual ActionResult RefreshUnit()
+        {
+            string unit = string.Empty;
+            var jsonResult = new 
+            {
+                unit = unit
+            };
+
+            return Json(jsonResult, JsonRequestBehavior.AllowGet);
+        }
+
+        [HttpPost]
+        public virtual ActionResult UpdateUnit(UnitDto dto)
+        {
+            string unit = string.Empty;
+            var jsonResult = new 
+            {
+                unit = unit
+            };
+
+            return Json(jsonResult, JsonRequestBehavior.AllowGet);
+        }
+
+        [HttpPost]
+        public virtual ActionResult isActiveUnit(bool isActive, int unitId)
+        {
+            string unit = string.Empty;
+            var jsonResult = new
+            {
+                unit = unit
+            };
+
+            return Json(jsonResult, JsonRequestBehavior.AllowGet);
+        }
+        #endregion ActionMethods
+
+        #region PrivateMethods
+        private List<UnitDto> GetUnit(UnitSearchModel searchModel = null)
+        {
+            List<UnitDto> list = new List<UnitDto>();
+
+            if (searchModel.IsNull())
+            {
+                list = _iUnitService.GetAll().ToList();
+            }
+            else
+            {
+                var predicate = PredicateBuilder.True<UnitDto>();
+                var hasOtherFilter = false;
+
+                if (!searchModel.Description.IsNull())
+                {
+                    hasOtherFilter = true;
+                    predicate = predicate.And(u => u.UnitDesc == searchModel.Description);
+                }
+
+                list = _iUnitService.GetAll().AsExpandable().Where(predicate).ToList();
+            }
+
+            return list;
+        }
+        #endregion PrivateMethods
+
+        #region Dispose
+
+        #endregion Dispose
+
+    }
+}

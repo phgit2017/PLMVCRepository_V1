@@ -1,0 +1,496 @@
+// Import Core variables and mixins
+@import "bootstrap/variables";
+@import "bootstrap/mixins";
+// IRIS_Auth
+.bg-animate {
+    color: white;
+    // background-image: none;
+    background-color: $brand-lightcyan;
+    position: fixed;
+    width: 100%;
+    height: 100%;
+    z-index: 999;
+    display: none;
+    @include transition (background-color 6s $easing);
+    &.bg1 {
+        background-color: $brand-primary;
+    }
+    &.bg2 {
+        background-color: $brand-turquoise;
+    }
+    &.bg3 {
+        background-color: $brand-blue;
+    }
+    &.bg4 {
+        background-color: $brand-cyan;
+    }
+}
+
+// For old login
+.login-background {
+    background-image: url(../img/login-bg.jpg) !important;
+    background-attachment: fixed;
+    background-size: cover;
+    background-repeat: no-repeat;
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    padding: $grid-gutter-width/2;
+}
+
+.btn-login-help {
+    position: absolute;
+    @media (max-width: $screen-xs-max) {
+        top: 0;
+        right: 0;
+    }
+    @media (min-width: $screen-sm-min) {
+        top: -$grid-gutter-width;
+        right: -$grid-gutter-width;
+    }
+}
+
+.login-not-registered {
+    margin-top: $grid-gutter-width;
+    padding-bottom: 0;
+    text-align: left;
+    position: relative;
+    .text {
+        font-size: 1em;
+        display: inline-block;
+        clear: both;
+        color: #717171;
+    }
+    .link {
+        font-size: 1em;
+        display: inline-block;
+        clear: both;
+    }
+    .login-help {
+        border-bottom: 1px dotted;
+        .popover {
+            font-size: 90%;
+        }
+        &:hover {
+            @media (min-width: $screen-sm-min) {
+                cursor: pointer;
+                color: $brand-info;
+                & + .popover {
+                    // position: relative;
+                    // display: block;
+                    // margin-top: -56px !important;
+                    // top: 0;
+                    // right: 0;
+                }
+            }
+        }
+    }
+    ol {
+        margin-left: $grid-gutter-width/2;
+        padding-left: 0;
+    }
+    ol li {
+        list-style-type: decimal;
+    }
+}
+
+.login-footer {
+    position: absolute;
+    bottom: -40px;
+    left: 0;
+    right: 0;
+    text-align: center;
+    .small {
+        display: inline-block;
+        text-align: left;
+        color: #FFDDAA;
+        line-height: 1;
+        font-size: 10px;
+        &:before {
+            content: url(../img/company-logo-white.svg);
+            display: block;
+            width: 58px;
+            height: 20px;
+            float: left;
+            margin-right: 8px;
+        }
+    }
+}
+
+// Password Policy
+.panel-identity-confirm {
+    text-align: center;
+    position: relative;
+    .control-label {
+        // font-size: 0.85em;
+    }
+    .logo-brand {
+        @media (max-width: $screen-xs-max) {
+            margin: $grid-gutter-width/2 auto $grid-gutter-width auto;
+        }
+        @media (min-width: $screen-sm-min) {
+            margin: -$grid-gutter-width/2 auto $grid-gutter-width auto;
+        }
+        width: 60%;
+        height: auto;
+        display: block;
+        clear: both;
+        @include clearfix();
+    }
+    @media (max-width: $screen-xs-max - 200) {
+        padding: $grid-gutter-width/2;
+        left: 0;
+        right: 0;
+    }
+    @media (min-width: $screen-xs-max - 200) {
+        width: 60%;
+        margin: auto auto;
+        padding: $grid-gutter-width/2;
+    }
+    @media (min-width: $screen-sm-min) {
+        position: absolute;
+        width: 450px;
+        padding: 40px;
+        left: calc(50% - 225px);
+        left: -webkit-calc(50% - 225px);
+        left: -moz-calc(50% - 225px);
+    }
+    // To calculate top offset of the form panel
+    @media (min-height: 600px) { top: 5%; }
+    @media (min-height: 650px) { top: 7%; }
+    @media (min-height: 700px) { top: 10%; }
+    @media (min-height: 800px) { top: 15%; }
+    @media (min-height: 900px) { top: 18%; }
+    .avatar {
+        margin-bottom: $grid-gutter-width/2;
+    }
+}
+
+.pl-1,
+.pl-2 {
+    display: block;
+    clear: both;
+    position: relative;
+    line-height: 1.1;
+    color: #4A4A4A;
+}
+
+.pl-1 > span,
+.pl-2 > span {
+    padding-left: $grid-gutter-width/2;
+    display: block;
+}
+
+.pl-1:before,
+.pl-2:before {
+    position: absolute;
+    top: 0;
+    left: 0;
+    display: block;
+    color: #4A4A4A;
+}
+
+.pl-1:before {
+    content: '1';
+}
+
+.pl-2:before {
+    content: '2';
+}
+
+.js_is-not-user {
+    display: none;
+}
+
+.login-credentials {
+    .user {
+        border-bottom-left-radius: 0;
+        border-bottom-right-radius: 0;
+        &:focus {
+            z-index: 2;
+            position: relative;
+        }
+    }
+    .password > .form-control {
+        border-top-left-radius: 0;
+        border-top-right-radius: 0;
+        margin-top: -1px;
+    }
+}
+
+.numbered > li {
+    list-style-type: decimal;
+    margin-bottom: 5px;
+}
+
+.sup-numbered {
+    > li {
+        position: relative;
+        list-style-type: decimal;
+    }
+}
+
+.alpha > li {
+    list-style-type: lower-alpha;
+    margin-bottom: 5px;
+}
+
+.password-logo-login {
+    position: relative;
+    margin-top: 0;
+    ;
+    @include clearfix();
+    .logo-brand-247 {
+        width: 100%;
+        text-align: center;
+        margin-bottom: $grid-gutter-width + 15px;
+        img {
+            display: inline-block;
+            width: 120px;
+            outline: none !important;
+        }
+    }
+    .logo-brand-iris {
+        width: 100px;
+        margin-right: $grid-gutter-width/2;
+    }
+}
+
+.h_policy-btn {
+    width: 200px;
+    display: inline-block;
+}
+
+.h_password-message-display {
+    letter-spacing: 1px;
+    font-size: 16px;
+}
+
+.mid-name {
+    width: calc(100% - 11px);
+    display: block;
+    text-align: left;
+    padding-bottom: 10px;
+    position: relative;
+    padding: 26px 0px 5px;
+    margin-bottom: 13px;
+    &:before {
+        position: absolute;
+        top: -4px;
+        left: 0;
+        font-weight: bold;
+        font-size: 22px;
+        font-family: "Material Design Iconic Font";
+    }
+    &:after {
+        position: absolute;
+        font-weight: bold;
+        top: 2px;
+        left: 24px;
+        font-size: 13px;
+    }
+    span {
+        text-align: center;
+        &:first-child {
+            margin-left: 20px;
+            &:before {
+                position: absolute;
+                font-size: 13px;
+                text-align: center;
+                margin-left: 42px;
+                right: 0;
+                margin-top: 8px;
+                font-style: italic;
+            }
+        }
+        display: inline-block;
+    }
+    strong {
+        display: block;
+        border-bottom: 1px solid #DCDCDC;
+        margin-right: -4px;
+        padding: 0 9px;
+    }
+    small {
+        display: block;
+        margin-top: 6px;
+        color: #aaa;
+    }
+    .circle {
+        border: 2px solid red;
+        border-radius: 22px;
+        padding: 2px 8px;
+        position: relative;
+        bottom: -4px;
+    }
+    &.correct {
+        &:before {
+            content: "\f26b";
+            color: $brand-green;
+        }
+        &:after {
+            content: "CORRECT";
+            color: $brand-green;
+        }
+        .circle {
+            border-color: $brand-green;
+        }
+        span {
+            &:first-child {
+                &:before {
+                    content: "before marriage";
+                    color: $brand-green;
+                }
+            }
+        }
+    }
+    &.wrong {
+        &:before {
+            content: "\f136";
+            color: $brand-red;
+        }
+        &:after {
+            content: "WRONG";
+            color: $brand-red;
+        }
+        .circle {
+            border-style: dashed;
+            border-color: $brand-red;
+        }
+        span {
+            &:first-child {
+                &:before {
+                    content: "after marriage";
+                    color: $brand-red;
+                }
+            }
+        }
+    }
+}
+
+.form-password-mask > .btn-mask-password {
+    padding: ($padding-base-vertical - 5) ($padding-base-horizontal - 5);
+}
+
+.motherName {
+    .popover {
+        max-width: 1000px;
+        width: 395px !important;
+    }
+}
+
+#ePayslipPageBtn {
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    background-color: #aaa;
+    z-index: 2;
+    opacity: 0;
+    filter: alpha(opacity=0);
+}
+
+$loader-theme: white;
+.bg-animate .loader-message {
+    color: $loader-theme;
+}
+
+//config
+$shadow-color: $loader-theme;
+$shadow-1: 0 -0.83em 0 -0.4em $shadow-color,
+0 -0.83em 0 -0.42em $shadow-color,
+0 -0.83em 0 -0.44em $shadow-color,
+0 -0.83em 0 -0.46em $shadow-color,
+0 -0.83em 0 -0.477em $shadow-color;
+$shadow-2: 0 -0.83em 0 -0.4em $shadow-color,
+-0.087em -0.825em 0 -0.42em $shadow-color,
+-0.173em -0.812em 0 -0.44em $shadow-color,
+-0.256em -0.789em 0 -0.46em $shadow-color,
+-0.297em -0.775em 0 -0.477em $shadow-color;
+$shadow-3: 0 -0.83em 0 -0.4em $shadow-color,
+-0.338em -0.758em 0 -0.42em $shadow-color,
+-0.555em -0.617em 0 -0.44em $shadow-color,
+-0.671em -0.488em 0 -0.46em $shadow-color,
+-0.749em -0.34em 0 -0.477em $shadow-color;
+$shadow-4: 0 -0.83em 0 -0.4em $shadow-color,
+-0.377em -0.74em 0 -0.42em $shadow-color,
+-0.645em -0.522em 0 -0.44em $shadow-color,
+-0.775em -0.297em 0 -0.46em $shadow-color,
+-0.82em -0.09em 0 -0.477em $shadow-color;
+$shadow-5: 0 -0.83em 0 -0.4em $shadow-color,
+0 -0.83em 0 -0.42em $shadow-color,
+0 -0.83em 0 -0.44em $shadow-color,
+0 -0.83em 0 -0.46em $shadow-color,
+0 -0.83em 0 -0.477em $shadow-color;
+.bg-animate .spinner {
+    font-size: 40px;
+    text-indent: -9999em;
+    overflow: hidden;
+    width: 1em;
+    height: 1em;
+    margin: 40px auto;
+    position: relative;
+    @include border-radius(50%);
+    @include transform(translateZ(0));
+    animation: spin 1.7s infinite ease;
+}
+
+@-webkit-keyframes spin {
+    0% {
+        @include transform(rotate(0deg));
+        @include box-shadow($shadow-1);
+    }
+    5%,
+    95% {
+        @include box-shadow($shadow-1);
+    }
+    10%,
+    59% {
+        @include box-shadow($shadow-2);
+    }
+    20% {
+        @include box-shadow($shadow-3);
+    }
+    38% {
+        @include box-shadow($shadow-4);
+    }
+    100% {
+        @include transform(rotate(360deg));
+        @include box-shadow($shadow-5);
+    }
+}
+
+@keyframes spin {
+    0% {
+        @include transform(rotate(0deg));
+        @include box-shadow($shadow-1);
+    }
+    5%,
+    95% {
+        @include box-shadow($shadow-1);
+    }
+    10%,
+    59% {
+        @include box-shadow($shadow-2);
+    }
+    20% {
+        @include box-shadow($shadow-3);
+    }
+    38% {
+        @include box-shadow($shadow-4);
+    }
+    100% {
+        @include transform(rotate(360deg));
+        @include box-shadow($shadow-5);
+    }
+}
+
+#forpassword1 {
+    + .popover {
+        max-width: 390px;
+        z-index: 1;
+    }
+}

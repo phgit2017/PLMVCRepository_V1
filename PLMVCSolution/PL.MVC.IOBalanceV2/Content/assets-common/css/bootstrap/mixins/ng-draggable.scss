@@ -1,0 +1,15 @@
+
+@mixin ng-drag-over($border-style, $border-width, $border-color) {
+	[ng-drag].drag-over {
+		border: $border-style $border-width $border-color;
+	}
+}
+
+@mixin ng-drag-enter($border-style, $border-width, $border-color) {
+	[ng-drop].drag-enter {
+		border: $border-style $border-width $border-color;
+	}
+}
+
+
+

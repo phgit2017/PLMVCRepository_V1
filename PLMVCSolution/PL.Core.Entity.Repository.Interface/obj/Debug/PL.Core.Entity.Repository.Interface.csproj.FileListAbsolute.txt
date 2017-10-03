@@ -1,0 +1,29 @@
+c:\users\mypc1\documents\visual studio 2013\Projects\PLMVCSolution\PL.Core.Entity.Repository.Interface\bin\Debug\PL.Core.Entity.Repository.Interface.dll
+c:\users\mypc1\documents\visual studio 2013\Projects\PLMVCSolution\PL.Core.Entity.Repository.Interface\bin\Debug\PL.Core.Entity.Repository.Interface.pdb
+c:\users\mypc1\documents\visual studio 2013\Projects\PLMVCSolution\PL.Core.Entity.Repository.Interface\obj\Debug\PL.Core.Entity.Repository.Interface.csprojResolveAssemblyReference.cache
+c:\users\mypc1\documents\visual studio 2013\Projects\PLMVCSolution\PL.Core.Entity.Repository.Interface\obj\Debug\PL.Core.Entity.Repository.Interface.dll
+c:\users\mypc1\documents\visual studio 2013\Projects\PLMVCSolution\PL.Core.Entity.Repository.Interface\obj\Debug\PL.Core.Entity.Repository.Interface.pdb
+c:\users\mypc1\documents\visual studio 2013\Projects\PLMVCSolution\PL.Core.Entity.Repository.Interface\bin\Debug\PL.Core.Entity.Repository.Interface.dll.config
+c:\users\mypc1\documents\visual studio 2013\Projects\PLMVCSolution\PL.Core.Entity.Repository.Interface\bin\Debug\EntityFramework.dll
+c:\users\mypc1\documents\visual studio 2013\Projects\PLMVCSolution\PL.Core.Entity.Repository.Interface\bin\Debug\EntityFramework.SqlServer.dll
+c:\users\mypc1\documents\visual studio 2013\Projects\PLMVCSolution\PL.Core.Entity.Repository.Interface\bin\Debug\EntityFramework.xml
+c:\users\mypc1\documents\visual studio 2013\Projects\PLMVCSolution\PL.Core.Entity.Repository.Interface\bin\Debug\EntityFramework.SqlServer.xml
+C:\Users\lep.ridad\Desktop\PLMVCSolution\PL.Core.Entity.Repository.Interface\bin\Debug\PL.Core.Entity.Repository.Interface.dll.config
+C:\Users\lep.ridad\Desktop\PLMVCSolution\PL.Core.Entity.Repository.Interface\bin\Debug\PL.Core.Entity.Repository.Interface.dll
+C:\Users\lep.ridad\Desktop\PLMVCSolution\PL.Core.Entity.Repository.Interface\bin\Debug\PL.Core.Entity.Repository.Interface.pdb
+C:\Users\lep.ridad\Desktop\PLMVCSolution\PL.Core.Entity.Repository.Interface\bin\Debug\EntityFramework.dll
+C:\Users\lep.ridad\Desktop\PLMVCSolution\PL.Core.Entity.Repository.Interface\bin\Debug\EntityFramework.SqlServer.dll
+C:\Users\lep.ridad\Desktop\PLMVCSolution\PL.Core.Entity.Repository.Interface\bin\Debug\EntityFramework.xml
+C:\Users\lep.ridad\Desktop\PLMVCSolution\PL.Core.Entity.Repository.Interface\bin\Debug\EntityFramework.SqlServer.xml
+C:\Users\lep.ridad\Desktop\PLMVCSolution\PL.Core.Entity.Repository.Interface\obj\Debug\PL.Core.Entity.Repository.Interface.csprojResolveAssemblyReference.cache
+C:\Users\lep.ridad\Desktop\PLMVCSolution\PL.Core.Entity.Repository.Interface\obj\Debug\PL.Core.Entity.Repository.Interface.dll
+C:\Users\lep.ridad\Desktop\PLMVCSolution\PL.Core.Entity.Repository.Interface\obj\Debug\PL.Core.Entity.Repository.Interface.pdb
+C:\Users\lep.ridad\Documents\Visual Studio 2013\Projects\PLMVCSolution\PL.Core.Entity.Repository.Interface\bin\Debug\PL.Core.Entity.Repository.Interface.dll.config
+C:\Users\lep.ridad\Documents\Visual Studio 2013\Projects\PLMVCSolution\PL.Core.Entity.Repository.Interface\bin\Debug\PL.Core.Entity.Repository.Interface.dll
+C:\Users\lep.ridad\Documents\Visual Studio 2013\Projects\PLMVCSolution\PL.Core.Entity.Repository.Interface\bin\Debug\PL.Core.Entity.Repository.Interface.pdb
+C:\Users\lep.ridad\Documents\Visual Studio 2013\Projects\PLMVCSolution\PL.Core.Entity.Repository.Interface\bin\Debug\EntityFramework.dll
+C:\Users\lep.ridad\Documents\Visual Studio 2013\Projects\PLMVCSolution\PL.Core.Entity.Repository.Interface\bin\Debug\EntityFramework.SqlServer.dll
+C:\Users\lep.ridad\Documents\Visual Studio 2013\Projects\PLMVCSolution\PL.Core.Entity.Repository.Interface\bin\Debug\EntityFramework.xml
+C:\Users\lep.ridad\Documents\Visual Studio 2013\Projects\PLMVCSolution\PL.Core.Entity.Repository.Interface\bin\Debug\EntityFramework.SqlServer.xml
+C:\Users\lep.ridad\Documents\Visual Studio 2013\Projects\PLMVCSolution\PL.Core.Entity.Repository.Interface\obj\Debug\PL.Core.Entity.Repository.Interface.dll
+C:\Users\lep.ridad\Documents\Visual Studio 2013\Projects\PLMVCSolution\PL.Core.Entity.Repository.Interface\obj\Debug\PL.Core.Entity.Repository.Interface.pdb

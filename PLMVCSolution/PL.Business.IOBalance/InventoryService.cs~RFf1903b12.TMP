@@ -1,0 +1,127 @@
+﻿using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+
+//-- Business
+using PL.Business.Common;
+using PL.Business.Dto.IOBalance;
+using PL.Business.Interface.IOBalance;
+using PL.Business.IOBalance.Extensions;
+//-- Core
+using PL.Core.Entity.IOBalanceDB;
+using PL.Core.Entity.Repository.Interface;
+using IOBalanceEntity = PL.Core.Entity.IOBalanceDB;
+
+//-- Infra
+using PL.Infra.DbContext.Interface;
+
+//-- Infrastructure Utilities
+using Infrastructure.Utilities.Extensions;
+
+namespace PL.Business.IOBalance
+{
+    public class InventoryService : IInventoryService
+    {
+        #region DeclarationAndConstructors
+        IIOBalanceRepository<Product> _product;
+
+        IOBalanceEntity.Product product;
+        public InventoryService(IIOBalanceRepository<Product> product)
+        {
+            this._product = product;
+            this.product = new Product();
+        }
+        #endregion DeclarationAndConstructors
+
+        #region InterfaceImplementations
+        public IQueryable<ProductDto> GetAll()
+        {
+            var list = from p in _product.GetAll()
+                       select new ProductDto()
+                       {
+                           ProductID = p.ProductID,
+                           ProductCode = p.ProductCode,
+                           ProductName = p.ProductName,
+                           ProductDesc = p.ProductDesc,
+                           Quantity = p.Quantity,
+                           Price = p.Price,
+                           UnitID = p.UnitID,
+                           UnitName = p.Unit == null ? null : p.Unit.UnitDesc,
+                           CategoryID = p.CategoryID,
+                           CategoryName = p.Category == null ? null : p.Category.CategoryName,
+                           CategoryCode = p.Category == null ? null : p.Category.CategoryCode,
+                           IsActive = p.IsActive,
+                           Remarks = p.Remarks,
+                           CreatedBy = p.CreatedBy,
+                           DateCreated = p.DateCreated,
+                           UpdatedBy = p.UpdatedBy,
+                           DateUpdated = p.DateUpdated
+                       };
+
+            return list;
+        }
+
+        public ProductDto FindByProductId(long productId)
+        {
+            var list = GetAll().Where(p => p.ProductID == productId).FirstOrDefault();
+            return list;
+        }
+
+        public bool SaveProduct(ProductDto dto)
+        {
+            this.product = dto.DtoToEntity();
+
+            if (this._product.Insert(this.product).IsNull())
+            {
+                return false;
+            }
+
+            return true;
+        }
+
+        public bool SaveProductBulk(List<ProductDto> dto)
+        {
+            List<IOBalanceEntity.Product> ListProduct = new List<IOBalanceEntity.Product>();
+
+            if (dto.Count == 0)
+            {
+                return false;
+            }
+
+
+            foreach (var item in dto)
+            {
+                this.product = item.DtoToEntity();
+                ListProduct.Add(this.product);
+            }
+
+            if (ListProduct.Count == 0 || !this._product.BulkInsert(ListProduct))
+            {
+                return false;
+            }
+
+            return true;
+        }
+
+        public bool UpdateProductQty(decimal qty, long productId)
+        {
+            throw new NotImplementedException();
+        }
+
+        public bool DeactivateProduct(int productId)
+        {
+            throw new NotImplementedException();
+        }
+        #endregion InterfaceImplementations
+
+        #region PrivateMethods
+        private bool SaveProductLog(ProductLogDto dto)
+        {
+
+            return true;
+        }
+        #endregion PrivateMethods
+    }
+}

@@ -1,0 +1,141 @@
+//
+// Alerts
+// --------------------------------------------------
+
+
+// Base styles
+// -------------------------
+
+.alert {
+  padding: $alert-padding;
+  margin-bottom: $line-height-computed;
+  border: 1px solid transparent;
+  border-radius: $alert-border-radius;
+  position: relative;
+
+  // For sizing of icons
+  .alert-icon {
+    font-size: 2em;
+    display: table-cell;
+    padding-right: 15px;
+    vertical-align: middle;
+  }
+
+  .alert-text {
+    display: table-cell;
+    vertical-align: middle;
+  }
+
+  // Headings for larger alerts
+  h4 {
+    margin-top: 0;
+    // Specified for the h4 to prevent conflicts of changing $headings-color
+    color: inherit;
+  }
+  
+  // Provide class for links that match alerts
+  .alert-link {
+    font-weight: $alert-link-font-weight;
+  }
+
+  // Improve alignment and spacing of inner content
+  > p,
+  > ul {
+    margin-bottom: 0;
+  }
+  
+  > p + p {
+    margin-top: 5px;
+  }
+}
+
+// Dismissible alerts
+//
+// Expand the right padding and account for the close button's positioning.
+
+.alert-dismissable, // The misspelled .alert-dismissable was deprecated in 3.2.0.
+.alert-dismissible {
+  padding-right: ($alert-padding + 20);
+
+  // Adjust close link position
+  .close {
+    position: relative;
+    top: -5px;
+    right: -5px;
+    color: inherit;
+  }
+}
+
+// Alternate styles
+//
+// Generate contextual modifier classes for colorizing the alert.
+
+.alert-success {
+  @include alert-variant($alert-success-bg, transparent, $alert-default-color);
+}
+
+.alert-info {
+  @include alert-variant($alert-info-bg, transparent, $alert-default-color);
+}
+
+.alert-warning {
+  @include alert-variant($alert-warning-bg, transparent, $alert-default-color);
+}
+
+.alert-danger {
+  @include alert-variant($alert-danger-bg, transparent, $alert-default-color);
+}
+
+// Alert Notification
+.alert-notification {
+  position: fixed;
+  top: $grid-gutter-width / 2;
+  left: 0;
+  right: 0;
+  width: 100%;
+  z-index: $zindex-modal;
+  text-align: center;
+  background-color: transparent;
+  pointer-events: none;
+  display: none;
+
+  > span {
+    border-radius: $alert-border-radius;
+    padding: 5px 15px;
+    max-width: 600px;
+    overflow: hidden;
+    text-align: center;
+    color: white;
+    display: inline-block;
+    background-color: darken($gray,20%);
+    @include box-shadow(0 2px 15px rgba(0, 0, 0, 0.4));
+  }
+
+  &.alert-notification-success > span { background-color: $brand-success; }
+  &.alert-notification-danger > span { background-color: $brand-danger; }
+  &.alert-notification-default > span { background-color: darken($gray,20%); }
+  &.alert-notification-warning > span { background-color: $brand-warning; }
+  &.alert-notification-info > span { background-color: $brand-info; }
+}
+
+// Floating Alerts {
+.alert-float {
+  width: 290px;
+  position: fixed;
+  z-index: $zindex-modal;
+  display: none;
+  @include box-shadow(0 2px 15px rgba(0, 0, 0, 0.4));
+
+
+  &.top-right {
+    top: $grid-gutter-width;
+    right: $grid-gutter-width;
+  }
+
+  &.bottom-right {
+    bottom: $grid-gutter-width;
+    right: $grid-gutter-width;
+  }
+}
+
+// 

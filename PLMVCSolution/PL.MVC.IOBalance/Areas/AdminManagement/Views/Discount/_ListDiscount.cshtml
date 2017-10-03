@@ -1,0 +1,32 @@
+﻿@using Kendo.Mvc.UI;
+@using PL.Business.Common;
+
+@(Html.Kendo().Grid<PL.Business.Dto.IOBalance.DiscountDto>()
+        .Name("gvDiscount")
+        .Columns(columns =>
+        {
+            columns.Template(@<text></text>).ClientTemplate("<a href='javascript:void(0)' data-discount-id='#=DiscountID#' data-discount-percentage='#=DiscountPercentage#' data-discount-branchid='#=BranchID#' id='edititem'> Edit Discount</a>" + " | " +
+                            "<a href='javascript:void(0)' id='updateactive' data-discount-id='#=DiscountID#' data-branch-id='#=BranchID#'> Deactivate/Activate</a>")
+                .Title("Actions")
+                .Width(300)
+                .Locked(true)
+                .HeaderHtmlAttributes(new { @class = "bos-grid-text-center" })
+                .HtmlAttributes(new { @class = "bos-grid-text-center" });
+            columns.Bound(c => c.DiscountPercentage).Title("Discount Amount").Width(170).Sortable(true).Lockable(false);
+            columns.Bound(c => c.BranchName).Title("Branch").Width(200).Sortable(false).Lockable(false);
+            columns.Bound(c => c.CreatedByUserName).Title("Created By").Width(200).Sortable(false).Lockable(false);
+            columns.Bound(c => c.DateCreatedWithFormat).Title("Date Created").Width(200).Sortable(false).Lockable(false);
+            columns.Bound(c => c.UpdatedByUserName).Title("Updated By").Width(200).Sortable(false).Lockable(false);
+            columns.Bound(c => c.DateUpdatedWithFormat).Title("Date Updated").Width(200).Sortable(false).Lockable(false);
+            columns.Bound(c => c.IsActive).Title("Active?").Width(130).Sortable(true).Lockable(false);
+        })
+        .Scrollable()
+        .Sortable(sort => sort.AllowUnsort(false))
+        .Pageable()
+        .ColumnMenu()
+        .DataSource(dataSource => dataSource
+            .Ajax()
+                .Read(read => read.Action("GetDiscount", "Discount"))
+            .PageSize(50)
+        )
+)

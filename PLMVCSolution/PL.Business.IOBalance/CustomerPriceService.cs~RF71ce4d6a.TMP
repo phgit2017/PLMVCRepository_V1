@@ -1,0 +1,87 @@
+﻿using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+
+//-- Business
+using PL.Business.Common;
+using PL.Business.Dto.IOBalance;
+using PL.Business.Interface.IOBalance;
+using PL.Business.IOBalance.Extensions;
+//-- Core
+using PL.Core.Entity.IOBalanceDB;
+using PL.Core.Entity.Repository.Interface;
+using IOBalanceEntity = PL.Core.Entity.IOBalanceDB;
+
+//-- Infra
+using PL.Infra.DbContext.Interface;
+
+//-- Infrastructure Utilities
+using Infrastructure.Utilities.Extensions;
+
+namespace PL.Business.IOBalance
+{
+    public class CustomerPriceService : ICustomerPriceService
+    {
+        #region DeclarationsAndConstructors
+        IIOBalanceRepository<CustomerPrice> _customerprice;
+
+        IOBalanceEntity.CustomerPrice customerprice;
+        public CustomerPriceService(IIOBalanceRepository<CustomerPrice> customerprice)
+        {
+            this._customerprice = customerprice;
+            this.customerprice = new IOBalanceEntity.CustomerPrice();
+        }
+        #endregion DeclarationsAndConstructors
+
+        #region InterfaceImplementations
+        public IQueryable<CustomerPriceDto> GetAll()
+        {
+            var list = from cp in _customerprice.GetAll()
+                       select new CustomerPriceDto() 
+                       {
+                           CustomerPriceId = cp.CustomerPriceId,
+                           CustomerId = cp.Customer == null ? null : (int?)cp.Customer.CustomerID,
+                           ProductId = cp.Product == null ? null : (int?)cp.Product.ProductID,
+                           Price = cp.Price,
+                           CreatedBy = cp.CreatedBy,
+                           DateCreated = cp.DateCreated,
+                           DateUpdated = cp.DateUpdated,
+                           UpdatedBy = cp.UpdatedBy
+                       };
+            return list;
+        }
+
+        public IQueryable<CustomerPriceDto> FindPriceByProductId(int productId)
+        {
+            throw new NotImplementedException();
+        }
+
+        public IQueryable<CustomerPriceDto> FindPriceByCustomerId(int customerId)
+        {
+            throw new NotImplementedException();
+        }
+
+        public IQueryable<CustomerPriceDto> FindPriceByCustomerIdAndProductId(int customerId, int productId)
+        {
+            throw new NotImplementedException();
+        }
+
+        public CustomerPriceDto FindCustomerPriceById(int customerPriceId)
+        {
+            throw new NotImplementedException();
+        }
+
+        public bool SaveCustomerPrice(CustomerPriceDto customerPriceDetails)
+        {
+            throw new NotImplementedException();
+        }
+
+        public bool UpdateCustomerPrice(CustomerPriceDto newCustomerPriceDetails)
+        {
+            throw new NotImplementedException();
+        }
+        #endregion InterfaceImplementations
+    }
+}

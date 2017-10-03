@@ -1,0 +1,139 @@
+/* ========================================================================
+ * bootstrap-tour - v0.10.3
+ * http://bootstraptour.com
+ * ========================================================================
+ * Copyright 2012-2015 Ulrich Sossou
+ *
+ * ========================================================================
+ * Licensed under the MIT License (the "License");
+ * you may not use this file except in compliance with the License.
+ * You may obtain a copy of the License at
+ *
+ *     https://opensource.org/licenses/MIT
+ *
+ * Unless required by applicable law or agreed to in writing, software
+ * distributed under the License is distributed on an "AS IS" BASIS,
+ * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+ * See the License for the specific language governing permissions and
+ * limitations under the License.
+ * ========================================================================
+ */
+$popover-demo-title-bg: $gray-darker;
+$popover-demo-border-color: $gray-darker;
+$popover-demo-fallback-border-color: #CDCDCD !default;
+$popover-demo-arrow-outer-color: fade_in($popover-demo-border-color, 0.05) !default;
+$popover-demo-arrow-outer-fallback-color:  darken($popover-demo-fallback-border-color, 20%) !default;
+
+.tour-backdrop {
+  position: fixed;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  z-index: 1100;
+  @include background-opacity(#fff,.60)
+}
+
+.tour-step-backdrop {
+  position: relative;
+  z-index: 1101 !important;
+
+    > td {
+    position: relative;
+    z-index: 1101;
+    }
+
+}
+
+.tour-step-background {
+  position: absolute !important;
+  z-index: 1100;
+  border-radius: 6px;
+}
+
+.popover[class*="tour-"] {
+  font-size: 16px;
+  max-width: 400px;
+  min-height: 250px;
+  z-index: 1102;
+
+
+    .popover-title {
+      background-color: $popover-demo-title-bg;
+      font-size: 18px;
+      color: #fff;
+      border-bottom: 1px solid darken($popover-demo-title-bg, 3%);
+    }
+
+    .popover-navigation {
+        position: absolute;
+        display: block;
+        padding: 12px 18px;
+        bottom: 0;
+        width: 100%;
+
+        button {
+          vertical-align: bottom;
+        }
+
+        *[data-role="end"] {
+            float: right;
+
+        }
+
+        *[data-role="prev"],
+        *[data-role="next"],
+        *[data-role="end"] {
+            cursor: pointer;
+
+            &.disabled {
+              cursor: default;
+            }
+        }
+    }
+
+    &.orphan {
+      position: fixed;
+      margin-top: 0;
+
+      .arrow {
+        display: none;
+      }
+    }
+
+    &.top > .arrow {
+      border-top-color: $popover-demo-arrow-outer-fallback-color; // IE8 fallback
+      border-top-color: $popover-demo-arrow-outer-color;
+
+    } 
+
+    &.right > .arrow {
+      border-right-color: $popover-demo-arrow-outer-fallback-color; // IE8 fallback
+      border-right-color: $popover-demo-arrow-outer-color;
+
+    }
+
+    &.bottom > .arrow {
+      border-bottom-color: $popover-demo-arrow-outer-fallback-color; // IE8 fallback
+      border-bottom-color: $popover-demo-arrow-outer-color;
+
+    }
+
+    &.left > .arrow {
+      border-left-color: $popover-demo-arrow-outer-fallback-color; // IE8 fallback
+      border-left-color: $popover-demo-arrow-outer-color;
+
+    }
+
+}
+
+.demo-end-container {
+
+    .modal-confirm {
+      width: 560px;
+      margin: auto;
+      top: calc(50% - 150px);
+    }
+}
+
+

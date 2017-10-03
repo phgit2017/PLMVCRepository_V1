@@ -1,0 +1,42 @@
+C:\Users\lep.ridad\Desktop\PLMVCSolution\PL.Infra.DataAccess.IOBalanceDB\bin\Debug\PL.Infra.DataAccess.IOBalanceDB.dll.config
+C:\Users\lep.ridad\Desktop\PLMVCSolution\PL.Infra.DataAccess.IOBalanceDB\bin\Debug\PL.Infra.DataAccess.IOBalanceDB.dll
+C:\Users\lep.ridad\Desktop\PLMVCSolution\PL.Infra.DataAccess.IOBalanceDB\bin\Debug\PL.Infra.DataAccess.IOBalanceDB.pdb
+C:\Users\lep.ridad\Desktop\PLMVCSolution\PL.Infra.DataAccess.IOBalanceDB\bin\Debug\EntityFramework.dll
+C:\Users\lep.ridad\Desktop\PLMVCSolution\PL.Infra.DataAccess.IOBalanceDB\bin\Debug\EntityFramework.SqlServer.dll
+C:\Users\lep.ridad\Desktop\PLMVCSolution\PL.Infra.DataAccess.IOBalanceDB\bin\Debug\PL.Core.Entity.IOBalanceDB.dll
+C:\Users\lep.ridad\Desktop\PLMVCSolution\PL.Infra.DataAccess.IOBalanceDB\bin\Debug\PL.Infra.DbContext.Interface.dll
+C:\Users\lep.ridad\Desktop\PLMVCSolution\PL.Infra.DataAccess.IOBalanceDB\bin\Debug\PL.Core.Entity.IOBalanceDB.pdb
+C:\Users\lep.ridad\Desktop\PLMVCSolution\PL.Infra.DataAccess.IOBalanceDB\bin\Debug\PL.Infra.DbContext.Interface.pdb
+C:\Users\lep.ridad\Desktop\PLMVCSolution\PL.Infra.DataAccess.IOBalanceDB\bin\Debug\EntityFramework.xml
+C:\Users\lep.ridad\Desktop\PLMVCSolution\PL.Infra.DataAccess.IOBalanceDB\bin\Debug\EntityFramework.SqlServer.xml
+C:\Users\lep.ridad\Desktop\PLMVCSolution\PL.Infra.DataAccess.IOBalanceDB\obj\Debug\PL.Infra.DataAccess.IOBalanceDB.dll
+C:\Users\lep.ridad\Desktop\PLMVCSolution\PL.Infra.DataAccess.IOBalanceDB\obj\Debug\PL.Infra.DataAccess.IOBalanceDB.pdb
+C:\Users\lep.ridad\Desktop\PLMVCSolution\PL.Infra.DataAccess.IOBalanceDB\obj\Debug\PL.Infra.DataAccess.IOBalanceDB.csprojResolveAssemblyReference.cache
+C:\Users\MyPC1\Documents\Visual Studio 2013\Projects\PLMVCSolution\PL.Infra.DataAccess.IOBalanceDB\bin\Debug\PL.Infra.DataAccess.IOBalanceDB.dll.config
+C:\Users\MyPC1\Documents\Visual Studio 2013\Projects\PLMVCSolution\PL.Infra.DataAccess.IOBalanceDB\bin\Debug\PL.Infra.DataAccess.IOBalanceDB.dll
+C:\Users\MyPC1\Documents\Visual Studio 2013\Projects\PLMVCSolution\PL.Infra.DataAccess.IOBalanceDB\bin\Debug\PL.Infra.DataAccess.IOBalanceDB.pdb
+C:\Users\MyPC1\Documents\Visual Studio 2013\Projects\PLMVCSolution\PL.Infra.DataAccess.IOBalanceDB\bin\Debug\EntityFramework.dll
+C:\Users\MyPC1\Documents\Visual Studio 2013\Projects\PLMVCSolution\PL.Infra.DataAccess.IOBalanceDB\bin\Debug\EntityFramework.SqlServer.dll
+C:\Users\MyPC1\Documents\Visual Studio 2013\Projects\PLMVCSolution\PL.Infra.DataAccess.IOBalanceDB\bin\Debug\PL.Core.Entity.IOBalanceDB.dll
+C:\Users\MyPC1\Documents\Visual Studio 2013\Projects\PLMVCSolution\PL.Infra.DataAccess.IOBalanceDB\bin\Debug\PL.Infra.DbContext.Interface.dll
+C:\Users\MyPC1\Documents\Visual Studio 2013\Projects\PLMVCSolution\PL.Infra.DataAccess.IOBalanceDB\bin\Debug\PL.Core.Entity.IOBalanceDB.pdb
+C:\Users\MyPC1\Documents\Visual Studio 2013\Projects\PLMVCSolution\PL.Infra.DataAccess.IOBalanceDB\bin\Debug\PL.Infra.DbContext.Interface.pdb
+C:\Users\MyPC1\Documents\Visual Studio 2013\Projects\PLMVCSolution\PL.Infra.DataAccess.IOBalanceDB\bin\Debug\EntityFramework.xml
+C:\Users\MyPC1\Documents\Visual Studio 2013\Projects\PLMVCSolution\PL.Infra.DataAccess.IOBalanceDB\bin\Debug\EntityFramework.SqlServer.xml
+C:\Users\MyPC1\Documents\Visual Studio 2013\Projects\PLMVCSolution\PL.Infra.DataAccess.IOBalanceDB\obj\Debug\PL.Infra.DataAccess.IOBalanceDB.csprojResolveAssemblyReference.cache
+C:\Users\MyPC1\Documents\Visual Studio 2013\Projects\PLMVCSolution\PL.Infra.DataAccess.IOBalanceDB\obj\Debug\PL.Infra.DataAccess.IOBalanceDB.dll
+C:\Users\MyPC1\Documents\Visual Studio 2013\Projects\PLMVCSolution\PL.Infra.DataAccess.IOBalanceDB\obj\Debug\PL.Infra.DataAccess.IOBalanceDB.pdb
+C:\Users\lep.ridad\Documents\Visual Studio 2013\Projects\PLMVCSolution\PL.Infra.DataAccess.IOBalanceDB\bin\Debug\PL.Infra.DataAccess.IOBalanceDB.dll.config
+C:\Users\lep.ridad\Documents\Visual Studio 2013\Projects\PLMVCSolution\PL.Infra.DataAccess.IOBalanceDB\bin\Debug\PL.Infra.DataAccess.IOBalanceDB.dll
+C:\Users\lep.ridad\Documents\Visual Studio 2013\Projects\PLMVCSolution\PL.Infra.DataAccess.IOBalanceDB\bin\Debug\PL.Infra.DataAccess.IOBalanceDB.pdb
+C:\Users\lep.ridad\Documents\Visual Studio 2013\Projects\PLMVCSolution\PL.Infra.DataAccess.IOBalanceDB\bin\Debug\EntityFramework.dll
+C:\Users\lep.ridad\Documents\Visual Studio 2013\Projects\PLMVCSolution\PL.Infra.DataAccess.IOBalanceDB\bin\Debug\EntityFramework.SqlServer.dll
+C:\Users\lep.ridad\Documents\Visual Studio 2013\Projects\PLMVCSolution\PL.Infra.DataAccess.IOBalanceDB\bin\Debug\PL.Core.Entity.IOBalanceDB.dll
+C:\Users\lep.ridad\Documents\Visual Studio 2013\Projects\PLMVCSolution\PL.Infra.DataAccess.IOBalanceDB\bin\Debug\PL.Infra.DbContext.Interface.dll
+C:\Users\lep.ridad\Documents\Visual Studio 2013\Projects\PLMVCSolution\PL.Infra.DataAccess.IOBalanceDB\bin\Debug\PL.Core.Entity.IOBalanceDB.pdb
+C:\Users\lep.ridad\Documents\Visual Studio 2013\Projects\PLMVCSolution\PL.Infra.DataAccess.IOBalanceDB\bin\Debug\PL.Infra.DbContext.Interface.pdb
+C:\Users\lep.ridad\Documents\Visual Studio 2013\Projects\PLMVCSolution\PL.Infra.DataAccess.IOBalanceDB\bin\Debug\EntityFramework.xml
+C:\Users\lep.ridad\Documents\Visual Studio 2013\Projects\PLMVCSolution\PL.Infra.DataAccess.IOBalanceDB\bin\Debug\EntityFramework.SqlServer.xml
+C:\Users\lep.ridad\Documents\Visual Studio 2013\Projects\PLMVCSolution\PL.Infra.DataAccess.IOBalanceDB\obj\Debug\PL.Infra.DataAccess.IOBalanceDB.csprojResolveAssemblyReference.cache
+C:\Users\lep.ridad\Documents\Visual Studio 2013\Projects\PLMVCSolution\PL.Infra.DataAccess.IOBalanceDB\obj\Debug\PL.Infra.DataAccess.IOBalanceDB.dll
+C:\Users\lep.ridad\Documents\Visual Studio 2013\Projects\PLMVCSolution\PL.Infra.DataAccess.IOBalanceDB\obj\Debug\PL.Infra.DataAccess.IOBalanceDB.pdb

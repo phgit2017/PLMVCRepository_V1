@@ -1,0 +1,186 @@
+﻿@model PL.Business.Dto.IOBalance.ProductDto
+@using Infrastructure.Utilities;
+@using PL.MVC.IOBalance.Infrastructure;
+@using PL.Business.Common;
+
+@{
+    var userTypeId = Session[SessionVariables.UserDetails].GetUserTypeIdFromSession();
+    string formDisplay = userTypeId == Constants.UserTypeAdminId ? "display:block" : "display:none";
+}
+
+
+
+<div class="col-sm-12">
+    <div class="panel panel-default">
+        <div class="panel-body">
+            <form class="form-horizontal" id="frmInventory">
+
+                <div class="form-group">
+                    <label for="" class="control-label col-sm-3 required">Category</label>
+                    <div class="control-input col-sm-8">
+
+                        <input id="ProductCategory" style="width:100%" name="CategoryID" />
+                        <button type="button" class="btn btn-sm btn-default" id="refreshcategory">
+                            <i class="glyphicon glyphicon-refresh"></i>
+                        </button>
+
+                        @Html.ValidationMessageFor(m => m.CategoryID, "", new { @class = "error" })
+                    </div>
+
+
+                </div>
+                <div class="form-group">
+                    @*@Html.HiddenFor(m => m.ProductID, new { @id = "hdfProductID" })*@
+                    <label for="" class="control-label col-sm-3 required">Product Code</label>
+                    <div class="control-input col-sm-8">
+                        @Html.TextBoxFor(m => m.ProductCode, new
+                        {
+                            @class = "form-control",
+                            @id = "ProductCode"
+                        })
+                        @Html.ValidationMessageFor(m => m.ProductCode, "", new { @class = "error" })
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label for="" class="control-label col-sm-3">Product Name</label>
+                    <div class="control-input col-sm-8">
+                        @Html.TextBoxFor(m => m.ProductName, new
+                {
+                    @class = "form-control",
+                    @id = "ProductName"
+                })
+                        @Html.ValidationMessageFor(m => m.ProductName, "", new { @class = "error" })
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label for="" class="control-label col-sm-3">Product Extension</label>
+                    <div class="control-input col-sm-8">
+                        @Html.TextBoxFor(m => m.ProductExtension, new
+                {
+                    @class = "form-control",
+                    @id = "ProductExtension"
+                })
+                        @Html.ValidationMessageFor(m => m.ProductExtension, "", new { @class = "error" })
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label for="" class="control-label col-sm-3 required">Product Quantity</label>
+                    <div class="control-input col-sm-8">
+                        @Html.TextBoxFor(m => m.Quantity, new
+                {
+                    @class = "form-control",
+                    @id = "Quantity"
+                })
+                        @Html.ValidationMessageFor(m => m.Quantity, "", new { @class = "error" })
+                    </div>
+                </div>
+                <div class="form-group" style="@formDisplay">
+                    <label for="" class="control-label col-sm-3">Original Price</label>
+                    <div class="control-input col-sm-8">
+                        @Html.TextBoxFor(m => m.OriginalPrice, new
+                {
+                    @class = "form-control",
+                    @id = "OriginalPrice"
+                })
+                        @Html.ValidationMessageFor(m => m.OriginalPrice, "", new { @class = "error" })
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label for="" class="control-label col-sm-3 required">Product Price</label>
+                    <div class="control-input col-sm-8">
+                        @Html.TextBoxFor(m => m.Price, new
+                {
+                    @class = "form-control",
+                    @id = "ProductPrice"
+                })
+                        @Html.ValidationMessageFor(m => m.Price, "", new { @class = "error" })
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label for="" class="control-label col-sm-3 required">Product Size</label>
+                    <div class="control-input col-sm-8">
+                        @Html.TextBoxFor(m => m.Size, new
+                    {
+                        @class = "form-control",
+                        @id = "Size"
+                    })
+                        @Html.ValidationMessageFor(m => m.Size, "", new { @class = "error" })
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label for="" class="control-label col-sm-3">Product Bar Code</label>
+                    <div class="control-input col-sm-8">
+                        @Html.TextBoxFor(m => m.BarCode, new
+                   {
+                       @class = "form-control",
+                       @id = "BarCode"
+                   })
+                        @Html.ValidationMessageFor(m => m.BarCode, "", new { @class = "error" })
+                    </div>
+                </div>
+                @*<div class="form-group">
+                        <label for="" class="control-label col-sm-3">Model</label>
+                        <div class="control-input col-sm-8">
+                            <input id="ProductModel" style="width:100%" name="ModelID" />
+                        </div>
+                    </div>*@
+                <div class="form-group">
+                    <label for="" class="control-label col-sm-3 required">Supplier</label>
+                    <div class="control-input col-sm-8">
+                        <input id="ProductSupplier" style="width:100%" name="SupplierID" />
+                        <button type="button" class="btn btn-sm btn-default" id="refreshsupplier">
+                            <i class="glyphicon glyphicon-refresh"></i>
+                        </button>
+                        @Html.ValidationMessageFor(m => m.SupplierID, "", new { @class = "error" })
+                    </div>
+                </div>
+                <input type="hidden" id="hdfUserTypeId" value="@userTypeId" />
+
+                <div class="form-group" style="@formDisplay">
+                    <label for="" class="control-label col-sm-3 required">Branch</label>
+                    <div class="control-input col-sm-8">
+                        <input id="ProductBranch" style="width:100%" name="BranchID" />
+                        <button type="button" class="btn btn-sm btn-default" id="refreshbranch">
+                            <i class="glyphicon glyphicon-refresh"></i>
+                        </button>
+                        @Html.ValidationMessageFor(m => m.BranchID, "", new { @class = "error" })
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label for="" class="control-label col-sm-3">Product Description</label>
+                    <div class="control-input col-sm-8">
+                        @Html.TextBoxFor(m => m.ProductDesc, new
+                {
+                    @class = "form-control",
+                    @id = "ProductDesc"
+                })
+                        @Html.ValidationMessageFor(m => m.ProductDesc, "", new { @class = "error" })
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label for="" class="control-label col-sm-3">Remarks</label>
+                    <div class="control-input col-sm-8">
+                        @Html.TextAreaFor(m => m.Remarks, new
+                {
+                    @id = "Remarks",
+                    @class = "form-control",
+                    @style = "resize:none;",
+                    @cols = "30",
+                    @rows = "3"
+                })
+                        @Html.ValidationMessageFor(m => m.Remarks, "", new { @class = "error" })
+                    </div>
+                </div>
+                @*<div class="form-group">
+                        <div class="col-sm-8 col-sm-offset-3 text-right">
+                            <button id="savebutton" class="btn btn-sm btn-success"
+                                    data-action-type="savebutton">
+                                <i class="glyphicon glyphicon-plus"></i> Save Inventory
+                            </button>
+                        </div>
+                    </div>*@
+            </form>
+
+        </div>
+    </div>
+</div>

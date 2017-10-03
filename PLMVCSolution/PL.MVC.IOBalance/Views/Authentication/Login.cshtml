@@ -1,0 +1,42 @@
+﻿
+
+@model PL.Business.Dto.IOBalance.AuthenticationDto
+<section class="container-fluid">
+    <h1 class="text-center">Inventory System</h1>
+    <div class="panel panel-default panel-login-screen">
+        <div class="panel-body text-center">
+            
+            @using (Html.BeginForm("Login", "Authentication", FormMethod.Post))
+            {
+                <div class="form-group login-credentials">
+                    @Html.TextBoxFor(m => m.UserName, new
+                    {
+                        @id = "txtUserName",
+                        @class = "form-control user input-lg",
+                        @placeholder = "Username"
+                    })
+                    <br />
+                    <span class="control-input form-password-mask password">
+                        @Html.TextBoxFor(m => m.Password, new
+                         {
+                             @class = "form-control input-lg",
+                             @placeholder = @Html.DisplayNameFor(model => model.Password),
+                             @autocomplete = "off",
+                             @data_element = "password",
+                             @type = "password"
+
+                         })
+                        <button type="button" class="btn btn-mask-password" data-target="password">Show</button>
+                    </span>
+                    <span>
+                        @Html.ValidationMessageFor(m => m.UserName, "", new { @class = "text-danger" })
+                        <br />
+                        @Html.ValidationMessageFor(m => m.Password, "", new { @class = "text-danger" })
+                    </span>
+                </div>
+                <input type="submit" value="Log in" class="btn btn-primary btn-lg btn-block" />
+
+            }
+        </div>
+    </div>
+</section>

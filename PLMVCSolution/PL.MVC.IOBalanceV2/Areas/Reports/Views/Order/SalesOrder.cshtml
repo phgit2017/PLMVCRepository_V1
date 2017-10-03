@@ -1,0 +1,46 @@
+﻿@using PL.Business.Dto.IOBalanceV2;
+@using PL.MVC.IOBalanceV2.Areas.Reports.Models;
+@{
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+@section modals{
+    @Html.Partial(IOBALANCEMVCV2.Reports.Order.Views._SearchSalesOrder, new SalesOrderSearchModel())
+}
+<div>
+    <section class="panel-widget-container">
+        <button id="searchbutton" class="btn btn-default btn-filter" data-action-type="searchbutton">
+            Filter
+        </button>
+        <div class="panel-widget-controls">
+            <button id="refreshbutton" class="btn btn-default"
+                    data-action-type="refreshbutton">
+                <i class="md md-refresh"></i> Refresh
+            </button>
+
+            <button id="exportexcelbutton" class="btn btn-default"
+                    data-action-type="exportexcelbutton">
+                <i class="glyphicon glyphicon-refresh"></i> Export to excel
+            </button>
+        </div>
+    </section>
+    <div id="divList">
+        @Html.Partial(IOBALANCEMVCV2.Reports.Order.Views._ListSalesOrder)
+    </div>
+</div>
+
+<div id="divResultContainer" style="display:none"></div>
+
+
+@section scripts{
+    <script type="text/javascript">
+        window.reportSOOptions = {
+            exportUrl: '@Url.Action(IOBALANCEMVCV2.Reports.Order.ExportSOExcel())',
+            productUrl: '@Url.Action(IOBALANCEMVCV2.Common.GetProducts())',
+            supplierUrl: '@Url.Action(IOBALANCEMVCV2.Common.GetSupplier())',
+            customerUrl: '@Url.Action(IOBALANCEMVCV2.Common.GetCustomers())'
+        };
+    </script>
+    <script type="text/javascript" src="@IOBALANCEV2LINKS.Scripts.iobalancev2.reports_salesorder_js"></script>
+    <script type="text/javascript" src="@IOBALANCEV2LINKS.Scripts.infrastructure.jquery_deserialize_js"></script>
+}
+

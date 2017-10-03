@@ -1,0 +1,73 @@
+﻿@*@model List<PL.Business.Dto.IOBalance.CategoryDto>*@
+@using PL.Business.Dto.IOBalance;
+@using PL.MVC.IOBalance.Areas.AdminManagement.Models;
+@{
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+
+
+<div>
+    <div class="pull-left">
+        <span class="text-warning"><strong>Maintenance - Category</strong></span>
+    </div>
+
+    <div class="pull-right">
+        <button id="searchbutton" class="btn btn-sm btn-default"
+                data-action-type="searchbutton">
+            <i class="glyphicon glyphicon-search"></i> Search
+        </button>
+
+
+        <button id="refreshbutton" class="btn btn-sm btn-default"
+                data-action-type="refreshbutton">
+            <i class="glyphicon glyphicon-refresh"></i> Refresh
+        </button>
+
+        <button id="btndiscard" class="btn btn-default btn-sm" style="display:none;">
+            Discard
+        </button>
+
+        <button id="btnnewform" class="btn btn-sm btn-success">
+            <i class="glyphicon glyphicon-plus-sign"></i> New Category
+        </button>
+    </div>
+    <br />
+    <hr />
+    <div id="category-new-form" style="display:none;">
+        @Html.Partial(IOBALANCEMVC.AdminManagement.Category.Views._NewCategory, new CategoryDto())
+    </div>
+
+    <div id="divCategory">
+    </div>
+
+    @*@Html.Partial(IOBALANCEMVC.AdminManagement.Category.Views._ListCategoryKendo)*@
+
+
+</div>
+
+
+
+<div id="divResultContainer" style="display:none"></div>
+
+@section scripts{
+    <script type="text/javascript">
+        window.categoryOptions = {
+            isActiveYesNoUrl: "@Url.Action(IOBALANCEMVC.Common.GetIsActive())",
+            updateActiveItemUrl: "@Url.Action(IOBALANCEMVC.AdminManagement.Category.isActiveCategory())",
+            getKendoUrl: "@Url.Action(IOBALANCEMVC.AdminManagement.Category.GetCategory())"
+        };
+    </script>
+    <script type="text/javascript" src="@IOBALANCELINKS.Scripts.infrastructure.jquery_pl_kendo_resize_height_js"></script>
+    <script type="text/javascript" src="@IOBALANCELINKS.Scripts.iobalance.functions.adminmanagement.adminmanagement_category_js"></script>
+    <script type="text/javascript" src="@IOBALANCELINKS.Scripts.infrastructure.jquery_deserialize_js"></script>
+    @Scripts.Render("~/bundles/jqueryval");
+}
+
+@section modals{
+    @Html.Partial(IOBALANCEMVC.AdminManagement.Category.Views._ModalEditCategory, new CategoryDto())
+    @Html.Partial(IOBALANCEMVC.AdminManagement.Category.Views._ModalSearchCategory, new CategorySearchModel())
+}
+
+<link rel="stylesheet" href="@IOBALANCELINKS.Content.kendo.kendo_common_material_min_css" />
+<link rel="stylesheet" href="@IOBALANCELINKS.Content.kendo.kendo_material_min_css" />

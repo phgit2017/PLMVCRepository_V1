@@ -1,0 +1,54 @@
+c:\users\mypc1\documents\visual studio 2013\Projects\PLMVCSolution\PL.Infra.Repository\bin\Debug\PL.Infra.Repository.dll
+c:\users\mypc1\documents\visual studio 2013\Projects\PLMVCSolution\PL.Infra.Repository\bin\Debug\PL.Infra.Repository.pdb
+c:\users\mypc1\documents\visual studio 2013\Projects\PLMVCSolution\PL.Infra.Repository\obj\Debug\PL.Infra.Repository.dll
+c:\users\mypc1\documents\visual studio 2013\Projects\PLMVCSolution\PL.Infra.Repository\obj\Debug\PL.Infra.Repository.pdb
+c:\users\mypc1\documents\visual studio 2013\Projects\PLMVCSolution\PL.Infra.Repository\obj\Debug\PL.Infra.Repository.csprojResolveAssemblyReference.cache
+c:\users\mypc1\documents\visual studio 2013\Projects\PLMVCSolution\PL.Infra.Repository\bin\Debug\PL.Infra.Repository.dll.config
+c:\users\mypc1\documents\visual studio 2013\Projects\PLMVCSolution\PL.Infra.Repository\bin\Debug\EntityFramework.BulkInsert.dll
+c:\users\mypc1\documents\visual studio 2013\Projects\PLMVCSolution\PL.Infra.Repository\bin\Debug\EntityFramework.dll
+c:\users\mypc1\documents\visual studio 2013\Projects\PLMVCSolution\PL.Infra.Repository\bin\Debug\EntityFramework.MappingAPI.dll
+c:\users\mypc1\documents\visual studio 2013\Projects\PLMVCSolution\PL.Infra.Repository\bin\Debug\EntityFramework.SqlServer.dll
+c:\users\mypc1\documents\visual studio 2013\Projects\PLMVCSolution\PL.Infra.Repository\bin\Debug\PL.Core.Entity.Repository.Interface.dll
+c:\users\mypc1\documents\visual studio 2013\Projects\PLMVCSolution\PL.Infra.Repository\bin\Debug\PL.Infra.DbContext.Interface.dll
+c:\users\mypc1\documents\visual studio 2013\Projects\PLMVCSolution\PL.Infra.Repository\bin\Debug\PL.Core.Entity.Repository.Interface.pdb
+c:\users\mypc1\documents\visual studio 2013\Projects\PLMVCSolution\PL.Infra.Repository\bin\Debug\PL.Infra.DbContext.Interface.pdb
+c:\users\mypc1\documents\visual studio 2013\Projects\PLMVCSolution\PL.Infra.Repository\bin\Debug\EntityFramework.xml
+c:\users\mypc1\documents\visual studio 2013\Projects\PLMVCSolution\PL.Infra.Repository\bin\Debug\EntityFramework.BulkInsert.pdb
+c:\users\mypc1\documents\visual studio 2013\Projects\PLMVCSolution\PL.Infra.Repository\bin\Debug\EntityFramework.MappingAPI.pdb
+c:\users\mypc1\documents\visual studio 2013\Projects\PLMVCSolution\PL.Infra.Repository\bin\Debug\EntityFramework.SqlServer.xml
+C:\Users\lep.ridad\Desktop\PLMVCSolution\PL.Infra.Repository\bin\Debug\PL.Infra.Repository.dll.config
+C:\Users\lep.ridad\Desktop\PLMVCSolution\PL.Infra.Repository\bin\Debug\PL.Infra.Repository.dll
+C:\Users\lep.ridad\Desktop\PLMVCSolution\PL.Infra.Repository\bin\Debug\PL.Infra.Repository.pdb
+C:\Users\lep.ridad\Desktop\PLMVCSolution\PL.Infra.Repository\bin\Debug\EntityFramework.BulkInsert.dll
+C:\Users\lep.ridad\Desktop\PLMVCSolution\PL.Infra.Repository\bin\Debug\EntityFramework.dll
+C:\Users\lep.ridad\Desktop\PLMVCSolution\PL.Infra.Repository\bin\Debug\EntityFramework.MappingAPI.dll
+C:\Users\lep.ridad\Desktop\PLMVCSolution\PL.Infra.Repository\bin\Debug\EntityFramework.SqlServer.dll
+C:\Users\lep.ridad\Desktop\PLMVCSolution\PL.Infra.Repository\bin\Debug\PL.Core.Entity.Repository.Interface.dll
+C:\Users\lep.ridad\Desktop\PLMVCSolution\PL.Infra.Repository\bin\Debug\PL.Infra.DbContext.Interface.dll
+C:\Users\lep.ridad\Desktop\PLMVCSolution\PL.Infra.Repository\bin\Debug\PL.Core.Entity.Repository.Interface.pdb
+C:\Users\lep.ridad\Desktop\PLMVCSolution\PL.Infra.Repository\bin\Debug\PL.Infra.DbContext.Interface.pdb
+C:\Users\lep.ridad\Desktop\PLMVCSolution\PL.Infra.Repository\bin\Debug\EntityFramework.xml
+C:\Users\lep.ridad\Desktop\PLMVCSolution\PL.Infra.Repository\bin\Debug\EntityFramework.BulkInsert.pdb
+C:\Users\lep.ridad\Desktop\PLMVCSolution\PL.Infra.Repository\bin\Debug\EntityFramework.MappingAPI.pdb
+C:\Users\lep.ridad\Desktop\PLMVCSolution\PL.Infra.Repository\bin\Debug\EntityFramework.SqlServer.xml
+C:\Users\lep.ridad\Desktop\PLMVCSolution\PL.Infra.Repository\obj\Debug\PL.Infra.Repository.csprojResolveAssemblyReference.cache
+C:\Users\lep.ridad\Desktop\PLMVCSolution\PL.Infra.Repository\obj\Debug\PL.Infra.Repository.dll
+C:\Users\lep.ridad\Desktop\PLMVCSolution\PL.Infra.Repository\obj\Debug\PL.Infra.Repository.pdb
+C:\Users\lep.ridad\Documents\Visual Studio 2013\Projects\PLMVCSolution\PL.Infra.Repository\bin\Debug\PL.Infra.Repository.dll.config
+C:\Users\lep.ridad\Documents\Visual Studio 2013\Projects\PLMVCSolution\PL.Infra.Repository\bin\Debug\PL.Infra.Repository.dll
+C:\Users\lep.ridad\Documents\Visual Studio 2013\Projects\PLMVCSolution\PL.Infra.Repository\bin\Debug\PL.Infra.Repository.pdb
+C:\Users\lep.ridad\Documents\Visual Studio 2013\Projects\PLMVCSolution\PL.Infra.Repository\bin\Debug\EntityFramework.BulkInsert.dll
+C:\Users\lep.ridad\Documents\Visual Studio 2013\Projects\PLMVCSolution\PL.Infra.Repository\bin\Debug\EntityFramework.dll
+C:\Users\lep.ridad\Documents\Visual Studio 2013\Projects\PLMVCSolution\PL.Infra.Repository\bin\Debug\EntityFramework.MappingAPI.dll
+C:\Users\lep.ridad\Documents\Visual Studio 2013\Projects\PLMVCSolution\PL.Infra.Repository\bin\Debug\EntityFramework.SqlServer.dll
+C:\Users\lep.ridad\Documents\Visual Studio 2013\Projects\PLMVCSolution\PL.Infra.Repository\bin\Debug\PL.Core.Entity.Repository.Interface.dll
+C:\Users\lep.ridad\Documents\Visual Studio 2013\Projects\PLMVCSolution\PL.Infra.Repository\bin\Debug\PL.Infra.DbContext.Interface.dll
+C:\Users\lep.ridad\Documents\Visual Studio 2013\Projects\PLMVCSolution\PL.Infra.Repository\bin\Debug\PL.Core.Entity.Repository.Interface.pdb
+C:\Users\lep.ridad\Documents\Visual Studio 2013\Projects\PLMVCSolution\PL.Infra.Repository\bin\Debug\PL.Infra.DbContext.Interface.pdb
+C:\Users\lep.ridad\Documents\Visual Studio 2013\Projects\PLMVCSolution\PL.Infra.Repository\bin\Debug\EntityFramework.xml
+C:\Users\lep.ridad\Documents\Visual Studio 2013\Projects\PLMVCSolution\PL.Infra.Repository\bin\Debug\EntityFramework.BulkInsert.pdb
+C:\Users\lep.ridad\Documents\Visual Studio 2013\Projects\PLMVCSolution\PL.Infra.Repository\bin\Debug\EntityFramework.MappingAPI.pdb
+C:\Users\lep.ridad\Documents\Visual Studio 2013\Projects\PLMVCSolution\PL.Infra.Repository\bin\Debug\EntityFramework.SqlServer.xml
+C:\Users\lep.ridad\Documents\Visual Studio 2013\Projects\PLMVCSolution\PL.Infra.Repository\obj\Debug\PL.Infra.Repository.csprojResolveAssemblyReference.cache
+C:\Users\lep.ridad\Documents\Visual Studio 2013\Projects\PLMVCSolution\PL.Infra.Repository\obj\Debug\PL.Infra.Repository.dll
+C:\Users\lep.ridad\Documents\Visual Studio 2013\Projects\PLMVCSolution\PL.Infra.Repository\obj\Debug\PL.Infra.Repository.pdb

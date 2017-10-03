@@ -1,0 +1,58 @@
+﻿@using Kendo.Mvc.UI;
+@using PL.Business.Common;
+
+@{
+    string actionPrint = Url.Action(IOBALANCEMVC.OrderManagement.SalesOrder.ExtractReceipt());
+    //"+actionPrint+"/#=SalesOrderID#
+}
+
+@(Html.Kendo().Grid<PL.Business.Dto.IOBalance.SalesOrderDto>()
+        //.ClientDetailTemplateId("gvSavedSalesOrder")
+        .Name("gvSavedSalesOrder")
+        .Columns(columns =>
+        {
+            columns.Template(@<text></text>)
+                .ClientTemplate("<a href='" + actionPrint + "?salesOrderId=#=SalesOrderID#' target='_blank'><span class='glyphicon glyphicon-export'></span> Print Receipt</a>")
+                .Title("Actions")
+                .Width(180)
+                .HeaderHtmlAttributes(new { @class = "bos-grid-text-center" })
+                .HtmlAttributes(new { @class = "bos-grid-text-center" })
+                .Locked(true);
+            columns.Bound(c => c.SalesOrderNum).Title("Sales Order Number")
+                .Width(180)
+                .Lockable(true);
+            columns.Bound(c => c.CustomerFullName).Title("Customer")
+                .Width(180)
+                .Sortable(false)
+                .Lockable(false);
+            columns.Bound(c => c.TotalQtyPurchased).Title("Qty Purchased")
+                .Width(150)
+                .Sortable(false)
+                .Lockable(false);
+            columns.Bound(c => c.TotalAmountPurchased).Title("Amount Purchased")
+                .Width(180)
+                .Sortable(false)
+                .Lockable(false);
+            columns.Bound(c => c.DiscountPercentage).Title("Discount")
+                .Width(180)
+                .Sortable(false)
+                .Lockable(false);
+            columns.Bound(c => c.TotalItemsPurchased).Title("No. of Items Purchased")
+                .Width(200)
+                .Sortable(false)
+                .Lockable(false);
+            columns.Bound(c => c.DateCreatedWithFormat).Title("Date Generated")
+                .Width(170)
+                .Sortable(false)
+                .Lockable(false);
+        })
+        .Scrollable()
+        .Sortable()
+        .Pageable()
+        .ColumnMenu()
+        .DataSource(dataSource => dataSource
+            .Ajax()
+            .Read(read => read.Action("GetSalesOrderList", "SalesOrder"))
+            .PageSize(50)
+        )
+)

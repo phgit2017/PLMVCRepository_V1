@@ -1,0 +1,10 @@
+﻿var ADMINMANAGEMENTMODEL = (function () {
+    var _variables = {
+        params: null,
+    }
+
+});
+
+$(document).ready(function () {
+
+});

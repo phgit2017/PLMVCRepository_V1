@@ -1,0 +1,56 @@
+﻿@using Infrastructure.Utilities;
+@using PL.MVC.IOBalance.Infrastructure;
+@using PL.Business.Common;
+@using PL.Business.Dto.IOBalance;
+@{
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+<div>
+    <div class="pull-left">
+        <span class="text-warning"><strong>Inventory Report</strong></span>
+    </div>
+    <div class="pull-right">
+        <button id="searchbutton" class="btn btn-sm btn-default"
+                data-action-type="searchbutton">
+            <i class="glyphicon glyphicon-search"></i> Search
+        </button>
+
+        <button id="refreshbutton" class="btn btn-sm btn-default"
+                data-action-type="refreshbutton"
+                data-url="">
+            <i class="glyphicon glyphicon-refresh"></i> Refresh
+        </button>
+
+        <button id="extractbutton" class="btn btn-sm btn-default">
+            Extract to excel
+        </button>
+    </div>
+    <div class="clearfix"></div>
+    <hr />
+
+    <div>
+        @Html.Partial(IOBALANCEMVC.ReportManagement.InventorySales.Views._InventoryReport)
+    </div>
+</div>
+
+@section scripts{
+    <script type="text/javascript">
+        window.inventoryReportOptions = {
+            branchGetUrl: "@Url.Action(IOBALANCEMVC.Common.GetBranch())",
+            productGetUrl: "@Url.Action(IOBALANCEMVC.Common.GetProduct())",
+            productBranchIdGetUrl: "@Url.Action(IOBALANCEMVC.Common.GetProductByBranchId())",
+            extractToExcelUrl: "@Url.Action(IOBALANCEMVC.ReportManagement.InventorySales.ExtractReportInventoryReportToExcel())"
+        };
+    </script>
+    <script type="text/javascript" src="@IOBALANCELINKS.Scripts.infrastructure.jquery_pl_kendo_resize_height_js"></script>
+    s<script type="text/javascript" src="@IOBALANCELINKS.Scripts.iobalance.functions.reportmanagement.reportmanagement_inventoryreport_js"></script>
+    @Scripts.Render("~/bundles/jqueryval");
+
+}
+
+@section modals{
+    @Html.Partial(IOBALANCEMVC.ReportManagement.InventorySales.Views._ModalSearchInventoryReport,new ReportCombinationDto())
+}
+
+<link rel="stylesheet" href="@IOBALANCELINKS.Content.kendo.kendo_common_material_min_css" />
+<link rel="stylesheet" href="@IOBALANCELINKS.Content.kendo.kendo_material_min_css" />

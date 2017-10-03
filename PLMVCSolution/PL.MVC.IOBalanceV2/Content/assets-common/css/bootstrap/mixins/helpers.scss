@@ -1,0 +1,107 @@
+// Helpers
+
+@mixin break-word() {
+  white-space: normal;
+  word-wrap: break-word;
+  word-break: break-word;
+}
+
+@mixin truncate-ellipsis($width: 100%) {
+  width: $width;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+@mixin calc-add-two-values($property, $value1, $value2) {
+	#{$property}: calc(#{$value1} + #{$value2});
+	#{$property}: -webkit-calc(#{$value1} + #{$value2});
+	#{$property}: -moz-calc(#{$value1} + #{$value2});
+}
+
+@mixin calc-sub-two-values($property, $value1, $value2) {
+	#{$property}: calc(#{$value1} - #{$value2});
+	#{$property}: -webkit-calc(#{$value1} - #{$value2});
+	#{$property}: -moz-calc(#{$value1} - #{$value2});
+}
+
+@mixin info-box($color) {
+    margin: 10px auto 20px auto;
+    background-color: lighten($color, 50%);
+    border: 1px solid lighten($color, 30%);
+    padding: 20px 20px 20px 70px;
+    position: relative;
+    
+    &:before {
+      position: absolute;
+      top: 10px;
+      left: 20px;
+      margin-right: 10px;
+      font-family: "Material Design Iconic Font";
+      content: '\f1f8';
+      font-size: 36px;
+      color: $color;
+    }  
+}
+
+%env-indicator {
+    background-color: $brand-danger;
+    font-size: 12px;
+    white-space: nowrap;
+    color: #fff;
+    padding: 0 10px;
+    width: 190px;
+    left: calc(50% - 93px);
+    top: 0;
+    text-align: center;
+    position: fixed;
+    border-bottom-left-radius: 5px;
+    border-bottom-right-radius: 5px;
+}
+
+@mixin env-indicator($env, $lbl) {
+    #{$env} {
+        .navbar-brand:after {
+            @extend %env-indicator;
+            z-index: -1;
+            content: $lbl;
+        } 
+
+        .login-background .panel-identity-confirm:before {
+            @extend %env-indicator;
+            left: calc(50% - 93px);
+            width: 190px;
+            top: 0;
+            z-index: 1;
+            content: $lbl;
+        }
+    }
+}
+
+@mixin arrow($direction, $size, $color){
+
+    $arrowDirection : $direction;
+
+        width: 0; 
+        height: 0;
+        @if $arrowDirection =="up"{
+            border-left: $size solid transparent;
+            border-right: $size solid transparent;
+            border-bottom: $size solid $color;
+        }
+        @if $arrowDirection =="down"{
+            border-left: $size solid transparent;
+            border-right: $size solid transparent;
+            border-top: $size solid $color;
+        }
+        @if $arrowDirection =="right"{
+            border-bottom: $size solid transparent;
+            border-top: $size solid transparent;
+            border-left: $size solid $color;
+        }
+        @if $arrowDirection =="left"{
+            border-bottom: $size solid transparent;
+            border-top: $size solid transparent;
+            border-right: $size solid $color;
+        }
+}

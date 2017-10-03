@@ -1,0 +1,10 @@
+﻿{
+	"version": 3,
+	"file": "kendo-theme.css",
+	"sources": [
+		"kendo-theme.scss"
+	],
+	"sourcesContent": [],
+	"mappings": "AAAA;;;;;;;;;;;;;gEAagE;AAkW5D,iBAAiB,CAAC,OAAO,CAAjB;EACJ,mBAAmB,EAAE,CAAC,CAAE,MAAK;CADxB;;AAOE,cAAc,CAAC,EAAE,GAAG,OAAO,GAAG,OAAO,CAA7B;EACf,OAAO,EAAE,GAAI;EACb,QAAQ,EAAE,QAAS;EACnB,IAAI,EAAE,IAAK;CAHK;;AAKR,cAAc,CAAC,EAAE,AAAA,SAAS,GAAG,OAAO,CAA5B;EAChB,QAAQ,EAAE,QAAS;EACnB,YAAY,EAAE,IAAK;EACnB,WAAW,EAAE,KAAM;CAHF",
+	"names": []
+}

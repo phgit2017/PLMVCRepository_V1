@@ -1,0 +1,44 @@
+﻿@model PL.Business.Dto.IOBalance.DiscountDto
+
+<div class="modal fade" id="mdleditdiscount" tabindex="-1" role="dialog" aria-labelledby="mdleditdiscount" aria-hidden="true">
+    <div class="modal-dialog modal-lg">
+        <div class="modal-header text-center">
+            <h4 class="modal-title">Update Discount</h4>
+            <span><small>update discount details</small></span>
+        </div>
+
+
+        <div class="modal-content">
+            <div class="modal-body">
+                <form class="form-horizontal" id="frmEditDiscount">
+                    <div class="form-group">
+                        @Html.HiddenFor(m => m.DiscountID, new { @id = "hdfDiscountId" })
+                        <label for="" class="control-label col-sm-3 required">Discount Percentage</label>
+                        @*@Html.LabelFor(m => m.DiscountPercentage, new  { @class="control-label col-sm-3 required" })*@
+                        <div class="control-input col-sm-8">
+                            @Html.TextBoxFor(m => m.DiscountPercentage, new
+                            {
+                                @class = "form-control",
+                                @id = "EditDiscountPercentage"
+                            })
+                            @Html.ValidationMessageFor(m => m.DiscountPercentage, "", new { @class = "error" })
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label for="" class="control-label col-sm-3 required">Branch Name</label>
+                        <div class="control-input col-sm-8">
+                            <input id="EditBranchID" style="width:100%" name="BranchID" />
+                            @Html.ValidationMessageFor(m => m.BranchID, "", new { @class = "error" })
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <div class="col-sm-8 col-sm-offset-3 text-right">
+                            <button type="button" data-dismiss="modal" class="btn btn-link">Cancel</button>
+                            <button id="updatedetails" type="button" class="btn btn-warning" data-url="@Url.Action(IOBALANCEMVC.AdminManagement.Discount.UpdateDiscount())">Update Discount</button>
+                        </div>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>

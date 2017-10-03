@@ -1,0 +1,30 @@
+﻿@using Kendo.Mvc.UI;
+@using PL.Business.Common;
+
+@{
+    string batchUploadAction = IOBALANCEMVC.OrderManagement.PurchaseOrder.GetBatchSummaries().GetT4MVCResult().Action;
+    string batchUploadController = IOBALANCEMVC.OrderManagement.PurchaseOrder.GetBatchSummaries().GetT4MVCResult().Controller;
+}
+
+@(Html.Kendo().Grid<PL.Business.Dto.IOBalance.BatchSummariesDto>()
+        .Name("gvBatchSummary")
+        .Columns(columns =>
+        {
+
+            columns.Bound(b => b.BatchNo).Title("Batch No").Width(180).Sortable(true).Lockable(false);
+            columns.Bound(b => b.FileName).Title("File Name").Width(180).Sortable(true).Lockable(false);
+            columns.Bound(b => b.TotalRecords).Title("Total Records").Width(180).Sortable(true).Lockable(false);
+            columns.Bound(b => b.Successful).Title("Successful").Width(180).Sortable(true).Lockable(false);
+            columns.Bound(b => b.Failed).Title("Failed").Width(180).Sortable(true).Lockable(false);
+
+        })
+        .Scrollable()
+        .Sortable(sort => sort.AllowUnsort(false))
+        .Pageable()
+        .ColumnMenu()
+        .DataSource(dataSource => dataSource
+            .Ajax()
+            .Read(read => read.Action(batchUploadAction, batchUploadController))
+            .PageSize(50)
+        )
+)

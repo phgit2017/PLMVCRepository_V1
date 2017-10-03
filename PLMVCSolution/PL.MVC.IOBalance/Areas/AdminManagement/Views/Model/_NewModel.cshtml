@@ -1,0 +1,23 @@
+﻿@model PL.Business.Dto.IOBalance.ModelDto
+<div>
+    <form class="form-horizontal" id="frmModel">
+        <div class="form-group">
+            @Html.HiddenFor(m => m.ModelID, new { @id = "hdfModelId" })
+            <label for="" class="control-label col-sm-3 required">Model</label>
+            <div class="control-input col-sm-8">
+                @Html.TextBoxFor(m => m.ModelName,
+                new
+                {
+                    @class = "form-control",
+                    @id = "ModelName"
+                })
+                @Html.ValidationMessageFor(m => m.ModelName, "", new { @class = "error" })
+            </div>
+        </div>
+        <div class="form-group">
+            @*<div class="col-sm-8 col-sm-offset-3 text-right">
+                    <button id="savedetails" type="button" class="btn btn-warning" data-url="@Url.Action(IOBALANCEMVC.AdminManagement.Customer.SaveCustomer())">Save Customer</button>
+                </div>*@
+        </div>
+    </form>
+</div>

@@ -1,0 +1,15 @@
+﻿@{
+    Layout = "~/Views/Shared/_LoginLayout.cshtml";
+}
+<div class="jumbotron text-center">
+    <h1 class="display-3">Unauthorized!</h1>
+    <p>
+        <small>Sorry you are unauthorized for that page</small>
+    </p>
+    <p>
+        <small>Click here to Login again</small>
+    </p>
+    <p class="lead">
+        <a class="btn btn-primary btn-lg" href="@Url.Action(IOBALANCEMVC.Authentication.LogOut())" role="button">Login Here</a>
+    </p>
+</div>

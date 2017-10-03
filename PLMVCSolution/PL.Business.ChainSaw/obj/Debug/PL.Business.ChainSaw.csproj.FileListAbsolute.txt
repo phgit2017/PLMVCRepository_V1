@@ -1,0 +1,50 @@
+C:\Users\lep.ridad\Desktop\PLMVCSolution\PL.Business.ChainSaw\obj\Debug\PL.Business.ChainSaw.csprojResolveAssemblyReference.cache
+C:\Users\lep.ridad\Desktop\PLMVCSolution\PL.Business.ChainSaw\bin\Debug\PL.Business.ChainSaw.dll
+C:\Users\lep.ridad\Desktop\PLMVCSolution\PL.Business.ChainSaw\bin\Debug\PL.Business.ChainSaw.pdb
+C:\Users\lep.ridad\Desktop\PLMVCSolution\PL.Business.ChainSaw\bin\Debug\Infrastructure.Utilities.dll
+C:\Users\lep.ridad\Desktop\PLMVCSolution\PL.Business.ChainSaw\bin\Debug\PL.Business.Common.dll
+C:\Users\lep.ridad\Desktop\PLMVCSolution\PL.Business.ChainSaw\bin\Debug\PL.Business.Dto.ChainSaw.dll
+C:\Users\lep.ridad\Desktop\PLMVCSolution\PL.Business.ChainSaw\bin\Debug\PL.Business.Interface.ChainSaw.dll
+C:\Users\lep.ridad\Desktop\PLMVCSolution\PL.Business.ChainSaw\bin\Debug\PL.Core.Entity.ChainSawDBV2.dll
+C:\Users\lep.ridad\Desktop\PLMVCSolution\PL.Business.ChainSaw\bin\Debug\PL.Core.Entity.Repository.Interface.dll
+C:\Users\lep.ridad\Desktop\PLMVCSolution\PL.Business.ChainSaw\bin\Debug\PL.Infra.DbContext.Interface.dll
+C:\Users\lep.ridad\Desktop\PLMVCSolution\PL.Business.ChainSaw\bin\Debug\EntityFramework.dll
+C:\Users\lep.ridad\Desktop\PLMVCSolution\PL.Business.ChainSaw\bin\Debug\Infrastructure.Utilities.pdb
+C:\Users\lep.ridad\Desktop\PLMVCSolution\PL.Business.ChainSaw\bin\Debug\PL.Business.Common.pdb
+C:\Users\lep.ridad\Desktop\PLMVCSolution\PL.Business.ChainSaw\bin\Debug\PL.Business.Dto.ChainSaw.pdb
+C:\Users\lep.ridad\Desktop\PLMVCSolution\PL.Business.ChainSaw\bin\Debug\PL.Business.Interface.ChainSaw.pdb
+C:\Users\lep.ridad\Desktop\PLMVCSolution\PL.Business.ChainSaw\bin\Debug\PL.Core.Entity.ChainSawDBV2.pdb
+C:\Users\lep.ridad\Desktop\PLMVCSolution\PL.Business.ChainSaw\bin\Debug\PL.Core.Entity.Repository.Interface.pdb
+C:\Users\lep.ridad\Desktop\PLMVCSolution\PL.Business.ChainSaw\bin\Debug\PL.Infra.DbContext.Interface.pdb
+C:\Users\lep.ridad\Desktop\PLMVCSolution\PL.Business.ChainSaw\bin\Debug\EntityFramework.xml
+C:\Users\lep.ridad\Desktop\PLMVCSolution\PL.Business.ChainSaw\obj\Debug\PL.Business.ChainSaw.dll
+C:\Users\lep.ridad\Desktop\PLMVCSolution\PL.Business.ChainSaw\obj\Debug\PL.Business.ChainSaw.pdb
+C:\Users\lep.ridad\Documents\Visual Studio 2013\Projects\PLMVCSolution\PL.Business.ChainSaw\bin\Debug\PL.Business.ChainSaw.dll
+C:\Users\lep.ridad\Documents\Visual Studio 2013\Projects\PLMVCSolution\PL.Business.ChainSaw\bin\Debug\PL.Business.ChainSaw.pdb
+C:\Users\lep.ridad\Documents\Visual Studio 2013\Projects\PLMVCSolution\PL.Business.ChainSaw\bin\Debug\Infrastructure.Utilities.dll
+C:\Users\lep.ridad\Documents\Visual Studio 2013\Projects\PLMVCSolution\PL.Business.ChainSaw\bin\Debug\PL.Business.Common.dll
+C:\Users\lep.ridad\Documents\Visual Studio 2013\Projects\PLMVCSolution\PL.Business.ChainSaw\bin\Debug\PL.Business.Dto.ChainSaw.dll
+C:\Users\lep.ridad\Documents\Visual Studio 2013\Projects\PLMVCSolution\PL.Business.ChainSaw\bin\Debug\PL.Business.Interface.ChainSaw.dll
+C:\Users\lep.ridad\Documents\Visual Studio 2013\Projects\PLMVCSolution\PL.Business.ChainSaw\bin\Debug\PL.Core.Entity.ChainSawDBV2.dll
+C:\Users\lep.ridad\Documents\Visual Studio 2013\Projects\PLMVCSolution\PL.Business.ChainSaw\bin\Debug\PL.Core.Entity.Repository.Interface.dll
+C:\Users\lep.ridad\Documents\Visual Studio 2013\Projects\PLMVCSolution\PL.Business.ChainSaw\bin\Debug\PL.Infra.DbContext.Interface.dll
+C:\Users\lep.ridad\Documents\Visual Studio 2013\Projects\PLMVCSolution\PL.Business.ChainSaw\bin\Debug\EntityFramework.dll
+C:\Users\lep.ridad\Documents\Visual Studio 2013\Projects\PLMVCSolution\PL.Business.ChainSaw\bin\Debug\System.Web.Razor.dll
+C:\Users\lep.ridad\Documents\Visual Studio 2013\Projects\PLMVCSolution\PL.Business.ChainSaw\bin\Debug\System.Web.WebPages.Razor.dll
+C:\Users\lep.ridad\Documents\Visual Studio 2013\Projects\PLMVCSolution\PL.Business.ChainSaw\bin\Debug\System.Web.WebPages.dll
+C:\Users\lep.ridad\Documents\Visual Studio 2013\Projects\PLMVCSolution\PL.Business.ChainSaw\bin\Debug\System.Web.WebPages.Deployment.dll
+C:\Users\lep.ridad\Documents\Visual Studio 2013\Projects\PLMVCSolution\PL.Business.ChainSaw\bin\Debug\Infrastructure.Utilities.pdb
+C:\Users\lep.ridad\Documents\Visual Studio 2013\Projects\PLMVCSolution\PL.Business.ChainSaw\bin\Debug\PL.Business.Common.pdb
+C:\Users\lep.ridad\Documents\Visual Studio 2013\Projects\PLMVCSolution\PL.Business.ChainSaw\bin\Debug\PL.Business.Dto.ChainSaw.pdb
+C:\Users\lep.ridad\Documents\Visual Studio 2013\Projects\PLMVCSolution\PL.Business.ChainSaw\bin\Debug\PL.Business.Interface.ChainSaw.pdb
+C:\Users\lep.ridad\Documents\Visual Studio 2013\Projects\PLMVCSolution\PL.Business.ChainSaw\bin\Debug\PL.Core.Entity.ChainSawDBV2.pdb
+C:\Users\lep.ridad\Documents\Visual Studio 2013\Projects\PLMVCSolution\PL.Business.ChainSaw\bin\Debug\PL.Core.Entity.Repository.Interface.pdb
+C:\Users\lep.ridad\Documents\Visual Studio 2013\Projects\PLMVCSolution\PL.Business.ChainSaw\bin\Debug\PL.Infra.DbContext.Interface.pdb
+C:\Users\lep.ridad\Documents\Visual Studio 2013\Projects\PLMVCSolution\PL.Business.ChainSaw\bin\Debug\EntityFramework.xml
+C:\Users\lep.ridad\Documents\Visual Studio 2013\Projects\PLMVCSolution\PL.Business.ChainSaw\bin\Debug\System.Web.Razor.xml
+C:\Users\lep.ridad\Documents\Visual Studio 2013\Projects\PLMVCSolution\PL.Business.ChainSaw\bin\Debug\System.Web.WebPages.Razor.xml
+C:\Users\lep.ridad\Documents\Visual Studio 2013\Projects\PLMVCSolution\PL.Business.ChainSaw\bin\Debug\System.Web.WebPages.xml
+C:\Users\lep.ridad\Documents\Visual Studio 2013\Projects\PLMVCSolution\PL.Business.ChainSaw\bin\Debug\System.Web.WebPages.Deployment.xml
+C:\Users\lep.ridad\Documents\Visual Studio 2013\Projects\PLMVCSolution\PL.Business.ChainSaw\obj\Debug\PL.Business.ChainSaw.csprojResolveAssemblyReference.cache
+C:\Users\lep.ridad\Documents\Visual Studio 2013\Projects\PLMVCSolution\PL.Business.ChainSaw\obj\Debug\PL.Business.ChainSaw.dll
+C:\Users\lep.ridad\Documents\Visual Studio 2013\Projects\PLMVCSolution\PL.Business.ChainSaw\obj\Debug\PL.Business.ChainSaw.pdb

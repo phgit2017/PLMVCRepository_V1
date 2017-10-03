@@ -1,0 +1,192 @@
+﻿var ORDERMANAGEMENTSALESORDER = (function () {
+    var _variables = {
+        params: null,
+        loaderMsg: "",
+        UpdateMsg: ""
+    }
+
+    var _doInitializeElements = function () {
+        $('body').on('click', '#btnaddsalesorder', function () {
+            _doAddSalesOrder();
+        });
+
+        $('body').on('click', '#btnsavesalesorder', function () {
+            _doSaveSalesOrder();
+        });
+    }
+
+    var _doAddSalesOrder = function () {
+        $frmSalesOrderDetails = $('#frmSalesOrderDetails');
+        $gvSalesOrderDetails = $('#gvSalesOrderDetails tbody');
+        var tempTable, curRow;
+
+        $.ajax({
+            url: _variables.params.addSalesOrderUrl,
+            type: 'POST',
+            data: $frmSalesOrderDetails.serialize(),
+            success: function (data) {
+                if (INFRA.ConvertToBoolean(data.isSuccess)) {
+                    tempTable = $('<table></table>');
+                    tempTable.html(data.salesOrder);
+                    curRow = tempTable.find('tbody > tr');
+                    if ($gvSalesOrderDetails.find('tr').length === 0) {
+                        $gvSalesOrderDetails.html(curRow);
+
+                    } else {
+                        $(curRow).appendTo($gvSalesOrderDetails);
+                    }
+                    //_doBindTblProduct();
+                }
+                $('#divResultContainer').show().html(data.alertMessage);
+            }
+        });
+    }
+    var _doSaveSalesOrder = function () {
+        var salesOrderDetail = [], salesOrder = [], newSalesOrder, newItem, $tds;
+        var salesOrders = [];
+        var customerId = 1;
+
+        $frmSalesOrder = $('#frmSalesOrder');
+        $gvSalesOrderDetails = $('#gvSalesOrderDetails');
+        $ddlCustomer = $('#SalesCustomer');
+
+
+        $gvSalesOrderDetails.find('tbody > tr').each(function () {
+            $tds = $(this).find('td');
+            var productId,
+                productCode,
+                productName,
+                productExt,
+                quantity,
+                unitId,
+                unitDesc,
+                unitPrice,
+                totalPricePerItemQty;
+
+            productId = $tds.eq(0).find('input:hidden').eq(0).val();
+            unitId = $tds.eq(0).find('input:hidden').eq(1).val();
+            productCode = $tds.eq(0).find('span').text();
+            productName = $tds.eq(1).find('span').text();
+            productExt = $tds.eq(2).find('span').text();
+            quantity = $tds.eq(3).find('span').text();
+            unitDesc = $tds.eq(4).find('span').text();
+            unitPrice = $tds.eq(5).find('span').text();
+            totalPricePerItemQty = $tds.eq(6).find('span').text();
+
+            newItem = {
+                ProductID: productId,
+                UnitID: unitId,
+                ProductCode: productCode,
+                ProductName: productName,
+                productExt: productExt,
+                Quantity: quantity,
+                UnitDesc: unitDesc,
+                UnitPrice: unitPrice,
+                TotalPricePerItemQty: totalPricePerItemQty
+            };
+            salesOrderDetail.push(newItem);
+        });
+
+
+
+        if (INFRA.IsNullOrEmpty($ddlCustomer.val())) {
+            $('[data-valmsg-for="CustomerId"]').html("<br/>Customer field is a required field").removeClass("field-validation-valid").addClass("error");
+        } else {
+            salesOrders = JSON.stringify({
+                'salesOrderDetailDto': salesOrderDetail,
+                'messenger': $('#Messenger').val(),
+                'paymentTerms': $('#PaymentTerms').val(),
+                'customerId': $ddlCustomer.val()
+            });
+
+
+            $.ajax({
+                contentType: 'application/json; charset=utf-8',
+                type: "POST",
+                dataType: 'json',
+                url: _variables.params.saveSalesOrderUrl,
+                data: salesOrders,
+                success: function (data) {
+                    //$('body').hideLoader();
+                    if (data.isSuccess) {
+
+                    }
+                    $('#divResultContainer').show().html(data.alertMessage);
+                }
+            });
+        }
+
+
+
+
+    }
+    var _doInitializeDropDownElements = function () {
+        $("#SalesCustomer").kendoDropDownList({
+            filter: "startswith",
+            optionLabel: 'Select item',
+            dataTextField: "DropdownDisplay",
+            dataValueField: "CustomerID",
+            dataSource: {
+                transport: {
+                    read: {
+                        dataType: "json",
+                        url: _variables.params.customerGetUrl
+                    }
+                }
+            }
+        });
+
+        $("#SalesProduct").kendoDropDownList({
+            filter: "startswith",
+            optionLabel: 'Select item',
+            dataTextField: "DropDownDisplay",
+            dataValueField: "ProductID",
+            dataSource: {
+                transport: {
+                    read: {
+                        dataType: "json",
+                        url: _variables.params.productGetUrl
+                    }
+                }
+            }
+        });
+
+        $("#SalesUnit").kendoDropDownList({
+            filter: "startswith",
+            optionLabel: 'Select item',
+            dataTextField: "UnitDesc",
+            dataValueField: "UnitID",
+            dataSource: {
+                transport: {
+                    read: {
+                        dataType: "json",
+                        url: _variables.params.unitGetUrl
+                    }
+                }
+            }
+        });
+    }
+
+    var initialize = function (options) {
+        try {
+            _variables.params = options || {};
+        } catch (ex) {
+            if (typeof console !== "undefined" && console !== null) {
+                console.error("Error parsing inline options", ex);
+            }
+        }
+        _doInitializeDropDownElements();
+        _doInitializeElements();
+        //_doBindTblProduct();
+    }
+
+    return {
+        initialize: initialize
+    }
+
+})();
+
+$(document).ready(function () {
+    var options = window.salesOptions;
+    ORDERMANAGEMENTSALESORDER.initialize(options);
+});

@@ -1,0 +1,110 @@
+﻿|@model PL.Business.Dto.IOBalanceV2.EditProductDto
+
+<div class="col-md-8">
+    <div class="form-group">
+        
+        <label for="" class="control-label required">Product Code</label>
+        <div class="control-input">
+            @Html.HiddenFor(m => m.ProductId, new { @id = "hdfProductId" })
+            @Html.HiddenFor(m => m.Quantity, new { @id = "hdfQuantity" })
+            @Html.TextBoxFor(m => m.ProductCode,
+                new
+                {
+                    @class = "form-control input-lg",
+                    @id = "ProductCode",
+                    @placeholder = "Type Product Code...",
+                    @tabindex = "1",
+                    @autofocus = "true"
+                })
+            @Html.ValidationMessageFor(m => m.ProductCode, "", new { @class = "error" })
+        </div>
+    </div>
+    <div class="form-group">
+        <label for="" class="control-label">Product Name</label>
+        <div class="control-input">
+            @Html.TextBoxFor(m => m.ProductName,
+        new
+        {
+            @class = "form-control",
+            @id = "ProductName"
+        })
+            @Html.ValidationMessageFor(m => m.ProductName, "", new { @class = "error" })
+        </div>
+    </div>
+    <div class="form-group">
+        <label for="" class="control-labe;">Product Description</label>
+        <div class="control-input">
+            @Html.TextBoxFor(m => m.ProductDescription,
+        new
+        {
+            @class = "form-control",
+            @id = "ProductDescription"
+        })
+            @Html.ValidationMessageFor(m => m.ProductDescription, "", new { @class = "error" })
+        </div>
+    </div>
+    <div class="form-group">
+        <label for="" class="control-label required">Category</label>
+        <div class="control-input">
+            <input id="CategoryId" name="CategoryId" tabindex="5" />
+            @Html.ValidationMessageFor(m => m.CategoryId, "", new { @class = "error" })
+        </div>
+    </div>
+</div>
+<div class="col-md-4">
+    <div class="form-group">
+        <label for="" class="control-label">Unit</label>
+        <div class="control-input">
+            <input id="QuantityUnitId" style="width:100%" name="QuantityUnitId" />
+            @Html.ValidationMessageFor(m => m.QuantityUnitId, "", new { @class = "error" })
+        </div>
+    </div>
+    <div class="form-group">
+        <label for="" class="control-label">Product Size</label>
+        <div class="control-input">
+            @Html.TextBoxFor(m => m.ProductSize,
+        new
+        {
+            @class = "form-control",
+            @id = "ProductSize"
+        })
+            @Html.ValidationMessageFor(m => m.ProductSize, "", new { @class = "error" })
+        </div>
+    </div>
+    <div class="form-group">
+        <label for="" class="control-label">Current Number</label>
+        <div class="control-input">
+            @Html.TextBoxFor(m => m.CurrentNum,
+        new
+        {
+            @class = "form-control",
+            @id = "CurrentNum"
+        })
+            @Html.ValidationMessageFor(m => m.CurrentNum, "", new { @class = "error" })
+        </div>
+    </div>
+    <div class="form-group">
+        <label for="" class="control-label">DR Number</label>
+        <div class="control-input">
+            @Html.TextBoxFor(m => m.DRNum,
+        new
+        {
+            @class = "form-control",
+            @id = "DRNum"
+        })
+            @Html.ValidationMessageFor(m => m.DRNum, "", new { @class = "error" })
+        </div>
+    </div>
+    <div class="form-group">
+        <label for="" class="control-label">Carton Number</label>
+        <div class="control-input">
+            @Html.TextBoxFor(m => m.CartonNum,
+        new
+        {
+            @class = "form-control",
+            @id = "CartonNum"
+        })
+            @Html.ValidationMessageFor(m => m.CartonNum, "", new { @class = "error" })
+        </div>
+    </div>
+</div>

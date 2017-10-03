@@ -1,0 +1,17 @@
+// Contextual backgrounds
+// [converter] $parent hack
+@mixin bg-variant($parent, $color) {
+    $isMutedTheme: $parent==".bg-muted";
+    #{$parent} {
+        background-color: $color;
+        @if $isMutedTheme {
+            color: $gray;
+        }
+        @else {
+            color: white;
+        }
+    }
+    a#{$parent}:hover {
+        background-color: darken($color, 10%);
+    }
+}

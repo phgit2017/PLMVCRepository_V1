@@ -1,0 +1,136 @@
+﻿@model PL.Business.Dto.IOBalance.CustomerDto
+
+<div class="modal fade" id="mdleditcustomer" tabindex="-1" role="dialog" aria-labelledby="mdleditcustomer" aria-hidden="true">
+    <div class="modal-dialog modal-lg">
+        <div class="modal-header text-center">
+            <h4 class="modal-title ">Update Customer</h4>
+            <small>Update customer details</small>
+        </div>
+
+        <div class="modal-content">
+            <div class="modal-body">
+                <form class="form-horizontal" id="frmUpdateCustomer">
+                    @*<div class="form-group">
+                            @Html.HiddenFor(m => m.CustomerID, new { @id = "hdfCustomerId" })
+                            <label for="" class="control-label col-sm-3">Customer Code</label>
+                            <div class="control-input col-sm-8">
+                                @Html.TextBoxFor(m => m.CustomerCode,
+                                new
+                                {
+                                    @class = "form-control",
+                                    @id = "CustomerCode"
+                                })
+                                @Html.ValidationMessageFor(m => m.CustomerCode, "", new { @class = "error" })
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label for="" class="control-label col-sm-3 required">Last Name</label>
+                            <div class="control-input col-sm-8">
+                                @Html.TextBoxFor(m => m.LastName, new
+                                {
+                                    @class = "form-control",
+                                    @id = "LastName"
+                                })
+                                @Html.ValidationMessageFor(m => m.LastName, "", new { @class = "error" })
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label for="" class="control-label col-sm-3 required">First Name</label>
+                            <div class="control-input col-sm-8">
+                                @Html.TextBoxFor(m => m.FirstName, new
+                                {
+                                    @class = "form-control",
+                                    @id = "FirstName"
+                                })
+                                @Html.ValidationMessageFor(m => m.FirstName, "", new { @class = "error" })
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label for="" class="control-label col-sm-3">Middle Name</label>
+                            <div class="control-input col-sm-8">
+                                @Html.TextBoxFor(m => m.MiddleName, new
+                                {
+                                    @class = "form-control",
+                                    @id = "MiddleName"
+                                })
+                                @Html.ValidationMessageFor(m => m.MiddleName, "", new { @class = "error" })
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label for="" class="control-label col-sm-3">Extension</label>
+                            <div class="control-input col-sm-8">
+                                @Html.TextBoxFor(m => m.Extension, new
+                                {
+                                    @class = "form-control",
+                                    @id = "Extension"
+                                })
+                                @Html.ValidationMessageFor(m => m.Extension, "", new { @class = "error" })
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label for="" class="control-label col-sm-3">Birth Date</label>
+                            <div class="control-input col-sm-8">
+                                @Html.TextBoxFor(m => m.BirthDate, new
+                                {
+                                    @class = "form-control",
+                                    @id = "BirthDate"
+                                })
+                                @Html.ValidationMessageFor(m => m.BirthDate, "", new { @class = "error" })
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label for="" class="control-label col-sm-3 required">Address</label>
+                            <div class="control-input col-sm-8">
+                                @Html.TextBoxFor(m => m.Address, new
+                                {
+                                    @class = "form-control",
+                                    @id = "Address"
+                                })
+                                @Html.ValidationMessageFor(m => m.Address, "", new { @class = "error" })
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label for="" class="control-label col-sm-3 required">City</label>
+                            <div class="control-input col-sm-8">
+                                @Html.TextBoxFor(m => m.City, new
+                                {
+                                    @class = "form-control",
+                                    @id= "City"
+                                })
+                                @Html.ValidationMessageFor(m => m.City, "", new { @class = "error" })
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label for="" class="control-label col-sm-3 required">Region</label>
+                            <div class="control-input col-sm-8">
+                                @Html.TextBoxFor(m => m.Region, new
+                                {
+                                    @class = "form-control",
+                                    @id = "Region"
+                                })
+                                @Html.ValidationMessageFor(m => m.Region, "", new { @class = "error" })
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label for="" class="control-label col-sm-3 required">ZipCode</label>
+                            <div class="control-input col-sm-8">
+                                @Html.TextBoxFor(m => m.ZipCode, new
+                                {
+                                    @class = "form-control",
+                                    @id = "ZipCode"
+                                })
+                                @Html.ValidationMessageFor(m => m.ZipCode, "", new { @class = "error" })
+                            </div>
+                        </div>*@
+                    @Html.Partial(IOBALANCEMVC.AdminManagement.Customer.Views._FrmCustomer, Model)
+                    <div class="form-group">
+                        <div class="col-sm-8 col-sm-offset-3 text-right">
+                            <button type="button" data-dismiss="modal" class="btn btn-link">Cancel</button>
+                            <button id="updatedetails" type="button" class="btn btn-sm btn-warning" data-url="@Url.Action(IOBALANCEMVC.AdminManagement.Customer.UpdateCustomer())">Update Customer</button>
+                        </div>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>

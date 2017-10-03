@@ -1,0 +1,75 @@
+﻿@model PL.Business.Dto.IOBalance.ProductDto
+
+<div class="modal fade" id="mdlvoidqtyproduct" tabindex="-1" role="dialog" aria-labelledby="mdlvoidqtyproduct" aria-hidden="true">
+    <div class="modal-dialog modal-md">
+        <div class="modal-header text-center">
+            <h4 class="modal-title">Void Qty</h4>
+            <small>Please put the qty to be added / minus in the field</small>
+            <br />
+            <span id="lblCRType" class="control-label">Please select from (+) / (-)</span>
+            <br />
+            <div class="center-block">
+                <label >Current Quantity:</label>
+                <div >
+                    <span id="lblCurrQty"></span>
+                </div>
+            </div>
+
+        </div>
+
+        <div class="modal-content">
+            <div class="modal-body">
+                <form class="form-horizontal" id="frmVoidQtyProduct">
+                    <div class="form-group">
+                        @*<label id="lblCRType" class="control-label col-sm"></label>*@
+                        
+                    </div>
+                    <div class="form-group">
+                        <label for="" class="control-label col-sm-3 required">Quantity</label>
+                        <div class="control-input col-sm-8">
+                            @Html.HiddenFor(m => m.ProductID, new { @id = "hdfProductIdVoidQty" })
+                            @Html.HiddenFor(m => m.CRType, new { @id = "hdfVoidCRType" })
+
+                            <button type="button" class="btn btn-sm btn-default" id="voidqtyadd">
+                                <i class="glyphicon glyphicon-plus"></i>
+                            </button>
+                            <button type="button" class="btn btn-sm btn-default" id="voidqtyminus">
+                                <i class="glyphicon glyphicon-minus"></i>
+                            </button>
+                            @Html.TextBoxFor(m => m.Quantity,
+                new
+                {
+                    @class = "form-control",
+                    @id = "VoidQuantity"
+                })
+                            @Html.ValidationMessageFor(m => m.Quantity, "", new { @class = "error" })
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="" class="control-label col-sm-3 required">Remarks</label>
+                        <div class="control-input col-sm-8">
+                            @Html.TextAreaFor(m => m.Remarks, new
+                {
+                    @id = "VoidRemarks",
+                    @class = "form-control",
+                    @style = "resize:none;",
+                    @cols = "30",
+                    @rows = "3"
+                })
+
+                            @Html.ValidationMessageFor(m => m.Remarks, "", new { @class = "error" })
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        <div class="col-sm-8 col-sm-offset-3 text-right">
+                            <button type="button" data-dismiss="modal" class="btn btn-link">Cancel</button>
+                            <button id="voidqtydetail" type="button" class="btn btn-sm btn-warning">Void Qty</button>
+                        </div>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>

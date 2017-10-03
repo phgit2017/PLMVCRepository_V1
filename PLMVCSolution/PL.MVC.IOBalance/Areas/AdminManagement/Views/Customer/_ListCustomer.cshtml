@@ -1,0 +1,77 @@
+﻿@model List<PL.Business.Dto.IOBalance.CustomerDto>
+<table id="gvCustomer" class="table table-striped">
+    <thead>
+        <tr>
+            <th data-width="120" data-field="customeraction">Action</th>
+            <th data-width="120" data-field="customercode">Customer Code</th>
+            <th data-width="120" data-field="customerfullname">Full Name</th>
+            <th data-width="120" data-field="customerbirthdate">Birth Date</th>
+            <th data-width="120" data-field="customeraddress">Address</th>
+            <th data-width="100" data-field="customeractive">Active</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var customers in Model)
+        {
+            var isActivateDisplay = customers.IsActive ? "Deactivate" : "Activate";
+            var isActivateValue = customers.IsActive ? false : true;
+            var isActiveClass = customers.IsActive ? "btn-danger" : "btn-success";
+            var isActiveYesNo = customers.IsActive ? "Yes" : "No";
+            <tr>
+                <td>
+                    <i></i>
+                    <span>
+                        <a href="javascript:void(0)" type="button" class="selected"
+                                data-button-type="actionbuttons"
+                                data-action-type="editbutton"
+                                data-customer-id="@customers.CustomerID"
+                                data-customer-code="@customers.CustomerCode.Trim()"
+                                data-customer-fullname="@customers.FullName"
+                                data-customer-lastname="@customers.LastName"
+                                data-customer-firstname="@customers.FirstName"
+                                data-customer-middlename="@customers.MiddleName"
+                                data-customer-extension="@customers.Extension"
+                                data-customer-birthdate="@customers.BirthDateWithFormat"
+                                data-customer-address="@customers.Address"
+                                data-customer-city="@customers.City"
+                                data-customer-region="@customers.Region"
+                                data-customer-zipcode="@customers.ZipCode">
+                            Edit Details
+                        </a>
+                    </span>
+                    |
+                    <span>
+                        <a href="javascript:void(0)" type="button" class="btn btn-xs selected @isActiveClass"
+                                data-button-type="actionbuttons"
+                                data-action-type="deletebutton"
+                                data-customer-id="@customers.CustomerID"
+                                data-customer-is-active="@isActivateValue"
+                                data-url="@Url.Action(IOBALANCEMVC.AdminManagement.Customer.isActiveCustomer())">
+                            @isActivateDisplay
+                        </a>
+                    </span>
+                </td>
+                <td>
+                    <i></i>
+                    <span>@customers.CustomerCode</span>
+                </td>
+                <td>
+                    <i></i>
+                    <span>@customers.FullName</span>
+                </td>
+                <td>
+                    <i></i>
+                    <span>@customers.BirthDateWithFormat</span>
+                </td>
+                <td>
+                    <i></i>
+                    <span>@customers.Address</span>
+                </td>
+                <td>
+                    <i></i>
+                    <span>@isActiveYesNo</span>
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>

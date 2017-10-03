@@ -1,0 +1,130 @@
+﻿@using Infrastructure.Utilities;
+@using PL.MVC.IOBalance.Infrastructure;
+@using PL.MVC.IOBalance.Areas.ReportManagement.Models
+@using PL.Business.Common;
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8" />
+    <title>IOBalance</title>
+    <link href="~/favicon.ico" rel="shortcut icon" type="image/x-icon" />
+    <meta name="viewport" content="width=device-width" />
+
+    <link rel="stylesheet" href="@IOBALANCELINKS.Content.bootstrap_css">
+    @Styles.Render("~/Content/css")
+    <link href="@IOBALANCELINKS.Content.kendo.kendo_common_bootstrap_min_css" rel="stylesheet" />
+    <link href="@IOBALANCELINKS.Content.kendo.kendo_bootstrap_min_css" rel="stylesheet" />
+    @Styles.Render(IOBALANCELINKS.Bundles.CSS.plugins)
+
+
+    @Scripts.Render("~/bundles/jquery")
+    <script type="text/javascript" src="@IOBALANCELINKS.Scripts.bootstrap_min_js"></script>
+    <script type="text/javascript" src="@IOBALANCELINKS.Scripts.kendo.kendo_all_min_js"></script>
+    <script type="text/javascript" src="@IOBALANCELINKS.Scripts.kendo.kendo_aspnetmvc_min_js"></script>
+    <script type="text/javascript" src="@IOBALANCELINKS.Scripts.kendo.cultures.kendo_culture_en_PH_min_js"></script>
+    @Scripts.Render("~/bundles/modernizr")
+</head>
+<body>
+    <!--Header-->
+    @*<div class="sub-navbar" style="background-color:gray" role="navigation">
+            <div class="container-fluid">
+                <div class="row js_sub-header">
+                    <div class="col-xs-12 text-center js_sub-header-container">
+                        <a class="navbar-brand" href="#" tabindex="-1" style="position: absolute; top: 5px; left: 15px;">
+                            <img src="#" alt="" style="position:absolute; top:0; left: 0; height: 30px;">
+                        </a>
+                        <h3 class="sub-navbar-heading">This is the header</h3>
+                    </div>
+                </div>
+            </div>
+        </div>*@
+
+    <!--Menu-->
+    <nav class="navbar navbar-default">
+        <div class="container-fluid">
+            <!-- Collect the nav links, forms, and other content for toggling -->
+            <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+                <ul class="nav navbar-nav navbar-left">
+                    <li>
+                        <a href="@Url.Action(IOBALANCEMVC.Home.Index())">Inventory System</a>
+                    </li>
+                </ul>
+                <ul class="nav navbar-nav navbar-right">
+                    <li class="dropdown">
+                        <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">
+                            <span>
+                                @{
+                                    var userName = Session[SessionVariables.UserDetails].GetUserNameFromSession();
+                                    var userType = Session[SessionVariables.UserDetails].GetUserTypeFromSession();
+                                    var userTypeId = Session[SessionVariables.UserDetails].GetUserTypeIdFromSession();
+                                    var userDetails = userName == null ? string.Empty : string.Format("Welcome {0} - {1}", userType, userName);
+                                }
+                                <span class="glyphicon glyphicon-user"></span> @userDetails
+                            </span> <span class="glyphicon glyphicon-triangle-bottom"></span>
+                        </a>
+                        <ul class="dropdown-menu">
+                            <li><a href="@Url.Action(IOBALANCEMVC.Authentication.LogOut())">Logout</a></li>
+                        </ul>
+                    </li>
+                    <li class="dropdown">
+                        <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false"><span><span class="glyphicon glyphicon-download"></span></span> Reports <span class="glyphicon glyphicon-triangle-bottom"></span></a>
+                        <ul class="dropdown-menu">
+                            <li><a href="@Url.Action(IOBALANCEMVC.ReportManagement.InventorySales.Index(new ReportInventoryPerItemSearchModel()))">Per Category</a></li>
+                            <li><a href="@Url.Action(IOBALANCEMVC.ReportManagement.InventorySales.PurchaseOrderList(new ReportInventoryPerItemSearchModel()))">Purchase Order List</a></li>
+                            <li><a href="@Url.Action(IOBALANCEMVC.ReportManagement.InventorySales.SalesOrderList(new ReportInventoryPerItemSearchModel()))">Sales Order List</a></li>
+                            <li><a href="@Url.Action(IOBALANCEMVC.ReportManagement.InventorySales.SalesReport(new ReportInventoryPerItemSearchModel()))">Sales Report</a></li>
+                            <li><a href="@Url.Action(IOBALANCEMVC.ReportManagement.InventorySales.InventoryReport())">Inventory Report</a></li>
+                        </ul>
+                    </li>
+                    <li class="dropdown">
+                        <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false"><span></span> Transactions <span class="glyphicon glyphicon-triangle-bottom"></span></a>
+                        <ul class="dropdown-menu">
+                            @{
+                                if (userTypeId == Constants.UserTypeAdminId)
+                                {
+                                    <li><a href="@Url.Action(IOBALANCEMVC.OrderManagement.PurchaseOrder.Index())">Inventory</a></li>
+                                    <li><a href="@Url.Action(IOBALANCEMVC.OrderManagement.PurchaseOrder.BatchInventory())">Batch Inventory</a></li>
+                                }
+}
+                            <li><a href="@Url.Action(IOBALANCEMVC.OrderManagement.SalesOrder.Index())">Sales</a></li>
+                        </ul>
+                    </li>
+                    <li class="dropdown">
+                        <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Maintenance <span class="glyphicon glyphicon-triangle-bottom"></span> @*<span class="caret"></span>*@</a>
+                        <ul class="dropdown-menu">
+                            @{
+                                if (userTypeId == Constants.UserTypeAdminId)
+                                {
+                                    <li><a href="@Url.Action(IOBALANCEMVC.AdminManagement.Category.Index())">Categories</a></li>
+                                    <li><a href="@Url.Action(IOBALANCEMVC.AdminManagement.Supplier.Index())">Supplier</a></li>
+                                    <li><a href="@Url.Action(IOBALANCEMVC.AdminManagement.Customer.Index())">Customer</a></li>
+                                    <li><a href="@Url.Action(IOBALANCEMVC.AdminManagement.Branch.Index())">Branch</a></li>
+                                    <li><a href="@Url.Action(IOBALANCEMVC.AdminManagement.Discount.Index())">Discount</a></li>
+                                    <li><a href="@Url.Action(IOBALANCEMVC.AdminManagement.User.Index())">User</a></li>
+                                }
+                            }
+                            @*<li><a href="@Url.Action(IOBALANCEMVC.AdminManagement.Unit.Index())">Unit</a></li>*@
+                            @*<li><a href="@Url.Action(IOBALANCEMVC.AdminManagement.Model.Index())">Model</a></li>*@
+                        </ul>
+                    </li>
+                </ul>
+
+            </div><!-- /.navbar-collapse -->
+        </div><!-- /.container-fluid -->
+    </nav>
+    <!--End Menu-->
+    <!--End Header-->
+
+    <section class="container">
+        @RenderBody()
+    </section>
+    @Scripts.Render(IOBALANCELINKS.Bundles.JS.plugins)
+    <script type="text/javascript" src="@IOBALANCELINKS.Scripts.infrastructure.infrastructure_js"></script>
+    <script type="text/javascript" src="@IOBALANCELINKS.Scripts.infrastructure.jquery_pl_alert_window_js"></script>
+    <script type="text/javascript" src="@IOBALANCELINKS.Scripts.infrastructure.jquery_pl_loader_js"></script>
+    @*data-val-required="The Product Code field is required."*@
+    @Scripts.Render("~/bundles/jqueryval")
+    @RenderSection("scripts", required: false)
+    @RenderSection("modals", required: false)
+</body>
+</html>

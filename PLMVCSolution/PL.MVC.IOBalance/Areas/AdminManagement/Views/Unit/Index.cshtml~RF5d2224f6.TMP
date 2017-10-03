@@ -1,0 +1,7 @@
+﻿@model List<PL.Business.Dto.IOBalance.UnitDto>
+
+@{
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>Unit Page</h2>

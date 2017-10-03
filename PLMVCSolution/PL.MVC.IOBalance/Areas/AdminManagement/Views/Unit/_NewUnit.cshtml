@@ -1,0 +1,22 @@
+﻿@model PL.Business.Dto.IOBalance.UnitDto
+<div>
+    <form class="form-horizontal" id="frmUnit">
+        <div class="form-group">
+            <label for="" class="control-label col-sm-3 required">Description</label>
+            <div class="control-input col-sm-8">
+                @Html.TextBoxFor(m => m.UnitDesc,
+                new
+                {
+                    @class = "form-control",
+                    @id = "UnitDesc"
+                })
+                @Html.ValidationMessageFor(m => m.UnitDesc, "", new { @class = "error" })
+            </div>
+        </div>
+        <div class="form-group">
+            <div class="col-sm-8 col-sm-offset-3 text-right">
+                <button id="savedetails" type="button" class="btn btn-warning" data-url="@Url.Action(IOBALANCEMVC.AdminManagement.Unit.SaveUnit())">Save Unit</button>
+            </div>
+        </div>
+    </form>
+</div>

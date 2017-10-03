@@ -1,0 +1,44 @@
+﻿@model List<PL.Business.Dto.IOBalance.BranchDto>
+<table id="gvBranch" class="table table-striped">
+    <thead>
+        <tr>
+            <th data-width="100" data-field="branchaction">Action</th>
+            <th data-width="120" data-field="Branchname">Branch Name</th>
+            <th data-width="180" data-field="branchaddress">Branch Address</th>
+            <th data-width="180" data-field="branchdetails">Branch Details</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var branches in Model)
+        {
+            <tr>
+                <td>
+                    <i></i>
+                    <span>
+                        <a href="javascript:void(0)" type="button" class="selected"
+                                data-button-type="actionbuttons"
+                                data-action-type="editbutton"
+                                data-branch-id="@branches.BranchId"
+                                data-branch-name="@branches.BranchName"
+                                data-branch-address="@branches.BranchAddress"
+                                data-branch-details="@branches.BranchDetails">
+                            Edit Details
+                        </a>
+                    </span>
+                </td>
+                <td>
+                    <i></i>
+                    <span>@branches.BranchName</span>
+                </td>
+                <td>
+                    <i></i>
+                    <span>@branches.BranchAddress</span>
+                </td>
+                <td>
+                    <i></i>
+                    <span>@branches.BranchDetails</span>
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>

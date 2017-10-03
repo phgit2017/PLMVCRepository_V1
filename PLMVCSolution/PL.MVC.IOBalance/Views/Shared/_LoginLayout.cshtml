@@ -1,0 +1,56 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8" />
+    <title>IOBalance</title>
+    <link href="~/favicon.ico" rel="shortcut icon" type="image/x-icon" />
+    <meta name="viewport" content="width=device-width" />
+    <link rel="stylesheet" href="@IOBALANCELINKS.Content.bootstrap_css">
+    @Styles.Render("~/Content/css")
+
+    @Scripts.Render("~/bundles/jquery")
+    <script type="text/javascript" src="@IOBALANCELINKS.Scripts.bootstrap_min_js"></script>
+    @Scripts.Render("~/bundles/modernizr")
+</head>
+<body style="background-color:#fafafa">
+    <!--Menu-->
+    <nav class="navbar navbar-default">
+        <div class="container-fluid">
+            <!-- Collect the nav links, forms, and other content for toggling -->
+            <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+                
+
+            </div><!-- /.navbar-collapse -->
+        </div><!-- /.container-fluid -->
+    </nav>
+    <!--End Menu-->
+    <div class="container">
+        @RenderBody()
+    </div>
+
+    @Scripts.Render(IOBALANCELINKS.Bundles.JS.plugins)
+    <script type="text/javascript" src="@IOBALANCELINKS.Scripts.infrastructure.infrastructure_js"></script>
+    <script type="text/javascript" src="@IOBALANCELINKS.Scripts.infrastructure.jquery_pl_alert_window_js"></script>
+    @Scripts.Render("~/bundles/jqueryval");
+    <script type="text/javascript">
+        $(document).ready(function () {
+
+            $('*[data-target="password"]').each(function (index) {
+                $(this).on('click', function () {
+                    var input_pass = $(this).prev('*[data-element="password"]');
+                    if (input_pass.attr('type') === 'password') {
+                        $(this).html('HIDE');
+                        input_pass.attr('type', 'text');
+                    }
+
+                    else if (input_pass.attr('type') === 'text') {
+                        $(this).html('SHOW');
+                        input_pass.attr('type', 'password');
+                    }
+
+                });
+            });
+        });
+    </script>
+</body>
+</html>
