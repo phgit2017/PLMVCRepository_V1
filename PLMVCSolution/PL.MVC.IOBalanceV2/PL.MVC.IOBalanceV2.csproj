@@ -445,6 +445,9 @@
     <Content Include="Content\assets-common\plugins\owl-carousel\owl.transitions.css" />
     <Content Include="Content\assets-common\plugins\toastr.css" />
     <Content Include="Content\assets\css\main.css" />
+    <Content Include="Content\assets\css\main.min.css">
+      <DependentUpon>main.css</DependentUpon>
+    </Content>
     <Content Include="Content\assets\flaticons\flaticon.css" />
     <Content Include="Content\assets\flaticons\flaticon.html" />
     <Content Include="Content\assets\flaticons\flaticon.svg" />
