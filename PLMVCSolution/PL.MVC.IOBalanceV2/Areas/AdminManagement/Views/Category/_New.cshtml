@@ -1,18 +1,23 @@
 ﻿@model PL.Business.Dto.IOBalanceV2.CategoryDto
 <div class="col-md-10 col-md-offset-1">
-    <header class="page-header text-primary">
-        <h3><i class="md md-collection-plus"></i> Add new category</h3>
-        <div class="panel-widget-controls">
-            <button id="btndiscard" class="btn btn-default btn-sm" tabindex="13">
-                Discard
-            </button>
+    <div class="panel panel-default">
+        <div class="panel-heading">
+            <label class="text-primary"><i class="md md-collection-plus md-lg"></i> Add new category</label>
+            <div class="panel-widget-controls">
+                <button id="btndiscard" class="btn btn-default btn-sm" tabindex="13">
+                    Discard
+                </button>
 
-            <button id="btnSaveform" class="btn btn-sm btn-danger" type="button" tabindex="12">
-                <i class="md md-check"></i> Save
-            </button>
+                <button id="btnSaveform" class="btn btn-sm btn-success" type="button" tabindex="12">
+                    <i class="md md-check"></i> Save
+                </button>
+            </div>
         </div>
-    </header>
-    <form class="form-horizontal" id="frmSave">
-        @Html.Partial(IOBALANCEMVCV2.AdminManagement.Category.Views._Details, Model)
-    </form>
+        <div class="panel-body">
+
+            <form class="form-horizontal" id="frmSave">
+                @Html.Partial(IOBALANCEMVCV2.AdminManagement.Category.Views._Details, Model)
+            </form>
+        </div>
+    </div>
 </div>

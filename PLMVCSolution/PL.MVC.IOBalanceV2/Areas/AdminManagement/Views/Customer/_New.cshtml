@@ -1,6 +1,6 @@
 ﻿@model PL.Business.Dto.IOBalanceV2.CustomerDto
 <div class="col-md-10 col-md-offset-1">
-    <header class="page-header text-primary">
+    <header class="panel-widget-container">
         <h3><i class="md md-collection-plus"></i> Add new customer</h3>
         <div class="panel-widget-controls">
             <button id="btndiscard" class="btn btn-default btn-sm" tabindex="13">
@@ -12,7 +12,7 @@
             </button>
         </div>
     </header>
-    <form id="frmSave">
+    <form id="frmSave" class="row">
         @Html.Partial(IOBALANCEMVCV2.AdminManagement.Customer.Views._Details, Model)
     </form>
 </div>

@@ -20,7 +20,6 @@ body {
 .main-logo {
     width: 90%;
     padding: 10px 12px;
-    color:pink;
 }
 
 .main-nav {
@@ -59,10 +58,34 @@ body {
     display: inline-block;
 }
 
-.panel-widget-search + .btn-filter {
+.panel-widget-search+.btn-filter {
     display: inline-block;
     vertical-align: top;
 }
-.page-header{
+
+.page-header {
     position: relative;
+}
+
+.control-label {
+    position: relative;
+}
+
+.main-page-header {
+    text-align: center;
+    border-bottom: 0;
+    border-top: 4px solid #2e59a0;
+    position: relative;
+    padding-bottom: 40px;
+    .main-page-title {
+        display: inline-block;
+        margin: 0 0 20px;
+        background: #2e59a0;
+        color: #fff;
+        font-size: 16px;
+        text-transform: uppercase;
+        padding: 10px 40px;
+        border-radius: 0 0 5px 5px;
+        letter-spacing: 4px;
+    }
 }

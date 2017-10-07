@@ -3,8 +3,8 @@
 <div class="form-group">
     @Html.HiddenFor(m => m.CustomerId, new { @id = "hdfCustomerId" })
     @Html.HiddenFor(m => m.IsActive, new { @id = "hdfIsActive"})
-    <label for="" class="control-label col-sm-3 required">Customer Code</label>
-    <div class="control-input col-sm-8">
+    <label for="" class="control-label required">Customer Code</label>
+    <div class="control-input ">
         @Html.TextBoxFor(m => m.CustomerCode,
         new
         {
@@ -15,8 +15,8 @@
     </div>
 </div>
 <div class="form-group">
-    <label for="" class="control-label col-sm-3 required">Customer Name</label>
-    <div class="control-input col-sm-8">
+    <label for="" class="control-labelrequired">Customer Name</label>
+    <div class="control-input">
         @Html.TextBoxFor(m => m.CustomerName,
         new
         {
@@ -27,8 +27,8 @@
     </div>
 </div>
 <div class="form-group">
-    <label for="" class="control-label col-sm-3 required">Customer Address</label>
-    <div class="control-input col-sm-8">
+    <label for="" class="control-label required">Customer Address</label>
+    <div class="control-input ">
         @Html.TextBoxFor(m => m.CustomerAddress,
         new
         {

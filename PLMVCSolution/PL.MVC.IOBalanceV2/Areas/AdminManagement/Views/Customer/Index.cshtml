@@ -1,6 +1,7 @@
 ﻿@using PL.Business.Dto.IOBalanceV2;
 @using PL.MVC.IOBalanceV2.Areas.AdminManagement.Models;
 @{
+    ViewBag.Title = "Customer";
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
 @section modals{
@@ -8,8 +9,8 @@
     @Html.Partial(IOBALANCEMVCV2.AdminManagement.Customer.Views._Search, new CustomerSearchModel())
 }
 <div>
-    <section class="panel-widget-container">
-        <button id="searchbutton" class="btn btn-default btn-filter" data-action-type="searchbutton">
+    <section class="panel-widget-container" data-action-type="searchbutton">
+        <button id="searchbutton" class="btn btn-default btn-filter">
             Filter
         </button>
         <div class="panel-widget-controls">
@@ -18,7 +19,7 @@
                 <i class="md md-refresh"></i> Refresh
             </button>
 
-            <button id="btnnewform" class="btn  btn-success">
+            <button id="btnnewform" class="btn btn-primary">
                 <i class="md md-plus"></i> New Customer
             </button>
         </div>

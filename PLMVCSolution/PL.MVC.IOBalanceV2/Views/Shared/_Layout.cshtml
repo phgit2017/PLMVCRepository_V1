@@ -44,7 +44,7 @@
 
         <div id="mainNavbar" class="navbar-collapse collapse">
             <ul class="nav nav-stacked">
-                <li><a href="@Url.Action(IOBALANCEMVCV2.Home.Index())">Home</a></li>
+                <li><a href="@Url.Action(IOBALANCEMVCV2.Home.Index())">Dashboard</a></li>
                 <li><a href="@Url.Action(IOBALANCEMVCV2.Reports.Order.PurchaseOrder())">Purchase Order Report</a></li>
                 <li><a href="@Url.Action(IOBALANCEMVCV2.Reports.Order.SalesOrder())">Sales Order Report</a></li>
                 <li><a href="@Url.Action(IOBALANCEMVCV2.OrderManagement.Inventory.Index())">Inventory</a></li>
@@ -62,10 +62,11 @@
         </nav>
     </nav>
     <main class="main-content">
+        <header class="main-page-header">
+            <span class="main-page-title">@ViewBag.Title</span>
+        </header>
         <div class="container-fluid">
-            <header class="page-header">
-                <h2>@ViewBag.Title</h2>
-            </header>
+           
             @RenderBody()
         </div>
     </main>
