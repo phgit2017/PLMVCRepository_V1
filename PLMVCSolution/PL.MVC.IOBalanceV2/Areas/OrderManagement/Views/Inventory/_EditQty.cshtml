@@ -2,41 +2,39 @@
 @using PL.Business.Dto.IOBalanceV2;
 
 <div class="modal fade" id="mdleditqty" tabindex="-1" role="dialog" aria-labelledby="mdleditqty" aria-hidden="true">
-    <div class="modal-dialog modal-lg">
+    <div class="modal-dialog modal-sm">
         <div class="modal-header text-center">
             <h4 class="modal-title">Edit Quantity</h4>
         </div>
 
         <div class="modal-content">
             <div class="modal-body">
-                <form id="frmEditQty" class="form-horizontal">
-
+                <form id="frmEditQty">
                     <div class="form-group" style="display:none;">
                         @Html.Partial(IOBALANCEMVCV2.OrderManagement.Inventory.Views._DetailsEditQty, Model)
                     </div>
-
                     <div class="form-group">
-                        <label for="" class="control-label col-md-3 required">Qty type</label>
-                        <div class="control-input col-md-8">
+                        <label for="" class="control-label required">Qty type</label>
+                        <div class="control-input">
                             <input id="qtyType" style="width:100%" name="qtyType" />
                         </div>
                     </div>
                     <div class="form-group">
-                        <label for="" class="control-label col-md-3">Supplier</label>
-                        <div class="control-input col-md-8">
+                        <label for="" class="control-label ">Supplier</label>
+                        <div class="control-input ">
                             <input id="SupplierId" style="width:100%" name="SupplierId" />
                             @Html.ValidationMessageFor(m => m.SupplierId, "", new { @class = "error" })
                         </div>
                     </div>
                     <div class="form-group">
-                        <label for="" class="control-label col-md-3">Current Quantity</label>
-                        <div class="control-input col-md-8">
+                        <label for="" class="control-label ">Current Quantity</label>
+                        <div class="control-input ">
                             <input type="number" name="OldQuantity" id="OldQuantity" class="form-control" />
                         </div>
                     </div>
                     <div class="form-group">
-                        <label for="" class="control-label col-sm-3 required">Quantity</label>
-                        <div class="control-input col-sm-8">
+                        <label for="" class="control-label required">Quantity</label>
+                        <div class="control-input ">
                             @Html.TextBoxFor(m => m.EditQuantity,
                                 new
                                 {
@@ -47,12 +45,11 @@
                             @Html.ValidationMessageFor(m => m.EditQuantity, "", new { @class = "error" })
                         </div>
                     </div>
-
                 </form>
             </div>
             <div class="modal-footer">
-                <button type="button" data-dismiss="modal" class="btn btn-link">Cancel</button>
-                <button id="updateqtydetails" type="button" class="btn btn-sm btn-success">Save Changes</button>
+                <button type="button" data-dismiss="modal" class="btn btn-transparent">Cancel</button>
+                <button id="updateqtydetails" type="button" class="btn btn-success">Save Changes</button>
             </div>
         </div>
     </div>

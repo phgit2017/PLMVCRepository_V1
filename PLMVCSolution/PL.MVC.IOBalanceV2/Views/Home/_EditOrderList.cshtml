@@ -1,7 +1,7 @@
 ﻿
 
 <div class="modal fade" id="mdleditorderlist" tabindex="-1" role="dialog" aria-labelledby="mdleditorderlist" aria-hidden="true">
-    <div class="modal-dialog modal-lg">
+    <div class="modal-dialog modal-sm">
         <div class="modal-header text-center">
             <h4 class="modal-title">Edit Sales order</h4>
             <small id="EditProductName"></small>
@@ -9,16 +9,16 @@
 
         <div class="modal-content">
             <div class="modal-body">
-                <form class="form-horizontal" id="frmEditOrderList">
+                <form id="frmEditOrderList">
                     <div class="form-group">
-                        <label for="" class="control-label col-sm-3">Quantity</label>
-                        <div class="control-input col-sm-8">
+                        <label for="" class="control-label">Quantity</label>
+                        <div class="control-input">
                             <input type="number" class="form-control" id="EditQuantity" />
                         </div>
                     </div>
                     <div class="form-group">
-                        <label for="" class="control-label col-sm-3">Price</label>
-                        <div class="control-input col-sm-8">
+                        <label for="" class="control-label">Price</label>
+                        <div class="control-input">
                             <input type="number" id="EditPrice" class="form-control" />
                         </div>
                     </div>
@@ -26,7 +26,7 @@
             </div>
             <div class="modal-footer">
                 <button type="button" data-dismiss="modal" class="btn btn-transparent">Cancel</button>
-                <button id="btnEditOrderList" type="button" class="btn btn-success">Edit Order</button>
+                <button id="btnEditOrderList" type="button" class="btn btn-success">Save Changes</button>
             </div>
         </div>
     </div>

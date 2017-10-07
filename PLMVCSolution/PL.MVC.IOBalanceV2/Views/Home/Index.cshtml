@@ -1,64 +1,57 @@
 ﻿@using PL.Business.Dto.IOBalanceV2;
 @{
-ViewBag.Title = "Dashboard";
+    ViewBag.Title = "Dashboard";
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
 @section modals{
     @Html.Partial(IOBALANCEMVCV2.Home.Views._EditOrderList)
 }
-<h3>We suggest the following:</h3>
-
-<h5>Queued Orders</h5>
-
-<section class="panel-widget-container" id="divBtnList" style="display:none;">
-    <div class="panel-widget-controls">
-
-        <button id="btnDiscard" class="btn btn-transparent" type="button">
-            Discard
-        </button>
-
-        <button id="btnAddSalesDetails" class="btn btn-transparent" type="button">
-            Add to product list
-        </button>
-
-        <button id="btnSaveQueueDetails" class="btn  btn-success" type="button">
-            Queue sales order
-        </button>
-
-
-
-        <button id="btnSaveSalesDetails" class="btn btn-success" type="button">
-            Save sales order
-        </button>
+<div class="col-md-10 col-md-offset-1" id="divListQueue">
+    <div class="panel panel-default ">
+        <div class="panel-heading">
+            <label class="text-uppercase">Queue Order</label>
+        </div>
+        <div class="panel-body">
+            @Html.Partial(IOBALANCEMVCV2.Home.Views._QueueOrderList)
+        </div>
     </div>
 
-    <div class="pull-left">
-        <form class="form-horizontal" id="frmSalesOrder">
-            @Html.Partial(IOBALANCEMVCV2.Home.Views._DetailsSalesOrder, new SalesOrderDto())
-        </form>
+</div>
+
+<section class="col-md-5" id="divBtnList" style="display:none;">
+    <div class="well-lg">
+        <div class="well-sm">
+            <form class="form-horizontal" id="frmSalesOrder">
+                @Html.Partial(IOBALANCEMVCV2.Home.Views._DetailsSalesOrder, new SalesOrderDto())
+            </form>
+        </div>
+        <div class="well well-sm">
+            <form class="form-horizontal" id="frmSalesOrderDetail">
+                @Html.Partial(IOBALANCEMVCV2.Home.Views._DetailsSalesOrderDetail, new SalesOrderDetailDto())
+            </form>
+            <button id="btnAddSalesDetails" class="btn btn-primary btn-block" type="button">
+                Add to product list
+            </button>
+            <button id="btnSaveSalesDetails" class="btn btn-success btn-block" type="button">
+                Save
+            </button>
+            <button id="btnSaveQueueDetails" class="btn  btn-default btn-block" type="button">
+                Queue
+            </button>
+            <button id="btnDiscard" class="btn btn-transparent btn-block" type="button">
+                Back
+            </button>
+        </div>
     </div>
-    <div class="pull-right">
-        <form class="form-horizontal" id="frmSalesOrderDetail">
-            @Html.Partial(IOBALANCEMVCV2.Home.Views._DetailsSalesOrderDetail, new SalesOrderDetailDto())
-        </form>
-    </div>
-    <div class="clearfix"></div>
 </section>
 
 
-
-<div id="divListQueue">
-    @Html.Partial(IOBALANCEMVCV2.Home.Views._QueueOrderList)
-</div>
-
-<div id="divListQueueOrderDetail" style="display:none;">
+<section class="col-md-7" id="divListQueueOrderDetail" style="display:none;">
     <h4>Total: </h4>
     <h5 id="gridTotal"></h5>
-    <h4>List Count: </h4><h5 id="gridCount"></h5>
+    <h4>Count: </h4><h5 id="gridCount"></h5>
     @Html.Partial(IOBALANCEMVCV2.Home.Views._SalesOrderList)
-</div>
-
-
+</section>
 
 <div id="divResultContainer" style="display:none"></div>
 

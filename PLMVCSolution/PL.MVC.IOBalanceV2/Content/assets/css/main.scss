@@ -89,3 +89,52 @@ body {
         letter-spacing: 4px;
     }
 }
+
+// .k-grid {
+//     td {
+//         padding: 0 8px !important;
+//     }
+//     .k-grid-header th.k-header {
+//         padding-left: 8px;
+//     }
+//     .k-grid-header .k-grid-filter,
+//     .k-grid-header .k-header-column-menu {
+//         padding: 10px 8px;
+//     } // .k-hierarchy-cell {
+//     //     border-left-width: 0 !important;
+//     // }
+//     // tr td {
+//     //     border-right-width: 1px !important;
+//     //     border-style: solid !important;
+//     //     border-bottom-width: 1px !important;
+//     //     &:last-child {
+//     //         border-right-width: 0 !important;
+//     //     }
+//     //     &.k-hierarchy-cell {
+//     //         border-right-width: 0 !important;
+//     //         border-style: solid !important;
+//     //         +td {
+//     //             border-right-width: 0 !important;
+//     //             border-style: solid !important;
+//     //         }
+//     //     }
+//     // }
+// }
+
+// .btn-grid-action {
+//     padding:0 6px;
+//     margin:3px 0;
+//     border: 0;
+//     cursor: pointer;
+//     background: transparent;
+//     color: $link-color;
+//   + .btn-grid-action{
+//     border-left: 1px solid #d9d9d9;
+//   }
+//   &:first-child{
+//     padding-left: 0;
+//   }
+//   &:last-child{
+//     padding-right: 0;
+//   }
+// }
