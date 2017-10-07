@@ -38,7 +38,16 @@ $(function () {
         });
     });
 
-    $('*[data-toggle="tooltip"]').tooltip();
+    var windowPath = window.location.pathname,
+        activeLink = $('#mainNavbar').find('a[href="' + windowPath + '"]'),
+        subMenu = $('.sub-menu');
+
+    for (var i = 0; i < subMenu.length; i++) {
+       var hasActive = $(subMenu[i]).find('.active').length ? true : false;
+        if (hasActive) {
+            $(subMenu[i]).addClass('in').removeClass('collapse');
+        }
+    }
 
 });
 
