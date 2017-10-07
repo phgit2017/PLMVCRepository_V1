@@ -154,7 +154,11 @@
         });
 
         $('body').on('click', '#searchbutton', function () {
-            $('#mdlsearch').modal('show');
+            $('#mdlsearch').modal({
+                'show': true,
+                'backdrop': 'static',
+                'keyboard': false
+            });
         });
 
         $('body').on('click', '#searchdetails', function () {

@@ -9,7 +9,7 @@
             columns.Template(@<text></text>).ClientTemplate("<div class='btn-group btn-group-xs'><a href='javascript:void(0)' type='button' class='selected btn btn-default' id='edititem' data-button-type='actionbuttons' data-action-type='editbutton' " +
                             "data-supplier-id='#=SupplierId#' data-supplier-code='#=SupplierCode#' data-supplier-name='#=SupplierName#' data-supplier-datecreated='#=DateCreatedWithFormat#' data-supplier-createdby='#=CreatedBy#' data-supplier-dateupdated='#=DateUpdatedWithFormat#' data-supplier-updatedby='#=UpdatedBy#'> Edit Details</a></div>")
                 .Title("Actions")
-                .Width(220)
+                .Width(90)
                 .HeaderHtmlAttributes(new { @class = "bos-grid-text-center" })
                 .HtmlAttributes(new { @class = "bos-grid-text-center" });
             columns.Bound(c => c.SupplierCode).Title("Supplier Code").Width(180).Sortable(true).Lockable(true);

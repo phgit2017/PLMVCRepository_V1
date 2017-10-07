@@ -55,25 +55,19 @@
                 <li><a href="@Url.Action(IOBALANCEMVCV2.AdminManagement.QuantityUnit.Index())">Unit</a></li>
             </ul>
         </div>
-
-
-        <nav>
-
-        </nav>
     </nav>
     <main class="main-content">
         <header class="main-page-header">
             <span class="main-page-title">@ViewBag.Title</span>
         </header>
         <div class="container-fluid">
-           
             @RenderBody()
         </div>
     </main>
-
     <script type="text/javascript" src="@IOBALANCEV2LINKS.Scripts.infrastructure.jquery_pl_alert_window_js"></script>
     @Scripts.Render("~/bundles/jqueryval")
     @RenderSection("scripts", required: false)
     @RenderSection("modals", required: false)
+    <script src="~/Content/assets-common/js/bootstrap-add.js"></script>
 </body>
 </html>

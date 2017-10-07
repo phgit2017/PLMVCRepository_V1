@@ -114,7 +114,11 @@
         });
 
         $('body').on('click', '#searchbutton', function () {
-            $('#mdlsearch').modal('show');
+            $('#mdlsearch').modal({
+                'show': true,
+                'backdrop': 'static',
+                'keyboard': false
+            });
         });
 
         $('body').on('click', '#searchdetails', function () {
@@ -131,7 +135,11 @@
 
         $('body').on('click', '#edititem', function () {
             $this = $(this);
-            $('#mdledit').modal('show');
+            $('#mdledit').modal({
+                'show': true,
+                'backdrop': 'static',
+                'keyboard': false
+            });
         });
 
         $('body').on('shown.bs.modal', '#mdledit', function () {

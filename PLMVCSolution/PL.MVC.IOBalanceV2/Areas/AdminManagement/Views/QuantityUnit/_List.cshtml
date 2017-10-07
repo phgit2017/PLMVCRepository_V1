@@ -8,7 +8,7 @@
             columns.Template(@<text></text>).ClientTemplate("<div class='btn-group btn-group-xs'><a href='javascript:void(0)' type='button' class='selected btn btn-default' id='edititem' data-button-type='actionbuttons' data-action-type='editbutton' " +
                             "data-quantity-id='#=QuantityUnitID#' data-unit-name='#=UnitName#'> Edit Details</a></div>")
                 .Title("Actions")
-                .Width(220)
+                .Width(100)
                 .HeaderHtmlAttributes(new { @class = "bos-grid-text-center" })
                 .HtmlAttributes(new { @class = "bos-grid-text-center" });
             columns.Bound(c => c.UnitName).Title("Unit Name").Width(180).Sortable(true).Lockable(true);

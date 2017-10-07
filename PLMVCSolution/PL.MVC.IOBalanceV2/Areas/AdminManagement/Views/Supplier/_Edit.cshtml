@@ -1,14 +1,13 @@
 ﻿@model PL.Business.Dto.IOBalanceV2.SupplierDto
 
 <div class="modal fade" id="mdledit" tabindex="-1" role="dialog" aria-labelledby="mdledit" aria-hidden="true">
-    <div class="modal-dialog modal-lg">
+    <div class="modal-dialog modal-sm">
         <div class="modal-header text-center">
             <h4 class="modal-title">Edit Details</h4>
         </div>
-
         <div class="modal-content">
             <div class="modal-body">
-                <form class="form-horizontal" id="frmEdit">
+                <form  id="frmEdit">
                     @Html.Partial(IOBALANCEMVCV2.AdminManagement.Supplier.Views._Details, Model)
                     @Html.HiddenFor(m => m.DateCreated, new { @id = "hdfDateCreated" })
                     @Html.HiddenFor(m => m.CreatedBy, new { @id = "hdfCreatedBy" })

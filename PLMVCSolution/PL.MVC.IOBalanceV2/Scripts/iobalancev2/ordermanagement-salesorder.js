@@ -268,6 +268,8 @@
             data: { productId: productId },
             success: function (data) {
                 $('#frmSalesOrderDetail #currProdQty').html(data.Quantity);
+                $('*[data-toggle="tooltip"]').tooltip({ 'container': 'body', 'placement': 'right' });
+
             }
         });
     }
@@ -290,7 +292,11 @@
             $('[data-edit-selected="true"]').removeClass('selected');
             $this.addClass('selected');
 
-            $('#mdleditorderlist').modal('show');
+            $('#mdleditorderlist').modal({
+                'show': true,
+                'backdrop': 'static',
+                'keyboard': false
+            });
         });
 
         $('body').on('click', '#removeitem', function () {

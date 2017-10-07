@@ -3,7 +3,7 @@
 <div class="form-group">
     <label for="" class="control-label col-sm-3 required">Product</label>
     <div class="control-input col-sm-9">
-        <input id="ProductId" style="width:100%" name="ProductId" />
+        <input id="ProductId" name="ProductId" />
         <small><span id="currProdQty"></span></small>
         @Html.ValidationMessageFor(m => m.ProductId, "", new { @class = "error" })
     </div>
@@ -15,7 +15,8 @@
         new
         {
             @class = "form-control",
-            @id = "Quantity"
+            @id = "Quantity",
+            @type = "number"
         })
         @Html.ValidationMessageFor(m => m.Quantity, "", new { @class = "error" })
     </div>
@@ -27,7 +28,8 @@
         new
         {
             @class = "form-control",
-            @id = "SalesPrice"
+            @id = "SalesPrice",
+            @type = "number"
         })
         @Html.ValidationMessageFor(m => m.SalesPrice, "", new { @class = "error" })
     </div>
