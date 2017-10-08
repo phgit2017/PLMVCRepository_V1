@@ -422,8 +422,6 @@
     <Content Include="Content\assets-common\js\mousetrap.min.js" />
     <Content Include="Content\assets-common\js\offline.js" />
     <Content Include="Content\assets-common\js\pace.min.js" />
-    <Content Include="Content\assets-common\js\read-more.js" />
-    <Content Include="Content\assets-common\js\read-more.min.js" />
     <Content Include="Content\assets-common\js\respond.js" />
     <Content Include="Content\assets-common\js\respond.min.js" />
     <Content Include="Content\assets-common\js\velocity.min.js" />
@@ -443,6 +441,9 @@
     <Content Include="Content\assets-common\plugins\owl-carousel\owl.transitions.css" />
     <Content Include="Content\assets-common\plugins\toastr.css" />
     <Content Include="Content\assets\css\main.css" />
+    <Content Include="Content\assets\css\main.min.css">
+      <DependentUpon>main.css</DependentUpon>
+    </Content>
     <Content Include="Content\assets\flaticons\flaticon.css" />
     <Content Include="Content\assets\flaticons\flaticon.html" />
     <Content Include="Content\assets\flaticons\flaticon.svg" />
@@ -1239,7 +1240,6 @@
     <Content Include="Content\assets-common\js\bg-animate.min.js.map" />
     <Content Include="Content\assets-common\js\bootstrap-add.min.js.map" />
     <Content Include="Content\assets-common\js\moment-timezone-with-data.min.js.map" />
-    <Content Include="Content\assets-common\js\read-more.min.js.map" />
     <Content Include="Content\assets-common\plugins\.DS_Store" />
     <Content Include="Content\assets\.DS_Store" />
     <Content Include="Content\assets\css\assets-variables.scss" />

@@ -2,18 +2,17 @@
 
 
 <div class="modal fade" id="mdlsearch" tabindex="-1" role="dialog" aria-labelledby="mdlsearch" aria-hidden="true">
-    <div class="modal-dialog modal-lg">
+    <div class="modal-dialog modal-sm">
         <div class="modal-header text-center">
             <h4 class="modal-title">Search Category</h4>
-            <small>search your query here</small>
         </div>
 
         <div class="modal-content">
             <div class="modal-body">
-                <form class="form-horizontal" id="frmSearch">
+                <form id="frmSearch">
                     <div class="form-group">
-                        <label for="" class="control-label col-sm-3">Category Name</label>
-                        <div class="control-input col-sm-8">
+                        <label for="" class="control-label">Category Name</label>
+                        <div class="control-input">
                             @Html.TextBoxFor(m => m.CategoryName,
                         new
                         {
@@ -27,8 +26,8 @@
             </div>
             <div class="modal-footer">
                 <button type="button" data-dismiss="modal" class="btn btn-transparent">Cancel</button>
-                <button type="button" id="removefilter" class="btn btn-transparent">Remove Filter</button>
-                <button id="searchdetails" type="button" class="btn btn-success">Search Category</button>
+                <button type="button" id="removefilter" class="btn btn-transparent">Reset</button>
+                <button id="searchdetails" type="button" class="btn btn-success">Search </button>
             </div>
         </div>
     </div>

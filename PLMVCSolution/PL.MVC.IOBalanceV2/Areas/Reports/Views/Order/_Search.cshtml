@@ -4,31 +4,30 @@
 
 
 <div class="modal fade" id="mdlsearch" tabindex="-1" role="dialog" aria-labelledby="mdlsearch" aria-hidden="true">
-    <div class="modal-dialog modal-lg">
+    <div class="modal-dialog modal-sm">
         <div class="modal-header text-center">
             <h4 class="modal-title">Search Purchase Order</h4>
-            <small>search your query here</small>
         </div>
-
         <div class="modal-content">
             <div class="modal-body">
-                <form class="form-horizontal" id="frmSearch">
+                <form id="frmSearch">
                     <div class="form-group">
-                        <label for="" class="control-label col-sm-3">Product details</label>
-                        <div class="control-input col-sm-8">
+                        <label for="" class="control-label">Product details</label>
+                        <div class="control-input">
                             <input id="SearchProductId" style="width:100%" name="ProductId" />
                         </div>
                     </div>
                     <div class="form-group">
-                        <label for="" class="control-label col-sm-3">Supplier details</label>
-                        <div class="control-input col-sm-8">
+                        <label for="" class="control-label">Supplier details</label>
+                        <div class="control-input">
                             <input id="SearchSupplierId" name="SupplierId" style="width:100%" />
                         </div>
                     </div>
                     <div class="form-group">
-                        <label for="" class="control-label col-sm-3">Date Purchased</label>
-                        <div class="control-input col-sm-4">
-                            @(Html.Kendo().DatePicker()
+                        <div class="row">
+                            <label for="" class="control-label col-sm-12">Date Purchased</label>
+                            <div class="control-input col-sm-6">
+                                @(Html.Kendo().DatePicker()
                                     .Name(Html.NameFor(m => m.DateFrom).ToString())
                                     .Format(Globals.DefaultRecordDateFormat)
                                     .HtmlAttributes(new
@@ -40,12 +39,12 @@
                                         @style = "width:100%"
                                     })
                                     .Value(Model.DateFrom)
-                            )
-                            <small class="text-muted">Date From</small>
-                            @Html.ValidationMessageFor(model => model.DateFrom, "", new { @class = "error" })
-                        </div>
-                        <div class="control-input col-sm-4">
-                            @(Html.Kendo().DatePicker()
+                                )
+                                <small class="text-muted">Date From</small>
+                                @Html.ValidationMessageFor(model => model.DateFrom, "", new { @class = "error" })
+                            </div>
+                            <div class="control-input col-sm-6">
+                                @(Html.Kendo().DatePicker()
                                     .Name(Html.NameFor(model => model.DateTo).ToString())
                                     .Format(Globals.DefaultRecordDateFormat)
                                     .HtmlAttributes(new
@@ -57,9 +56,10 @@
                                         @style = "width:100%"
                                     })
                                         .Value(Model.DateTo)
-                            )
-                            <small class="text-muted">Date To</small>
-                            @Html.ValidationMessageFor(model => model.DateTo, "", new { @class = "error" })
+                                )
+                                <small class="text-muted">Date To</small>
+                                @Html.ValidationMessageFor(model => model.DateTo, "", new { @class = "error" })
+                            </div>
                         </div>
 
                     </div>
@@ -67,8 +67,8 @@
             </div>
             <div class="modal-footer">
                 <button type="button" data-dismiss="modal" class="btn btn-transparent">Cancel</button>
-                <button type="button" id="removefilter" class="btn btn-transparent">Remove Filter</button>
-                <button id="searchdetails" type="button" class="btn btn-success">Search Purchase Order</button>
+                <button type="button" id="removefilter" class="btn btn-transparent">Reset</button>
+                <button id="searchdetails" type="button" class="btn btn-success">Search</button>
             </div>
         </div>
     </div>

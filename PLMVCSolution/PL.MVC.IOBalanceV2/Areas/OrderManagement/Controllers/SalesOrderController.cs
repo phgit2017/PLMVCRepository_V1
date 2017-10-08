@@ -23,6 +23,8 @@ using Kendo.Mvc.Extensions;
 using PL.MVC.IOBalanceV2.Controllers;
 using PL.MVC.IOBalanceV2.Areas.OrderManagement.Models;
 using LinqKit;
+using System.IO;
+using OfficeOpenXml;
 
 namespace PL.MVC.IOBalanceV2.Areas.OrderManagement.Controllers
 {
@@ -253,6 +255,49 @@ namespace PL.MVC.IOBalanceV2.Areas.OrderManagement.Controllers
             }
 
             return isSuccess;
+        }
+
+        private System.Web.Mvc.FileResult ReportRecieptExtract(long salesOrderId, string salesNo)
+        {
+            int rowId = 0;
+            int colId = 0;
+
+
+            var list = _orderService.GetAllSalesOrderDetail(salesOrderId).ToList();
+
+            var dir = Server.MapPath(string.Format("~/{0}", Constants.ProductExcelTemplateDir));
+            var fileNameTemplate = string.Format("{0}{1}", Constants.ReceiptTemplate, ".xlsx");
+            var path = System.IO.Path.Combine(dir, fileNameTemplate);
+            var fileNameGenerated = string.Format("{0}{1}", salesNo, ".xlsx");
+
+            var contentType = "application/vnd.ms-excel";
+
+            var templateFile = new FileInfo(path);
+            //var stream = Assembly.GetExecutingAssembly().GetManifestResourceStream(path);
+            ;
+
+            var package = new ExcelPackage(templateFile);
+            var workSheet = package.Workbook.Worksheets[1];
+
+            rowId = 2;
+            foreach (var detail in list)
+            {
+                //workSheet.Cells["A" + rowId.ToString()].Value = detail.product.ProductInfoDisplay;
+                //workSheet.Cells["B" + rowId.ToString()].Value = detail.supplier.SupplierInfoDisplay;
+                //workSheet.Cells["C" + rowId.ToString()].Value = detail.Quantity;
+                //workSheet.Cells["D" + rowId.ToString()].Value = detail.DateCreatedWithFormat;
+                rowId++;
+            }
+
+
+
+
+            var memoryStream = new MemoryStream();
+            //package.Save();
+            package.SaveAs(memoryStream);
+            memoryStream.Position = 0;
+
+            return File(memoryStream, contentType, fileNameGenerated);
         }
         #endregion Private methods
     }

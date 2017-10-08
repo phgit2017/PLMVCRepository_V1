@@ -1,6 +1,7 @@
 ﻿@using PL.Business.Dto.IOBalanceV2;
 @using PL.MVC.IOBalanceV2.Areas.AdminManagement.Models;
 @{
+    ViewBag.Title = "Supplier";
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
 @section modals{
@@ -10,6 +11,7 @@
 <div>
     <section class="panel-widget-container">
         <button id="searchbutton" class="btn btn-default btn-filter" data-action-type="searchbutton">
+            <i class="md md-filter-list"></i>
             Filter
         </button>
         <div class="panel-widget-controls">

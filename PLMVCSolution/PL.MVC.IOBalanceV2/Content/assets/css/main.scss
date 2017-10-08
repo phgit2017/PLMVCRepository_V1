@@ -34,15 +34,26 @@ body {
         width: 100%;
         padding: 0;
     }
-
+    li.active{
+        a{
+            background-color: #333;
+        }
+    }
     ul.nav {
         a {
             color: #fff;
             letter-spacing: 2px;
+            cursor: pointer;
             &:hover,
             &:focus {
                 background-color: #333;
             }
+        }
+    }
+    .sub-menu {
+        a {
+            font-size: .85em;
+            padding: 10px 30px;
         }
     }
 }
@@ -50,6 +61,7 @@ body {
 .main-content {
     @include calc-sub-two-values(width, 100%, 230px);
     margin-left: $main-nav-width;
+    margin-top: 60px;
 }
 
 .panel-widget-search {
@@ -58,10 +70,83 @@ body {
     display: inline-block;
 }
 
-.panel-widget-search + .btn-filter {
+.panel-widget-search+.btn-filter {
     display: inline-block;
     vertical-align: top;
 }
-.page-header{
+
+.page-header {
     position: relative;
 }
+
+.control-label {
+    position: relative;
+}
+
+.main-page-header {
+    text-align: center;
+    border-bottom: 0;
+    border-top: 4px solid #2e59a0;
+    position: fixed;
+    padding-bottom: 40px;
+    left: 230px;
+    right: 0;
+    top: 0;
+    z-index: 50;
+    .main-page-title {
+        display: block;
+        margin: 0 0 20px;
+        background: #2e59a0;
+        color: #fff;
+        font-size: 14px;
+        text-transform: uppercase;
+        padding: 5px 0;
+        letter-spacing: 4px;
+    }
+} // .k-grid {
+//     td {
+//         padding: 0 8px !important;
+//     }
+//     .k-grid-header th.k-header {
+//         padding-left: 8px;
+//     }
+//     .k-grid-header .k-grid-filter,
+//     .k-grid-header .k-header-column-menu {
+//         padding: 10px 8px;
+//     } // .k-hierarchy-cell {
+//     //     border-left-width: 0 !important;
+//     // }
+//     // tr td {
+//     //     border-right-width: 1px !important;
+//     //     border-style: solid !important;
+//     //     border-bottom-width: 1px !important;
+//     //     &:last-child {
+//     //         border-right-width: 0 !important;
+//     //     }
+//     //     &.k-hierarchy-cell {
+//     //         border-right-width: 0 !important;
+//     //         border-style: solid !important;
+//     //         +td {
+//     //             border-right-width: 0 !important;
+//     //             border-style: solid !important;
+//     //         }
+//     //     }
+//     // }
+// }
+// .btn-grid-action {
+//     padding:0 6px;
+//     margin:3px 0;
+//     border: 0;
+//     cursor: pointer;
+//     background: transparent;
+//     color: $link-color;
+//   + .btn-grid-action{
+//     border-left: 1px solid #d9d9d9;
+//   }
+//   &:first-child{
+//     padding-left: 0;
+//   }
+//   &:last-child{
+//     padding-right: 0;
+//   }
+// }

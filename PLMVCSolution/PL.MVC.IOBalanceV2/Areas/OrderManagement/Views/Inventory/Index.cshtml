@@ -1,6 +1,7 @@
 ﻿@using PL.Business.Dto.IOBalanceV2;
 @using PL.MVC.IOBalanceV2.Areas.OrderManagement.Models;
 @{
+    ViewBag.Title = "Inventory";
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
 @section modals{
@@ -8,7 +9,12 @@
     @Html.Partial(IOBALANCEMVCV2.OrderManagement.Inventory.Views._EditQty, new EditQtyProductDto())
     @Html.Partial(IOBALANCEMVCV2.OrderManagement.Inventory.Views._Search, new InventorySearchModel())
 }
-<div>
+
+
+<div id="new-form" style="display:none;">
+    @Html.Partial(IOBALANCEMVCV2.OrderManagement.Inventory.Views._New, new ProductDto())
+</div>
+<div id="divList">
     <section class="panel-widget-container">
         <div class="panel-widget-search hide">
             <div class="input-group">
@@ -21,6 +27,7 @@
             </div>
         </div>
         <button id="searchbutton" class="btn btn-default btn-filter" data-action-type="searchbutton">
+            <i class="md md-filter-list"></i>
             Filter
         </button>
         <div class="panel-widget-controls">
@@ -34,13 +41,7 @@
             </button>
         </div>
     </section>
-    
-    <div id="new-form" style="display:none;">
-        @Html.Partial(IOBALANCEMVCV2.OrderManagement.Inventory.Views._New, new ProductDto())
-    </div>
-    <div id="divList">
-        @Html.Partial(IOBALANCEMVCV2.OrderManagement.Inventory.Views._List)
-    </div>
+    @Html.Partial(IOBALANCEMVCV2.OrderManagement.Inventory.Views._List)
 </div>
 
 <div id="divResultContainer" style="display:none"></div>
@@ -58,7 +59,7 @@
             qtyTypeUrl: '@Url.Action(IOBALANCEMVCV2.Common.GetEditProductEditType())'
         };
     </script>
-    
+
     <script type="text/javascript" src="@IOBALANCEV2LINKS.Scripts.iobalancev2.ordermanagement_inventory_js"></script>
     <script type="text/javascript" src="@IOBALANCEV2LINKS.Scripts.infrastructure.jquery_deserialize_js"></script>
 }

@@ -16,7 +16,6 @@
         $('#divBtnList').show();
         $('#divListQueueOrderDetail').show();
         $('#divListQueue').hide();
-
     }
 
     var _doDiscardSaveDetails = function () {
@@ -107,6 +106,8 @@
                     $('#frmSalesOrder #SalesNo').val(data.order.SalesNo);
                     $('#frmSalesOrder #CustomerId').val(data.order.customer.CustomerDropDownDisplay);
                     $('#frmSalesOrder #hdfCustomerId').val(data.order.customer.CustomerId);
+                    $('*[data-toggle="tooltip"]').tooltip({'container':'body', 'placement': 'right'});
+
                 }
             }
         });
@@ -132,7 +133,7 @@
             type: 'GET',
             data: { productId: productId },
             success: function (data) {
-                $('#frmSalesOrderDetail #currProdQty').html(data.Quantity);
+                $('#frmSalesOrderDetail #currProdQty').html("Current Quantity: "+data.Quantity);
             }
         });
     }
@@ -363,10 +364,6 @@
 
             _doSearchOrderListDetails(_variables._salesOrderId);
             _doGetOrderAndOrderDetails(_variables._salesOrderId);
-
-
-
-
         });
 
         $('body').on('click', '#btnDiscard', function () {
@@ -556,5 +553,6 @@ $(document).ready(function () {
             isManual: true
         });
     });
+
 
 });
