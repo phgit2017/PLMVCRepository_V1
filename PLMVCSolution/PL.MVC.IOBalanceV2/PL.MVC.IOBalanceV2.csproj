@@ -354,6 +354,7 @@
     <Content Include="Content\assets-common\fonts\fontface.min.css" />
     <Content Include="Content\assets-common\fonts\md-iconic\fonts\Material-Design-Iconic-Font.svg" />
     <Content Include="Content\assets-common\fonts\md-iconic\md-iconic.min.css" />
+    <Content Include="Content\assets-common\fonts\md-iconic\test.txt" />
     <Content Include="Content\assets-common\fonts\nimbus-sans\fonts\nimbussan-bol-webfont.svg" />
     <Content Include="Content\assets-common\fonts\nimbus-sans\fonts\nimbussan-lig-webfont.svg" />
     <Content Include="Content\assets-common\fonts\nimbus-sans\fonts\nimbussan-reg-webfont.svg" />
