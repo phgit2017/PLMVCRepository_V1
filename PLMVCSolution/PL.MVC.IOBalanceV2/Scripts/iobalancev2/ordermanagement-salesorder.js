@@ -141,7 +141,7 @@
                         doComputeTotalAndCount();
                     }
 
-                    toastr.success(data.alertMessage);
+                    toastr.success(data.alertMsg);
                 }
             });
         }
@@ -195,7 +195,7 @@
                         doComputeTotalAndCount();
                     }
 
-                    toastr.success(data.alertMessage);
+                    toastr.success(data.alertMsg);
                 }
             });
         }
@@ -267,7 +267,7 @@
             type: 'GET',
             data: { productId: productId },
             success: function (data) {
-                $('#frmSalesOrderDetail #currProdQty').html(data.Quantity);
+                $('#frmSalesOrderDetail #currProdQty').html("Current Quantity: " + data.Quantity);
                 $('*[data-toggle="tooltip"]').tooltip({ 'container': 'body', 'placement': 'right' });
 
             }

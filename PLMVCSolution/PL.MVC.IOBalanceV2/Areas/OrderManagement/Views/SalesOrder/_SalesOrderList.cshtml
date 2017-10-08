@@ -16,7 +16,7 @@
             columns.Bound(c => c.ProductDisplay).Title("Product").Width(180).Sortable(true).Lockable(true);
             //columns.Bound(c => c.SalesPrice).Title("Price").Width(180).Sortable(true).Lockable(true);
             //columns.Bound(c => c.Quantity).Title("Quantity").Width(180).Sortable(true).Lockable(true);
-            columns.Template(@<text></text>).ClientTemplate("#=UnitPrice# x #=Qunatity#")
+            columns.Template(@<text></text>).ClientTemplate("#=UnitPrice# x #=Quantity#")
                 .Title("Unit Price x Qty.")
                 .Width(180);
             columns.Bound(c => c.SalesPrice).Title("Price").Width(100).Sortable(true).Lockable(true);
