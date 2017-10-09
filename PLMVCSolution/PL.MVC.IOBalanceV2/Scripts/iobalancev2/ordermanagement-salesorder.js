@@ -441,7 +441,7 @@
         _variables.qtyType = "";
         _doGetSalesNum();
         doComputeTotalAndCount();
-        
+        alert('test again');
     }
 
     return {
