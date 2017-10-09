@@ -41,7 +41,7 @@
             <strong id="gridTotal"></strong>
         </span>
     </h4>
-    
+
     <h4>Count: <strong id="gridCount"></strong> </h4>
     @Html.Partial(IOBALANCEMVCV2.OrderManagement.SalesOrder.Views._SalesOrderList, new SalesOrderListDto())
 
@@ -58,7 +58,8 @@
             queueOrderUrl: "@Url.Action(IOBALANCEMVCV2.OrderManagement.SalesOrder.QueueSalesOrder())",
             getPriceUrl: "@Url.Action(IOBALANCEMVCV2.OrderManagement.SalesOrder.GetCustomerAndProductPrice())",
             getSalesNumUrl: "@Url.Action(IOBALANCEMVCV2.OrderManagement.SalesOrder.GetPLNum())",
-            productByIdUrl: "@Url.Action(IOBALANCEMVCV2.Common.GetProductsPerProductId())"
+            productByIdUrl: "@Url.Action(IOBALANCEMVCV2.Common.GetProductsPerProductId())",
+            exportUrl: "@Url.Action(IOBALANCEMVCV2.OrderManagement.SalesOrder.GenerateReceipt())"
         };
     </script>
     <script type="text/javascript" src="@IOBALANCEV2LINKS.Scripts.iobalancev2.ordermanagement_salesorder_js"></script>

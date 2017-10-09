@@ -138,6 +138,30 @@ namespace PL.Business.IOBalanceV2
                              CustomerId = sOrder.CustomerID,
                              customer = customers.Where(s => s.CustomerId == sOrder.CustomerID).FirstOrDefault(),
                              IsPrinted = sOrder.IsPrinted,
+                             IsCorrected = sOrder.IsCorrected,
+                             DateCreated = sOrder.DateCreated
+                         };
+
+            return result;
+
+        }
+
+        public IQueryable<ReportSalesOrderReceiptDto> GetAllSalesOrderReceiptReport()
+        {
+            var products = _inventoryService.GetAll();
+            var customers = _customerService.GetAll();
+
+
+
+            var result = from sOrder in _salesOrder.GetAll()
+                         select new ReportSalesOrderReceiptDto()
+                         {
+                             SalesOrderId = sOrder.SalesOrderID,
+                             SalesNo = sOrder.SalesNo,
+                             CustomerId = sOrder.CustomerID,
+                             customer = customers.Where(s => s.CustomerId == sOrder.CustomerID).FirstOrDefault(),
+                             IsPrinted = sOrder.IsPrinted,
+                             IsCorrected = sOrder.IsCorrected,
                              DateCreated = sOrder.DateCreated
 
 
@@ -156,6 +180,7 @@ namespace PL.Business.IOBalanceV2
                          {
                              OrderId = sOrder.SalesOrderID,
                              SalesNo = sOrder.SalesNo,
+                             CustomerId = sOrder.CustomerID,
                              DateCreated = sOrder.DateCreated,
                              IsPrinted = sOrder.IsPrinted,
                              IsCorrected = sOrder.IsCorrected,

@@ -11,10 +11,18 @@
 
     var _doInitializeElements = function () {
 
-        $('body').on('click', '#exportexcelbutton', function () {
-            var $frm = $('#frmSearch');
-            
-            window.open(_variables.params.exportUrl + '?' + $frm.serialize());
+
+        $('body').on('click', '#generatereceipt', function () {
+            debugger;
+            $this = $(this);
+            var salesOrderId, customerId = 0;
+            var salesNo = "";
+
+            salesOrderId = $this.data('reportlist-salesorderid');
+            customerId = $this.data('reportlist-customerid');
+            salesNo = $this.data('reportlist-salesno');
+
+            window.open(_variables.params.exportUrl + '?' + 'salesOrderId=' + salesOrderId + '&customerId=' + customerId + '&salesNo=' + salesNo);
         });
 
         $('body').on('click', '#searchbutton', function () {
@@ -62,7 +70,7 @@
     }
 
     var _doSearchDetails = function () {
-        var $gv = $("#gvSO").data('kendoGrid'), $frm = $('#frmSearch');
+        var $gv = $("#gvSOReceipt").data('kendoGrid'), $frm = $('#frmSearch');
 
         $gv.dataSource.read($frm.serializeToJson());
         $('#mdlsearch').modal('hide');
@@ -92,11 +100,11 @@
 })();
 
 $(document).ready(function () {
+    debugger;
     var options = window.reportSOOptions;
     REPORTSSO.initialize(options);
-
-    var $gv = $('#gvSO');
-    
+    debugger;
+    var $gv = $('#gvSOReceipt');
 
     $gv.kGridResizeHeight({
         height: REPORTSSO._variables.gvHeight,

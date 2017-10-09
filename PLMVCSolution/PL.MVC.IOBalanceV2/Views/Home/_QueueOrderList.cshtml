@@ -13,7 +13,7 @@
                 .HeaderHtmlAttributes(new { @class = "bos-grid-text-center" })
                 .HtmlAttributes(new { @class = "bos-grid-text-center" });
             columns.Bound(c => c.customer.CustomerDropDownDisplay).Title("Customer Name").Width(180).Sortable(true);
-            columns.Bound(c => c.DateCreated).Title("Date Queued").Width(200).Sortable(false);
+            columns.Bound(c => c.DateCreatedWithFormat).Title("Date Queued").Width(200).Sortable(false);
         })
         .Scrollable()
         .Sortable(sort => sort.AllowUnsort(false))

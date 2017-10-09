@@ -24,6 +24,22 @@ namespace PL.Business.Dto.IOBalanceV2
         public long CustomerId { get; set; }
 
         public CustomerDto customer { get; set; }
+
+        public string DateCreatedWithFormat
+        {
+            get
+            {
+                if (DateCreated == null)
+                {
+                    return string.Empty;
+                }
+                else
+                {
+                    return Convert.ToDateTime(DateCreated).ToString(Globals.DefaultRecordDateFormat);
+                }
+
+            }
+        }
     }
 
     public class OrderDetailDto
@@ -120,6 +136,7 @@ namespace PL.Business.Dto.IOBalanceV2
         public string SalesNo { get; set; }
         public long CustomerId { get; set; }
         public bool IsPrinted { get; set; }
+        public bool IsCorrected { get; set; }
 
         public long ProductId { get; set; }
 
@@ -128,6 +145,34 @@ namespace PL.Business.Dto.IOBalanceV2
 
 
         public DateTime? DateCreated { get; set; }
+        public string DateCreatedWithFormat
+        {
+            get
+            {
+                if (DateCreated == null)
+                {
+                    return string.Empty;
+                }
+                else
+                {
+                    return Convert.ToDateTime(DateCreated).ToString(Globals.DefaultRecordDateFormat);
+                }
+
+            }
+        }
+    }
+
+    public class ReportSalesOrderReceiptDto
+    {
+        public long SalesOrderId { get; set; }
+        public string SalesNo { get; set; }
+        public long CustomerId { get; set; }
+        public CustomerDto customer { get; set; }
+        public DateTime? DateCreated { get; set; }
+
+        public bool IsPrinted { get; set; }
+        public bool IsCorrected { get; set; }
+
         public string DateCreatedWithFormat
         {
             get

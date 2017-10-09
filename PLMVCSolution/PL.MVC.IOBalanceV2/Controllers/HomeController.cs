@@ -290,7 +290,7 @@ namespace PL.MVC.IOBalanceV2.Controllers
 
             //}
 
-            list = _orderService.GetAllSalesOrder().Where(so => so.IsPrinted == false && so.IsCorrected == false && so.SalesNo != ("PL" + Constants.SalesTemplate)).OrderByDescending(so => so.OrderId);
+            list = _orderService.GetAllSalesOrder().Where(so => so.IsPrinted == false && so.IsCorrected == false && so.CustomerId != Constants.CustomerIdAdmin).OrderByDescending(so => so.OrderId);
 
             return list;
 

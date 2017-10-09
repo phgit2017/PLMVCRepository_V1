@@ -37,6 +37,7 @@ namespace PL.Business.Common
         public const string InventoryReport = "InventoryReport";
         public const string InventoryList = "InventoryList";
         public const string SalesTemplate = "0000000000";
+        public const int CustomerIdAdmin = 0;
     }
 
     public static class Globals

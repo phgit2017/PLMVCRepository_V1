@@ -139,6 +139,8 @@
                         _doGetSalesNum();
                         _doClearAll();
                         doComputeTotalAndCount();
+                        
+                        window.open(_variables.params.exportUrl + '?salesOrderId=' + data.salesOrderId + '&salesNo=' + data.salesNo + '&customerId=' + data.customerId);
                     }
 
                     toastr.success(data.alertMsg);
@@ -441,7 +443,7 @@
         _variables.qtyType = "";
         _doGetSalesNum();
         doComputeTotalAndCount();
-        alert('test again');
+        
     }
 
     return {

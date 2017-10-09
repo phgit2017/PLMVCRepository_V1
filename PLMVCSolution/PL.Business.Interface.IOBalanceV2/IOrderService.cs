@@ -21,6 +21,7 @@ namespace PL.Business.Interface.IOBalanceV2
 
         IQueryable<ReportPurchaseOrderDto> GetAllPurchaseOrderReport();
         IQueryable<ReportSalesOrderDto> GetAllSalesOrderReport();
+        IQueryable<ReportSalesOrderReceiptDto> GetAllSalesOrderReceiptReport();
         string GetSalesNum();
         long UpdateSalesOrder(SalesOrderDto newDetails);
         bool DeleteAllSalesOrderDetail(long salesOrderId);

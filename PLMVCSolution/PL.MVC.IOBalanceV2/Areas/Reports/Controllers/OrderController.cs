@@ -36,24 +36,26 @@ namespace PL.MVC.IOBalanceV2.Areas.Reports.Controllers
         #region Declarations and constructors
         private readonly IInventoryService _inventoryService;
         private readonly IOrderService _orderService;
+        private readonly ICustomerService _customerService;
 
         public OrderController(
             IInventoryService inventoryService,
-            IOrderService orderService
+            IOrderService orderService,
+            ICustomerService customerService
             )
         {
             this._inventoryService = inventoryService;
             this._orderService = orderService;
-
+            this._customerService = customerService;
         }
         #endregion Declarations and constructors
 
         #region Action methods
-        
+
         #region PO
         public virtual ActionResult PurchaseOrder()
         {
-            
+
             return View();
         }
 
@@ -75,9 +77,20 @@ namespace PL.MVC.IOBalanceV2.Areas.Reports.Controllers
             return View();
         }
 
+        public virtual ActionResult SalesOrderReceipt()
+        {
+            return View();
+        }
+
         public virtual ActionResult GetSOReport([DataSourceRequest] DataSourceRequest request, SalesOrderSearchModel searchModel)
         {
             var list = GetSalesOrderReport(searchModel);
+            return Json(list.ToDataSourceResult(request), JsonRequestBehavior.AllowGet);
+        }
+
+        public virtual ActionResult GetSOReceiptReport([DataSourceRequest] DataSourceRequest request, SalesOrderSearchModel searchModel)
+        {
+            var list = GetSalesOrderReceiptReport(searchModel);
             return Json(list.ToDataSourceResult(request), JsonRequestBehavior.AllowGet);
         }
 
@@ -85,8 +98,13 @@ namespace PL.MVC.IOBalanceV2.Areas.Reports.Controllers
         {
             return ReportSalesOrderExtract(searchModel);
         }
+
+        public virtual ActionResult ExportSOReceiptExcel(int salesOrderId, int customerId, string salesNo)
+        {
+            return ReportSalesOrderReceiptExtract(salesOrderId, customerId, salesNo);
+        }
         #endregion SO
-        
+
         #endregion Action methods
 
         #region Private methods
@@ -147,7 +165,7 @@ namespace PL.MVC.IOBalanceV2.Areas.Reports.Controllers
 
             if ((searchModel.DateFrom.IsNull() && searchModel.DateTo.IsNull() && searchModel.CustomerId == 0 && searchModel.SalesNo.IsNull()))
             {
-                result = _orderService.GetAllSalesOrderReport();
+                result = _orderService.GetAllSalesOrderReport().Where(s => s.IsPrinted && !s.IsCorrected && s.CustomerId != Constants.CustomerIdAdmin);
             }
             else
             {
@@ -177,6 +195,8 @@ namespace PL.MVC.IOBalanceV2.Areas.Reports.Controllers
                     predicate = predicate.And(a => DbFunctions.TruncateTime(a.DateCreated) >= DbFunctions.TruncateTime(searchModel.DateFrom) && DbFunctions.TruncateTime(a.DateCreated) <= DbFunctions.TruncateTime(searchModel.DateTo));
                 }
 
+                predicate = predicate.And(s => s.IsPrinted && !s.IsCorrected && s.CustomerId != Constants.CustomerIdAdmin);
+
                 result = _orderService.GetAllSalesOrderReport().AsExpandable().Where(predicate);
             }
 
@@ -184,9 +204,57 @@ namespace PL.MVC.IOBalanceV2.Areas.Reports.Controllers
 
         }
 
+        private IQueryable<ReportSalesOrderReceiptDto> GetSalesOrderReceiptReport(SalesOrderSearchModel searchModel)
+        {
+            IQueryable<ReportSalesOrderReceiptDto> result = null;
+
+
+            if ((searchModel.DateFrom.IsNull() && searchModel.DateTo.IsNull() && searchModel.CustomerId == 0 && searchModel.SalesNo.IsNull()))
+            {
+                result = _orderService.GetAllSalesOrderReceiptReport().Where(s => s.IsPrinted && !s.IsCorrected && s.CustomerId != Constants.CustomerIdAdmin);
+            }
+            else
+            {
+                var predicate = PredicateBuilder.True<ReportSalesOrderReceiptDto>();
+
+
+                if (searchModel.CustomerId != 0)
+                {
+                    predicate = predicate.And(p => p.CustomerId == searchModel.CustomerId);
+                }
+
+                if (!searchModel.SalesNo.IsNull())
+                {
+                    predicate = predicate.And(p => p.SalesNo.Contains(searchModel.SalesNo));
+                }
+
+                if (!searchModel.DateFrom.IsNull() && searchModel.DateTo.IsNull())
+                {
+                    predicate = predicate.And(a => DbFunctions.TruncateTime(a.DateCreated) >= DbFunctions.TruncateTime(searchModel.DateFrom));
+                }
+                else if (searchModel.DateFrom.IsNull() && !searchModel.DateTo.IsNull())
+                {
+                    predicate = predicate.And(a => DbFunctions.TruncateTime(a.DateCreated) <= DbFunctions.TruncateTime(searchModel.DateTo));
+                }
+                else if (!searchModel.DateFrom.IsNull() && !searchModel.DateTo.IsNull())
+                {
+                    predicate = predicate.And(a => DbFunctions.TruncateTime(a.DateCreated) >= DbFunctions.TruncateTime(searchModel.DateFrom) && DbFunctions.TruncateTime(a.DateCreated) <= DbFunctions.TruncateTime(searchModel.DateTo));
+                }
+
+
+                predicate = predicate.And(s => s.IsPrinted && !s.IsCorrected && s.CustomerId != Constants.CustomerIdAdmin);
+
+                result = _orderService.GetAllSalesOrderReceiptReport().AsExpandable().Where(predicate);
+            }
+
+            return result;
+
+        }
+
+
         private System.Web.Mvc.FileResult ReportPurchaseOrderExtract(PurchaseOrderSearchModel searchModel)
         {
-            
+
             int rowId = 0;
             int colId = 0;
 
@@ -216,7 +284,7 @@ namespace PL.MVC.IOBalanceV2.Areas.Reports.Controllers
                 rowId++;
             }
 
-            
+
 
 
             var memoryStream = new MemoryStream();
@@ -244,7 +312,7 @@ namespace PL.MVC.IOBalanceV2.Areas.Reports.Controllers
 
             var templateFile = new FileInfo(path);
             //var stream = Assembly.GetExecutingAssembly().GetManifestResourceStream(path);
-            
+
 
             var package = new ExcelPackage(templateFile);
             var workSheet = package.Workbook.Worksheets[1];
@@ -270,7 +338,7 @@ namespace PL.MVC.IOBalanceV2.Areas.Reports.Controllers
 
 
 
-                
+
             }
 
 
@@ -283,8 +351,74 @@ namespace PL.MVC.IOBalanceV2.Areas.Reports.Controllers
 
             return File(memoryStream, contentType, fileNameGenerated);
         }
+
+
+        private System.Web.Mvc.FileResult ReportSalesOrderReceiptExtract(int salesOrderId, int customerId, string salesNo)
+        {
+
+            int rowId = 0;
+            int colId = 0;
+
+            decimal qtyTotal = 0;
+            decimal salesPriceTotal = 0;
+
+
+            var customerDetails = _customerService.GetAll().Where(c => c.CustomerId == customerId).FirstOrDefault();
+            var list = _orderService.GetAllSalesOrderDetail(salesOrderId).ToList();
+
+            var dir = Server.MapPath(string.Format("~/{0}", Constants.ProductExcelTemplateDir));
+            var fileNameTemplate = string.Format("{0}{1}", Constants.ReceiptTemplate, ".xlsx");
+            var path = System.IO.Path.Combine(dir, fileNameTemplate);
+            var fileNameGenerated = string.Format("{0}{1}", salesNo, ".xlsx");
+
+            var contentType = "application/vnd.ms-excel";
+
+            var templateFile = new FileInfo(path);
+            //var stream = Assembly.GetExecutingAssembly().GetManifestResourceStream(path);
+            ;
+
+            var package = new ExcelPackage(templateFile);
+            var workSheet = package.Workbook.Worksheets[1];
+
+
+
+            workSheet.Cells["H4"].Value = salesNo;
+            workSheet.Cells["B5"].Value = customerDetails.CustomerDropDownDisplay;
+            workSheet.Cells["B7"].Value = customerDetails.CustomerAddress;
+            workSheet.Cells["H5"].Value = DateTime.Now.ToString(Globals.DefaultRecordDateFormat);
+
+            rowId = 11;
+            foreach (var detail in list)
+            {
+
+
+                workSheet.Cells["A" + rowId.ToString()].Value = detail.Quantity;
+                workSheet.Cells["E" + rowId.ToString()].Value = detail.product.ProductInfoDisplay;
+                workSheet.Cells["G" + rowId.ToString()].Value = detail.UnitPrice;
+                workSheet.Cells["H" + rowId.ToString()].Value = detail.SalesPrice;
+
+
+
+                qtyTotal = qtyTotal + detail.Quantity;
+                salesPriceTotal = salesPriceTotal + detail.SalesPrice;
+
+                rowId++;
+            }
+
+            workSheet.Cells["A27"].Value = qtyTotal;
+            workSheet.Cells["H27"].Value = salesPriceTotal;
+
+
+
+            var memoryStream = new MemoryStream();
+            //package.Save();
+            package.SaveAs(memoryStream);
+            memoryStream.Position = 0;
+
+            return File(memoryStream, contentType, fileNameGenerated);
+        }
         #endregion Private methods
 
-        
+
     }
 }

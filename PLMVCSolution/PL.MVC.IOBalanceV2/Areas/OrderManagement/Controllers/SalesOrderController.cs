@@ -34,12 +34,14 @@ namespace PL.MVC.IOBalanceV2.Areas.OrderManagement.Controllers
         private readonly IOrderService _orderService;
         private readonly IInventoryService _inventoryService;
         private readonly ICustomerPriceService _customerPriceService;
+        private readonly ICustomerService _customerService;
 
-        public SalesOrderController(IOrderService orderService, IInventoryService inventoryService, ICustomerPriceService customerPriceService)
+        public SalesOrderController(IOrderService orderService, IInventoryService inventoryService, ICustomerPriceService customerPriceService,ICustomerService customerService)
         {
             this._orderService = orderService;
             this._inventoryService = inventoryService;
             this._customerPriceService = customerPriceService;
+            this._customerService = customerService;
         }
         #endregion Declarations and constructors
 
@@ -55,6 +57,7 @@ namespace PL.MVC.IOBalanceV2.Areas.OrderManagement.Controllers
             int createdBy = 1;
             DateTime dateNow = DateTime.Now;
             string alertMsg = string.Empty;
+            long salesOrderId = 0;
 
             if (!dto.IsNull())
             {
@@ -68,7 +71,7 @@ namespace PL.MVC.IOBalanceV2.Areas.OrderManagement.Controllers
                     IsPrinted = true,
                     IsCorrected = false
                 };
-                var salesOrderId = _orderService.SaveSalesOrder(orderDto);
+                salesOrderId = _orderService.SaveSalesOrder(orderDto);
 
                 if (salesOrderId == 0)
                 {
@@ -113,7 +116,11 @@ namespace PL.MVC.IOBalanceV2.Areas.OrderManagement.Controllers
             var jsonResult = new
             {
                 isSuccess = isSuccess,
-                alertMsg = alertMsg
+                alertMsg = alertMsg,
+                salesOrderId = salesOrderId,
+                customerId = CustomerId,
+                salesNo = SalesNo
+
             };
 
             return Json(jsonResult, JsonRequestBehavior.AllowGet);
@@ -226,6 +233,11 @@ namespace PL.MVC.IOBalanceV2.Areas.OrderManagement.Controllers
             return Json(jsonResult, JsonRequestBehavior.AllowGet);
         }
 
+        public virtual ActionResult GenerateReceipt(long salesOrderId, string salesNo, int customerId)
+        {
+            return ReportRecieptExtract(salesOrderId, salesNo, customerId);
+        }
+
         #endregion Interface implementations
 
         #region Private methods
@@ -257,12 +269,16 @@ namespace PL.MVC.IOBalanceV2.Areas.OrderManagement.Controllers
             return isSuccess;
         }
 
-        private System.Web.Mvc.FileResult ReportRecieptExtract(long salesOrderId, string salesNo)
+        private System.Web.Mvc.FileResult ReportRecieptExtract(long salesOrderId, string salesNo, int customerId)
         {
             int rowId = 0;
             int colId = 0;
 
+            decimal qtyTotal = 0;
+            decimal salesPriceTotal = 0;
 
+
+            var customerDetails = _customerService.GetAll().Where(c => c.CustomerId == customerId).FirstOrDefault();
             var list = _orderService.GetAllSalesOrderDetail(salesOrderId).ToList();
 
             var dir = Server.MapPath(string.Format("~/{0}", Constants.ProductExcelTemplateDir));
@@ -279,16 +295,33 @@ namespace PL.MVC.IOBalanceV2.Areas.OrderManagement.Controllers
             var package = new ExcelPackage(templateFile);
             var workSheet = package.Workbook.Worksheets[1];
 
-            rowId = 2;
+
+
+            workSheet.Cells["H4"].Value = salesNo;
+            workSheet.Cells["B5"].Value = customerDetails.CustomerDropDownDisplay;
+            workSheet.Cells["B7"].Value = customerDetails.CustomerAddress;
+            workSheet.Cells["H5"].Value = DateTime.Now.ToString(Globals.DefaultRecordDateFormat);
+
+            rowId = 11;
             foreach (var detail in list)
             {
-                //workSheet.Cells["A" + rowId.ToString()].Value = detail.product.ProductInfoDisplay;
-                //workSheet.Cells["B" + rowId.ToString()].Value = detail.supplier.SupplierInfoDisplay;
-                //workSheet.Cells["C" + rowId.ToString()].Value = detail.Quantity;
-                //workSheet.Cells["D" + rowId.ToString()].Value = detail.DateCreatedWithFormat;
+
+
+                workSheet.Cells["A" + rowId.ToString()].Value = detail.Quantity;
+                workSheet.Cells["E" + rowId.ToString()].Value = detail.product.ProductInfoDisplay;
+                workSheet.Cells["G" + rowId.ToString()].Value = detail.UnitPrice;
+                workSheet.Cells["H" + rowId.ToString()].Value = detail.SalesPrice;
+
+
+
+                qtyTotal = qtyTotal + detail.Quantity;
+                salesPriceTotal = salesPriceTotal + detail.SalesPrice;
+
                 rowId++;
             }
 
+            workSheet.Cells["A27"].Value = qtyTotal;
+            workSheet.Cells["H27"].Value = salesPriceTotal;
 
 
 
