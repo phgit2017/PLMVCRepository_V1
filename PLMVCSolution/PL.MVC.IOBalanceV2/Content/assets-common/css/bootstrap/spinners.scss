@@ -1,15 +1,16 @@
 // Overlay
 .loader-mask {
-    display: none;
+    // display: none;
     top: 0;
     bottom: 0;
     left: 0;
     right: 0;
     background-color: rgba(255,255,255,0.86);
-    
+    position: fixed;
+    z-index: 9999;
     overflow: hidden;
     .loader-message {
-        color: $brand-turquoise;
+        color: $gray-light;
     }
     &:hover {
         cursor: wait;
@@ -136,10 +137,10 @@ $shadow-5: 0 -0.83em 0 -0.4em $shadow-color,
     }
 }
 
-$dot-size: 8px;
+$dot-size: 15px;
 .spinner-dots {
     margin: 0 auto 9px;
-    width: 70px;
+    width: 130px;
     text-align: center;
     > div {
         width: $dot-size;
@@ -160,7 +161,7 @@ $dot-size: 8px;
     }
     & + .loader-message {
         color: $gray-light;
-        font-size: 12px;
+        font-size: 15px;
     }
 }
 

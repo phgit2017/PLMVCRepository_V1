@@ -1,16 +1,16 @@
 ﻿@model PL.Business.Dto.IOBalanceV2.SalesOrderDetailDto
 
 <div class="form-group">
-    <label for="" class="control-label col-sm-3 required">Product</label>
-    <div class="control-input col-sm-9">
+    <label for="" class="control-label col-lg-3 required">Product</label>
+    <div class="control-input col-lg-9">
         <input id="ProductId" name="ProductId" />
         <small><span id="currProdQty"></span></small>
         @Html.ValidationMessageFor(m => m.ProductId, "", new { @class = "error" })
     </div>
 </div>
 <div class="form-group">
-    <label for="" class="control-label col-sm-3 required">Quantity</label>
-    <div class="control-input col-sm-9">
+    <label for="" class="control-label col-lg-3 required">Quantity</label>
+    <div class="control-input col-lg-9">
         @Html.TextBoxFor(m => m.Quantity,
         new
         {
@@ -22,8 +22,8 @@
     </div>
 </div>
 <div class="form-group">
-    <label for="" class="control-label col-sm-3 required">Price</label>
-    <div class="control-input col-sm-9">
+    <label for="" class="control-label col-lg-3 required">Price</label>
+    <div class="control-input col-lg-9">
         @Html.TextBoxFor(m => m.SalesPrice,
         new
         {

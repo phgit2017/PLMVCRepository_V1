@@ -28,14 +28,7 @@ $(function () {
     var loader = $('*[data-loader]');
 
     $(document).ready(function () {
-        loader.each(function () {
-            if (loader.data('loader') == true) {
-                $(this).append(loader_dom);
-            }
-            else {
-                loader.find(loader_dom).remove();
-            }
-        });
+        $('.loader-mask').hide();
     });
 
     var windowPath = window.location.pathname,

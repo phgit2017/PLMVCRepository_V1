@@ -429,6 +429,8 @@
     <Content Include="Content\assets-common\fonts\md-iconic\src\_spinned.scss" />
     <Content Include="Content\assets-common\fonts\md-iconic\src\_stacked.scss" />
     <Content Include="Content\assets-common\fonts\md-iconic\src\_variables.scss" />
+    <Content Include="Areas\Reports\Views\Order\SalesOrderReceipt.cshtml" />
+    <Content Include="Areas\Reports\Views\Order\_ListSalesReceipt.cshtml" />
     <None Include="Content\assets-common\js\angular-js\angular.intellisense.js" />
     <Content Include="Content\assets-common\js\angular-js\angular.js" />
     <Content Include="Content\assets-common\js\angular-js\angular.min.js" />
@@ -1324,6 +1326,7 @@
     <Content Include="Scripts\infrastructure\jquery-pl-kendo-resize-height.min.js.map">
       <DependentUpon>jquery-pl-kendo-resize-height.min.js</DependentUpon>
     </Content>
+    <Content Include="Scripts\iobalancev2\reports-salesorder-receipt.js" />
     <Content Include="Scripts\iobalancev2\reports-salesorder.min.js.map">
       <DependentUpon>reports-salesorder.min.js</DependentUpon>
     </Content>

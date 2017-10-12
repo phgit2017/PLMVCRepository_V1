@@ -5,17 +5,17 @@
     <title> IO Balance ver.2</title>
     <link href="~/favicon.ico" rel="shortcut icon" type="image/x-icon" />
     <meta name="viewport" content="width=device-width" />
-    
+
     @* Core *@
-    
+
     <link rel="stylesheet" href="~/Content/assets-common/css/bootstrap.min.css" />
     <link rel="stylesheet" href="~/Content/assets-common/css/animate.min.css">
     <link rel="stylesheet" href="~/Content/assets-common/fonts/fontface.min.css">
     <link rel="stylesheet" href="~/Content/assets-common/fonts/emoticons/emoticons.min.css" />
-    
+
 
     @*<link href="@IOBALANCEV2LINKS.Content.kendo.kendo_common_bootstrap_min_css" rel="stylesheet" />
-    <link href="@IOBALANCEV2LINKS.Content.kendo.kendo_bootstrap_min_css" rel="stylesheet" />*@
+        <link href="@IOBALANCEV2LINKS.Content.kendo.kendo_bootstrap_min_css" rel="stylesheet" />*@
 
     <link href="@IOBALANCEV2LINKS.Content.kendo.kendo_common_material_min_css" rel="stylesheet" />
     <link href="@IOBALANCEV2LINKS.Content.kendo.kendo_material_min_css" rel="stylesheet" />
@@ -35,6 +35,16 @@
     <script type="text/javascript" src="@IOBALANCEV2LINKS.Scripts.plugins.toastr_js"></script>
 </head>
 <body>
+    <div class='loader-mask loader-body'>
+        <div class='loader-container'>
+            <div class='loader-cell'>
+                <div class='spinner-dots'>
+                    <div></div><div></div><div></div>
+                </div>
+                <span class='loader-message'>Please wait while the data is loading</span>
+            </div>
+        </div>
+    </div>
     <nav class="main-nav">
         <img class="main-logo" src="~/Content/assets-common/img/logo-sample.svg" />
 
@@ -47,7 +57,7 @@
                 <li><a href="@Url.Action(IOBALANCEMVCV2.Home.Index())">Dashboard</a></li>
                 <li>
                     <a data-toggle="collapse" data-target="#reportCollapse" aria-expanded="false" aria-controls="collapse">
-                        Reports 
+                        Reports
                         <i class="md md-chevron-down pull-right"></i>
                     </a>
                     <div id="reportCollapse" class="collapse sub-menu">
@@ -74,7 +84,7 @@
                 </li>
                 <li><a href="@Url.Action(IOBALANCEMVCV2.OrderManagement.Inventory.Index())">Inventory</a></li>
                 <li><a href="@Url.Action(IOBALANCEMVCV2.OrderManagement.SalesOrder.Index())">Sales</a></li>
-               
+
             </ul>
         </div>
     </nav>
@@ -82,7 +92,7 @@
         <span class="main-page-title">@ViewBag.Title</span>
     </header>
     <main class="main-content">
-       
+
         <div class="container-fluid">
             @RenderBody()
         </div>
