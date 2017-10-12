@@ -16,3 +16,12 @@ C:\Users\lep.ridad\Documents\Visual Studio 2013\Projects\PLMVCSolution\PL.Busine
 C:\Users\lep.ridad\Documents\Visual Studio 2013\Projects\PLMVCSolution\PL.Business.Interface.ChainSaw\obj\Debug\PL.Business.Interface.ChainSaw.csprojResolveAssemblyReference.cache
 C:\Users\lep.ridad\Documents\Visual Studio 2013\Projects\PLMVCSolution\PL.Business.Interface.ChainSaw\obj\Debug\PL.Business.Interface.ChainSaw.dll
 C:\Users\lep.ridad\Documents\Visual Studio 2013\Projects\PLMVCSolution\PL.Business.Interface.ChainSaw\obj\Debug\PL.Business.Interface.ChainSaw.pdb
+D:\01 - Programming projects\git\PLMVCSolution\PL.Business.Interface.ChainSaw\bin\Debug\PL.Business.Interface.ChainSaw.dll
+D:\01 - Programming projects\git\PLMVCSolution\PL.Business.Interface.ChainSaw\bin\Debug\PL.Business.Interface.ChainSaw.pdb
+D:\01 - Programming projects\git\PLMVCSolution\PL.Business.Interface.ChainSaw\bin\Debug\PL.Business.Common.dll
+D:\01 - Programming projects\git\PLMVCSolution\PL.Business.Interface.ChainSaw\bin\Debug\PL.Business.Dto.ChainSaw.dll
+D:\01 - Programming projects\git\PLMVCSolution\PL.Business.Interface.ChainSaw\bin\Debug\PL.Business.Common.pdb
+D:\01 - Programming projects\git\PLMVCSolution\PL.Business.Interface.ChainSaw\bin\Debug\PL.Business.Dto.ChainSaw.pdb
+D:\01 - Programming projects\git\PLMVCSolution\PL.Business.Interface.ChainSaw\obj\Debug\PL.Business.Interface.ChainSaw.csprojResolveAssemblyReference.cache
+D:\01 - Programming projects\git\PLMVCSolution\PL.Business.Interface.ChainSaw\obj\Debug\PL.Business.Interface.ChainSaw.dll
+D:\01 - Programming projects\git\PLMVCSolution\PL.Business.Interface.ChainSaw\obj\Debug\PL.Business.Interface.ChainSaw.pdb

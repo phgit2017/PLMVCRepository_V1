@@ -74,6 +74,12 @@ namespace PL.MVC.IOBalanceV2.Areas.OrderManagement.Controllers
         {
             return new T4MVC_System_Web_Mvc_ActionResult(Area, Name, ActionNames.GetCustomerAndProductPrice);
         }
+        [NonAction]
+        [GeneratedCode("T4MVC", "2.0"), DebuggerNonUserCode]
+        public virtual System.Web.Mvc.ActionResult GenerateReceipt()
+        {
+            return new T4MVC_System_Web_Mvc_ActionResult(Area, Name, ActionNames.GenerateReceipt);
+        }
 
         [GeneratedCode("T4MVC", "2.0"), DebuggerNonUserCode]
         public SalesOrderController Actions { get { return IOBALANCEMVCV2.OrderManagement.SalesOrder; } }
@@ -95,6 +101,7 @@ namespace PL.MVC.IOBalanceV2.Areas.OrderManagement.Controllers
             public readonly string QueueSalesOrder = "QueueSalesOrder";
             public readonly string GetCustomerAndProductPrice = "GetCustomerAndProductPrice";
             public readonly string GetPLNum = "GetPLNum";
+            public readonly string GenerateReceipt = "GenerateReceipt";
         }
 
         [GeneratedCode("T4MVC", "2.0"), DebuggerNonUserCode]
@@ -105,6 +112,7 @@ namespace PL.MVC.IOBalanceV2.Areas.OrderManagement.Controllers
             public const string QueueSalesOrder = "QueueSalesOrder";
             public const string GetCustomerAndProductPrice = "GetCustomerAndProductPrice";
             public const string GetPLNum = "GetPLNum";
+            public const string GenerateReceipt = "GenerateReceipt";
         }
 
 
@@ -136,6 +144,16 @@ namespace PL.MVC.IOBalanceV2.Areas.OrderManagement.Controllers
         {
             public readonly string customerId = "customerId";
             public readonly string productId = "productId";
+        }
+        static readonly ActionParamsClass_GenerateReceipt s_params_GenerateReceipt = new ActionParamsClass_GenerateReceipt();
+        [GeneratedCode("T4MVC", "2.0"), DebuggerNonUserCode]
+        public ActionParamsClass_GenerateReceipt GenerateReceiptParams { get { return s_params_GenerateReceipt; } }
+        [GeneratedCode("T4MVC", "2.0"), DebuggerNonUserCode]
+        public class ActionParamsClass_GenerateReceipt
+        {
+            public readonly string salesOrderId = "salesOrderId";
+            public readonly string salesNo = "salesNo";
+            public readonly string customerId = "customerId";
         }
         static readonly ViewsClass s_views = new ViewsClass();
         [GeneratedCode("T4MVC", "2.0"), DebuggerNonUserCode]
@@ -226,6 +244,20 @@ namespace PL.MVC.IOBalanceV2.Areas.OrderManagement.Controllers
         {
             var callInfo = new T4MVC_System_Web_Mvc_ActionResult(Area, Name, ActionNames.GetPLNum);
             GetPLNumOverride(callInfo);
+            return callInfo;
+        }
+
+        [NonAction]
+        partial void GenerateReceiptOverride(T4MVC_System_Web_Mvc_ActionResult callInfo, long salesOrderId, string salesNo, int customerId);
+
+        [NonAction]
+        public override System.Web.Mvc.ActionResult GenerateReceipt(long salesOrderId, string salesNo, int customerId)
+        {
+            var callInfo = new T4MVC_System_Web_Mvc_ActionResult(Area, Name, ActionNames.GenerateReceipt);
+            ModelUnbinderHelpers.AddRouteValues(callInfo.RouteValueDictionary, "salesOrderId", salesOrderId);
+            ModelUnbinderHelpers.AddRouteValues(callInfo.RouteValueDictionary, "salesNo", salesNo);
+            ModelUnbinderHelpers.AddRouteValues(callInfo.RouteValueDictionary, "customerId", customerId);
+            GenerateReceiptOverride(callInfo, salesOrderId, salesNo, customerId);
             return callInfo;
         }
 

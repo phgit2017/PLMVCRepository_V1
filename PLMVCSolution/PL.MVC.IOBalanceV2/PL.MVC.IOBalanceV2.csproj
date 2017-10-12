@@ -431,6 +431,7 @@
     <Content Include="Content\assets-common\fonts\md-iconic\src\_variables.scss" />
     <Content Include="Areas\Reports\Views\Order\SalesOrderReceipt.cshtml" />
     <Content Include="Areas\Reports\Views\Order\_ListSalesReceipt.cshtml" />
+    <Content Include="Areas\OrderManagement\Views\Inventory\BulkInventory.cshtml" />
     <None Include="Content\assets-common\js\angular-js\angular.intellisense.js" />
     <Content Include="Content\assets-common\js\angular-js\angular.js" />
     <Content Include="Content\assets-common\js\angular-js\angular.min.js" />

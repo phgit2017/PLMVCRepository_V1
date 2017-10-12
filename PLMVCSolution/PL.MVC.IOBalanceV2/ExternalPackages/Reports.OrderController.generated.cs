@@ -76,9 +76,21 @@ namespace PL.MVC.IOBalanceV2.Areas.Reports.Controllers
         }
         [NonAction]
         [GeneratedCode("T4MVC", "2.0"), DebuggerNonUserCode]
+        public virtual System.Web.Mvc.ActionResult GetSOReceiptReport()
+        {
+            return new T4MVC_System_Web_Mvc_ActionResult(Area, Name, ActionNames.GetSOReceiptReport);
+        }
+        [NonAction]
+        [GeneratedCode("T4MVC", "2.0"), DebuggerNonUserCode]
         public virtual System.Web.Mvc.ActionResult ExportSOExcel()
         {
             return new T4MVC_System_Web_Mvc_ActionResult(Area, Name, ActionNames.ExportSOExcel);
+        }
+        [NonAction]
+        [GeneratedCode("T4MVC", "2.0"), DebuggerNonUserCode]
+        public virtual System.Web.Mvc.ActionResult ExportSOReceiptExcel()
+        {
+            return new T4MVC_System_Web_Mvc_ActionResult(Area, Name, ActionNames.ExportSOReceiptExcel);
         }
 
         [GeneratedCode("T4MVC", "2.0"), DebuggerNonUserCode]
@@ -100,8 +112,11 @@ namespace PL.MVC.IOBalanceV2.Areas.Reports.Controllers
             public readonly string GetPOReport = "GetPOReport";
             public readonly string ExportPOExcel = "ExportPOExcel";
             public readonly string SalesOrder = "SalesOrder";
+            public readonly string SalesOrderReceipt = "SalesOrderReceipt";
             public readonly string GetSOReport = "GetSOReport";
+            public readonly string GetSOReceiptReport = "GetSOReceiptReport";
             public readonly string ExportSOExcel = "ExportSOExcel";
+            public readonly string ExportSOReceiptExcel = "ExportSOReceiptExcel";
         }
 
         [GeneratedCode("T4MVC", "2.0"), DebuggerNonUserCode]
@@ -111,8 +126,11 @@ namespace PL.MVC.IOBalanceV2.Areas.Reports.Controllers
             public const string GetPOReport = "GetPOReport";
             public const string ExportPOExcel = "ExportPOExcel";
             public const string SalesOrder = "SalesOrder";
+            public const string SalesOrderReceipt = "SalesOrderReceipt";
             public const string GetSOReport = "GetSOReport";
+            public const string GetSOReceiptReport = "GetSOReceiptReport";
             public const string ExportSOExcel = "ExportSOExcel";
+            public const string ExportSOReceiptExcel = "ExportSOReceiptExcel";
         }
 
 
@@ -142,6 +160,15 @@ namespace PL.MVC.IOBalanceV2.Areas.Reports.Controllers
             public readonly string request = "request";
             public readonly string searchModel = "searchModel";
         }
+        static readonly ActionParamsClass_GetSOReceiptReport s_params_GetSOReceiptReport = new ActionParamsClass_GetSOReceiptReport();
+        [GeneratedCode("T4MVC", "2.0"), DebuggerNonUserCode]
+        public ActionParamsClass_GetSOReceiptReport GetSOReceiptReportParams { get { return s_params_GetSOReceiptReport; } }
+        [GeneratedCode("T4MVC", "2.0"), DebuggerNonUserCode]
+        public class ActionParamsClass_GetSOReceiptReport
+        {
+            public readonly string request = "request";
+            public readonly string searchModel = "searchModel";
+        }
         static readonly ActionParamsClass_ExportSOExcel s_params_ExportSOExcel = new ActionParamsClass_ExportSOExcel();
         [GeneratedCode("T4MVC", "2.0"), DebuggerNonUserCode]
         public ActionParamsClass_ExportSOExcel ExportSOExcelParams { get { return s_params_ExportSOExcel; } }
@@ -149,6 +176,16 @@ namespace PL.MVC.IOBalanceV2.Areas.Reports.Controllers
         public class ActionParamsClass_ExportSOExcel
         {
             public readonly string searchModel = "searchModel";
+        }
+        static readonly ActionParamsClass_ExportSOReceiptExcel s_params_ExportSOReceiptExcel = new ActionParamsClass_ExportSOReceiptExcel();
+        [GeneratedCode("T4MVC", "2.0"), DebuggerNonUserCode]
+        public ActionParamsClass_ExportSOReceiptExcel ExportSOReceiptExcelParams { get { return s_params_ExportSOReceiptExcel; } }
+        [GeneratedCode("T4MVC", "2.0"), DebuggerNonUserCode]
+        public class ActionParamsClass_ExportSOReceiptExcel
+        {
+            public readonly string salesOrderId = "salesOrderId";
+            public readonly string customerId = "customerId";
+            public readonly string salesNo = "salesNo";
         }
         static readonly ViewsClass s_views = new ViewsClass();
         [GeneratedCode("T4MVC", "2.0"), DebuggerNonUserCode]
@@ -162,17 +199,21 @@ namespace PL.MVC.IOBalanceV2.Areas.Reports.Controllers
             {
                 public readonly string _List = "_List";
                 public readonly string _ListSalesOrder = "_ListSalesOrder";
+                public readonly string _ListSalesReceipt = "_ListSalesReceipt";
                 public readonly string _Search = "_Search";
                 public readonly string _SearchSalesOrder = "_SearchSalesOrder";
                 public readonly string PurchaseOrder = "PurchaseOrder";
                 public readonly string SalesOrder = "SalesOrder";
+                public readonly string SalesOrderReceipt = "SalesOrderReceipt";
             }
             public readonly string _List = "~/Areas/Reports/Views/Order/_List.cshtml";
             public readonly string _ListSalesOrder = "~/Areas/Reports/Views/Order/_ListSalesOrder.cshtml";
+            public readonly string _ListSalesReceipt = "~/Areas/Reports/Views/Order/_ListSalesReceipt.cshtml";
             public readonly string _Search = "~/Areas/Reports/Views/Order/_Search.cshtml";
             public readonly string _SearchSalesOrder = "~/Areas/Reports/Views/Order/_SearchSalesOrder.cshtml";
             public readonly string PurchaseOrder = "~/Areas/Reports/Views/Order/PurchaseOrder.cshtml";
             public readonly string SalesOrder = "~/Areas/Reports/Views/Order/SalesOrder.cshtml";
+            public readonly string SalesOrderReceipt = "~/Areas/Reports/Views/Order/SalesOrderReceipt.cshtml";
         }
     }
 
@@ -229,6 +270,17 @@ namespace PL.MVC.IOBalanceV2.Areas.Reports.Controllers
         }
 
         [NonAction]
+        partial void SalesOrderReceiptOverride(T4MVC_System_Web_Mvc_ActionResult callInfo);
+
+        [NonAction]
+        public override System.Web.Mvc.ActionResult SalesOrderReceipt()
+        {
+            var callInfo = new T4MVC_System_Web_Mvc_ActionResult(Area, Name, ActionNames.SalesOrderReceipt);
+            SalesOrderReceiptOverride(callInfo);
+            return callInfo;
+        }
+
+        [NonAction]
         partial void GetSOReportOverride(T4MVC_System_Web_Mvc_ActionResult callInfo, Kendo.Mvc.UI.DataSourceRequest request, PL.MVC.IOBalanceV2.Areas.Reports.Models.SalesOrderSearchModel searchModel);
 
         [NonAction]
@@ -242,6 +294,19 @@ namespace PL.MVC.IOBalanceV2.Areas.Reports.Controllers
         }
 
         [NonAction]
+        partial void GetSOReceiptReportOverride(T4MVC_System_Web_Mvc_ActionResult callInfo, Kendo.Mvc.UI.DataSourceRequest request, PL.MVC.IOBalanceV2.Areas.Reports.Models.SalesOrderSearchModel searchModel);
+
+        [NonAction]
+        public override System.Web.Mvc.ActionResult GetSOReceiptReport(Kendo.Mvc.UI.DataSourceRequest request, PL.MVC.IOBalanceV2.Areas.Reports.Models.SalesOrderSearchModel searchModel)
+        {
+            var callInfo = new T4MVC_System_Web_Mvc_ActionResult(Area, Name, ActionNames.GetSOReceiptReport);
+            ModelUnbinderHelpers.AddRouteValues(callInfo.RouteValueDictionary, "request", request);
+            ModelUnbinderHelpers.AddRouteValues(callInfo.RouteValueDictionary, "searchModel", searchModel);
+            GetSOReceiptReportOverride(callInfo, request, searchModel);
+            return callInfo;
+        }
+
+        [NonAction]
         partial void ExportSOExcelOverride(T4MVC_System_Web_Mvc_ActionResult callInfo, PL.MVC.IOBalanceV2.Areas.Reports.Models.SalesOrderSearchModel searchModel);
 
         [NonAction]
@@ -250,6 +315,20 @@ namespace PL.MVC.IOBalanceV2.Areas.Reports.Controllers
             var callInfo = new T4MVC_System_Web_Mvc_ActionResult(Area, Name, ActionNames.ExportSOExcel);
             ModelUnbinderHelpers.AddRouteValues(callInfo.RouteValueDictionary, "searchModel", searchModel);
             ExportSOExcelOverride(callInfo, searchModel);
+            return callInfo;
+        }
+
+        [NonAction]
+        partial void ExportSOReceiptExcelOverride(T4MVC_System_Web_Mvc_ActionResult callInfo, int salesOrderId, int customerId, string salesNo);
+
+        [NonAction]
+        public override System.Web.Mvc.ActionResult ExportSOReceiptExcel(int salesOrderId, int customerId, string salesNo)
+        {
+            var callInfo = new T4MVC_System_Web_Mvc_ActionResult(Area, Name, ActionNames.ExportSOReceiptExcel);
+            ModelUnbinderHelpers.AddRouteValues(callInfo.RouteValueDictionary, "salesOrderId", salesOrderId);
+            ModelUnbinderHelpers.AddRouteValues(callInfo.RouteValueDictionary, "customerId", customerId);
+            ModelUnbinderHelpers.AddRouteValues(callInfo.RouteValueDictionary, "salesNo", salesNo);
+            ExportSOReceiptExcelOverride(callInfo, salesOrderId, customerId, salesNo);
             return callInfo;
         }
 

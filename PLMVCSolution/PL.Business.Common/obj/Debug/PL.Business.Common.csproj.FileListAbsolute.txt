@@ -14,6 +14,6 @@ C:\Users\lep.ridad\Documents\Visual Studio 2013\Projects\PLMVCSolution\PL.Busine
 C:\Users\lep.ridad\Documents\Visual Studio 2013\Projects\PLMVCSolution\PL.Business.Common\obj\Debug\PL.Business.Common.csprojResolveAssemblyReference.cache
 D:\01 - Programming projects\git\PLMVCSolution\PL.Business.Common\bin\Debug\PL.Business.Common.dll
 D:\01 - Programming projects\git\PLMVCSolution\PL.Business.Common\bin\Debug\PL.Business.Common.pdb
-D:\01 - Programming projects\git\PLMVCSolution\PL.Business.Common\obj\Debug\PL.Business.Common.csprojResolveAssemblyReference.cache
 D:\01 - Programming projects\git\PLMVCSolution\PL.Business.Common\obj\Debug\PL.Business.Common.dll
 D:\01 - Programming projects\git\PLMVCSolution\PL.Business.Common\obj\Debug\PL.Business.Common.pdb
+D:\01 - Programming projects\git\PLMVCSolution\PL.Business.Common\obj\Debug\PL.Business.Common.csprojResolveAssemblyReference.cache

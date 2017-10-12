@@ -210,7 +210,6 @@ D:\01 - Programming projects\git\PLMVCSolution\PL.MVC.IOBalanceV2\bin\PL.Infra.D
 D:\01 - Programming projects\git\PLMVCSolution\PL.MVC.IOBalanceV2\bin\PL.Infra.Repository.pdb
 D:\01 - Programming projects\git\PLMVCSolution\PL.MVC.IOBalanceV2\bin\EntityFramework.xml
 D:\01 - Programming projects\git\PLMVCSolution\PL.MVC.IOBalanceV2\bin\EntityFramework.SqlServer.xml
-D:\01 - Programming projects\git\PLMVCSolution\PL.MVC.IOBalanceV2\bin\EPPlus.xml
 D:\01 - Programming projects\git\PLMVCSolution\PL.MVC.IOBalanceV2\bin\System.Web.Helpers.xml
 D:\01 - Programming projects\git\PLMVCSolution\PL.MVC.IOBalanceV2\bin\System.Web.Mvc.xml
 D:\01 - Programming projects\git\PLMVCSolution\PL.MVC.IOBalanceV2\bin\System.Web.Razor.xml

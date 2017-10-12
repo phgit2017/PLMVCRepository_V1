@@ -1,0 +1,39 @@
+﻿@using PL.Business.Dto.IOBalanceV2;
+@using PL.MVC.IOBalanceV2.Areas.OrderManagement.Models;
+@{
+    ViewBag.Title = "Batch Upload (Inventory)";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+@section modals{
+    
+}
+<div id="divList">
+    <section class="panel-widget-container">
+        
+        <button id="searchbutton" class="btn btn-default btn-filter" data-action-type="searchbutton">
+            <i class="md md-filter-list"></i>
+            Filter
+        </button>
+        <div class="panel-widget-controls">
+            
+            <a href='@Url.Action(IOBALANCEMVCV2.OrderManagement.Inventory.Index())'>Inventory</a>
+        </div>
+    </section>
+
+    <div>
+        <!--will put the file upload here-->
+    </div>
+</div>
+
+<div id="divResultContainer" style="display:none"></div>
+
+@section scripts{
+    <script type="text/javascript">
+        window.batchInventoryOptions = {
+
+        };
+    </script>
+
+    <script type="text/javascript" src="@IOBALANCEV2LINKS.Scripts.iobalancev2.ordermanagement_inventory_js"></script>
+    <script type="text/javascript" src="@IOBALANCEV2LINKS.Scripts.infrastructure.jquery_deserialize_js"></script>
+}

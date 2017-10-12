@@ -34,6 +34,6 @@ D:\01 - Programming projects\git\PLMVCSolution\PL.Core.Entity.Repository.Interfa
 D:\01 - Programming projects\git\PLMVCSolution\PL.Core.Entity.Repository.Interface\bin\Debug\EntityFramework.SqlServer.dll
 D:\01 - Programming projects\git\PLMVCSolution\PL.Core.Entity.Repository.Interface\bin\Debug\EntityFramework.xml
 D:\01 - Programming projects\git\PLMVCSolution\PL.Core.Entity.Repository.Interface\bin\Debug\EntityFramework.SqlServer.xml
-D:\01 - Programming projects\git\PLMVCSolution\PL.Core.Entity.Repository.Interface\obj\Debug\PL.Core.Entity.Repository.Interface.csprojResolveAssemblyReference.cache
 D:\01 - Programming projects\git\PLMVCSolution\PL.Core.Entity.Repository.Interface\obj\Debug\PL.Core.Entity.Repository.Interface.dll
 D:\01 - Programming projects\git\PLMVCSolution\PL.Core.Entity.Repository.Interface\obj\Debug\PL.Core.Entity.Repository.Interface.pdb
+D:\01 - Programming projects\git\PLMVCSolution\PL.Core.Entity.Repository.Interface\obj\Debug\PL.Core.Entity.Repository.Interface.csprojResolveAssemblyReference.cache

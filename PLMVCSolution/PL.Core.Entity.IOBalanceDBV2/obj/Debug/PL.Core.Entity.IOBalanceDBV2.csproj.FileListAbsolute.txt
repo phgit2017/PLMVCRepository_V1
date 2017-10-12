@@ -15,6 +15,5 @@ D:\01 - Programming projects\git\PLMVCSolution\PL.Core.Entity.IOBalanceDBV2\bin\
 D:\01 - Programming projects\git\PLMVCSolution\PL.Core.Entity.IOBalanceDBV2\bin\Debug\EntityFramework.SqlServer.dll
 D:\01 - Programming projects\git\PLMVCSolution\PL.Core.Entity.IOBalanceDBV2\bin\Debug\EntityFramework.xml
 D:\01 - Programming projects\git\PLMVCSolution\PL.Core.Entity.IOBalanceDBV2\bin\Debug\EntityFramework.SqlServer.xml
-D:\01 - Programming projects\git\PLMVCSolution\PL.Core.Entity.IOBalanceDBV2\obj\Debug\PL.Core.Entity.IOBalanceDBV2.csprojResolveAssemblyReference.cache
 D:\01 - Programming projects\git\PLMVCSolution\PL.Core.Entity.IOBalanceDBV2\obj\Debug\PL.Core.Entity.IOBalanceDBV2.dll
 D:\01 - Programming projects\git\PLMVCSolution\PL.Core.Entity.IOBalanceDBV2\obj\Debug\PL.Core.Entity.IOBalanceDBV2.pdb

@@ -166,6 +166,7 @@ namespace PL.MVC.IOBalanceV2.Areas.OrderManagement.Controllers
                 public readonly string _List = "_List";
                 public readonly string _New = "_New";
                 public readonly string _Search = "_Search";
+                public readonly string BulkInventory = "BulkInventory";
                 public readonly string Index = "Index";
             }
             public readonly string _Details = "~/Areas/OrderManagement/Views/Inventory/_Details.cshtml";
@@ -176,6 +177,7 @@ namespace PL.MVC.IOBalanceV2.Areas.OrderManagement.Controllers
             public readonly string _List = "~/Areas/OrderManagement/Views/Inventory/_List.cshtml";
             public readonly string _New = "~/Areas/OrderManagement/Views/Inventory/_New.cshtml";
             public readonly string _Search = "~/Areas/OrderManagement/Views/Inventory/_Search.cshtml";
+            public readonly string BulkInventory = "~/Areas/OrderManagement/Views/Inventory/BulkInventory.cshtml";
             public readonly string Index = "~/Areas/OrderManagement/Views/Inventory/Index.cshtml";
         }
     }
