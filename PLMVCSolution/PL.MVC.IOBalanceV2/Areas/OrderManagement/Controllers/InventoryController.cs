@@ -360,6 +360,11 @@ namespace PL.MVC.IOBalanceV2.Areas.OrderManagement.Controllers
         {
             return false;
         }
+
+        private bool testonlyignorebin2()
+        {
+            return false;
+        }
         #endregion Private methods
 
 
