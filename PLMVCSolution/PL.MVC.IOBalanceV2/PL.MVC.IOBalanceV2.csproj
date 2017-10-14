@@ -317,6 +317,7 @@
       <DependentUpon>T4MVC.tt</DependentUpon>
     </Compile>
     <Compile Include="Infrastructure\Alert.cs" />
+    <Compile Include="Infrastructure\Common.cs" />
     <Compile Include="Infrastructure\DependencyInjection.cs" />
     <Compile Include="Models\AccountModels.cs" />
     <Compile Include="Models\QueueOrderDetailSearchModel.cs" />
@@ -432,6 +433,7 @@
     <Content Include="Areas\Reports\Views\Order\SalesOrderReceipt.cshtml" />
     <Content Include="Areas\Reports\Views\Order\_ListSalesReceipt.cshtml" />
     <Content Include="Areas\OrderManagement\Views\Inventory\BulkInventory.cshtml" />
+    <Content Include="Areas\OrderManagement\Views\Inventory\_BatchUpload.cshtml" />
     <None Include="Content\assets-common\js\angular-js\angular.intellisense.js" />
     <Content Include="Content\assets-common\js\angular-js\angular.js" />
     <Content Include="Content\assets-common\js\angular-js\angular.min.js" />
@@ -1066,6 +1068,10 @@
     <Content Include="Scripts\iobalancev2\home-ordermanagement-queueorder.min.js">
       <DependentUpon>home-ordermanagement-queueorder.js</DependentUpon>
     </Content>
+    <Content Include="Scripts\iobalancev2\ordermanagement-batchinventory.js" />
+    <Content Include="Scripts\iobalancev2\ordermanagement-batchinventory.min.js">
+      <DependentUpon>ordermanagement-batchinventory.js</DependentUpon>
+    </Content>
     <Content Include="Scripts\iobalancev2\ordermanagement-inventory.min.js.map">
       <DependentUpon>ordermanagement-inventory.min.js</DependentUpon>
     </Content>
@@ -1317,6 +1323,9 @@
     <Content Include="Content\kendo\fonts\DejaVu\DejaVuSerif-Italic.ttf" />
     <Content Include="Content\kendo\fonts\DejaVu\DejaVuSerif.ttf" />
     <Content Include="Content\excel\templates\SalesOrderExcelTemplate.xlsx" />
+    <Content Include="Content\excel\templates\Receipt.xlsx" />
+    <Content Include="Content\excel\templates\BatchInventoryTemplate.xlsx" />
+    <Content Include="Content\excel\templates\BatchInventoryTemplateWithoutValues.xlsx" />
     <None Include="Properties\PublishProfiles\IOBalance.pubxml" />
     <Content Include="Scripts\iobalancev2\home-ordermanagement-queueorder.min.js.map">
       <DependentUpon>home-ordermanagement-queueorder.min.js</DependentUpon>
@@ -1328,8 +1337,17 @@
       <DependentUpon>jquery-pl-kendo-resize-height.min.js</DependentUpon>
     </Content>
     <Content Include="Scripts\iobalancev2\reports-salesorder-receipt.js" />
+    <Content Include="Scripts\iobalancev2\reports-salesorder-receipt.min.js">
+      <DependentUpon>reports-salesorder-receipt.js</DependentUpon>
+    </Content>
     <Content Include="Scripts\iobalancev2\reports-salesorder.min.js.map">
       <DependentUpon>reports-salesorder.min.js</DependentUpon>
+    </Content>
+    <Content Include="Scripts\iobalancev2\ordermanagement-batchinventory.min.js.map">
+      <DependentUpon>ordermanagement-batchinventory.min.js</DependentUpon>
+    </Content>
+    <Content Include="Scripts\iobalancev2\reports-salesorder-receipt.min.js.map">
+      <DependentUpon>reports-salesorder-receipt.min.js</DependentUpon>
     </Content>
     <None Include="Scripts\jquery-1.8.2.intellisense.js" />
     <Content Include="Scripts\bootstrap.js" />

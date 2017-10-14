@@ -9,19 +9,20 @@
 }
 <div id="divList">
     <section class="panel-widget-container">
-        
-        <button id="searchbutton" class="btn btn-default btn-filter" data-action-type="searchbutton">
-            <i class="md md-filter-list"></i>
-            Filter
+       
+
+        <button id="downloadtemplatebutton" class="btn btn-default" data-action-type="downloadtemplatebutton">
+            <i class="md md-download"></i>
+            Download Excel Template
         </button>
         <div class="panel-widget-controls">
-            
             <a href='@Url.Action(IOBALANCEMVCV2.OrderManagement.Inventory.Index())'>Inventory</a>
         </div>
     </section>
 
     <div>
-        <!--will put the file upload here-->
+        @Html.Partial(IOBALANCEMVCV2.OrderManagement.Inventory.Views._BatchUpload)
+
     </div>
 </div>
 
@@ -30,10 +31,11 @@
 @section scripts{
     <script type="text/javascript">
         window.batchInventoryOptions = {
-
+            templateUrl: '@IOBALANCEV2LINKS.Content.excel.templates.BatchInventoryTemplate_xlsx',
+            exportUrl : '@Url.Action(IOBALANCEMVCV2.OrderManagement.Inventory.ExportBatchUploaded())'
         };
     </script>
 
-    <script type="text/javascript" src="@IOBALANCEV2LINKS.Scripts.iobalancev2.ordermanagement_inventory_js"></script>
+    <script type="text/javascript" src="@IOBALANCEV2LINKS.Scripts.iobalancev2.ordermanagement_batchinventory_js"></script>
     <script type="text/javascript" src="@IOBALANCEV2LINKS.Scripts.infrastructure.jquery_deserialize_js"></script>
 }

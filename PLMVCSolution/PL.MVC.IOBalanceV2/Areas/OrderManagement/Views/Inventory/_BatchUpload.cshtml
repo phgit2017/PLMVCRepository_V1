@@ -1,0 +1,24 @@
+﻿@using Kendo.Mvc.UI;
+@{
+    
+    string uploadAction = IOBALANCEMVCV2.OrderManagement.Inventory.UploadInventory().GetT4MVCResult().Action;
+    string uploadController = IOBALANCEMVCV2.OrderManagement.Inventory.UploadInventory().GetT4MVCResult().Controller;
+}
+
+
+<form class="form-horizontal" id="frmUpload" enctype="multipart/form-data">
+    <div class="form-group">
+        @(Html.Kendo().Upload()
+        .Name("file")
+        .Multiple(false)
+        .HtmlAttributes(new { accept = ".xls, .xlsx" })
+        .Async(a => a.Save(uploadAction, uploadController)
+            .AutoUpload(false))
+        .Events(evt => evt
+                    .Upload("ORDERMANAGEMENTBATCHINVENTORY.doOnUpload")
+                    .Success("ORDERMANAGEMENTBATCHINVENTORY.doOnSuccess")
+                    .Error("ORDERMANAGEMENTBATCHINVENTORY.doOnError"))
+        )
+        <span class="error" id="spnUploadError"></span>
+    </div>
+</form>

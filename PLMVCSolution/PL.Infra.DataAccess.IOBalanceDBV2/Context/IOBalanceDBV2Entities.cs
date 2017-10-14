@@ -60,5 +60,6 @@ namespace PL.Infra.DataAccess.IOBalanceDBV2.Context
         public virtual DbSet<PurchaseOrderDetail> PurchaseOrderDetails { get; set; }
         public virtual DbSet<SalesOrderDetail> SalesOrderDetails { get; set; }
         public virtual DbSet<CustomerPrice> CustomerPrices { get; set; }
+        public virtual DbSet<BatchInventoryLog> BatchInventoryLogs { get; set; }
     }
 }

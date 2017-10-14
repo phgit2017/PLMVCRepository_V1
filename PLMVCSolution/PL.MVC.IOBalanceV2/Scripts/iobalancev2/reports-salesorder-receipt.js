@@ -13,7 +13,7 @@
 
 
         $('body').on('click', '#generatereceipt', function () {
-            debugger;
+            
             $this = $(this);
             var salesOrderId, customerId = 0;
             var salesNo = "";
@@ -100,10 +100,10 @@
 })();
 
 $(document).ready(function () {
-    debugger;
+    
     var options = window.reportSOOptions;
     REPORTSSO.initialize(options);
-    debugger;
+    
     var $gv = $('#gvSOReceipt');
 
     $gv.kGridResizeHeight({

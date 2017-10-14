@@ -20,6 +20,8 @@ using PL.Infra.DbContext.Interface;
 
 //-- Infrastructure Utilities
 using Infrastructure.Utilities.Extensions;
+using System.Data;
+using System.Data.SqlClient;
 
 namespace PL.Business.IOBalanceV2
 {
@@ -27,11 +29,17 @@ namespace PL.Business.IOBalanceV2
     {
         #region Declarations And Constructors
         IIOBalanceV2Repository<Product> _product;
+        IIOBalanceV2Repository<BatchInventoryLog> _batchInventoryLog;
 
         IOBalanceDBV2Entity.Product product;
-        public InventoryService(IIOBalanceV2Repository<Product> product)
+        IOBalanceDBV2Entity.BatchInventoryLog batchInventoryLog;
+        public InventoryService(IIOBalanceV2Repository<Product> product,
+            IIOBalanceV2Repository<BatchInventoryLog> batchInventoryLog)
         {
             this._product = product;
+            this._batchInventoryLog = batchInventoryLog;
+
+            this.batchInventoryLog = new IOBalanceDBV2Entity.BatchInventoryLog();
             this.product = new IOBalanceDBV2Entity.Product();
         }
         #endregion Declarations And Constructors
@@ -118,6 +126,34 @@ namespace PL.Business.IOBalanceV2
                 }
             }
 
+
+            return true;
+        }
+
+        public DataTable SaveBatchInventory(string xml, int? createdBy)
+        {
+
+            DataTable dtResult = new DataTable();
+
+            SqlParameter[] parameters = 
+            {
+                new SqlParameter("@Items", SqlDbType.Xml) { Value = xml },
+                new SqlParameter("@UploadedBy", SqlDbType.Int) { Value = createdBy }
+            };
+
+            dtResult = _product.ExecuteSPReturnTable("dbo.uspBatchInventory", true, parameters);
+
+            return dtResult;
+        }
+
+        public bool SaveBatchInvetoryLogs(BatchInventoryLogDto newDetails)
+        {
+            this.batchInventoryLog = newDetails.DtoToEntity();
+
+            if (this._batchInventoryLog.Insert(this.batchInventoryLog).IsNull())
+            {
+                return false;
+            }
 
             return true;
         }

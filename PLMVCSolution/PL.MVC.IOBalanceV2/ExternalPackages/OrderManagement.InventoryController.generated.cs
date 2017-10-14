@@ -80,6 +80,18 @@ namespace PL.MVC.IOBalanceV2.Areas.OrderManagement.Controllers
         {
             return new T4MVC_System_Web_Mvc_ActionResult(Area, Name, ActionNames.GetDetails);
         }
+        [NonAction]
+        [GeneratedCode("T4MVC", "2.0"), DebuggerNonUserCode]
+        public virtual System.Web.Mvc.ActionResult UploadInventory()
+        {
+            return new T4MVC_System_Web_Mvc_ActionResult(Area, Name, ActionNames.UploadInventory);
+        }
+        [NonAction]
+        [GeneratedCode("T4MVC", "2.0"), DebuggerNonUserCode]
+        public virtual System.Web.Mvc.ActionResult ExportBatchUploaded()
+        {
+            return new T4MVC_System_Web_Mvc_ActionResult(Area, Name, ActionNames.ExportBatchUploaded);
+        }
 
         [GeneratedCode("T4MVC", "2.0"), DebuggerNonUserCode]
         public InventoryController Actions { get { return IOBALANCEMVCV2.OrderManagement.Inventory; } }
@@ -101,6 +113,9 @@ namespace PL.MVC.IOBalanceV2.Areas.OrderManagement.Controllers
             public readonly string UpdateDetails = "UpdateDetails";
             public readonly string UpdateQtyDetails = "UpdateQtyDetails";
             public readonly string GetDetails = "GetDetails";
+            public readonly string BulkInventory = "BulkInventory";
+            public readonly string UploadInventory = "UploadInventory";
+            public readonly string ExportBatchUploaded = "ExportBatchUploaded";
         }
 
         [GeneratedCode("T4MVC", "2.0"), DebuggerNonUserCode]
@@ -111,6 +126,9 @@ namespace PL.MVC.IOBalanceV2.Areas.OrderManagement.Controllers
             public const string UpdateDetails = "UpdateDetails";
             public const string UpdateQtyDetails = "UpdateQtyDetails";
             public const string GetDetails = "GetDetails";
+            public const string BulkInventory = "BulkInventory";
+            public const string UploadInventory = "UploadInventory";
+            public const string ExportBatchUploaded = "ExportBatchUploaded";
         }
 
 
@@ -148,6 +166,22 @@ namespace PL.MVC.IOBalanceV2.Areas.OrderManagement.Controllers
             public readonly string request = "request";
             public readonly string searchModel = "searchModel";
         }
+        static readonly ActionParamsClass_UploadInventory s_params_UploadInventory = new ActionParamsClass_UploadInventory();
+        [GeneratedCode("T4MVC", "2.0"), DebuggerNonUserCode]
+        public ActionParamsClass_UploadInventory UploadInventoryParams { get { return s_params_UploadInventory; } }
+        [GeneratedCode("T4MVC", "2.0"), DebuggerNonUserCode]
+        public class ActionParamsClass_UploadInventory
+        {
+            public readonly string file = "file";
+        }
+        static readonly ActionParamsClass_ExportBatchUploaded s_params_ExportBatchUploaded = new ActionParamsClass_ExportBatchUploaded();
+        [GeneratedCode("T4MVC", "2.0"), DebuggerNonUserCode]
+        public ActionParamsClass_ExportBatchUploaded ExportBatchUploadedParams { get { return s_params_ExportBatchUploaded; } }
+        [GeneratedCode("T4MVC", "2.0"), DebuggerNonUserCode]
+        public class ActionParamsClass_ExportBatchUploaded
+        {
+            public readonly string dataResult = "dataResult";
+        }
         static readonly ViewsClass s_views = new ViewsClass();
         [GeneratedCode("T4MVC", "2.0"), DebuggerNonUserCode]
         public ViewsClass Views { get { return s_views; } }
@@ -158,6 +192,7 @@ namespace PL.MVC.IOBalanceV2.Areas.OrderManagement.Controllers
             public _ViewNamesClass ViewNames { get { return s_ViewNames; } }
             public class _ViewNamesClass
             {
+                public readonly string _BatchUpload = "_BatchUpload";
                 public readonly string _Details = "_Details";
                 public readonly string _DetailsEdit = "_DetailsEdit";
                 public readonly string _DetailsEditQty = "_DetailsEditQty";
@@ -169,6 +204,7 @@ namespace PL.MVC.IOBalanceV2.Areas.OrderManagement.Controllers
                 public readonly string BulkInventory = "BulkInventory";
                 public readonly string Index = "Index";
             }
+            public readonly string _BatchUpload = "~/Areas/OrderManagement/Views/Inventory/_BatchUpload.cshtml";
             public readonly string _Details = "~/Areas/OrderManagement/Views/Inventory/_Details.cshtml";
             public readonly string _DetailsEdit = "~/Areas/OrderManagement/Views/Inventory/_DetailsEdit.cshtml";
             public readonly string _DetailsEditQty = "~/Areas/OrderManagement/Views/Inventory/_DetailsEditQty.cshtml";
@@ -245,6 +281,41 @@ namespace PL.MVC.IOBalanceV2.Areas.OrderManagement.Controllers
             ModelUnbinderHelpers.AddRouteValues(callInfo.RouteValueDictionary, "request", request);
             ModelUnbinderHelpers.AddRouteValues(callInfo.RouteValueDictionary, "searchModel", searchModel);
             GetDetailsOverride(callInfo, request, searchModel);
+            return callInfo;
+        }
+
+        [NonAction]
+        partial void BulkInventoryOverride(T4MVC_System_Web_Mvc_ActionResult callInfo);
+
+        [NonAction]
+        public override System.Web.Mvc.ActionResult BulkInventory()
+        {
+            var callInfo = new T4MVC_System_Web_Mvc_ActionResult(Area, Name, ActionNames.BulkInventory);
+            BulkInventoryOverride(callInfo);
+            return callInfo;
+        }
+
+        [NonAction]
+        partial void UploadInventoryOverride(T4MVC_System_Web_Mvc_ActionResult callInfo, System.Web.HttpPostedFileBase file);
+
+        [NonAction]
+        public override System.Web.Mvc.ActionResult UploadInventory(System.Web.HttpPostedFileBase file)
+        {
+            var callInfo = new T4MVC_System_Web_Mvc_ActionResult(Area, Name, ActionNames.UploadInventory);
+            ModelUnbinderHelpers.AddRouteValues(callInfo.RouteValueDictionary, "file", file);
+            UploadInventoryOverride(callInfo, file);
+            return callInfo;
+        }
+
+        [NonAction]
+        partial void ExportBatchUploadedOverride(T4MVC_System_Web_Mvc_ActionResult callInfo, string dataResult);
+
+        [NonAction]
+        public override System.Web.Mvc.ActionResult ExportBatchUploaded(string dataResult)
+        {
+            var callInfo = new T4MVC_System_Web_Mvc_ActionResult(Area, Name, ActionNames.ExportBatchUploaded);
+            ModelUnbinderHelpers.AddRouteValues(callInfo.RouteValueDictionary, "dataResult", dataResult);
+            ExportBatchUploadedOverride(callInfo, dataResult);
             return callInfo;
         }
 

@@ -112,7 +112,6 @@ namespace PL.Business.Dto.IOBalanceV2
         public decimal? Quantity { get; set; }
     }
 
-
     public class EditQtyProductDto
     {
 
@@ -158,5 +157,35 @@ namespace PL.Business.Dto.IOBalanceV2
         [StringLength(20)]
         public string CartonNum { get; set; }
 
+    }
+
+    public class BatchInventoryLogDto
+    {
+        public long BatchInventoryId { get; set; }
+
+        [StringLength(50)]
+        public string FileName { get; set; }
+
+        public int? CreatedBy { get; set; }
+
+        public DateTime? DateCreated { get; set; }
+    }
+
+    public class BatchInventoryResult
+    {
+        public string STATUSMESSAGE { get; set; }
+        public string PRODUCT_CODE { get; set; }
+        public string PLUS_MINUS { get; set; }
+        public string QUANTITY { get; set; }
+        public string IS_NEW { get; set; }
+        public string CATEGORY_NAME { get; set; }
+        public string SUPPLIER_CODE { get; set; }
+        public string UNIT_NAME { get; set; }
+        public string PRODUCT_NAME { get; set; }
+        public string PRODUCT_DESC { get; set; }
+        public string PRODUCT_SIZE { get; set; }
+        public string CURRENT_NUM { get; set; }
+        public string DRNUM { get; set; }
+        public string CARTON_NUM { get; set; }
     }
 }

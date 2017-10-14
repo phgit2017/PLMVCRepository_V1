@@ -11,7 +11,6 @@ namespace PL.Business.Interface.IOBalanceV2
     public interface IOrderService
     {
         IQueryable<OrderDto> GetAllOrder();
-        IQueryable<OrderDetailDto> GetAllOrderDetail();
         IQueryable<OrderDto> GetAllSalesOrder();
         IQueryable<SalesOrderListDto> GetAllSalesOrderDetail(long salesOrderId);
         long SaveOrder(OrderDto newDetails);

@@ -208,5 +208,23 @@ namespace PL.Business.IOBalanceV2.Extensions
             return entity;
         }
 
+        public static IOBalanceDBV2Entity.BatchInventoryLog DtoToEntity(this BatchInventoryLogDto dto)
+        {
+            IOBalanceDBV2Entity.BatchInventoryLog entity = null;
+
+            if (!dto.IsNull())
+            {
+                entity = new IOBalanceDBV2Entity.BatchInventoryLog
+                {
+                    BatchInventoryId = dto.BatchInventoryId,
+                    CreatedBy = dto.CreatedBy,
+                    DateCreated = dto.DateCreated,
+                    FileName = dto.FileName
+                };
+            }
+
+            return entity;
+        }
+
     }
 }

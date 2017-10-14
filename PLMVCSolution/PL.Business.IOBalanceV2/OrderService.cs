@@ -21,6 +21,8 @@ using PL.Infra.DbContext.Interface;
 //-- Infrastructure Utilities
 using Infrastructure.Utilities.Extensions;
 using System.Data.Entity;
+using System.Data;
+using System.Data.SqlClient;
 
 namespace PL.Business.IOBalanceV2
 {
@@ -74,26 +76,6 @@ namespace PL.Business.IOBalanceV2
                              OrderId = po.PurchaseOrderID,
                              DateCreated = po.DateCreated,
                              CreatedBy = po.CreatedBy
-                         };
-
-            return result;
-        }
-
-        public IQueryable<OrderDetailDto> GetAllOrderDetail()
-        {
-            var products = _inventoryService.GetAll();
-            var suppliers = _supplierService.GetAll();
-
-            var result = from poDetail in _purchaseOrderDetail.GetAll()
-                         select new OrderDetailDto()
-                         {
-                             OrderDetailId = poDetail.PurchaseOrderDetailID,
-                             OrderId = poDetail.PurchaseOrderID,
-                             ProductId = poDetail.ProductID,
-                             Quantity = poDetail.Quantity,
-                             SupplierId = poDetail.SupplierID,
-                             product = products.Where(prod => prod.ProductId == poDetail.ProductID).FirstOrDefault(),
-                             supplier = suppliers.Where(supp => supp.SupplierId == supp.SupplierId).FirstOrDefault()
                          };
 
             return result;
@@ -244,7 +226,7 @@ namespace PL.Business.IOBalanceV2
             {
                 return 0;
             }
-            
+
 
             return updatedSalesOrder.SalesOrderID;
         }

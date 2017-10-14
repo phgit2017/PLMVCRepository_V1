@@ -158,6 +158,9 @@ namespace IOBALANCEV2LINKS
             public static readonly string home_ordermanagement_queueorder_js = T4MVCHelpers.IsProduction() && T4Extensions.FileExists(UrlPath + "/home-ordermanagement-queueorder.min.js") ? Url("home-ordermanagement-queueorder.min.js") : Url("home-ordermanagement-queueorder.js");
             public static readonly string home_ordermanagement_queueorder_min_js = Url("home-ordermanagement-queueorder.min.js");
             public static readonly string home_ordermanagement_queueorder_min_js_map = Url("home-ordermanagement-queueorder.min.js.map");
+            public static readonly string ordermanagement_batchinventory_js = T4MVCHelpers.IsProduction() && T4Extensions.FileExists(UrlPath + "/ordermanagement-batchinventory.min.js") ? Url("ordermanagement-batchinventory.min.js") : Url("ordermanagement-batchinventory.js");
+            public static readonly string ordermanagement_batchinventory_min_js = Url("ordermanagement-batchinventory.min.js");
+            public static readonly string ordermanagement_batchinventory_min_js_map = Url("ordermanagement-batchinventory.min.js.map");
             public static readonly string ordermanagement_inventory_js = T4MVCHelpers.IsProduction() && T4Extensions.FileExists(UrlPath + "/ordermanagement-inventory.min.js") ? Url("ordermanagement-inventory.min.js") : Url("ordermanagement-inventory.js");
             public static readonly string ordermanagement_inventory_min_js = Url("ordermanagement-inventory.min.js");
             public static readonly string ordermanagement_inventory_min_js_map = Url("ordermanagement-inventory.min.js.map");
@@ -168,6 +171,8 @@ namespace IOBALANCEV2LINKS
             public static readonly string reports_purchaseorder_min_js = Url("reports-purchaseorder.min.js");
             public static readonly string reports_purchaseorder_min_js_map = Url("reports-purchaseorder.min.js.map");
             public static readonly string reports_salesorder_receipt_js = T4MVCHelpers.IsProduction() && T4Extensions.FileExists(UrlPath + "/reports-salesorder-receipt.min.js") ? Url("reports-salesorder-receipt.min.js") : Url("reports-salesorder-receipt.js");
+            public static readonly string reports_salesorder_receipt_min_js = Url("reports-salesorder-receipt.min.js");
+            public static readonly string reports_salesorder_receipt_min_js_map = Url("reports-salesorder-receipt.min.js.map");
             public static readonly string reports_salesorder_js = T4MVCHelpers.IsProduction() && T4Extensions.FileExists(UrlPath + "/reports-salesorder.min.js") ? Url("reports-salesorder.min.js") : Url("reports-salesorder.js");
             public static readonly string reports_salesorder_min_js = Url("reports-salesorder.min.js");
             public static readonly string reports_salesorder_min_js_map = Url("reports-salesorder.min.js.map");
@@ -1537,7 +1542,10 @@ namespace IOBALANCEV2LINKS
                 public const string UrlPath = "~/Content/excel/templates";
                 public static string Url() { return T4MVCHelpers.ProcessVirtualPath(UrlPath); }
                 public static string Url(string fileName) { return T4MVCHelpers.ProcessVirtualPath(UrlPath + "/" + fileName); }
+                public static readonly string BatchInventoryTemplate_xlsx = Url("BatchInventoryTemplate.xlsx");
+                public static readonly string BatchInventoryTemplateWithoutValues_xlsx = Url("BatchInventoryTemplateWithoutValues.xlsx");
                 public static readonly string PurchaseOrderExcelTemplate_xlsx = Url("PurchaseOrderExcelTemplate.xlsx");
+                public static readonly string Receipt_xlsx = Url("Receipt.xlsx");
                 public static readonly string SalesOrderExcelTemplate_xlsx = Url("SalesOrderExcelTemplate.xlsx");
             }
         
@@ -1901,6 +1909,7 @@ namespace IOBALANCEV2LINKS
                     public const string adminmanagement_quantityunit_js = "~/Scripts/iobalancev2/adminmanagement-quantityunit.js"; 
                     public const string adminmanagement_supplier_js = "~/Scripts/iobalancev2/adminmanagement-supplier.js"; 
                     public const string home_ordermanagement_queueorder_js = "~/Scripts/iobalancev2/home-ordermanagement-queueorder.js"; 
+                    public const string ordermanagement_batchinventory_js = "~/Scripts/iobalancev2/ordermanagement-batchinventory.js"; 
                     public const string ordermanagement_inventory_js = "~/Scripts/iobalancev2/ordermanagement-inventory.js"; 
                     public const string ordermanagement_salesorder_js = "~/Scripts/iobalancev2/ordermanagement-salesorder.js"; 
                     public const string reports_purchaseorder_js = "~/Scripts/iobalancev2/reports-purchaseorder.js"; 
