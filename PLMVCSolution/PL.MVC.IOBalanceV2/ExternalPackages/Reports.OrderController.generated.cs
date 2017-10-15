@@ -92,6 +92,18 @@ namespace PL.MVC.IOBalanceV2.Areas.Reports.Controllers
         {
             return new T4MVC_System_Web_Mvc_ActionResult(Area, Name, ActionNames.ExportSOReceiptExcel);
         }
+        [NonAction]
+        [GeneratedCode("T4MVC", "2.0"), DebuggerNonUserCode]
+        public virtual System.Web.Mvc.ActionResult GetInventoryReport()
+        {
+            return new T4MVC_System_Web_Mvc_ActionResult(Area, Name, ActionNames.GetInventoryReport);
+        }
+        [NonAction]
+        [GeneratedCode("T4MVC", "2.0"), DebuggerNonUserCode]
+        public virtual System.Web.Mvc.ActionResult ExportInventoryReport()
+        {
+            return new T4MVC_System_Web_Mvc_ActionResult(Area, Name, ActionNames.ExportInventoryReport);
+        }
 
         [GeneratedCode("T4MVC", "2.0"), DebuggerNonUserCode]
         public OrderController Actions { get { return IOBALANCEMVCV2.Reports.Order; } }
@@ -117,6 +129,9 @@ namespace PL.MVC.IOBalanceV2.Areas.Reports.Controllers
             public readonly string GetSOReceiptReport = "GetSOReceiptReport";
             public readonly string ExportSOExcel = "ExportSOExcel";
             public readonly string ExportSOReceiptExcel = "ExportSOReceiptExcel";
+            public readonly string InventoryReport = "InventoryReport";
+            public readonly string GetInventoryReport = "GetInventoryReport";
+            public readonly string ExportInventoryReport = "ExportInventoryReport";
         }
 
         [GeneratedCode("T4MVC", "2.0"), DebuggerNonUserCode]
@@ -131,6 +146,9 @@ namespace PL.MVC.IOBalanceV2.Areas.Reports.Controllers
             public const string GetSOReceiptReport = "GetSOReceiptReport";
             public const string ExportSOExcel = "ExportSOExcel";
             public const string ExportSOReceiptExcel = "ExportSOReceiptExcel";
+            public const string InventoryReport = "InventoryReport";
+            public const string GetInventoryReport = "GetInventoryReport";
+            public const string ExportInventoryReport = "ExportInventoryReport";
         }
 
 
@@ -187,6 +205,23 @@ namespace PL.MVC.IOBalanceV2.Areas.Reports.Controllers
             public readonly string customerId = "customerId";
             public readonly string salesNo = "salesNo";
         }
+        static readonly ActionParamsClass_GetInventoryReport s_params_GetInventoryReport = new ActionParamsClass_GetInventoryReport();
+        [GeneratedCode("T4MVC", "2.0"), DebuggerNonUserCode]
+        public ActionParamsClass_GetInventoryReport GetInventoryReportParams { get { return s_params_GetInventoryReport; } }
+        [GeneratedCode("T4MVC", "2.0"), DebuggerNonUserCode]
+        public class ActionParamsClass_GetInventoryReport
+        {
+            public readonly string request = "request";
+            public readonly string productId = "productId";
+        }
+        static readonly ActionParamsClass_ExportInventoryReport s_params_ExportInventoryReport = new ActionParamsClass_ExportInventoryReport();
+        [GeneratedCode("T4MVC", "2.0"), DebuggerNonUserCode]
+        public ActionParamsClass_ExportInventoryReport ExportInventoryReportParams { get { return s_params_ExportInventoryReport; } }
+        [GeneratedCode("T4MVC", "2.0"), DebuggerNonUserCode]
+        public class ActionParamsClass_ExportInventoryReport
+        {
+            public readonly string ProductId = "ProductId";
+        }
         static readonly ViewsClass s_views = new ViewsClass();
         [GeneratedCode("T4MVC", "2.0"), DebuggerNonUserCode]
         public ViewsClass Views { get { return s_views; } }
@@ -198,19 +233,23 @@ namespace PL.MVC.IOBalanceV2.Areas.Reports.Controllers
             public class _ViewNamesClass
             {
                 public readonly string _List = "_List";
+                public readonly string _ListInventoryReport = "_ListInventoryReport";
                 public readonly string _ListSalesOrder = "_ListSalesOrder";
                 public readonly string _ListSalesReceipt = "_ListSalesReceipt";
                 public readonly string _Search = "_Search";
                 public readonly string _SearchSalesOrder = "_SearchSalesOrder";
+                public readonly string InventoryReport = "InventoryReport";
                 public readonly string PurchaseOrder = "PurchaseOrder";
                 public readonly string SalesOrder = "SalesOrder";
                 public readonly string SalesOrderReceipt = "SalesOrderReceipt";
             }
             public readonly string _List = "~/Areas/Reports/Views/Order/_List.cshtml";
+            public readonly string _ListInventoryReport = "~/Areas/Reports/Views/Order/_ListInventoryReport.cshtml";
             public readonly string _ListSalesOrder = "~/Areas/Reports/Views/Order/_ListSalesOrder.cshtml";
             public readonly string _ListSalesReceipt = "~/Areas/Reports/Views/Order/_ListSalesReceipt.cshtml";
             public readonly string _Search = "~/Areas/Reports/Views/Order/_Search.cshtml";
             public readonly string _SearchSalesOrder = "~/Areas/Reports/Views/Order/_SearchSalesOrder.cshtml";
+            public readonly string InventoryReport = "~/Areas/Reports/Views/Order/InventoryReport.cshtml";
             public readonly string PurchaseOrder = "~/Areas/Reports/Views/Order/PurchaseOrder.cshtml";
             public readonly string SalesOrder = "~/Areas/Reports/Views/Order/SalesOrder.cshtml";
             public readonly string SalesOrderReceipt = "~/Areas/Reports/Views/Order/SalesOrderReceipt.cshtml";
@@ -329,6 +368,42 @@ namespace PL.MVC.IOBalanceV2.Areas.Reports.Controllers
             ModelUnbinderHelpers.AddRouteValues(callInfo.RouteValueDictionary, "customerId", customerId);
             ModelUnbinderHelpers.AddRouteValues(callInfo.RouteValueDictionary, "salesNo", salesNo);
             ExportSOReceiptExcelOverride(callInfo, salesOrderId, customerId, salesNo);
+            return callInfo;
+        }
+
+        [NonAction]
+        partial void InventoryReportOverride(T4MVC_System_Web_Mvc_ActionResult callInfo);
+
+        [NonAction]
+        public override System.Web.Mvc.ActionResult InventoryReport()
+        {
+            var callInfo = new T4MVC_System_Web_Mvc_ActionResult(Area, Name, ActionNames.InventoryReport);
+            InventoryReportOverride(callInfo);
+            return callInfo;
+        }
+
+        [NonAction]
+        partial void GetInventoryReportOverride(T4MVC_System_Web_Mvc_ActionResult callInfo, Kendo.Mvc.UI.DataSourceRequest request, long productId);
+
+        [NonAction]
+        public override System.Web.Mvc.ActionResult GetInventoryReport(Kendo.Mvc.UI.DataSourceRequest request, long productId)
+        {
+            var callInfo = new T4MVC_System_Web_Mvc_ActionResult(Area, Name, ActionNames.GetInventoryReport);
+            ModelUnbinderHelpers.AddRouteValues(callInfo.RouteValueDictionary, "request", request);
+            ModelUnbinderHelpers.AddRouteValues(callInfo.RouteValueDictionary, "productId", productId);
+            GetInventoryReportOverride(callInfo, request, productId);
+            return callInfo;
+        }
+
+        [NonAction]
+        partial void ExportInventoryReportOverride(T4MVC_System_Web_Mvc_ActionResult callInfo, long ProductId);
+
+        [NonAction]
+        public override System.Web.Mvc.ActionResult ExportInventoryReport(long ProductId)
+        {
+            var callInfo = new T4MVC_System_Web_Mvc_ActionResult(Area, Name, ActionNames.ExportInventoryReport);
+            ModelUnbinderHelpers.AddRouteValues(callInfo.RouteValueDictionary, "ProductId", ProductId);
+            ExportInventoryReportOverride(callInfo, ProductId);
             return callInfo;
         }
 

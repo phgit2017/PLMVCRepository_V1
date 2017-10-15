@@ -1,0 +1,46 @@
+﻿@using PL.Business.Dto.IOBalanceV2;
+@using PL.MVC.IOBalanceV2.Areas.Reports.Models;
+@{
+    ViewBag.Title = "Inventory Report";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+@section modals{
+    
+}
+
+<div>
+    <section class="panel-widget-container">
+
+        <input id="ProductId" style="width:100%" name="ProductId" />
+
+        <div class="panel-widget-controls">
+            <button id="searchdetails" class="btn btn-default"
+                    data-action-type="searchdetails">
+                <i class="md md-filter-list"></i> Search
+            </button>
+
+            <button id="exportexcelbutton" class="btn btn-default"
+                    data-action-type="exportexcelbutton">
+                <i class="fa fa-file-excel-o"></i> Export to excel
+            </button>
+        </div>
+    </section>
+    <div id="divList">
+        @Html.Partial(IOBALANCEMVCV2.Reports.Order.Views._ListInventoryReport)
+    </div>
+</div>
+
+<div id="divResultContainer" style="display:none"></div>
+
+
+@section scripts{
+    <script type="text/javascript">
+        window.reportInventoryReportOptions = {
+            exportUrl: '@Url.Action(IOBALANCEMVCV2.Reports.Order.ExportInventoryReport())',
+            productUrl: '@Url.Action(IOBALANCEMVCV2.Common.GetProducts())'
+        };
+    </script>
+
+    <script type="text/javascript" src="@IOBALANCEV2LINKS.Scripts.iobalancev2.reports_inventory_stock_js"></script>
+    <script type="text/javascript" src="@IOBALANCEV2LINKS.Scripts.infrastructure.jquery_deserialize_js"></script>
+}

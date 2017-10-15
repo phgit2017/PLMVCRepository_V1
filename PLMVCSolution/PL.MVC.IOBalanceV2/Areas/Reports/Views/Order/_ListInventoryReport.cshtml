@@ -1,0 +1,27 @@
+﻿@using Kendo.Mvc.UI;
+@using PL.Business.Common;
+
+@(Html.Kendo().Grid<PL.Business.Dto.IOBalanceV2.InventoryReportDto>()
+        .Name("gvInventoryReport")
+        .Columns(columns =>
+        {
+            columns.Bound(c => c.ProductId).Visible(false);
+            columns.Bound(c => c.ProductDisplay).Title("Product").Width(300).Sortable(false).Lockable(false);
+            columns.Bound(c => c.OldQuantity).Title("Old Quantity").Width(300).Sortable(false).Lockable(false);
+            columns.Bound(c => c.Plus).Title("(+)").Width(300).Sortable(false).Lockable(false);
+            columns.Bound(c => c.Minus).Title("(-)").Width(300).Sortable(false).Lockable(false);
+            columns.Bound(c => c.NewQuantity).Title("New Quantity").Width(300).Sortable(false).Lockable(false);
+            columns.Bound(c => c.TransactionDateWithFormat).Title("Transaction Date").Width(300).Sortable(false).Lockable(false);
+            columns.Bound(c => c.SupplierDisplay).Title("Supplier").Width(300).Sortable(false).Lockable(false);
+            columns.Bound(c => c.CustomerDisplay).Title("Customer").Width(300).Sortable(false).Lockable(false);
+        })
+        .Scrollable()
+        .Sortable(sort => sort.AllowUnsort(false))
+        .Pageable()
+        .ColumnMenu()
+        .DataSource(dataSource => dataSource
+            .Ajax()
+            .Read(read => read.Action("GetInventoryReport", "Order"))
+            .PageSize(50)
+        )
+)

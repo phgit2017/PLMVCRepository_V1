@@ -434,6 +434,8 @@
     <Content Include="Areas\Reports\Views\Order\_ListSalesReceipt.cshtml" />
     <Content Include="Areas\OrderManagement\Views\Inventory\BulkInventory.cshtml" />
     <Content Include="Areas\OrderManagement\Views\Inventory\_BatchUpload.cshtml" />
+    <Content Include="Areas\Reports\Views\Order\InventoryReport.cshtml" />
+    <Content Include="Areas\Reports\Views\Order\_ListInventoryReport.cshtml" />
     <None Include="Content\assets-common\js\angular-js\angular.intellisense.js" />
     <Content Include="Content\assets-common\js\angular-js\angular.js" />
     <Content Include="Content\assets-common\js\angular-js\angular.min.js" />
@@ -1326,9 +1328,14 @@
     <Content Include="Content\excel\templates\Receipt.xlsx" />
     <Content Include="Content\excel\templates\BatchInventoryTemplate.xlsx" />
     <Content Include="Content\excel\templates\BatchInventoryTemplateWithoutValues.xlsx" />
+    <Content Include="Content\excel\templates\InventoryReportTemplate.xlsx" />
     <None Include="Properties\PublishProfiles\IOBalance.pubxml" />
     <Content Include="Scripts\iobalancev2\home-ordermanagement-queueorder.min.js.map">
       <DependentUpon>home-ordermanagement-queueorder.min.js</DependentUpon>
+    </Content>
+    <Content Include="Scripts\iobalancev2\reports-inventory-stock.js" />
+    <Content Include="Scripts\iobalancev2\reports-inventory-stock.min.js">
+      <DependentUpon>reports-inventory-stock.js</DependentUpon>
     </Content>
     <Content Include="Scripts\iobalancev2\reports-purchaseorder.min.js.map">
       <DependentUpon>reports-purchaseorder.min.js</DependentUpon>
@@ -1348,6 +1355,9 @@
     </Content>
     <Content Include="Scripts\iobalancev2\reports-salesorder-receipt.min.js.map">
       <DependentUpon>reports-salesorder-receipt.min.js</DependentUpon>
+    </Content>
+    <Content Include="Scripts\iobalancev2\reports-inventory-stock.min.js.map">
+      <DependentUpon>reports-inventory-stock.min.js</DependentUpon>
     </Content>
     <None Include="Scripts\jquery-1.8.2.intellisense.js" />
     <Content Include="Scripts\bootstrap.js" />

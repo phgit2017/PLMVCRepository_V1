@@ -1,4 +1,5 @@
-﻿using System;
+﻿using PL.Business.Common;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 using System.Linq;
@@ -187,5 +188,34 @@ namespace PL.Business.Dto.IOBalanceV2
         public string CURRENT_NUM { get; set; }
         public string DRNUM { get; set; }
         public string CARTON_NUM { get; set; }
+    }
+
+    public class InventoryReportDto
+    {
+        public long ProductId { get; set; }
+        public string ProductDisplay { get; set; }
+        public decimal? OldQuantity { get; set; }
+        public string Plus { get; set; }
+        public string Minus { get; set; }
+        public decimal? NewQuantity { get; set; }
+        public DateTime? TransactionDate { get; set; }
+        public string SupplierDisplay { get; set; }
+        public string CustomerDisplay { get; set; }
+
+        public string TransactionDateWithFormat
+        {
+            get
+            {
+                if (TransactionDate == null)
+                {
+                    return string.Empty;
+                }
+                else
+                {
+                    return Convert.ToDateTime(TransactionDate).ToString(Globals.DefaultRecordDateFormat);
+                }
+
+            }
+        }
     }
 }

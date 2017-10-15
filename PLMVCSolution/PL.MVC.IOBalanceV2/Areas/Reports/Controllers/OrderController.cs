@@ -105,6 +105,67 @@ namespace PL.MVC.IOBalanceV2.Areas.Reports.Controllers
         }
         #endregion SO
 
+        #region Inventory Report
+        public virtual ActionResult InventoryReport()
+        {
+            return View();
+        }
+
+
+        public virtual ActionResult GetInventoryReport([DataSourceRequest] DataSourceRequest request, long productId)
+        {
+            var list = _inventoryService.GetAllInventoryReport(productId);
+            return Json(list.ToDataSourceResult(request), JsonRequestBehavior.AllowGet);
+        }
+
+        public virtual ActionResult ExportInventoryReport(long ProductId)
+        {
+            int rowId = 0;
+            int colId = 0;
+
+
+            var list = _inventoryService.GetAllInventoryReport(ProductId);
+
+            var dir = Server.MapPath(string.Format("~/{0}", Constants.ProductExcelTemplateDir));
+            var fileNameTemplate = string.Format("{0}{1}", Constants.ReportInventoryTemplate, ".xlsx");
+            var path = System.IO.Path.Combine(dir, fileNameTemplate);
+            var fileNameGenerated = string.Format("{0}{1}", Constants.InventoryReport, ".xlsx");
+
+            var contentType = "application/vnd.ms-excel";
+
+            var templateFile = new FileInfo(path);
+            //var stream = Assembly.GetExecutingAssembly().GetManifestResourceStream(path);
+
+
+            var package = new ExcelPackage(templateFile);
+            var workSheet = package.Workbook.Worksheets[1];
+
+            rowId = 2;
+            foreach (var detail in list)
+            {
+                    workSheet.Cells["A" + rowId.ToString()].Value = detail.ProductDisplay;
+                    workSheet.Cells["B" + rowId.ToString()].Value = detail.OldQuantity;
+                    workSheet.Cells["C" + rowId.ToString()].Value = detail.Plus;
+                    workSheet.Cells["D" + rowId.ToString()].Value = detail.Minus;
+                    workSheet.Cells["E" + rowId.ToString()].Value = detail.NewQuantity;
+                    workSheet.Cells["F" + rowId.ToString()].Value = detail.TransactionDateWithFormat;
+                    workSheet.Cells["G" + rowId.ToString()].Value = detail.SupplierDisplay;
+                    workSheet.Cells["H" + rowId.ToString()].Value = detail.CustomerDisplay;
+                    rowId++;
+                
+
+            }
+
+
+            var memoryStream = new MemoryStream();
+            //package.Save();
+            package.SaveAs(memoryStream);
+            memoryStream.Position = 0;
+
+            return File(memoryStream, contentType, fileNameGenerated);
+        }
+        #endregion Inventory Report
+
         #endregion Action methods
 
         #region Private methods

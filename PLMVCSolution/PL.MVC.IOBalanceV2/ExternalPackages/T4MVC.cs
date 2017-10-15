@@ -167,6 +167,9 @@ namespace IOBALANCEV2LINKS
             public static readonly string ordermanagement_salesorder_js = T4MVCHelpers.IsProduction() && T4Extensions.FileExists(UrlPath + "/ordermanagement-salesorder.min.js") ? Url("ordermanagement-salesorder.min.js") : Url("ordermanagement-salesorder.js");
             public static readonly string ordermanagement_salesorder_min_js = Url("ordermanagement-salesorder.min.js");
             public static readonly string ordermanagement_salesorder_min_js_map = Url("ordermanagement-salesorder.min.js.map");
+            public static readonly string reports_inventory_stock_js = T4MVCHelpers.IsProduction() && T4Extensions.FileExists(UrlPath + "/reports-inventory-stock.min.js") ? Url("reports-inventory-stock.min.js") : Url("reports-inventory-stock.js");
+            public static readonly string reports_inventory_stock_min_js = Url("reports-inventory-stock.min.js");
+            public static readonly string reports_inventory_stock_min_js_map = Url("reports-inventory-stock.min.js.map");
             public static readonly string reports_purchaseorder_js = T4MVCHelpers.IsProduction() && T4Extensions.FileExists(UrlPath + "/reports-purchaseorder.min.js") ? Url("reports-purchaseorder.min.js") : Url("reports-purchaseorder.js");
             public static readonly string reports_purchaseorder_min_js = Url("reports-purchaseorder.min.js");
             public static readonly string reports_purchaseorder_min_js_map = Url("reports-purchaseorder.min.js.map");
@@ -1544,6 +1547,7 @@ namespace IOBALANCEV2LINKS
                 public static string Url(string fileName) { return T4MVCHelpers.ProcessVirtualPath(UrlPath + "/" + fileName); }
                 public static readonly string BatchInventoryTemplate_xlsx = Url("BatchInventoryTemplate.xlsx");
                 public static readonly string BatchInventoryTemplateWithoutValues_xlsx = Url("BatchInventoryTemplateWithoutValues.xlsx");
+                public static readonly string InventoryReportTemplate_xlsx = Url("InventoryReportTemplate.xlsx");
                 public static readonly string PurchaseOrderExcelTemplate_xlsx = Url("PurchaseOrderExcelTemplate.xlsx");
                 public static readonly string Receipt_xlsx = Url("Receipt.xlsx");
                 public static readonly string SalesOrderExcelTemplate_xlsx = Url("SalesOrderExcelTemplate.xlsx");
@@ -1912,6 +1916,7 @@ namespace IOBALANCEV2LINKS
                     public const string ordermanagement_batchinventory_js = "~/Scripts/iobalancev2/ordermanagement-batchinventory.js"; 
                     public const string ordermanagement_inventory_js = "~/Scripts/iobalancev2/ordermanagement-inventory.js"; 
                     public const string ordermanagement_salesorder_js = "~/Scripts/iobalancev2/ordermanagement-salesorder.js"; 
+                    public const string reports_inventory_stock_js = "~/Scripts/iobalancev2/reports-inventory-stock.js"; 
                     public const string reports_purchaseorder_js = "~/Scripts/iobalancev2/reports-purchaseorder.js"; 
                     public const string reports_salesorder_receipt_js = "~/Scripts/iobalancev2/reports-salesorder-receipt.js"; 
                     public const string reports_salesorder_js = "~/Scripts/iobalancev2/reports-salesorder.js"; 

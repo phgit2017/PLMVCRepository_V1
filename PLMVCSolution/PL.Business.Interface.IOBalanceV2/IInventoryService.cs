@@ -17,5 +17,6 @@ namespace PL.Business.Interface.IOBalanceV2
         bool UpdateQuantityOrder(long productId, decimal qtyUpdate, Enums.OrderType orderType = Enums.OrderType.SalesOrder);
         DataTable SaveBatchInventory(string xml, int? createdBy);
         bool SaveBatchInvetoryLogs(BatchInventoryLogDto newDetails);
+        List<InventoryReportDto> GetAllInventoryReport(long productId);
     }
 }

@@ -97,7 +97,7 @@ namespace PL.Business.IOBalanceV2
 
         }
 
-        
+
 
         public bool UpdateQuantityOrder(long productId, decimal qtyUpdate, Enums.OrderType orderType = Enums.OrderType.SalesOrder)
         {
@@ -111,7 +111,7 @@ namespace PL.Business.IOBalanceV2
             else
             {
                 newDetails = oldDetails;
-                
+
                 switch (orderType)
                 {
                     case Enums.OrderType.SalesOrder:
@@ -144,6 +144,39 @@ namespace PL.Business.IOBalanceV2
             dtResult = _product.ExecuteSPReturnTable("dbo.uspBatchInventory", true, parameters);
 
             return dtResult;
+        }
+
+        public List<InventoryReportDto> GetAllInventoryReport(long productId)
+        {
+            List<InventoryReportDto> result = new List<InventoryReportDto>();
+            DataTable dtResult = new DataTable();
+
+            SqlParameter[] parameters = 
+            {
+                new SqlParameter("@ProductID", SqlDbType.BigInt) { Value = productId }
+                
+            };
+
+            dtResult = _product.ExecuteSPReturnTable("dbo.usp_StockReport", true, parameters);
+
+
+            foreach (DataRow row in dtResult.Rows)
+            {
+                result.Add(new InventoryReportDto()
+                {
+                    ProductId = Convert.ToInt32(row["ProductId"].ToString()),
+                    ProductDisplay = row["Product"].ToString(),
+                    OldQuantity = Convert.ToDecimal(row["OldQuantity"].ToString()),
+                    Plus = row["+"].ToString(),
+                    Minus = row["-"].ToString(),
+                    NewQuantity = Convert.ToDecimal(row["NewQuantity"].ToString()),
+                    TransactionDate = Convert.ToDateTime(row["TransactionDate"].ToString()),
+                    SupplierDisplay = row["Supplier"].ToString(),
+                    CustomerDisplay = row["Customer"].ToString()
+                });
+            }
+
+            return result;
         }
 
         public bool SaveBatchInvetoryLogs(BatchInventoryLogDto newDetails)

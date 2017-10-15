@@ -19,6 +19,7 @@ namespace PL.Business.Common
         public const string ReceiptTemplate = "Receipt";
         public const string ReportTemplate = "ExtremeLotusReportTemplate";
         public const string ReportPOTemplate = "PurchaseOrderExcelTemplate";
+        public const string ReportInventoryTemplate = "InventoryReportTemplate";
         public const string ReportSOTemplate = "SalesOrderExcelTemplate";
         public const string BatchUploadInventoryReturnTemplate = "BatchInventoryTemplateWithoutValues";
         public const string POSOFormat = "{0}{1:D4}";
