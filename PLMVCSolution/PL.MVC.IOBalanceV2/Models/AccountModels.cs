@@ -11,14 +11,14 @@ namespace PL.MVC.IOBalanceV2.Models
     public class UsersContext : DbContext
     {
         public UsersContext()
-            : base("DefaultConnection")
+            : base("IOBalanceDBV2Entities")
         {
         }
 
         public DbSet<UserProfile> UserProfiles { get; set; }
     }
 
-    [Table("UserProfile")]
+    [Table("Users")]
     public class UserProfile
     {
         [Key]

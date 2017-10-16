@@ -317,6 +317,7 @@
       <DependentUpon>T4MVC.tt</DependentUpon>
     </Compile>
     <Compile Include="Infrastructure\Alert.cs" />
+    <Compile Include="Infrastructure\AuthorizationAttribute.cs" />
     <Compile Include="Infrastructure\Common.cs" />
     <Compile Include="Infrastructure\DependencyInjection.cs" />
     <Compile Include="Models\AccountModels.cs" />
@@ -1712,6 +1713,7 @@
     <Content Include="Views\Home\_DetailsSalesOrder.cshtml" />
     <Content Include="Views\Home\_DetailsSalesOrderDetail.cshtml" />
     <Content Include="Views\Home\_EditOrderList.cshtml" />
+    <Content Include="Views\Shared\_UnauthorizedAccess.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

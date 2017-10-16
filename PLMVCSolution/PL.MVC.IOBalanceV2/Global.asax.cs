@@ -11,6 +11,7 @@ using Autofac;
 using Autofac.Integration.Mvc;
 using PL.MVC.IOBalanceV2.Infrastructure;
 using System.Reflection;
+using WebMatrix.WebData;
 
 namespace PL.MVC.IOBalanceV2
 {
@@ -24,7 +25,7 @@ namespace PL.MVC.IOBalanceV2
             AreaRegistration.RegisterAllAreas();
 
             WebApiConfig.Register(GlobalConfiguration.Configuration);
-            FilterConfig.RegisterGlobalFilters(GlobalFilters.Filters);
+            //FilterConfig.RegisterGlobalFilters(GlobalFilters.Filters);
             RouteConfig.RegisterRoutes(RouteTable.Routes);
             BundleConfig.RegisterBundles(BundleTable.Bundles);
             AuthConfig.RegisterAuth();

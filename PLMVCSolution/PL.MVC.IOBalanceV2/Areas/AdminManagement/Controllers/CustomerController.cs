@@ -23,9 +23,11 @@ using Kendo.Mvc.Extensions;
 using PL.MVC.IOBalanceV2.Controllers;
 using PL.MVC.IOBalanceV2.Areas.AdminManagement.Models;
 using LinqKit;
+using WebMatrix.WebData;
 
 namespace PL.MVC.IOBalanceV2.Areas.AdminManagement.Controllers
 {
+    [Authorization(Roles = "admin")]
     public partial class CustomerController : BaseController
     {
         #region Declarations and constructors
@@ -59,7 +61,7 @@ namespace PL.MVC.IOBalanceV2.Areas.AdminManagement.Controllers
             {
                 dto.CustomerId = 0;
                 dto.DateCreated = DateTime.Now;
-                dto.CreatedBy = 1;
+                dto.CreatedBy = WebSecurity.GetUserId(User.Identity.Name);
                 dto.IsActive = true;
                 isSuccess  = _customerService.SaveDetails(dto);
 

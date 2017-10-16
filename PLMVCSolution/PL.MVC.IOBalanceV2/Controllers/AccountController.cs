@@ -27,6 +27,12 @@ namespace PL.MVC.IOBalanceV2.Controllers
             return View();
         }
 
+
+        public virtual ActionResult _UnauthorizedAccess()
+        {
+            return View();
+        }
+
         //
         // POST: /Account/Login
 
@@ -54,7 +60,7 @@ namespace PL.MVC.IOBalanceV2.Controllers
         {
             WebSecurity.Logout();
 
-            return RedirectToAction("Index", "Home");
+            return RedirectToAction("Login", "Account");
         }
 
         //

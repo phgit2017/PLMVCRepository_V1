@@ -38,7 +38,7 @@ namespace PL.MVC.IOBalanceV2.Filters
                         }
                     }
 
-                    WebSecurity.InitializeDatabaseConnection("DefaultConnection", "UserProfile", "UserId", "UserName", autoCreateTables: true);
+                    WebSecurity.InitializeDatabaseConnection("IOBalanceDBV2Entities", "Users", "UserId", "UserName", autoCreateTables: true);
                 }
                 catch (Exception ex)
                 {

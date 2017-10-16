@@ -118,6 +118,7 @@ namespace PL.MVC.IOBalanceV2.Controllers
         public class ActionNamesClass
         {
             public readonly string Login = "Login";
+            public readonly string _UnauthorizedAccess = "_UnauthorizedAccess";
             public readonly string LogOff = "LogOff";
             public readonly string Register = "Register";
             public readonly string Disassociate = "Disassociate";
@@ -134,6 +135,7 @@ namespace PL.MVC.IOBalanceV2.Controllers
         public class ActionNameConstants
         {
             public const string Login = "Login";
+            public const string _UnauthorizedAccess = "_UnauthorizedAccess";
             public const string LogOff = "LogOff";
             public const string Register = "Register";
             public const string Disassociate = "Disassociate";
@@ -262,6 +264,17 @@ namespace PL.MVC.IOBalanceV2.Controllers
             var callInfo = new T4MVC_System_Web_Mvc_ActionResult(Area, Name, ActionNames.Login);
             ModelUnbinderHelpers.AddRouteValues(callInfo.RouteValueDictionary, "returnUrl", returnUrl);
             LoginOverride(callInfo, returnUrl);
+            return callInfo;
+        }
+
+        [NonAction]
+        partial void _UnauthorizedAccessOverride(T4MVC_System_Web_Mvc_ActionResult callInfo);
+
+        [NonAction]
+        public override System.Web.Mvc.ActionResult _UnauthorizedAccess()
+        {
+            var callInfo = new T4MVC_System_Web_Mvc_ActionResult(Area, Name, ActionNames._UnauthorizedAccess);
+            _UnauthorizedAccessOverride(callInfo);
             return callInfo;
         }
 

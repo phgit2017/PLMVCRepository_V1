@@ -26,6 +26,7 @@ using LinqKit;
 
 namespace PL.MVC.IOBalanceV2.Areas.AdminManagement.Controllers
 {
+    [Authorization(Roles = "admin")]
     public partial class CategoryController : BaseController
     {
 

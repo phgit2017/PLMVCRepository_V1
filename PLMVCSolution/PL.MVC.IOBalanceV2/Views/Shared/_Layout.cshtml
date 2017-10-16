@@ -45,51 +45,59 @@
             </div>
         </div>
     </div>
-    <nav class="main-nav">
-        <img class="main-logo" src="~/Content/assets-common/img/logo-sample.svg" />
 
-        <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#mainNavbar" aria-expanded="false" aria-controls="navbar">
-            <i class="md md-lg md-menu"></i>
-        </button>
+    @if (Request.IsAuthenticated)
+    {
+        <nav class="main-nav">
+            <img class="main-logo" src="~/Content/assets-common/img/logo-sample.svg" />
 
-        <div id="mainNavbar" class="navbar-collapse collapse">
-            <ul class="nav nav-stacked">
-                <li><a href="@Url.Action(IOBALANCEMVCV2.Home.Index())">Dashboard</a></li>
-                <li>
-                    <a data-toggle="collapse" data-target="#reportCollapse" aria-expanded="false" aria-controls="collapse">
-                        Reports
-                        <i class="md md-chevron-down pull-right"></i>
-                    </a>
-                    <div id="reportCollapse" class="collapse sub-menu">
-                        <ul class="nav nav-stacked">
-                            <li><a href="@Url.Action(IOBALANCEMVCV2.Reports.Order.PurchaseOrder())">Purchase Order Report</a></li>
-                            <li><a href="@Url.Action(IOBALANCEMVCV2.Reports.Order.SalesOrder())">Sales Order Report</a></li>
-                            <li><a href="@Url.Action(IOBALANCEMVCV2.Reports.Order.SalesOrderReceipt())">Sales Order Receipt</a></li>
-                            <li><a href="@Url.Action(IOBALANCEMVCV2.Reports.Order.InventoryReport())">Inventory Report</a></li>
-                        </ul>
-                    </div>
-                </li>
-                <li>
-                    <a data-toggle="collapse" data-target="#adminCollapse" aria-expanded="false" aria-controls="collapse">
-                        Admin
-                        <i class="md md-chevron-down pull-right"></i>
-                    </a>
-                    <div id="adminCollapse" class="collapse sub-menu">
-                        <ul class="nav nav-stacked">
-                            <li><a href="@Url.Action(IOBALANCEMVCV2.AdminManagement.Customer.Index())">Customer</a></li>
-                            <li><a href="@Url.Action(IOBALANCEMVCV2.AdminManagement.Supplier.Index())">Supplier</a></li>
-                            <li><a href="@Url.Action(IOBALANCEMVCV2.AdminManagement.Category.Index())">Category</a></li>
-                            <li><a href="@Url.Action(IOBALANCEMVCV2.AdminManagement.QuantityUnit.Index())">Unit</a></li>
-                        </ul>
-                    </div>
-                </li>
-                <li><a href="@Url.Action(IOBALANCEMVCV2.OrderManagement.Inventory.Index())">Inventory</a></li>
-                <li><a href="@Url.Action(IOBALANCEMVCV2.OrderManagement.Inventory.BulkInventory())">Batch Inventory</a></li>
-                <li><a href="@Url.Action(IOBALANCEMVCV2.OrderManagement.SalesOrder.Index())">Sales</a></li>
+            <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#mainNavbar" aria-expanded="false" aria-controls="navbar">
+                <i class="md md-lg md-menu"></i>
+            </button>
 
-            </ul>
-        </div>
-    </nav>
+            <div id="mainNavbar" class="navbar-collapse collapse">
+                <ul class="nav nav-stacked">
+                    <li><a href="@Url.Action(IOBALANCEMVCV2.Home.Index())">Dashboard</a></li>
+                    <li>
+                        <a data-toggle="collapse" data-target="#reportCollapse" aria-expanded="false" aria-controls="collapse">
+                            Reports
+                            <i class="md md-chevron-down pull-right"></i>
+                        </a>
+                        <div id="reportCollapse" class="collapse sub-menu">
+                            <ul class="nav nav-stacked">
+                                <li><a href="@Url.Action(IOBALANCEMVCV2.Reports.Order.PurchaseOrder())">Purchase Order Report</a></li>
+                                <li><a href="@Url.Action(IOBALANCEMVCV2.Reports.Order.SalesOrder())">Sales Order Report</a></li>
+                                <li><a href="@Url.Action(IOBALANCEMVCV2.Reports.Order.SalesOrderReceipt())">Sales Order Receipt</a></li>
+                                <li><a href="@Url.Action(IOBALANCEMVCV2.Reports.Order.InventoryReport())">Inventory Report</a></li>
+                            </ul>
+                        </div>
+                    </li>
+                    <li>
+                        <a data-toggle="collapse" data-target="#adminCollapse" aria-expanded="false" aria-controls="collapse">
+                            Admin
+                            <i class="md md-chevron-down pull-right"></i>
+                        </a>
+                        <div id="adminCollapse" class="collapse sub-menu">
+                            <ul class="nav nav-stacked">
+                                <li><a href="@Url.Action(IOBALANCEMVCV2.AdminManagement.Customer.Index())">Customer</a></li>
+                                <li><a href="@Url.Action(IOBALANCEMVCV2.AdminManagement.Supplier.Index())">Supplier</a></li>
+                                <li><a href="@Url.Action(IOBALANCEMVCV2.AdminManagement.Category.Index())">Category</a></li>
+                                <li><a href="@Url.Action(IOBALANCEMVCV2.AdminManagement.QuantityUnit.Index())">Unit</a></li>
+                            </ul>
+                        </div>
+                    </li>
+                    <li><a href="@Url.Action(IOBALANCEMVCV2.OrderManagement.Inventory.Index())">Inventory</a></li>
+                    <li><a href="@Url.Action(IOBALANCEMVCV2.OrderManagement.Inventory.BulkInventory())">Batch Inventory</a></li>
+                    <li><a href="@Url.Action(IOBALANCEMVCV2.OrderManagement.SalesOrder.Index())">Sales</a></li>
+
+                    @Html.Partial(IOBALANCEMVCV2.Shared.Views._LoginPartial)
+
+                </ul>
+            </div>
+        </nav>
+    }
+
+
     <header class="main-page-header">
         <span class="main-page-title">@ViewBag.Title</span>
     </header>
