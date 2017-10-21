@@ -18,7 +18,7 @@ body {
 }
 
 .main-logo {
-    width: 90%;
+    width: 51%;
     padding: 10px 12px;
 }
 
@@ -92,7 +92,7 @@ body {
     left: 230px;
     right: 0;
     top: 0;
-    z-index: 50;
+    z-index: 10;
     .main-page-title {
         display: block;
         margin: 0 0 20px;
@@ -113,8 +113,41 @@ body {
     }
 }
 
-.well-adjust-md{
-     @media (max-width: $screen-md-max) {
+.well-adjust-md {
+    @media (max-width: $screen-md-max) {
         padding:0;
+    }
+}
+
+.login-form {
+    .logo-brand {
+        width: 200px;
+        margin-bottom: 20px;
+        margin-top: 10px;
+    }
+}
+
+.account-menu {
+    float: right;
+    margin: 10px 0;
+    margin-right: 15px;
+    .btn-group.open .dropdown-toggle {
+        box-shadow: none;
+    }
+    .dropdown-toggle {
+        color: #fff;
+        a {
+            color: #fff;
+        }
+        &:hover {
+            color: #fff;
+        }
+    }
+    .dropdown-menu{
+        li{
+
+            padding: 10px 4px;
+        }
+
     }
 }

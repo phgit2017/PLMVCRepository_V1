@@ -1,4 +1,4 @@
-﻿.<!DOCTYPE html>
+﻿<!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="utf-8" />
@@ -48,14 +48,16 @@
 
     @if (Request.IsAuthenticated)
     {
-        <nav class="main-nav">
+        <aside class="main-nav">
             <img class="main-logo" src="~/Content/assets-common/img/logo-sample.svg" />
-
+            <div class="account-menu">
+                @Html.Partial(IOBALANCEMVCV2.Shared.Views._LoginPartial)
+            </div>
             <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#mainNavbar" aria-expanded="false" aria-controls="navbar">
                 <i class="md md-lg md-menu"></i>
             </button>
 
-            <div id="mainNavbar" class="navbar-collapse collapse">
+            <nav id="mainNavbar" class="navbar-collapse collapse">
                 <ul class="nav nav-stacked">
                     <li><a href="@Url.Action(IOBALANCEMVCV2.Home.Index())">Dashboard</a></li>
                     <li>
@@ -90,11 +92,15 @@
                     <li><a href="@Url.Action(IOBALANCEMVCV2.OrderManagement.Inventory.BulkInventory())">Batch Inventory</a></li>
                     <li><a href="@Url.Action(IOBALANCEMVCV2.OrderManagement.SalesOrder.Index())">Sales</a></li>
 
-                    @Html.Partial(IOBALANCEMVCV2.Shared.Views._LoginPartial)
+                  
 
                 </ul>
-            </div>
-        </nav>
+            </nav>
+        </aside>
+        
+        
+        
+       
     }
 
 
