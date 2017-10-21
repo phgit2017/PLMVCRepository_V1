@@ -34,7 +34,7 @@ $(function () {
     var windowPath = window.location.pathname,
         activeLink = $('#mainNavbar').find('a[href="' + windowPath + '"]'),
         subMenu = $('.sub-menu');
-
+    activeLink.closest('li').addClass('active');
     for (var i = 0; i < subMenu.length; i++) {
        var hasActive = $(subMenu[i]).find('.active').length ? true : false;
         if (hasActive) {
