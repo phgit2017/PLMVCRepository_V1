@@ -19,7 +19,44 @@ body {
 
 .main-logo {
     width: 51%;
-    padding: 10px 12px;
+    padding: 10px 12px 0;
+    @media (max-width: $screen-sm-max) {
+        float: left;
+        width: 100px;
+        padding: 0;
+    }
+}
+
+.account-menu {
+    // margin-right: 15px;
+    padding: 3px 15px 7px;
+    border-bottom: 1px solid #333333;
+    color: #fff; // a {
+    //     color: #fff;
+    // }
+    @media (max-width: $screen-sm-max) {
+        float: left;
+        border-bottom: 0;
+    }
+    .btn-group.open .dropdown-toggle {
+        box-shadow: none;
+    }
+
+    .dropdown-toggle {
+        color: #fff;
+        a {
+            color: #fff;
+        }
+        &:hover {
+            color: #fff;
+        }
+    }
+
+    .dropdown-menu {
+        li {
+            padding: 15px;
+        }
+    }
 }
 
 .main-nav {
@@ -29,32 +66,73 @@ body {
     top: 0;
     bottom: 0;
     z-index: 20;
-
-    #mainNavbar {
+    @media (max-width: $screen-sm-max) {
         width: 100%;
+        height: 40px;
+        padding: 6px 0;
+    }
+    #mainNavbar {
         padding: 0;
+        overflow: auto;
+        position: fixed;
+        top: 80px;
+        bottom: 0;
+        width: 230px;
+        background: #4d4d4d;
+
+        @media (max-width: $screen-sm-max) {
+            top: 40px;
+            // @include translate(-100%, 0);
+        }
+    } // #navCollapse {
+    //     @media (max-width: $screen-sm-max) {
+    //         @include translate(-100%, 0);
+    //     }
+    // }
+    .navbar-toggle {
+        position: relative;
+        left: 0;
+        top: -6px;
+        float: left;
+        color: #fff;
+        padding: 0 10px;
+        @media (max-width: $screen-sm-max) {
+            display: inline-block;
+        }
     }
     li.active {
         a {
             background-color: #333;
         }
     }
+
     ul.nav {
         a {
-            color: #fff;
-            letter-spacing: 2px;
+            text-transform: uppercase;
+            font-size: 13px;
+            color: #fff; // letter-spacing: 2px;
             cursor: pointer;
             &:hover,
             &:focus {
                 background-color: #333;
             }
+
+            .md {
+                margin-right: -7px;
+                margin-top: 4px;
+            }
         }
     }
+
     .sub-menu {
         a {
-            font-size: .85em;
+            font-size: .9em;
             padding: 10px 30px;
+            text-transform: unset !important;
         }
+    }
+    .mCSB_inside>.mCSB_container {
+        margin-right: 18px !important;
     }
 }
 
@@ -62,6 +140,10 @@ body {
     @include calc-sub-two-values(width, 100%, 230px);
     margin-left: $main-nav-width;
     margin-top: 60px;
+    @media (max-width: $screen-sm-max) {
+        margin-top: 73px;
+        margin-left: 0;
+    }
 }
 
 .panel-widget-search {
@@ -103,6 +185,11 @@ body {
         padding: 5px 0;
         letter-spacing: 4px;
     }
+
+    @media (max-width: $screen-sm-max) {
+        top: 40px;
+        left: 0;
+    }
 }
 
 // Overlay
@@ -114,7 +201,7 @@ body {
 }
 
 .well-adjust-md {
-    @media (max-width: $screen-md-max) {
+    @media (max-width: $screen-sm-max) {
         padding:0;
     }
 }
@@ -124,30 +211,5 @@ body {
         width: 200px;
         margin-bottom: 20px;
         margin-top: 10px;
-    }
-}
-
-.account-menu {
-    float: right;
-    margin: 10px 0;
-    margin-right: 15px;
-    .btn-group.open .dropdown-toggle {
-        box-shadow: none;
-    }
-    .dropdown-toggle {
-        color: #fff;
-        a {
-            color: #fff;
-        }
-        &:hover {
-            color: #fff;
-        }
-    }
-    .dropdown-menu{
-        li{
-
-            padding: 10px 4px;
-        }
-
     }
 }

@@ -21,6 +21,7 @@
     <link href="@IOBALANCEV2LINKS.Content.kendo.kendo_material_min_css" rel="stylesheet" />
 
     @* Vendor *@
+    <link href="~/Content/assets-common/plugins/custom-scrollbar/jquery.mCustomScrollbar.min.css" rel="stylesheet" />
     <link rel="stylesheet" href="~/Content/assets/flaticons/flaticon.css?v=2">
     <link rel="stylesheet" href="~/Content/assets/css/main.css">
     @Styles.Render(IOBALANCEV2LINKS.Bundles.CSS.plugins)
@@ -32,7 +33,6 @@
     <script type="text/javascript" src="@IOBALANCEV2LINKS.Scripts.kendo.cultures.kendo_culture_en_PH_min_js"></script>
     <script type="text/javascript" src="@IOBALANCEV2LINKS.Scripts.infrastructure.infrastructure_min_js"></script>
     <script type="text/javascript" src="@IOBALANCEV2LINKS.Scripts.infrastructure.jquery_pl_kendo_resize_height_js"></script>
-    <script type="text/javascript" src="@IOBALANCEV2LINKS.Scripts.plugins.toastr_js"></script>
 </head>
 <body>
     <div class='loader-mask loader-body'>
@@ -49,15 +49,15 @@
     @if (Request.IsAuthenticated)
     {
         <aside class="main-nav">
+            <button type="button" class="navbar-toggle">
+                <i class="md md-lg md-menu"></i>
+            </button>
             <img class="main-logo" src="~/Content/assets-common/img/logo-sample.svg" />
             <div class="account-menu">
                 @Html.Partial(IOBALANCEMVCV2.Shared.Views._LoginPartial)
             </div>
-            <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#mainNavbar" aria-expanded="false" aria-controls="navbar">
-                <i class="md md-lg md-menu"></i>
-            </button>
 
-            <nav id="mainNavbar" class="navbar-collapse collapse">
+            <nav id="mainNavbar">
                 <ul class="nav nav-stacked">
                     <li><a href="@Url.Action(IOBALANCEMVCV2.Home.Index())">Dashboard</a></li>
                     <li>
@@ -92,15 +92,15 @@
                     <li><a href="@Url.Action(IOBALANCEMVCV2.OrderManagement.Inventory.BulkInventory())">Batch Inventory</a></li>
                     <li><a href="@Url.Action(IOBALANCEMVCV2.OrderManagement.SalesOrder.Index())">Sales</a></li>
 
-                  
+
 
                 </ul>
             </nav>
         </aside>
-        
-        
-        
-       
+
+
+
+
     }
 
 
@@ -113,10 +113,14 @@
             @RenderBody()
         </div>
     </main>
-    <script type="text/javascript" src="@IOBALANCEV2LINKS.Scripts.infrastructure.jquery_pl_alert_window_js"></script>
     @Scripts.Render("~/bundles/jqueryval")
     @RenderSection("scripts", required: false)
     @RenderSection("modals", required: false)
+    <script type="text/javascript" src="@IOBALANCEV2LINKS.Scripts.plugins.toastr_js"></script>
+    <script src="~/Content/assets-common/plugins/custom-scrollbar/jquery.mCustomScrollbar.min.js"></script>
+    <script type="text/javascript" src="@IOBALANCEV2LINKS.Scripts.infrastructure.jquery_pl_alert_window_js"></script>
+    <script src="~/Content/assets-common/plugins/velocity/velocity.min.js"></script>
+    <script src="~/Content/assets-common/plugins/velocity/velocity.ui.min.js"></script>
     <script src="~/Content/assets-common/js/bootstrap-add.min.js"></script>
 </body>
 </html>

@@ -1,17 +1,17 @@
 ﻿@if (Request.IsAuthenticated)
 {
 
-
     <div class="btn-group">
         <span class="dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-            Hi, @Html.ActionLink(User.Identity.Name, "Manage", "Account", routeValues: null, htmlAttributes: new { @class = "username", title = "Manage" }) <i class="md md-chevron-down"></i>
+            @*Hi, @Html.ActionLink(User.Identity.Name, "Manage", "Account", routeValues: null, htmlAttributes: new { @class = "username", title = "Manage" }) <i class="md md-caret-down"></i>*@
+            <i class="md md-account"></i> Hi, @Html.ActionLink(User.Identity.Name, "Manage", "Account", routeValues: null, htmlAttributes: new { @class = "username", title = "Manage" })    <i class="md md-caret-down"></i>
         </span>
         <ul class="dropdown-menu">
             <li>
                 @using (Html.BeginForm("LogOff", "Account", FormMethod.Post, new { id = "logoutForm" }))
                 {
                     @Html.AntiForgeryToken()
-                    <a href="javascript:document.getElementById('logoutForm').submit()">Log off</a>
+                    <a class="text-danger" href="javascript:document.getElementById('logoutForm').submit()"><i class="md md-power"></i> Log off</a>
                 }
             </li>
         </ul>
