@@ -472,6 +472,10 @@
     <Content Include="Content\assets-common\js\velocity.min.js" />
     <Content Include="Content\assets-common\js\velocity.ui.min.js" />
     <Content Include="Content\assets-common\plugins\custom-multiselect\custom-multi-select.css" />
+    <Content Include="Content\assets-common\plugins\custom-scrollbar\jquery.mCustomScrollbar.css" />
+    <Content Include="Content\assets-common\plugins\custom-scrollbar\jquery.mCustomScrollbar.js" />
+    <Content Include="Content\assets-common\plugins\custom-scrollbar\jquery.mCustomScrollbar.min.css" />
+    <Content Include="Content\assets-common\plugins\custom-scrollbar\jquery.mCustomScrollbar.min.js" />
     <Content Include="Content\assets-common\plugins\flipclock\flipclock.css" />
     <Content Include="Content\assets-common\plugins\flipclock\flipclock.js" />
     <Content Include="Content\assets-common\plugins\flipclock\flipclock.min.js" />
@@ -485,6 +489,8 @@
     <Content Include="Content\assets-common\plugins\owl-carousel\owl.theme.css" />
     <Content Include="Content\assets-common\plugins\owl-carousel\owl.transitions.css" />
     <Content Include="Content\assets-common\plugins\toastr.css" />
+    <Content Include="Content\assets-common\plugins\velocity\velocity.min.js" />
+    <Content Include="Content\assets-common\plugins\velocity\velocity.ui.min.js" />
     <Content Include="Content\assets\css\main.css" />
     <Content Include="Content\assets\css\main.min.css">
       <DependentUpon>main.css</DependentUpon>

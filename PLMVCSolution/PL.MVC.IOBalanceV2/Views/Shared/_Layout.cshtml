@@ -33,7 +33,7 @@
     <script type="text/javascript" src="@IOBALANCEV2LINKS.Scripts.kendo.cultures.kendo_culture_en_PH_min_js"></script>
     <script type="text/javascript" src="@IOBALANCEV2LINKS.Scripts.infrastructure.infrastructure_min_js"></script>
     <script type="text/javascript" src="@IOBALANCEV2LINKS.Scripts.infrastructure.jquery_pl_kendo_resize_height_js"></script>
-    
+    <script type="text/javascript" src="@IOBALANCEV2LINKS.Scripts.plugins.toastr_js"></script>
 </head>
 <body>
     <div class='loader-mask loader-body'>
@@ -58,7 +58,7 @@
                 @Html.Partial(IOBALANCEMVCV2.Shared.Views._LoginPartial)
             </div>
 
-            <nav id="mainNavbar" class="navbar-collapse collapse">
+            <nav id="mainNavbar">
                 <ul class="nav nav-stacked">
                     <li><a href="@Url.Action(IOBALANCEMVCV2.Home.Index())">Dashboard</a></li>
                     <li><a href="@Url.Action(IOBALANCEMVCV2.OrderManagement.Inventory.Index())">Inventory</a></li>
@@ -113,7 +113,6 @@
             @RenderBody()
         </div>
     </main>
-    <script type="text/javascript" src="@IOBALANCEV2LINKS.Scripts.infrastructure.jquery_pl_alert_window_js"></script>
     @Scripts.Render("~/bundles/jqueryval")
     @RenderSection("scripts", required: false)
     @RenderSection("modals", required: false)
