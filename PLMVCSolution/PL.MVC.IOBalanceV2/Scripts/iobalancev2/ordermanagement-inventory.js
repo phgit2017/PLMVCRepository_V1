@@ -24,7 +24,8 @@
 
     var _doSaveForm = function () {
         var $frm = $('#frmSave');
-
+        
+        $('.loader-mask').show();
         $.validator.unobtrusive.parse($frm);
         $frm.validate();
         if ($frm.valid()) {
@@ -33,26 +34,31 @@
                 type: 'POST',
                 data: $frm.serialize(),
                 success: function (data) {
+                    $('.loader-mask').hide();
+
                     if (data.isSuccess == true) {
                         _doSearchDetails();
                         _discardSaveForm();
+
+                        toastr.success(data.alertMessage);
+                    } else {
+                        toastr.error(data.alertMessage);
                     }
 
 
                 }
             });
         } else {
-
+            $('.loader-mask').hide();
+            toastr.error('System Error: please contact your system administrator');
         }
-
-
-
 
     }
 
     var _doUpdateForm = function () {
         var $frm = $('#frmEdit');
 
+        $('.loader-mask').show();
         $.validator.unobtrusive.parse($frm);
         $frm.validate();
         if ($frm.valid()) {
@@ -62,11 +68,14 @@
                 type: 'POST',
                 data: $frm.serialize(),
                 success: function (data) {
+                    $('.loader-mask').hide();
+
                     if (data.isSuccess == true) {
                         _doSearchDetails();
-
+                        toastr.success(data.alertMessage);
+                    } else {
+                        toastr.error(data.alertMessage);
                     }
-
 
                 }
             });
@@ -74,7 +83,8 @@
             $('#mdledit').modal('hide');
         }
         else {
-
+            $('.loader-mask').hide();
+            toastr.error('System Error: please contact your system administrator');
         }
 
 
@@ -87,30 +97,38 @@
         if (_variables.qtyType == "") {
             toastr.error('Please specify the Quantity type you want to do');
         } else {
+            $('.loader-mask').show();
+
             $.validator.unobtrusive.parse($frm);
             $frm.validate();
             if ($frm.valid()) {
-                debugger;
+
+                var disabled = $frm.find(':input:disabled').removeAttr('disabled');
                 var editQtyData = $frm.serialize() + '&qtyType=' + _variables.qtyType;
+                disabled.attr('disabled', 'disabled');
 
                 $.ajax({
                     url: _variables.params.updateQtyUrl,
                     type: 'POST',
                     data: editQtyData,
                     success: function (data) {
+                        $('.loader-mask').hide();
                         if (data.isSuccess == true) {
                             _doSearchDetails();
-
+                            toastr.success(data.alertMessage);
+                        } else {
+                            toastr.error(data.alertMessage);
                         }
-                        debugger;
-                        $('#divResultContainer').show().html(data.alertMessage);
+                        
+                        
                     }
                 });
 
                 $('#mdleditqty').modal('hide');
             }
             else {
-
+                $('.loader-mask').hide();
+                toastr.error('System Error: please contact your system administrator');
             }
         }
 

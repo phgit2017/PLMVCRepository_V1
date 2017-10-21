@@ -103,6 +103,7 @@ namespace PL.Business.Common
         public const string DuplicateItem = "System detect that you have duplicate {0}";
         public const string DuplicateItemInBranch = "System detect that you have duplicate {0} in particular branch";
         public const string ErrorOccuredDuringProcessing = "An error occured during the process. Please check the details, refresh the page, and try again.";
+        public const string ErrorOccuredDuringProcessingOrRequiredFields = "An error occured during the process. Please check the details or the required fields.";
         public const string ErrorOccuredDuringProcessingThis = "An error occured during the process {{0}}. Please check the details, refresh the page, and try again.";
         public const string ErrorOccuredDuringBatchProcessing = "An error occured during the batch process. Please check the details, refresh the page, and try again.";
         public const string ExcelUploadedEmpty = "Excel uploaded is empty";

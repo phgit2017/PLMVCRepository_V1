@@ -21,6 +21,8 @@ namespace PL.Business.Dto.IOBalanceV2
     {
         public long ProductId { get; set; }
 
+        [Required]
+        [Display(Name = "Category")]
         public int CategoryId { get; set; }
 
         public string CategoryName { get; set; }
@@ -30,25 +32,31 @@ namespace PL.Business.Dto.IOBalanceV2
         public string UnitName { get; set; }
 
         [Required]
-        [StringLength(100)]
+        [Display(Name = "Product Code")]
+        [StringLength(100, ErrorMessage = "Up to 100 characters only.")]
         public string ProductCode { get; set; }
 
-        [StringLength(255)]
+        [Display(Name = "Product Name")]
+        [StringLength(255, ErrorMessage = "Up to 255 characters only.")]
         public string ProductName { get; set; }
 
-        [StringLength(255)]
+        [Display(Name = "Product Description")]
+        [StringLength(255, ErrorMessage = "Up to 255 characters only.")]
         public string ProductDescription { get; set; }
 
-        [StringLength(20)]
+        [Display(Name = "Product Size")]
+        [StringLength(20, ErrorMessage = "Up to 20 characters only.")]
         public string ProductSize { get; set; }
 
-        [StringLength(50)]
+        [Display(Name = "Current Number")]
+        [StringLength(50, ErrorMessage = "Up to 50 characters only.")]
         public string CurrentNum { get; set; }
 
-        [StringLength(200)]
+        [StringLength(200, ErrorMessage = "Up to 200 characters only.")]
         public string DRNum { get; set; }
 
-        [StringLength(20)]
+        [Display(Name = "Carton Number")]
+        [StringLength(20, ErrorMessage = "Up to 20 characters only.")]
         public string CartonNum { get; set; }
 
         public string ProductDropDownDisplay
@@ -79,6 +87,8 @@ namespace PL.Business.Dto.IOBalanceV2
 
         public long ProductId { get; set; }
 
+        [Required]
+        [Display(Name = "Category")]
         public int CategoryId { get; set; }
 
         public string CategoryName { get; set; }
@@ -88,28 +98,34 @@ namespace PL.Business.Dto.IOBalanceV2
         public string UnitName { get; set; }
 
         [Required]
-        [StringLength(100)]
+        [Display(Name = "Product Code")]
+        [StringLength(100, ErrorMessage = "Up to 100 characters only.")]
         public string ProductCode { get; set; }
 
-        [StringLength(255)]
+        [Display(Name = "Product Name")]
+        [StringLength(255, ErrorMessage = "Up to 255 characters only.")]
         public string ProductName { get; set; }
 
-        [StringLength(255)]
+        [Display(Name = "Product Description")]
+        [StringLength(255, ErrorMessage = "Up to 255 characters only.")]
         public string ProductDescription { get; set; }
 
-        [StringLength(20)]
+        [Display(Name = "Product Size")]
+        [StringLength(20, ErrorMessage = "Up to 20 characters only.")]
         public string ProductSize { get; set; }
 
-        [StringLength(50)]
+        [Display(Name = "Current Number")]
+        [StringLength(50, ErrorMessage = "Up to 50 characters only.")]
         public string CurrentNum { get; set; }
 
-        [StringLength(200)]
+        [StringLength(200, ErrorMessage = "Up to 200 characters only.")]
         public string DRNum { get; set; }
 
-        [StringLength(20)]
+        [Display(Name = "Carton Number")]
+        [StringLength(20, ErrorMessage = "Up to 20 characters only.")]
         public string CartonNum { get; set; }
 
-
+        [Display(Name = "Quantity")]
         public decimal? Quantity { get; set; }
     }
 

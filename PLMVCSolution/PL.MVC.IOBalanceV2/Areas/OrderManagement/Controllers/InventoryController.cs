@@ -27,6 +27,7 @@ using OfficeOpenXml;
 using System.Data;
 using System.IO;
 using System.Web.Script.Serialization;
+using WebMatrix.WebData;
 
 namespace PL.MVC.IOBalanceV2.Areas.OrderManagement.Controllers
 {
@@ -60,43 +61,51 @@ namespace PL.MVC.IOBalanceV2.Areas.OrderManagement.Controllers
             if (ModelState.IsValid)
             {
                 dto.ProductId = 0;
-                //dto.DateCreated = DateTime.Now;
-                //dto.CreatedBy = 1;
-                //dto.IsActive = true;
-                var retProductId = _inventoryService.SaveDetails(dto);
+                var duplicate = _inventoryService.GetAll().Where(c => c.ProductCode == dto.ProductCode).Count();
 
-                if (retProductId > 0)
+                if (duplicate >= 1)
                 {
-                    OrderDto orders = new OrderDto() { OrderId = 0, DateCreated = DateTime.Now, CreatedBy = 1 };
-                    var retPurchaseOrderId = _orderService.SaveOrder(orders);
-                    if (retPurchaseOrderId > 0)
-                    {
-                        OrderDetailDto orderDetails = new OrderDetailDto()
-                        {
-                            OrderDetailId = 0,
-                            OrderId = retPurchaseOrderId,
-                            ProductId = retProductId,
-                            Quantity = Convert.ToDecimal(dto.Quantity),
-                            SupplierId = dto.SupplierId
-                        };
-
-                        if (_orderService.SaveOrderDetail(orderDetails))
-                        {
-                            isSuccess = true;
-                        }
-                    }
+                    alertMessage = string.Format(Messages.DuplicateItem, "Product");
                 }
                 else
                 {
-                    Danger(string.Format(Messages.ErrorOccuredDuringProcessing, "saving details of product"));
+                    var retProductId = _inventoryService.SaveDetails(dto);
+
+                    if (retProductId > 0)
+                    {
+                        OrderDto orders = new OrderDto() { OrderId = 0, DateCreated = DateTime.Now, CreatedBy = 1 };
+                        var retPurchaseOrderId = _orderService.SaveOrder(orders);
+                        if (retPurchaseOrderId > 0)
+                        {
+                            OrderDetailDto orderDetails = new OrderDetailDto()
+                            {
+                                OrderDetailId = 0,
+                                OrderId = retPurchaseOrderId,
+                                ProductId = retProductId,
+                                Quantity = Convert.ToDecimal(dto.Quantity),
+                                SupplierId = dto.SupplierId
+                            };
+
+                            if (_orderService.SaveOrderDetail(orderDetails))
+                            {
+                                isSuccess = true;
+                                alertMessage = Messages.InsertSuccess;
+                            }
+                        }
+                    }
+                    else
+                    {
+                        alertMessage = string.Format(Messages.ErrorOccuredDuringProcessingThis, "saving details of product");
+                    }
                 }
+
             }
             else
             {
-                Danger(string.Format(Messages.ErrorOccuredDuringProcessing, "saving models of product"));
+                alertMessage = Messages.ErrorOccuredDuringProcessingOrRequiredFields;
             }
 
-            alertMessage = this.RenderRazorViewToString(IOBALANCEMVCV2.Shared.Views._Alerts, string.Empty);
+
             var jsonResult = new
             {
                 isSuccess = isSuccess,
@@ -115,35 +124,52 @@ namespace PL.MVC.IOBalanceV2.Areas.OrderManagement.Controllers
 
             if (ModelState.IsValid)
             {
-                ProductDto newDetails = new ProductDto()
-                {
-                    ProductId = dto.ProductId,
-                    CategoryId = dto.CategoryId,
-                    QuantityUnitId = dto.QuantityUnitId,
-                    ProductCode = dto.ProductCode,
-                    ProductName = dto.ProductName,
-                    ProductDescription = dto.ProductDescription,
-                    ProductSize = dto.ProductSize,
-                    CurrentNum = dto.CurrentNum,
-                    DRNum = dto.DRNum,
-                    CartonNum = dto.CartonNum,
-                    Quantity = dto.Quantity
-                };
-                //dto.DateUpdated = DateTime.Now;
-                //dto.UpdatedBy = 1;
-                isSuccess = _inventoryService.UpdateDetails(newDetails);
-            }
 
-            if (!isSuccess)
-            {
-                Danger(Messages.ErrorOccuredDuringProcessing);
+
+                var duplicate = _inventoryService.GetAll().Where(i => i.ProductCode == dto.ProductCode && i.ProductId != dto.ProductId).Count();
+
+                if (duplicate >= 1)
+                {
+                    alertMessage = string.Format(Messages.DuplicateItem, "Product");
+                }
+                else
+                {
+                    ProductDto newDetails = new ProductDto()
+                    {
+                        ProductId = dto.ProductId,
+                        CategoryId = dto.CategoryId,
+                        QuantityUnitId = dto.QuantityUnitId,
+                        ProductCode = dto.ProductCode,
+                        ProductName = dto.ProductName,
+                        ProductDescription = dto.ProductDescription,
+                        ProductSize = dto.ProductSize,
+                        CurrentNum = dto.CurrentNum,
+                        DRNum = dto.DRNum,
+                        CartonNum = dto.CartonNum,
+                        Quantity = dto.Quantity
+                    };
+
+
+                    isSuccess = _inventoryService.UpdateDetails(newDetails);
+
+                    if (!isSuccess)
+                    {
+                        alertMessage = string.Format(Messages.ErrorOccuredDuringProcessingThis, "updating in product");
+                    }
+                    else
+                    {
+                        alertMessage = Messages.UpdateSuccess;
+                    }
+
+                }
+
             }
             else
             {
-                Success(Messages.UpdateSuccess);
+                alertMessage = Messages.ErrorOccuredDuringProcessingOrRequiredFields;
             }
 
-            alertMessage = this.RenderRazorViewToString(IOBALANCEMVCV2.Shared.Views._Alerts, string.Empty);
+
             var jsonResult = new
             {
                 isSuccess = isSuccess,
@@ -159,6 +185,7 @@ namespace PL.MVC.IOBalanceV2.Areas.OrderManagement.Controllers
             bool isSuccess = false;
             string alertMessage = string.Empty;
             decimal? qtyBefore = dto.EditQuantity;
+            int? createdBy = WebSecurity.GetUserId(User.Identity.Name);
 
             if (ModelState.IsValid)
             {
@@ -191,14 +218,12 @@ namespace PL.MVC.IOBalanceV2.Areas.OrderManagement.Controllers
                         CartonNum = dto.CartonNum,
                         Quantity = dto.EditQuantity
                     };
-                    //dto.DateUpdated = DateTime.Now;
-                    //dto.UpdatedBy = 1;
 
                     if (qtyType.ToLower() == "minus")
                     {
                         SalesOrderDto orderDto = new SalesOrderDto()
                         {
-                            CreatedBy = 1,
+                            CreatedBy = createdBy,
                             DateCreated = DateTime.Now,
                             SalesNo = "PL" + Constants.SalesTemplate,
                             CustomerId = 0,
@@ -223,25 +248,34 @@ namespace PL.MVC.IOBalanceV2.Areas.OrderManagement.Controllers
                                 Quantity = (decimal)qtyBefore,
                                 UnitPrice = 0,
                                 DateCreated = DateTime.Now,
-                                CreatedBy = 1
+                                CreatedBy = createdBy
                             };
                             isSuccess = _orderService.SaveSalesOrderDetail(orderDetailDto);
 
 
                             if (!isSuccess)
                             {
-                                Danger(string.Format(Messages.ErrorOccuredDuringProcessingThis, "saving in sales order details"));
+                                alertMessage = string.Format(Messages.ErrorOccuredDuringProcessingThis, "saving in sales order details");
                             }
                             else
                             {
                                 isSuccess = _inventoryService.UpdateDetails(newDetails);
+
+                                if (!isSuccess)
+                                {
+                                    alertMessage = string.Format(Messages.ErrorOccuredDuringProcessingThis, "updating in product");
+                                }
+                                else
+                                {
+                                    alertMessage = Messages.UpdateSuccess;
+                                }
                             }
 
                         }
                     }
                     else
                     {
-                        OrderDto orders = new OrderDto() { OrderId = 0, DateCreated = DateTime.Now, CreatedBy = 1 };
+                        OrderDto orders = new OrderDto() { OrderId = 0, DateCreated = DateTime.Now, CreatedBy = createdBy };
                         var retPurchaseOrderId = _orderService.SaveOrder(orders);
                         if (retPurchaseOrderId == 0)
                         {
@@ -261,22 +295,24 @@ namespace PL.MVC.IOBalanceV2.Areas.OrderManagement.Controllers
 
                             if (!_orderService.SaveOrderDetail(orderDetails))
                             {
-                                Danger(string.Format(Messages.ErrorOccuredDuringProcessingThis, "saving in purchase order details"));
+                                alertMessage = (string.Format(Messages.ErrorOccuredDuringProcessingThis, "saving in purchase order details"));
                             }
                             else
                             {
                                 isSuccess = _inventoryService.UpdateDetails(newDetails);
+
+                                if (!isSuccess)
+                                {
+                                    alertMessage = string.Format(Messages.ErrorOccuredDuringProcessingThis, "updating in product");
+                                }
+                                else
+                                {
+                                    alertMessage = Messages.UpdateSuccess;
+                                }
                             }
                         }
                     }
                 }
-            }
-
-
-            if (isSuccess)
-            {
-                //_inventoryService.UpdateDetails(newDetails);
-                Success(Messages.UpdateSuccess);
             }
 
             var jsonResult = new
@@ -540,7 +576,7 @@ namespace PL.MVC.IOBalanceV2.Areas.OrderManagement.Controllers
 
             if (!searchModel.HasAnyValue())
             {
-                list = _inventoryService.GetAll();
+                list = _inventoryService.GetAll().OrderByDescending(i => i.ProductId);
             }
             else
             {
@@ -590,7 +626,7 @@ namespace PL.MVC.IOBalanceV2.Areas.OrderManagement.Controllers
 
 
 
-                list = _inventoryService.GetAll().AsExpandable().Where(predicate);
+                list = _inventoryService.GetAll().AsExpandable().Where(predicate).OrderByDescending(i => i.ProductId);
 
             }
 
