@@ -11,15 +11,15 @@
                 .Width(100)
                 .HeaderHtmlAttributes(new { @class = "bos-grid-text-center" })
                 .HtmlAttributes(new { @class = "bos-grid-text-center" });
-            columns.Bound(c => c.UnitName).Title("Unit Name").Width(180).Sortable(true).Lockable(true);
+            columns.Bound(c => c.UnitName).Title("Unit Name").Width(180);
         })
         .Scrollable()
         .Sortable(sort => sort.AllowUnsort(false))
         .Pageable()
-        .ColumnMenu()
         .DataSource(dataSource => dataSource
             .Ajax()
             .Read(read => read.Action("GetDetails", "QuantityUnit"))
             .PageSize(50)
+            .Sort(u => u.Add("QuantityUnitID").Descending())
         )
 )

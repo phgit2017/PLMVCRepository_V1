@@ -65,25 +65,29 @@ namespace PL.MVC.IOBalanceV2.Areas.AdminManagement.Controllers
 
                 if (duplicate >= 1)
                 {
-                    Danger(string.Format(Messages.DuplicateItem, "Category"));
+                    alertMessage = (string.Format(Messages.DuplicateItem, "Category"));
                 }
                 else
                 {
                     if (!this._categoryService.SaveDetails(dto))
                     {
-                        Danger(Messages.ErrorOccuredDuringProcessing);
+                        alertMessage = string.Format(Messages.ErrorOccuredDuringProcessingThis, "saving in category");
                     }
                     else
                     {
                         isSuccess = true;
-                        Success(Messages.InsertSuccess);
+                        alertMessage = (Messages.InsertSuccess);
                     }
                 }
 
-                
+
+            }
+            else
+            {
+                alertMessage = Messages.ErrorOccuredDuringProcessingOrRequiredFields;
             }
 
-            alertMessage = this.RenderRazorViewToString(IOBALANCEMVCV2.Shared.Views._Alerts, string.Empty);
+            
             var jsonResult = new
             {
                 isSuccess = isSuccess,
@@ -106,23 +110,27 @@ namespace PL.MVC.IOBalanceV2.Areas.AdminManagement.Controllers
 
                 if (duplicate >= 1)
                 {
-                    Danger(string.Format(Messages.DuplicateItem, "Category"));
+                    alertMessage = (string.Format(Messages.DuplicateItem, "Category"));
                 }
                 else
                 {
                     if (!this._categoryService.UpdateDetails(dto))
                     {
-                        Danger(Messages.ErrorOccuredDuringProcessing);
+                        alertMessage = string.Format(Messages.ErrorOccuredDuringProcessingThis, "updating in category");
                     }
                     else
                     {
                         isSuccess = true;
-                        Success(Messages.UpdateSuccess);
+                        alertMessage = (Messages.UpdateSuccess);
                     }
                 }
             }
+            else
+            {
+                alertMessage = Messages.ErrorOccuredDuringProcessingOrRequiredFields;
+            }
 
-            alertMessage = this.RenderRazorViewToString(IOBALANCEMVCV2.Shared.Views._Alerts, string.Empty);
+            
             var jsonResult = new
             {
                 isSuccess = isSuccess,

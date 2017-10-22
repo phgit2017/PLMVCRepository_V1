@@ -18,7 +18,7 @@
     var _doAddOrderInGrid = function () {
         var grid = $("#gvSalesOderList").data("kendoGrid");
         var salesNo = "", product = "", errMsg = "";
-        var productId, originalPrice, price, quantity = 0, errCnt = 0;
+        var productId, originalPrice, price, quantity = 0, gridItemsCnt = 0, errCnt = 0;
 
 
 
@@ -34,10 +34,18 @@
             errCnt++;
         }
         else if (quantity == "" || quantity == 0) {
-            if (errMsg == 0) {
+            if (errCnt == 0) {
                 errMsg += "quantity should be not 0";
             } else {
                 errMsg += "<br/>quantity should be not 0";
+            }
+
+            errCnt++;
+        } else if (originalPrice == "") {
+            if (errCnt == 0) {
+                errMsg += "price should be not blank";
+            } else {
+                errMsg += "<br/>price should be not blank";
             }
 
             errCnt++;
@@ -56,10 +64,11 @@
                     if (gridProductId == productId) {
                         isSameProductId = true;
                     }
+                    gridItemsCnt++;
                 });
 
                 if (isSameProductId) {
-                    if (errMsg == 0) {
+                    if (errCnt == 0) {
                         errMsg += "product was already added in list";
                     } else {
                         errMsg += "<br/>product was already added in list";
@@ -67,10 +76,20 @@
 
                     errCnt++;
                 }
+                
+                if (gridItemsCnt >= 16) {
+                    if (errCnt == 0) {
+                        errMsg += "product list is at maximum numbers in receipt";
+                    } else {
+                        errMsg += "<br/>product list is at maximum numbers in receipt";
+                    }
+
+                    errCnt++;
+                }
             }
 
         }
-
+        
         if (errCnt >= 1) {
             toastr.error(errMsg);
         } else {
@@ -139,7 +158,7 @@
                         _doGetSalesNum();
                         _doClearAll();
                         doComputeTotalAndCount();
-                        
+
                         window.open(_variables.params.exportUrl + '?salesOrderId=' + data.salesOrderId + '&salesNo=' + data.salesNo + '&customerId=' + data.customerId);
                     }
 
@@ -201,7 +220,7 @@
                 }
             });
         }
-        
+
 
 
     }
@@ -317,7 +336,8 @@
 
             $('#frmEditOrderList #EditQuantity').val($this.data('orderlist-quantity'));
             $('#frmEditOrderList #EditPrice').val($this.data('orderlist-unitprice'));
-            $('#frmEditOrderList #EditProductName').val($this.data('orderlist-productname'));
+            $('#mdleditorderlist #EditProductName').html('Product: ' + $this.data('orderlist-productname'));
+            
 
             //$('#EditBranchID').data('kendoDropDownList').value($this.data('discount-branchid'));
         });
@@ -350,36 +370,73 @@
         $('body').on('click', '#btnEditOrderList', function () {
             var grid = $("#gvSalesOderList").data("kendoGrid");
             var caller = $('[data-edit-selected="true"].selected');
+            var $frm = $('#frmEditOrderList');
+
+            $.validator.unobtrusive.parse($frm);
+            $frm.validate();
+            if ($frm.valid()) {
 
 
-            var dataItems = grid.dataSource._data;
-            var editedQty = 0, editedPrice = 0, salesPrice = 0;
-            var productIdSelected = caller.data('orderlist-productid');
+                var dataItems = grid.dataSource._data;
+                var editedQty = 0, editedPrice = 0, salesPrice = 0, errCnt = 0;
+                var errMsg = "";
+                var productIdSelected = caller.data('orderlist-productid');
 
-            editedQty = $('#frmEditOrderList #EditQuantity').val();
-            editedPrice = $('#frmEditOrderList #EditPrice').val();
-            salesPrice = editedPrice * editedQty;
+                editedQty = $('#frmEditOrderList #EditQuantity').val();
+                editedPrice = $('#frmEditOrderList #EditPrice').val();
+                salesPrice = editedPrice * editedQty;
 
-            $.each(dataItems, function () {
-                var gridDataItem = $(this)[0];
-                var gridProductId;
+                if (editedQty == "" || editedQty == 0) {
+                    if (errMsg == 0) {
+                        errMsg += "quantity should be not 0";
+                    } else {
+                        errMsg += "<br/>quantity should be not 0";
+                    }
 
+                    errCnt++;
+                } else if (editedPrice == "") {
+                    if (errMsg == 0) {
+                        errMsg += "price should be not blank";
+                    } else {
+                        errMsg += "<br/>price should be not blank";
+                    }
 
-                gridProductId = gridDataItem.ProductId;
-
-
-                if (gridProductId == productIdSelected) {
-
-                    gridDataItem.Quantity = editedQty;
-                    gridDataItem.SalesPrice = salesPrice.toFixed(2);
-                    gridDataItem.UnitPrice = editedPrice;
+                    errCnt++;
                 }
 
+                if (errCnt >= 1) {
+                    toastr.error(errMsg);
+                } else {
+                    $.each(dataItems, function () {
+                        var gridDataItem = $(this)[0];
+                        var gridProductId;
 
-            });
-            grid.refresh();
-            $('#mdleditorderlist').modal('hide');
-            INFRA.doRemoveOpenedModal();
+
+                        gridProductId = gridDataItem.ProductId;
+
+
+                        if (gridProductId == productIdSelected) {
+
+                            gridDataItem.Quantity = editedQty;
+                            gridDataItem.SalesPrice = salesPrice.toFixed(2);
+                            gridDataItem.UnitPrice = editedPrice;
+                        }
+
+
+                    });
+                    grid.refresh();
+                    $('#mdleditorderlist').modal('hide');
+                    INFRA.doRemoveOpenedModal();
+                }
+
+            } else {
+                $('.loader-mask').hide();
+                toastr.error('An error occured during the process. Please check the details or the required fields.');
+            }
+
+            
+            
+
         });
 
     }
@@ -443,7 +500,7 @@
         _variables.qtyType = "";
         _doGetSalesNum();
         doComputeTotalAndCount();
-        
+
     }
 
     return {

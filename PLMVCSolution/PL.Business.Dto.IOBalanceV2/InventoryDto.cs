@@ -77,6 +77,7 @@ namespace PL.Business.Dto.IOBalanceV2
 
         [Required]
         [Display(Name = "Quantity")]
+        [Range(0, 9999999999999999.99, ErrorMessage = "Invalid Quantity; Max 18 digits")]
         public decimal? Quantity { get; set; }
 
         public int? SupplierId { get; set; }
@@ -126,6 +127,7 @@ namespace PL.Business.Dto.IOBalanceV2
         public string CartonNum { get; set; }
 
         [Display(Name = "Quantity")]
+        [Range(0, 9999999999999999.99, ErrorMessage = "Invalid Quantity; Max 18 digits")]
         public decimal? Quantity { get; set; }
     }
 
@@ -138,6 +140,7 @@ namespace PL.Business.Dto.IOBalanceV2
 
         [Required]
         [Display(Name = "Quantity")]
+        [Range(0, 9999999999999999.99, ErrorMessage = "Invalid Quantity; Max 18 digits")]
         public decimal? EditQuantity { get; set; }
 
         [Display(Name = "Supplier")]

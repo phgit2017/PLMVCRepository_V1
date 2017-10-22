@@ -23,6 +23,7 @@ using Kendo.Mvc.Extensions;
 using PL.MVC.IOBalanceV2.Controllers;
 using PL.MVC.IOBalanceV2.Areas.AdminManagement.Models;
 using LinqKit;
+using WebMatrix.WebData;
 
 namespace PL.MVC.IOBalanceV2.Areas.AdminManagement.Controllers
 {
@@ -56,35 +57,34 @@ namespace PL.MVC.IOBalanceV2.Areas.AdminManagement.Controllers
             bool isSuccess = false;
             string alertMessage = string.Empty;
 
-
-            var duplicate = _supplierService.GetAll().Where(c => c.SupplierCode == dto.SupplierCode).Count();
-
-            if (duplicate >= 1)
+            if (ModelState.IsValid)
             {
-                Danger(string.Format(Messages.DuplicateItem, "Supplier"));
-            }
-            else
-            {
+                var duplicate = _supplierService.GetAll().Where(c => c.SupplierCode == dto.SupplierCode).Count();
 
-                if (ModelState.IsValid)
+                if (duplicate >= 1)
                 {
-                    dto.SupplierId = 0;
-                    dto.DateCreated = DateTime.Now;
-                    dto.CreatedBy = 1;
-                    isSuccess = this._supplierService.SaveDetails(dto);
-                }
-
-                if (!isSuccess)
-                {
-                    Danger(Messages.ErrorOccuredDuringProcessing);
+                    alertMessage = (string.Format(Messages.DuplicateItem, "Supplier"));
                 }
                 else
                 {
-                    Success(Messages.InsertSuccess);
+                    dto.SupplierId = 0;
+                    dto.DateCreated = DateTime.Now;
+                    dto.CreatedBy = WebSecurity.GetUserId(User.Identity.Name);
+                    isSuccess = this._supplierService.SaveDetails(dto);
+                    if (!isSuccess)
+                    {
+                        alertMessage = string.Format(Messages.ErrorOccuredDuringProcessingThis, "saving in supplier");
+                    }
+                    else
+                    {
+                        alertMessage = (Messages.InsertSuccess);
+                    }
                 }
             }
-
-            alertMessage = this.RenderRazorViewToString(IOBALANCEMVCV2.Shared.Views._Alerts, string.Empty);
+            else
+            {
+                alertMessage = Messages.ErrorOccuredDuringProcessingOrRequiredFields;
+            }
 
             var jsonResult = new
             {
@@ -101,35 +101,34 @@ namespace PL.MVC.IOBalanceV2.Areas.AdminManagement.Controllers
             bool isSuccess = false;
             string alertMessage = string.Empty;
 
-
-            var duplicate = _supplierService.GetAll().Where(c => c.SupplierCode == dto.SupplierCode && c.SupplierId != dto.SupplierId).Count();
-
-            if (duplicate >= 1)
+            if (ModelState.IsValid)
             {
-                Danger(string.Format(Messages.DuplicateItem, "Supplier"));
-            }
-            else
-            {
+                var duplicate = _supplierService.GetAll().Where(c => c.SupplierCode == dto.SupplierCode && c.SupplierId != dto.SupplierId).Count();
 
-                if (ModelState.IsValid)
+                if (duplicate >= 1)
                 {
-                    dto.DateUpdated = DateTime.Now;
-                    dto.UpdatedBy = 1;
-                    isSuccess = this._supplierService.UpdateDetails(dto);
-                }
-
-                if (!isSuccess)
-                {
-                    Danger(Messages.ErrorOccuredDuringProcessing);
+                    alertMessage = (string.Format(Messages.DuplicateItem, "Supplier"));
                 }
                 else
                 {
-                    Success(Messages.UpdateSuccess);
+                    dto.DateUpdated = DateTime.Now;
+                    dto.UpdatedBy = WebSecurity.GetUserId(User.Identity.Name);
+                    isSuccess = this._supplierService.UpdateDetails(dto);
+
+                    if (!isSuccess)
+                    {
+                        alertMessage = string.Format(Messages.ErrorOccuredDuringProcessingThis, "updating in supplier");
+                    }
+                    else
+                    {
+                        alertMessage = (Messages.UpdateSuccess);
+                    }
                 }
             }
-
-            alertMessage = this.RenderRazorViewToString(IOBALANCEMVCV2.Shared.Views._Alerts, string.Empty);
-
+            else
+            {
+                alertMessage = Messages.ErrorOccuredDuringProcessingOrRequiredFields;
+            }
 
             var jsonResult = new
             {

@@ -1640,6 +1640,7 @@
     <Content Include="Views\Home\_DetailsSalesOrderDetail.cshtml" />
     <Content Include="Views\Home\_EditOrderList.cshtml" />
     <Content Include="Views\Shared\_UnauthorizedAccess.cshtml" />
+    <Content Include="Views\Shared\_LoginLayout.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

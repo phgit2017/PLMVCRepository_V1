@@ -1,0 +1,68 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8" />
+    <title> IO Balance ver.2</title>
+    <link href="~/favicon.ico" rel="shortcut icon" type="image/x-icon" />
+    <meta name="viewport" content="width=device-width" />
+
+    @* Core *@
+
+    <link rel="stylesheet" href="~/Content/assets-common/css/bootstrap.min.css" />
+    <link rel="stylesheet" href="~/Content/assets-common/css/animate.min.css">
+    <link rel="stylesheet" href="~/Content/assets-common/fonts/fontface.min.css">
+    <link rel="stylesheet" href="~/Content/assets-common/fonts/emoticons/emoticons.min.css" />
+
+
+    @*<link href="@IOBALANCEV2LINKS.Content.kendo.kendo_common_bootstrap_min_css" rel="stylesheet" />
+        <link href="@IOBALANCEV2LINKS.Content.kendo.kendo_bootstrap_min_css" rel="stylesheet" />*@
+
+    <link href="@IOBALANCEV2LINKS.Content.kendo.kendo_common_material_min_css" rel="stylesheet" />
+    <link href="@IOBALANCEV2LINKS.Content.kendo.kendo_material_min_css" rel="stylesheet" />
+
+    @* Vendor *@
+    <link href="~/Content/assets-common/plugins/custom-scrollbar/jquery.mCustomScrollbar.min.css" rel="stylesheet" />
+    <link rel="stylesheet" href="~/Content/assets/flaticons/flaticon.css?v=2">
+    <link rel="stylesheet" href="~/Content/assets/css/main.css">
+    @Styles.Render(IOBALANCEV2LINKS.Bundles.CSS.plugins)
+
+    <script src="~/Scripts/jquery-1.11.2.min.js"></script>
+    <script type="text/javascript" src="@IOBALANCEV2LINKS.Scripts.bootstrap_min_js"></script>
+    <script type="text/javascript" src="@IOBALANCEV2LINKS.Scripts.kendo.kendo_all_min_js"></script>
+    <script type="text/javascript" src="@IOBALANCEV2LINKS.Scripts.kendo.kendo_aspnetmvc_min_js"></script>
+    <script type="text/javascript" src="@IOBALANCEV2LINKS.Scripts.kendo.cultures.kendo_culture_en_PH_min_js"></script>
+    <script type="text/javascript" src="@IOBALANCEV2LINKS.Scripts.infrastructure.infrastructure_min_js"></script>
+    <script type="text/javascript" src="@IOBALANCEV2LINKS.Scripts.infrastructure.jquery_pl_kendo_resize_height_js"></script>
+    <script type="text/javascript" src="@IOBALANCEV2LINKS.Scripts.plugins.toastr_js"></script>
+</head>
+<body>
+    <div class='loader-mask loader-body'>
+        <div class='loader-container'>
+            <div class='loader-cell'>
+                <div class='spinner-dots'>
+                    <div></div><div></div><div></div>
+                </div>
+                <span class='loader-message'>Please wait while the data is loading</span>
+            </div>
+        </div>
+    </div>
+
+
+
+    <main class="main-content">
+
+        <div class="container-fluid">
+            @RenderBody()
+        </div>
+    </main>
+    @Scripts.Render("~/bundles/jqueryval")
+    @RenderSection("scripts", required: false)
+    @RenderSection("modals", required: false)
+    <script type="text/javascript" src="@IOBALANCEV2LINKS.Scripts.plugins.toastr_js"></script>
+    <script src="~/Content/assets-common/plugins/custom-scrollbar/jquery.mCustomScrollbar.min.js"></script>
+    <script type="text/javascript" src="@IOBALANCEV2LINKS.Scripts.infrastructure.jquery_pl_alert_window_js"></script>
+    <script src="~/Content/assets-common/plugins/velocity/velocity.min.js"></script>
+    <script src="~/Content/assets-common/plugins/velocity/velocity.ui.min.js"></script>
+    <script src="~/Content/assets-common/js/bootstrap-add.min.js"></script>
+</body>
+</html>

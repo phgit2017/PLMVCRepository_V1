@@ -11,18 +11,18 @@
                 .Width(250)
                 .HeaderHtmlAttributes(new { @class = "bos-grid-text-center" })
                 .HtmlAttributes(new { @class = "bos-grid-text-center" });
-            columns.Bound(c => c.CustomerCode).Title("Customer Code").Width(180).Sortable(true).Lockable(true);
-            columns.Bound(c => c.CustomerName).Title("Customer Name").Width(300).Sortable(false).Lockable(true);
-            columns.Bound(c => c.CustomerAddress).Title("Address").Width(300).Sortable(true).Lockable(true);
-            columns.Bound(c => c.IsActive).Title("Active?").Width(180).Sortable(true).Lockable(true);
+            columns.Bound(c => c.CustomerCode).Title("Customer Code").Width(180);
+            columns.Bound(c => c.CustomerName).Title("Customer Name").Width(300);
+            columns.Bound(c => c.CustomerAddress).Title("Address").Width(300);
+            columns.Bound(c => c.IsActive).Title("Active?").Width(180);
         })
         .Scrollable()
         .Sortable(sort => sort.AllowUnsort(false))
         .Pageable()
-        .ColumnMenu()
         .DataSource(dataSource => dataSource
             .Ajax()
             .Read(read => read.Action("GetDetails", "Customer"))
             .PageSize(50)
+                .Sort(s => s.Add("CustomerId").Descending())
         )
 )

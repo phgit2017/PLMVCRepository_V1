@@ -1,25 +1,43 @@
-﻿
+﻿@model PL.Business.Dto.IOBalanceV2.SalesOrderDetailEditDto
 
 <div class="modal fade" id="mdleditorderlist" tabindex="-1" role="dialog" aria-labelledby="mdleditorderlist" aria-hidden="true">
     <div class="modal-dialog modal-lg">
         <div class="modal-header text-center">
             <h4 class="modal-title">Edit Sales order</h4>
-            <small id="EditProductName"></small>
+            <span id="EditProductName"></span>
         </div>
 
         <div class="modal-content">
             <div class="modal-body">
                 <form class="form-horizontal" id="frmEditOrderList">
                     <div class="form-group">
-                        <label for="" class="control-label col-sm-3">Quantity</label>
+                        <label for="" class="control-label col-sm-3 required">Quantity</label>
                         <div class="control-input col-sm-8">
-                            <input type="number" class="form-control" id="EditQuantity" />
+                            @*<input type="number" class="form-control" id="EditQuantity" maxlength="16" />
+                                <span class="error">Field is required, Max 18 digits</span>*@
+                            @Html.TextBoxFor(m => m.Quantity,
+                            new
+                            {
+                                @class = "form-control",
+                                @id = "EditQuantity",
+                                @type = "number"
+                            })
+                            @Html.ValidationMessageFor(m => m.Quantity, "", new { @class = "error" })
                         </div>
                     </div>
                     <div class="form-group">
-                        <label for="" class="control-label col-sm-3">Price</label>
+                        <label for="" class="control-label col-sm-3 required">Price</label>
                         <div class="control-input col-sm-8">
-                            <input type="number" id="EditPrice" class="form-control" />
+                            @*<input type="number" id="EditPrice" class="form-control" maxlength="16" />
+                                <span class="error">Field is required, Max 18 digits</span>*@
+                            @Html.TextBoxFor(m => m.SalesPrice,
+                            new
+                            {
+                                @class = "form-control",
+                                @id = "EditPrice",
+                                @type = "number"
+                            })
+                            @Html.ValidationMessageFor(m => m.SalesPrice, "", new { @class = "error" })
                         </div>
                     </div>
                 </form>
