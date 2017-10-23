@@ -32,5 +32,6 @@
             .Ajax()
                 .Read(read => read.Action("GetDetails", "Inventory"))
             .PageSize(50)
+                .Sort(s => s.Add("ProductId").Descending())
         )
 )

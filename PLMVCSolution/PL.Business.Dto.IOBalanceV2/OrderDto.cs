@@ -1,6 +1,7 @@
 ﻿using PL.Business.Common;
 using System;
 using System.Collections.Generic;
+using System.ComponentModel.DataAnnotations;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -85,11 +86,30 @@ namespace PL.Business.Dto.IOBalanceV2
     {
         public long SalesOrderId { get; set; }
         public long ProductId { get; set; }
+
+        [Display(Name="Price")]
+        [Range(0, 9999999999999999.99, ErrorMessage = "Invalid Price; Max 18 digits")]
         public decimal SalesPrice { get; set; }
+
         public decimal UnitPrice { get; set; }
+
+        [Range(0, 9999999999999999.99, ErrorMessage = "Invalid Quantity; Max 18 digits")]
         public decimal Quantity { get; set; }
+
+
         public DateTime? DateCreated { get; set; }
         public int? CreatedBy { get; set; }
+    }
+
+    public class SalesOrderDetailEditDto
+    {
+
+        [Display(Name = "Price")]
+        [Range(0, 9999999999999999.99, ErrorMessage = "Invalid Price; Max 18 digits")]
+        public decimal SalesPrice { get; set; }
+
+        [Range(0, 9999999999999999.99, ErrorMessage = "Invalid Quantity; Max 18 digits")]
+        public decimal Quantity { get; set; }
     }
 
     public class ReportPurchaseOrderDto

@@ -55,35 +55,35 @@ namespace PL.MVC.IOBalanceV2.Areas.AdminManagement.Controllers
             bool isSuccess = false;
             string alertMessage = string.Empty;
 
-            var duplicate = _quantityUnitService.GetAll().Where(c => c.UnitName == dto.UnitName).Count();
-
-            if (duplicate >= 1)
+            if (ModelState.IsValid)
             {
-                Danger(string.Format(Messages.DuplicateItem, "Unit"));
-            }
-            else
-            {
+                
 
-                if (ModelState.IsValid)
+                var duplicate = _quantityUnitService.GetAll().Where(c => c.UnitName == dto.UnitName).Count();
+
+                if (duplicate >= 1)
                 {
-                    dto.QuantityUnitID = 0;
-                    isSuccess = this._quantityUnitService.SaveDetails(dto);
-
-
-                }
-
-
-                if (!isSuccess)
-                {
-                    Danger(Messages.ErrorOccuredDuringProcessing);
+                    alertMessage = (string.Format(Messages.DuplicateItem, "Unit"));
                 }
                 else
                 {
-                    Success(Messages.InsertSuccess);
+                    dto.QuantityUnitID = 0;
+                    isSuccess = this._quantityUnitService.SaveDetails(dto);
+                    if (!isSuccess)
+                    {
+                        alertMessage = string.Format(Messages.ErrorOccuredDuringProcessingThis, "saving in unit");
+                    }
+                    else
+                    {
+                        alertMessage = (Messages.InsertSuccess);
+                    }
                 }
             }
+            else
+            {
+                alertMessage = Messages.ErrorOccuredDuringProcessingOrRequiredFields;
+            }
 
-            alertMessage = this.RenderRazorViewToString(IOBALANCEMVCV2.Shared.Views._Alerts, string.Empty);
 
             var jsonResult = new
             {
@@ -100,31 +100,33 @@ namespace PL.MVC.IOBalanceV2.Areas.AdminManagement.Controllers
             bool isSuccess = false;
             string alertMessage = string.Empty;
 
-            var duplicate = _quantityUnitService.GetAll().Where(c => c.UnitName == dto.UnitName && c.QuantityUnitID != dto.QuantityUnitID).Count();
 
-            if (duplicate >= 1)
+            if (ModelState.IsValid)
             {
-                Danger(string.Format(Messages.DuplicateItem, "Unit"));
-            }
-            else
-            {
-                if (ModelState.IsValid)
-                {
-                    isSuccess = this._quantityUnitService.UpdateDetails(dto);
-                }
+                var duplicate = _quantityUnitService.GetAll().Where(c => c.UnitName == dto.UnitName && c.QuantityUnitID != dto.QuantityUnitID).Count();
 
-
-                if (!isSuccess)
+                if (duplicate >= 1)
                 {
-                    Danger(Messages.ErrorOccuredDuringProcessing);
+                    alertMessage = (string.Format(Messages.DuplicateItem, "Unit"));
                 }
                 else
                 {
-                    Success(Messages.UpdateSuccess);
+                    isSuccess = this._quantityUnitService.UpdateDetails(dto);
+                    if (!isSuccess)
+                    {
+                        alertMessage = string.Format(Messages.ErrorOccuredDuringProcessingThis, "updating in unit");
+                    }
+                    else
+                    {
+                        alertMessage = (Messages.UpdateSuccess);
+                    }
                 }
             }
+            else
+            {
+                alertMessage = Messages.ErrorOccuredDuringProcessingOrRequiredFields;
+            }
 
-            alertMessage = this.RenderRazorViewToString(IOBALANCEMVCV2.Shared.Views._Alerts, string.Empty);
 
             var jsonResult = new
             {

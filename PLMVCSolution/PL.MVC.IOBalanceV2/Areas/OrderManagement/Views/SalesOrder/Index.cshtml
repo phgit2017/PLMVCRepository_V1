@@ -6,7 +6,7 @@
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
 @section modals{
-    @Html.Partial(IOBALANCEMVCV2.OrderManagement.SalesOrder.Views._EditOrderList)
+    @Html.Partial(IOBALANCEMVCV2.OrderManagement.SalesOrder.Views._EditOrderList, new SalesOrderDetailEditDto())
 }
 
 

@@ -23,7 +23,7 @@
     var _doSaveForm = function () {
         var $frm = $('#frmSave');
 
-
+        $('.loader-mask').show();
         $.validator.unobtrusive.parse($frm);
         $frm.validate();
         if ($frm.valid()) {
@@ -32,16 +32,19 @@
                 type: 'POST',
                 data: $frm.serialize(),
                 success: function (data) {
+                    $('.loader-mask').hide();
                     if (data.isSuccess == true) {
                         _doSearchDetails();
                         _discardSaveForm();
+                        toastr.success(data.alertMessage);
+                    } else {
+                        toastr.error(data.alertMessage);
                     }
-
-                    $('#divResultContainer').show().html(data.alertMessage);
                 }
             });
         } else {
-
+            $('.loader-mask').hide();
+            toastr.error('An error occured during the process. Please check the details or the required fields.');
         }
 
         
@@ -51,7 +54,7 @@
 
     var _doUpdateForm = function () {
         var $frm = $('#frmEdit');
-
+        $('.loader-mask').show();
         $.validator.unobtrusive.parse($frm);
         $frm.validate();
         if ($frm.valid()) {
@@ -64,16 +67,20 @@
                     if (data.isSuccess == true) {
                         _doSearchDetails();
 
+                        toastr.success(data.alertMessage);
+                    } else {
+                        toastr.error(data.alertMessage);
                     }
 
-                    $('#divResultContainer').show().html(data.alertMessage);
+                    $('.loader-mask').hide();
                 }
             });
             
             $('#mdledit').modal('hide');
         }
         else {
-
+            $('.loader-mask').hide();
+            toastr.error('An error occured during the process. Please check the details or the required fields.');
         }
         
         
@@ -180,16 +187,20 @@
 
             $.alertWindow("Are you sure you want to inactive this record?",
             function () {
+                $('.loader-mask').show();
                 $.ajax({
                     url: _variables.params.activateUrl,
                     type: 'POST',
                     data: { 'dto': dto },
                     success: function (data) {
-                        $('#divResultContainer').show().html(data.alertMessage);
+                        
                         if (data.isSuccess == true) {
                             _doSearchDetails();
+                            toastr.success(data.alertMessage);
+                        } else {
+                            toastr.error(data.alertMessage);
                         }
-                        
+                        $('.loader-mask').hide();
                     }
 
                 });

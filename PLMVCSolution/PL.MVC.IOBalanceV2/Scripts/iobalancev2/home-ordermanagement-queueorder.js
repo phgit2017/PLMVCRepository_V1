@@ -162,6 +162,14 @@
             }
 
             errCnt++;
+        } else if (originalPrice == "") {
+            if (errMsg == 0) {
+                errMsg += "price should be not blank";
+            } else {
+                errMsg += "<br/>price should be not blank";
+            }
+
+            errCnt++;
         } else {
             var isSameProductId = false;
 
@@ -409,7 +417,7 @@
 
             $('#frmEditOrderList #EditQuantity').val($this.data('orderlist-quantity'));
             $('#frmEditOrderList #EditPrice').val($this.data('orderlist-unitprice'));
-            $('#frmEditOrderList #EditProductName').val($this.data('orderlist-productname'));
+            $('#EditProductName').val($this.data('orderlist-productname'));
 
 
         });
@@ -430,37 +438,62 @@
             var caller = $('[data-edit-selected="true"].selected');
             
             var dataItems = grid.dataSource._data;
-            var editedQty = 0, editedPrice = 0, salesPrice = 0;
+            var editedQty = 0, editedPrice = 0, salesPrice = 0, errCnt = 0;
+            var errMsg = "";
             var productIdSelected = caller.data('orderlist-productid');
 
             editedQty = $('#frmEditOrderList #EditQuantity').val();
             editedPrice = $('#frmEditOrderList #EditPrice').val();
             salesPrice = editedPrice * editedQty;
 
-            $.each(dataItems, function () {
-                var gridDataItem = $(this)[0];
-                var gridProductId;
-
-
-                gridProductId = gridDataItem.ProductId;
-
-
-                if (gridProductId == productIdSelected) {
-
-                    gridDataItem.Quantity = editedQty;
-                    gridDataItem.SalesPrice = salesPrice.toFixed(2);
-                    gridDataItem.UnitPrice = editedPrice;
+            if (editedQty == "" || editedQty == 0) {
+                if (errMsg == 0) {
+                    errMsg += "quantity should be not 0";
+                } else {
+                    errMsg += "<br/>quantity should be not 0";
                 }
 
-            });
-            
-            
-            //$('[data-edit-selected="true"]').addClass('selected');
+                errCnt++;
+            } else if (editedPrice == "") {
+                if (errMsg == 0) {
+                    errMsg += "price should be not blank";
+                } else {
+                    errMsg += "<br/>price should be not blank";
+                }
 
-            $('#mdleditorderlist').modal('hide');
-            INFRA.doRemoveOpenedModal();
+                errCnt++;
+            }
 
-            grid.refresh();
+            if (errCnt >= 1) {
+                toastr.error(errMsg);
+            } else {
+                $.each(dataItems, function () {
+                    var gridDataItem = $(this)[0];
+                    var gridProductId;
+
+
+                    gridProductId = gridDataItem.ProductId;
+
+
+                    if (gridProductId == productIdSelected) {
+
+                        gridDataItem.Quantity = editedQty;
+                        gridDataItem.SalesPrice = salesPrice.toFixed(2);
+                        gridDataItem.UnitPrice = editedPrice;
+                    }
+
+                });
+
+
+
+
+                $('#mdleditorderlist').modal('hide');
+                INFRA.doRemoveOpenedModal();
+
+                grid.refresh();
+            }
+
+            
 
             
 

@@ -38,7 +38,6 @@ namespace PL.MVC.IOBalanceV2.Areas.AdminManagement.Controllers
         }
         #endregion Declarations and constructors
 
-
         #region Public methods
         public virtual ActionResult Index()
         {
@@ -59,23 +58,40 @@ namespace PL.MVC.IOBalanceV2.Areas.AdminManagement.Controllers
 
             if (ModelState.IsValid)
             {
-                dto.CustomerId = 0;
-                dto.DateCreated = DateTime.Now;
-                dto.CreatedBy = WebSecurity.GetUserId(User.Identity.Name);
-                dto.IsActive = true;
-                isSuccess  = _customerService.SaveDetails(dto);
 
-                if (!isSuccess)
+
+
+                var duplicate = _customerService.GetAll().Where(c => c.CustomerCode == dto.CustomerCode && c.IsActive).Count();
+
+                if (duplicate >= 1)
                 {
-                    Danger(Messages.ErrorOccuredDuringProcessing);
+                    alertMessage = string.Format(Messages.DuplicateItem, "Customer");
                 }
                 else
                 {
-                    Success(Messages.InsertSuccess);
+                    dto.CustomerId = 0;
+                    dto.DateCreated = DateTime.Now;
+                    dto.CreatedBy = WebSecurity.GetUserId(User.Identity.Name);
+                    dto.IsActive = true;
+
+                    isSuccess = _customerService.SaveDetails(dto);
+
+                    if (!isSuccess)
+                    {
+                        alertMessage = string.Format(Messages.ErrorOccuredDuringProcessingThis, "saving in customer");
+                    }
+                    else
+                    {
+                        alertMessage = Messages.InsertSuccess;
+                    }
                 }
             }
+            else
+            {
+                alertMessage = Messages.ErrorOccuredDuringProcessingOrRequiredFields;
+            }
 
-            alertMessage = this.RenderRazorViewToString(IOBALANCEMVCV2.Shared.Views._Alerts, string.Empty);
+
             var jsonResult = new
             {
                 isSuccess = isSuccess,
@@ -93,20 +109,34 @@ namespace PL.MVC.IOBalanceV2.Areas.AdminManagement.Controllers
 
             if (ModelState.IsValid)
             {
-                dto.DateUpdated = DateTime.Now;
-                dto.UpdatedBy = 1;
-                isSuccess = _customerService.UpdateDetails(dto);
 
-                if (!isSuccess)
+                var duplicate = _customerService.GetAll().Where(c => c.CustomerCode == dto.CustomerCode && c.CustomerId != dto.CustomerId && c.IsActive).Count();
+
+                if (duplicate >= 1)
                 {
-                    Danger(Messages.ErrorOccuredDuringProcessing);
+                    alertMessage = string.Format(Messages.DuplicateItem, "Customer");
                 }
                 else
                 {
-                    Success(Messages.InsertSuccess);
+                    dto.DateUpdated = DateTime.Now;
+                    dto.UpdatedBy = WebSecurity.GetUserId(User.Identity.Name);
+                    isSuccess = _customerService.UpdateDetails(dto);
+
+                    if (!isSuccess)
+                    {
+                        alertMessage = string.Format(Messages.ErrorOccuredDuringProcessingThis, "updating in customer");
+                    }
+                    else
+                    {
+                        alertMessage = Messages.UpdateSuccess;
+                    }
                 }
             }
-            
+            else
+            {
+                alertMessage = Messages.ErrorOccuredDuringProcessingOrRequiredFields;
+            }
+
 
             var jsonResult = new
             {
@@ -114,7 +144,7 @@ namespace PL.MVC.IOBalanceV2.Areas.AdminManagement.Controllers
                 alertMessage = alertMessage
             };
 
-            alertMessage = this.RenderRazorViewToString(IOBALANCEMVCV2.Shared.Views._Alerts, string.Empty);
+            
             return Json(jsonResult, JsonRequestBehavior.AllowGet);
         }
 
@@ -123,23 +153,31 @@ namespace PL.MVC.IOBalanceV2.Areas.AdminManagement.Controllers
             bool isSuccess = false;
             string alertMessage = string.Empty;
 
+            var duplicate = _customerService.GetAll().Where(c => c.CustomerCode == dto.CustomerCode && c.CustomerId != dto.CustomerId && c.IsActive).Count();
 
-            dto.IsActive = dto.IsActive ? false : true;
-            dto.DateUpdated = DateTime.Now;
-            dto.UpdatedBy = 1;
-
-            isSuccess = _customerService.UpdateDetails(dto);
-
-            if (!isSuccess)
+            if (duplicate >= 1)
             {
-                Danger(Messages.ErrorOccuredDuringProcessing);
+                alertMessage = string.Format(Messages.DuplicateItem, "Customer");
             }
             else
             {
-                Success(Messages.UpdateSuccess);
+                dto.IsActive = dto.IsActive ? false : true;
+                dto.DateUpdated = DateTime.Now;
+                dto.UpdatedBy = WebSecurity.GetUserId(User.Identity.Name);
+
+                isSuccess = _customerService.UpdateDetails(dto);
+
+                if (!isSuccess)
+                {
+                    alertMessage = string.Format(Messages.ErrorOccuredDuringProcessingThis, "activate/deactivate in customer");
+                }
+                else
+                {
+                    alertMessage = Messages.UpdateSuccess;
+                }
             }
 
-            alertMessage = this.RenderRazorViewToString(IOBALANCEMVCV2.Shared.Views._Alerts, string.Empty);
+            
             var jsonResult = new
             {
                 isSuccess = isSuccess,
@@ -158,7 +196,7 @@ namespace PL.MVC.IOBalanceV2.Areas.AdminManagement.Controllers
 
             if (searchModel.CustomerAddress.IsNull() && searchModel.CustomerCode.IsNull() && searchModel.CustomerName.IsNull() && searchModel.IsActive.IsNull())
             {
-                list = _customerService.GetAll();
+                list = _customerService.GetAll().Where(c => c.CustomerId != 0);
             }
             else
             {
@@ -185,12 +223,15 @@ namespace PL.MVC.IOBalanceV2.Areas.AdminManagement.Controllers
                 }
 
 
+                predicate = predicate.And(c => c.CustomerId != 0);
+
+
                 list = _customerService.GetAll().AsExpandable().Where(predicate);
 
             }
 
             return list;
-            
+
         }
         #endregion Private methods
 
