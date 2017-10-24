@@ -336,7 +336,7 @@
 
             $('#frmEditOrderList #EditQuantity').val($this.data('orderlist-quantity'));
             $('#frmEditOrderList #EditPrice').val($this.data('orderlist-unitprice'));
-            $('#mdleditorderlist #EditProductName').html('Product: ' + $this.data('orderlist-productname'));
+            $('#mdleditorderlist #EditProductName').html($this.data('orderlist-productname'));
             
 
             //$('#EditBranchID').data('kendoDropDownList').value($this.data('discount-branchid'));

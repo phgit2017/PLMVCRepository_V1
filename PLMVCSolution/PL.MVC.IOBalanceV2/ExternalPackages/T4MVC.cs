@@ -542,135 +542,6 @@ namespace IOBALANCEV2LINKS
                 public const string UrlPath = "~/Content/assets/img";
                 public static string Url() { return T4MVCHelpers.ProcessVirtualPath(UrlPath); }
                 public static string Url(string fileName) { return T4MVCHelpers.ProcessVirtualPath(UrlPath + "/" + fileName); }
-                public static readonly string amg_logo_png = Url("amg-logo.png");
-                public static readonly string app_sprite_sheet_png = Url("app-sprite-sheet.png");
-                public static readonly string arms_logo_png = Url("arms-logo.png");
-                public static readonly string arrow_png = Url("arrow.png");
-                public static readonly string beacon_logo_svg = Url("beacon-logo.svg");
-                public static readonly string body_bg_png = Url("body-bg.png");
-                public static readonly string bookmark_first_time_png = Url("bookmark-first-time.png");
-                public static readonly string btn_transparent_hover_iefix_png = Url("btn-transparent-hover-iefix.png");
-                public static readonly string calendar_reminder_png = Url("calendar-reminder.png");
-                public static readonly string cbmg_logo_png = Url("cbmg-logo.png");
-                public static readonly string comet_logo_png = Url("comet-logo.png");
-                public static readonly string company_logo_white_svg = Url("company-logo-white.svg");
-                public static readonly string connectors_logo_jpg = Url("connectors-logo.jpg");
-                public static readonly string connectors_logo_png = Url("connectors-logo.png");
-                public static readonly string esa_logo_svg = Url("esa-logo.svg");
-                [GeneratedCode("T4MVC", "2.0"), DebuggerNonUserCode]
-                public static class events_ads {
-                    public const string UrlPath = "~/Content/assets/img/events-ads";
-                    public static string Url() { return T4MVCHelpers.ProcessVirtualPath(UrlPath); }
-                    public static string Url(string fileName) { return T4MVCHelpers.ProcessVirtualPath(UrlPath + "/" + fileName); }
-                    public static readonly string event_xmas_png = Url("event-xmas.png");
-                    [GeneratedCode("T4MVC", "2.0"), DebuggerNonUserCode]
-                    public static class ptsans {
-                        public const string UrlPath = "~/Content/assets/img/events-ads/ptsans";
-                        public static string Url() { return T4MVCHelpers.ProcessVirtualPath(UrlPath); }
-                        public static string Url(string fileName) { return T4MVCHelpers.ProcessVirtualPath(UrlPath + "/" + fileName); }
-                        public static readonly string pt_sans_web_regular_webfont_eot = Url("pt_sans-web-regular-webfont.eot");
-                        public static readonly string pt_sans_web_regular_webfont_ttf = Url("pt_sans-web-regular-webfont.ttf");
-                        public static readonly string pt_sans_web_regular_webfont_woff = Url("pt_sans-web-regular-webfont.woff");
-                        public static readonly string pt_sans_web_regular_webfont_woff2 = Url("pt_sans-web-regular-webfont.woff2");
-                    }
-                
-                    [GeneratedCode("T4MVC", "2.0"), DebuggerNonUserCode]
-                    public static class theboldfont {
-                        public const string UrlPath = "~/Content/assets/img/events-ads/theboldfont";
-                        public static string Url() { return T4MVCHelpers.ProcessVirtualPath(UrlPath); }
-                        public static string Url(string fileName) { return T4MVCHelpers.ProcessVirtualPath(UrlPath + "/" + fileName); }
-                        public static readonly string theboldfont_webfont_eot = Url("theboldfont-webfont.eot");
-                        public static readonly string theboldfont_webfont_svg = Url("theboldfont-webfont.svg");
-                        public static readonly string theboldfont_webfont_ttf = Url("theboldfont-webfont.ttf");
-                        public static readonly string theboldfont_webfont_woff = Url("theboldfont-webfont.woff");
-                        public static readonly string theboldfont_webfont_woff2 = Url("theboldfont-webfont.woff2");
-                    }
-                
-                    public static readonly string widget_countdown_bg_01_jpg = Url("widget-countdown-bg-01.jpg");
-                }
-            
-                [GeneratedCode("T4MVC", "2.0"), DebuggerNonUserCode]
-                public static class exported_avatars {
-                    public const string UrlPath = "~/Content/assets/img/exported-avatars";
-                    public static string Url() { return T4MVCHelpers.ProcessVirtualPath(UrlPath); }
-                    public static string Url(string fileName) { return T4MVCHelpers.ProcessVirtualPath(UrlPath + "/" + fileName); }
-                    public static readonly string achiever_female_png = Url("achiever-female.png");
-                    public static readonly string achiever_male_png = Url("achiever-male.png");
-                    public static readonly string artist_female_png = Url("artist-female.png");
-                    public static readonly string artist_male_png = Url("artist-male.png");
-                    public static readonly string athlete_female_png = Url("athlete-female.png");
-                    public static readonly string athlete_male_png = Url("athlete-male.png");
-                    public static readonly string cool_kid_female_png = Url("cool-kid-female.png");
-                    public static readonly string cool_kid_male_png = Url("cool-kid-male.png");
-                    public static readonly string fashionista_female_png = Url("fashionista-female.png");
-                    public static readonly string fashionista_male_png = Url("fashionista-male.png");
-                    public static readonly string health_conscious_female_png = Url("health-conscious-female.png");
-                    public static readonly string health_conscious_male_png = Url("health-conscious-male.png");
-                    public static readonly string student_female_png = Url("student-female.png");
-                    public static readonly string student_male_png = Url("student-male.png");
-                }
-            
-                public static readonly string feedback_icon_svg = Url("feedback-icon.svg");
-                public static readonly string fin_logo_png = Url("fin-logo.png");
-                [GeneratedCode("T4MVC", "2.0"), DebuggerNonUserCode]
-                public static class greetings {
-                    public const string UrlPath = "~/Content/assets/img/greetings";
-                    public static string Url() { return T4MVCHelpers.ProcessVirtualPath(UrlPath); }
-                    public static string Url(string fileName) { return T4MVCHelpers.ProcessVirtualPath(UrlPath + "/" + fileName); }
-                    public static readonly string bday_asset_cake_svg = Url("bday-asset-cake.svg");
-                    public static readonly string bday_message_svg = Url("bday-message.svg");
-                    public static readonly string bg_food_png = Url("bg-food.png");
-                }
-            
-                public static readonly string group_IT_filler_jpg = Url("group-IT-filler.jpg");
-                public static readonly string icon_feedback_yellow_svg = Url("icon-feedback-yellow.svg");
-                public static readonly string image_placeholder_png = Url("image-placeholder.png");
-                [GeneratedCode("T4MVC", "2.0"), DebuggerNonUserCode]
-                public static class images {
-                    public const string UrlPath = "~/Content/assets/img/images";
-                    public static string Url() { return T4MVCHelpers.ProcessVirtualPath(UrlPath); }
-                    public static string Url(string fileName) { return T4MVCHelpers.ProcessVirtualPath(UrlPath + "/" + fileName); }
-                }
-            
-                public static readonly string iris_logo_svg = Url("iris-logo.svg");
-                public static readonly string isolve_logo_svg = Url("isolve-logo.svg");
-                public static readonly string itss_logo_png = Url("itss-logo.png");
-                public static readonly string lingap_logo_svg = Url("lingap-logo.svg");
-                public static readonly string list_shadow_png = Url("list-shadow.png");
-                [GeneratedCode("T4MVC", "2.0"), DebuggerNonUserCode]
-                public static class lmvp {
-                    public const string UrlPath = "~/Content/assets/img/lmvp";
-                    public static string Url() { return T4MVCHelpers.ProcessVirtualPath(UrlPath); }
-                    public static string Url(string fileName) { return T4MVCHelpers.ProcessVirtualPath(UrlPath + "/" + fileName); }
-                    public static readonly string _lmvp_badge_svg = Url("_lmvp-badge.svg");
-                    public static readonly string lmvp_arc_bg_svg = Url("lmvp-arc-bg.svg");
-                    public static readonly string lmvp_avatar_badge_logo_01_jpg = Url("lmvp-avatar-badge-logo-01.jpg");
-                    public static readonly string lmvp_badge_shine_png = Url("lmvp-badge-shine.png");
-                    public static readonly string lmvp_badge_svg = Url("lmvp-badge.svg");
-                    public static readonly string lmvp_body_bg_png = Url("lmvp-body-bg.png");
-                    public static readonly string lmvp_logo_md_01_trans_png = Url("lmvp-logo-md-01-trans.png");
-                    public static readonly string lmvp_title_svg = Url("lmvp-title.svg");
-                    public static readonly string lmvp_xs_logo_png = Url("lmvp-xs-logo.png");
-                }
-            
-                public static readonly string login_bg_jpg = Url("login-bg.jpg");
-                public static readonly string megaphone_png = Url("megaphone.png");
-                public static readonly string new_png = Url("new.png");
-                public static readonly string ohcd_logo_png = Url("ohcd-logo.png");
-                public static readonly string orrrs_svg = Url("orrrs.svg");
-                public static readonly string people_sprites_png = Url("people-sprites.png");
-                public static readonly string portfolio_header_bg_png = Url("portfolio-header-bg.png");
-                public static readonly string qmg_logo_png = Url("qmg-logo.png");
-                public static readonly string sidebar_toggle_bg_png = Url("sidebar-toggle-bg.png");
-                public static readonly string splash_note_img_png = Url("splash-note-img.png");
-                public static readonly string tdt_logo_png = Url("tdt-logo.png");
-                public static readonly string test_avatar_jpg = Url("test-avatar.jpg");
-                public static readonly string udrive_logo_png = Url("udrive-logo.png");
-                public static readonly string unopedia_logo_svg = Url("unopedia-logo.svg");
-                public static readonly string voice_logo_svg = Url("voice-logo.svg");
-                public static readonly string wfm_logo_png = Url("wfm-logo.png");
-                public static readonly string widget_feedback_tab_png = Url("widget-feedback-tab.png");
-                public static readonly string widget_first_time_png = Url("widget-first-time.png");
             }
         
             [GeneratedCode("T4MVC", "2.0"), DebuggerNonUserCode]
@@ -1184,6 +1055,17 @@ namespace IOBALANCEV2LINKS
                 }
             
                 [GeneratedCode("T4MVC", "2.0"), DebuggerNonUserCode]
+                public static class custom_scrollbar {
+                    public const string UrlPath = "~/Content/assets-common/plugins/custom-scrollbar";
+                    public static string Url() { return T4MVCHelpers.ProcessVirtualPath(UrlPath); }
+                    public static string Url(string fileName) { return T4MVCHelpers.ProcessVirtualPath(UrlPath + "/" + fileName); }
+                    public static readonly string jquery_mCustomScrollbar_css = T4MVCHelpers.IsProduction() && T4Extensions.FileExists(UrlPath + "/jquery.mCustomScrollbar.min.css") ? Url("jquery.mCustomScrollbar.min.css") : Url("jquery.mCustomScrollbar.css");
+                    public static readonly string jquery_mCustomScrollbar_js = T4MVCHelpers.IsProduction() && T4Extensions.FileExists(UrlPath + "/jquery.mCustomScrollbar.min.js") ? Url("jquery.mCustomScrollbar.min.js") : Url("jquery.mCustomScrollbar.js");
+                    public static readonly string jquery_mCustomScrollbar_min_css = Url("jquery.mCustomScrollbar.min.css");
+                    public static readonly string jquery_mCustomScrollbar_min_js = Url("jquery.mCustomScrollbar.min.js");
+                }
+            
+                [GeneratedCode("T4MVC", "2.0"), DebuggerNonUserCode]
                 public static class flipclock {
                     public const string UrlPath = "~/Content/assets-common/plugins/flipclock";
                     public static string Url() { return T4MVCHelpers.ProcessVirtualPath(UrlPath); }
@@ -1217,6 +1099,15 @@ namespace IOBALANCEV2LINKS
                 }
             
                 public static readonly string toastr_css = T4MVCHelpers.IsProduction() && T4Extensions.FileExists(UrlPath + "/toastr.min.css") ? Url("toastr.min.css") : Url("toastr.css");
+                [GeneratedCode("T4MVC", "2.0"), DebuggerNonUserCode]
+                public static class velocity {
+                    public const string UrlPath = "~/Content/assets-common/plugins/velocity";
+                    public static string Url() { return T4MVCHelpers.ProcessVirtualPath(UrlPath); }
+                    public static string Url(string fileName) { return T4MVCHelpers.ProcessVirtualPath(UrlPath + "/" + fileName); }
+                    public static readonly string velocity_min_js = Url("velocity.min.js");
+                    public static readonly string velocity_ui_min_js = Url("velocity.ui.min.js");
+                }
+            
             }
         
         }
@@ -2128,48 +2019,6 @@ namespace IOBALANCEV2LINKS
                 }
                 public static partial class img 
                 {
-                    public static partial class events_ads 
-                    {
-                        public static partial class ptsans 
-                        {
-                            public static class Assets
-                            {
-                            }
-                        }
-                        public static partial class theboldfont 
-                        {
-                            public static class Assets
-                            {
-                            }
-                        }
-                        public static class Assets
-                        {
-                        }
-                    }
-                    public static partial class exported_avatars 
-                    {
-                        public static class Assets
-                        {
-                        }
-                    }
-                    public static partial class greetings 
-                    {
-                        public static class Assets
-                        {
-                        }
-                    }
-                    public static partial class images 
-                    {
-                        public static class Assets
-                        {
-                        }
-                    }
-                    public static partial class lmvp 
-                    {
-                        public static class Assets
-                        {
-                        }
-                    }
                     public static class Assets
                     {
                     }
@@ -2420,6 +2269,16 @@ namespace IOBALANCEV2LINKS
                             public const string custom_multi_select_css = "~/Content/assets-common/plugins/custom-multiselect/custom-multi-select.css";
                         }
                     }
+                    public static partial class custom_scrollbar 
+                    {
+                        public static class Assets
+                        {
+                            public const string jquery_mCustomScrollbar_css = "~/Content/assets-common/plugins/custom-scrollbar/jquery.mCustomScrollbar.css";
+                            public const string jquery_mCustomScrollbar_js = "~/Content/assets-common/plugins/custom-scrollbar/jquery.mCustomScrollbar.js"; 
+                            public const string jquery_mCustomScrollbar_min_css = "~/Content/assets-common/plugins/custom-scrollbar/jquery.mCustomScrollbar.min.css";
+                            public const string jquery_mCustomScrollbar_min_js = "~/Content/assets-common/plugins/custom-scrollbar/jquery.mCustomScrollbar.min.js"; 
+                        }
+                    }
                     public static partial class flipclock 
                     {
                         public static class Assets
@@ -2446,6 +2305,14 @@ namespace IOBALANCEV2LINKS
                             public const string owl_carousel_min_js = "~/Content/assets-common/plugins/owl-carousel/owl.carousel.min.js"; 
                             public const string owl_theme_css = "~/Content/assets-common/plugins/owl-carousel/owl.theme.css";
                             public const string owl_transitions_css = "~/Content/assets-common/plugins/owl-carousel/owl.transitions.css";
+                        }
+                    }
+                    public static partial class velocity 
+                    {
+                        public static class Assets
+                        {
+                            public const string velocity_min_js = "~/Content/assets-common/plugins/velocity/velocity.min.js"; 
+                            public const string velocity_ui_min_js = "~/Content/assets-common/plugins/velocity/velocity.ui.min.js"; 
                         }
                     }
                     public static class Assets

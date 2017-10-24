@@ -40,12 +40,14 @@ namespace T4MVC
             {
                 public readonly string _Alerts = "_Alerts";
                 public readonly string _Layout = "_Layout";
+                public readonly string _LoginLayout = "_LoginLayout";
                 public readonly string _LoginPartial = "_LoginPartial";
                 public readonly string _UnauthorizedAccess = "_UnauthorizedAccess";
                 public readonly string Error = "Error";
             }
             public readonly string _Alerts = "~/Views/Shared/_Alerts.cshtml";
             public readonly string _Layout = "~/Views/Shared/_Layout.cshtml";
+            public readonly string _LoginLayout = "~/Views/Shared/_LoginLayout.cshtml";
             public readonly string _LoginPartial = "~/Views/Shared/_LoginPartial.cshtml";
             public readonly string _UnauthorizedAccess = "~/Views/Shared/_UnauthorizedAccess.cshtml";
             public readonly string Error = "~/Views/Shared/Error.cshtml";

@@ -8,19 +8,7 @@
         @Html.ValidationMessageFor(m => m.ProductId, "", new { @class = "error" })
     </div>
 </div>
-<div class="form-group">
-    <label for="" class="control-label col-lg-3 required">Quantity</label>
-    <div class="control-input col-lg-9">
-        @Html.TextBoxFor(m => m.Quantity,
-        new
-        {
-            @class = "form-control",
-            @id = "Quantity",
-            @type = "number"
-        })
-        @Html.ValidationMessageFor(m => m.Quantity, "", new { @class = "error" })
-    </div>
-</div>
+
 <div class="form-group">
     <label for="" class="control-label col-lg-3 required">Price</label>
     <div class="control-input col-lg-9">
@@ -32,5 +20,18 @@
             @type = "number"
         })
         @Html.ValidationMessageFor(m => m.SalesPrice, "", new { @class = "error" })
+    </div>
+</div>
+<div class="form-group">
+    <label for="" class="control-label col-lg-3 required">Quantity</label>
+    <div class="control-input col-lg-9">
+        @Html.TextBoxFor(m => m.Quantity,
+        new
+        {
+            @class = "form-control",
+            @id = "Quantity",
+            @type = "number",
+        })
+        @Html.ValidationMessageFor(m => m.Quantity, "", new { @class = "error" })
     </div>
 </div>
