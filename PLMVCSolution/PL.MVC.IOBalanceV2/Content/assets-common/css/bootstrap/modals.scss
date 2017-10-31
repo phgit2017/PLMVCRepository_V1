@@ -199,13 +199,7 @@
         text-align: center;
         padding: $grid-gutter-width;
         i.md {
-            @media (max-width: $screen-xs-max) {
-                font-size: 5em;
-            }
-            @media (min-width: $screen-sm-min) {
-                font-size: 10em;
-            }
-
+            font-size: 5em;
             color: $brand-primary;
             margin-bottom: -$grid-gutter-width;
         }
@@ -231,6 +225,15 @@
             @media (min-width: $screen-sm-min) {
                 width: 25%;
             }
+        }
+    }
+    .modal-footer{
+        padding: 0;
+        .btn-group:first-child{
+            border-right: 1px solid #ddd;
+        }
+        .btn{
+            padding: 16px;
         }
     }
 }

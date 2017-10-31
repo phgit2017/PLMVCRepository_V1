@@ -41,8 +41,16 @@
                             '<div class="modal-body">' +
                                 '<i class="md md-help"></i>' +
                                 '<h3 class="modal-confirm-message">' + windowMessage + '</h3>' +
-                                '<button type="button" data-dismiss="modal" class="btn btn-default alert-window-cancel">Cancel</button>&nbsp;' +
-                                '<button type="button" data-dismiss="modal" class="btn btn-default alert-window-ok" id="btnDeleteEmployer">Yes</button>' +
+                            '</div>' +
+                             '<div class="modal-footer">' +
+                                 '<div class="btn-group-justified">' +
+                                    '<div class="btn-group">' +
+                                        '<button type="button" data-dismiss="modal" class="btn btn-transparent alert-window-cancel">Cancel</button>' +
+                                    '</div>' +
+                                    '<div class="btn-group">' +
+                                        '<button type="button" data-dismiss="modal" class="btn btn-transparent alert-window-ok" id="btnDeleteEmployer">Yes</button>' +
+                                    '</div>' +
+                                '</div>' +
                             '</div>' +
                         '</div>' +
                     '</div>' +
