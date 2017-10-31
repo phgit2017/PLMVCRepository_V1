@@ -95,8 +95,9 @@ namespace PL.Business.IOBalanceV2
                                         .Select(det => det.ProductID).FirstOrDefault(),
                              product = products.Where(p => p.ProductId == pOrder.PurchaseOrderDetails.Where(poDet => poDet.PurchaseOrderID == pOrder.PurchaseOrderID)
                                         .Select(det => det.ProductID).FirstOrDefault()).FirstOrDefault(),
-                             supplier = suppliers.Where(s => s.SupplierId == pOrder.PurchaseOrderDetails.Where(poDet => poDet.PurchaseOrderID == pOrder.PurchaseOrderID)
-                                        .Select(det => det.SupplierID).FirstOrDefault()).FirstOrDefault(),
+                             supplier = (pOrder.PurchaseOrderDetails.Where(poDet => poDet.PurchaseOrderID == pOrder.PurchaseOrderID)
+                                        .Select(det => det.SupplierID).FirstOrDefault()) != null ? (suppliers.Where(s => s.SupplierId == pOrder.PurchaseOrderDetails.Where(poDet => poDet.PurchaseOrderID == pOrder.PurchaseOrderID)
+                                        .Select(det => det.SupplierID).FirstOrDefault()).FirstOrDefault()) : null,
                              SupplierId = pOrder.PurchaseOrderDetails.Where(poDet => poDet.PurchaseOrderID == pOrder.PurchaseOrderID)
                                         .Select(det => det.SupplierID).FirstOrDefault(),
                              DateCreated = pOrder.DateCreated

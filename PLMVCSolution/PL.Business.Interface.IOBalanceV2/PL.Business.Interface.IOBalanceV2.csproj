@@ -46,6 +46,7 @@
     <Compile Include="IOrderService.cs" />
     <Compile Include="IQuantityUnitService.cs" />
     <Compile Include="ISupplierService.cs" />
+    <Compile Include="IValidateProduct.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>

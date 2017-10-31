@@ -191,6 +191,20 @@ namespace PL.Business.IOBalanceV2
             return true;
         }
 
+
+
+        public ProductValidationDto ValidateSaveProduct(ProductDto dto)
+        {
+            ProductValidationDto validProduct = new ProductValidationDto();
+
+
+            var type = Type.GetType(string.Format("{0}.{1}", "PL.Business.IOBalanceV2.ProductSalesRules", "PDashZeroOne"));
+            IValidateProduct productRule = (IValidateProduct)Activator.CreateInstance(type);
+            validProduct = productRule.SaveProduct(dto);
+
+            return validProduct;
+        }
+
         #endregion Interface Implementations
     }
 }

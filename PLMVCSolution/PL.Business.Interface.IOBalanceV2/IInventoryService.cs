@@ -18,5 +18,6 @@ namespace PL.Business.Interface.IOBalanceV2
         DataTable SaveBatchInventory(string xml, int? createdBy);
         bool SaveBatchInvetoryLogs(BatchInventoryLogDto newDetails);
         List<InventoryReportDto> GetAllInventoryReport(long productId);
+        ProductValidationDto ValidateSaveProduct(ProductDto dto);
     }
 }

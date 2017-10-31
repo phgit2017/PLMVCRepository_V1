@@ -125,6 +125,20 @@ namespace PL.Business.Dto.IOBalanceV2
         public decimal Quantity { get; set; }
         public ProductDto product { get; set; }
         public SupplierDto supplier { get; set; }
+
+        public string SupplierInfoDisplay
+        {
+            get
+            {
+                if (supplier != null)
+                {
+                    return supplier.SupplierInfoDisplay;
+                }
+
+                return string.Empty;
+            }
+        }
+
         public DateTime? DateCreated { get; set; }
 
         public string DateCreatedWithFormat
@@ -176,6 +190,21 @@ namespace PL.Business.Dto.IOBalanceV2
                 else
                 {
                     return Convert.ToDateTime(DateCreated).ToString(Globals.DefaultRecordDateFormat);
+                }
+
+            }
+        }
+        public string DateCreatedWithTimeFormat
+        {
+            get
+            {
+                if (DateCreated == null)
+                {
+                    return string.Empty;
+                }
+                else
+                {
+                    return Convert.ToDateTime(DateCreated).ToString(Globals.DefaultRecordDateTimeFormat);
                 }
 
             }
