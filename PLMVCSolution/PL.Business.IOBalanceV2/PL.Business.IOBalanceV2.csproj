@@ -53,6 +53,7 @@
     <Compile Include="Extensions\EntityMapper.cs" />
     <Compile Include="InventoryService.cs" />
     <Compile Include="OrderService.cs" />
+    <Compile Include="ProductSalesRules\PDashZeroOne.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="QuantityUnitService.cs" />
     <Compile Include="SupplierService.cs" />

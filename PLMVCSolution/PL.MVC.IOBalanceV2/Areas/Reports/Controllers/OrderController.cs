@@ -55,7 +55,6 @@ namespace PL.MVC.IOBalanceV2.Areas.Reports.Controllers
         #region PO
         public virtual ActionResult PurchaseOrder()
         {
-
             return View();
         }
 
@@ -169,12 +168,6 @@ namespace PL.MVC.IOBalanceV2.Areas.Reports.Controllers
         #endregion Action methods
 
         #region Private methods
-        //var list = _orderService.GetAllSalesOrderReport();
-        //    foreach (var item in list)
-        //    {
-        //        var salesOrderlist = _orderService.GetAllSalesOrderDetail(item.SalesOrderId).ToList();
-        //        item.salesOderDetails = salesOrderlist;
-        //    }
         private IQueryable<ReportPurchaseOrderDto> GetPurchaseOrderReport(PurchaseOrderSearchModel searchModel)
         {
             IQueryable<ReportPurchaseOrderDto> result = null;
@@ -182,7 +175,7 @@ namespace PL.MVC.IOBalanceV2.Areas.Reports.Controllers
 
             if ((searchModel.DateFrom.IsNull() && searchModel.DateTo.IsNull() && searchModel.ProductId == 0 && searchModel.SupplierId == 0))
             {
-                result = _orderService.GetAllPurchaseOrderReport();
+                result = _orderService.GetAllPurchaseOrderReport().Where(s =>  DbFunctions.TruncateTime(s.DateCreated) == DbFunctions.TruncateTime(DateTime.Now));
             }
             else
             {
@@ -226,7 +219,7 @@ namespace PL.MVC.IOBalanceV2.Areas.Reports.Controllers
 
             if ((searchModel.DateFrom.IsNull() && searchModel.DateTo.IsNull() && searchModel.CustomerId == 0 && searchModel.SalesNo.IsNull()))
             {
-                result = _orderService.GetAllSalesOrderReport().Where(s => s.IsPrinted && !s.IsCorrected && s.CustomerId != Constants.CustomerIdAdmin);
+                result = _orderService.GetAllSalesOrderReport().Where(s => s.IsPrinted && !s.IsCorrected && s.CustomerId != Constants.CustomerIdAdmin && DbFunctions.TruncateTime(s.DateCreated) == DbFunctions.TruncateTime(DateTime.Now));
             }
             else
             {
@@ -272,7 +265,7 @@ namespace PL.MVC.IOBalanceV2.Areas.Reports.Controllers
 
             if ((searchModel.DateFrom.IsNull() && searchModel.DateTo.IsNull() && searchModel.CustomerId == 0 && searchModel.SalesNo.IsNull()))
             {
-                result = _orderService.GetAllSalesOrderReceiptReport().Where(s => s.IsPrinted && !s.IsCorrected && s.CustomerId != Constants.CustomerIdAdmin);
+                result = _orderService.GetAllSalesOrderReceiptReport().Where(s => s.IsPrinted && !s.IsCorrected && s.CustomerId != Constants.CustomerIdAdmin && DbFunctions.TruncateTime(s.DateCreated) == DbFunctions.TruncateTime(DateTime.Now));
             }
             else
             {

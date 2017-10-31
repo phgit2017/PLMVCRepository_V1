@@ -12,7 +12,14 @@
     var _doInitializeElements = function () {
 
         $('body').on('click', '#exportexcelbutton', function () {
-            window.open(_variables.params.exportUrl);
+            var grid = $("#gvPO").data("kendoGrid");
+
+            if (!INFRA.IsNullOrEmpty(grid._data)) {
+                window.open(_variables.params.exportUrl);
+            } else {
+                toastr.error('Please select the correct details you are filtering');
+            }
+
         });
 
         $('body').on('click', '#searchbutton', function () {
@@ -89,6 +96,10 @@
                 console.error("Error parsing inline options", ex);
             }
         }
+        
+
+        //$("#frmSearch #dpDateFrom").data("kendoDatePicker").value(todayDate);
+        //$("#frmSearch #dpDateTo").data("kendoDatePicker").value(todayDate);
 
         _variables.defaultSearchValue = $('#frmSearch').serialize();
     }

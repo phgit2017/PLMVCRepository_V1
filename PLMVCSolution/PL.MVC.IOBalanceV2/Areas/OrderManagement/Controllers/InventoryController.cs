@@ -69,34 +69,46 @@ namespace PL.MVC.IOBalanceV2.Areas.OrderManagement.Controllers
                 }
                 else
                 {
-                    var retProductId = _inventoryService.SaveDetails(dto);
+                    var productValidity = _inventoryService.ValidateSaveProduct(dto);
 
-                    if (retProductId > 0)
+
+                    if (!productValidity.IsSuccess)
                     {
-                        OrderDto orders = new OrderDto() { OrderId = 0, DateCreated = DateTime.Now, CreatedBy = 1 };
-                        var retPurchaseOrderId = _orderService.SaveOrder(orders);
-                        if (retPurchaseOrderId > 0)
-                        {
-                            OrderDetailDto orderDetails = new OrderDetailDto()
-                            {
-                                OrderDetailId = 0,
-                                OrderId = retPurchaseOrderId,
-                                ProductId = retProductId,
-                                Quantity = Convert.ToDecimal(dto.Quantity),
-                                SupplierId = dto.SupplierId
-                            };
-
-                            if (_orderService.SaveOrderDetail(orderDetails))
-                            {
-                                isSuccess = true;
-                                alertMessage = Messages.InsertSuccess;
-                            }
-                        }
+                        alertMessage = productValidity.ErrorMessage;
                     }
                     else
                     {
-                        alertMessage = string.Format(Messages.ErrorOccuredDuringProcessingThis, "saving details of product");
+                        var retProductId = _inventoryService.SaveDetails(dto);
+
+                        if (retProductId > 0)
+                        {
+                            OrderDto orders = new OrderDto() { OrderId = 0, DateCreated = DateTime.Now, CreatedBy = 1 };
+                            var retPurchaseOrderId = _orderService.SaveOrder(orders);
+                            if (retPurchaseOrderId > 0)
+                            {
+                                OrderDetailDto orderDetails = new OrderDetailDto()
+                                {
+                                    OrderDetailId = 0,
+                                    OrderId = retPurchaseOrderId,
+                                    ProductId = retProductId,
+                                    Quantity = Convert.ToDecimal(dto.Quantity),
+                                    SupplierId = dto.SupplierId
+                                };
+
+                                if (_orderService.SaveOrderDetail(orderDetails))
+                                {
+                                    isSuccess = true;
+                                    alertMessage = Messages.InsertSuccess;
+                                }
+                            }
+                        }
+                        else
+                        {
+                            alertMessage = string.Format(Messages.ErrorOccuredDuringProcessingThis, "saving details of product");
+                        }
                     }
+
+                    
                 }
 
             }

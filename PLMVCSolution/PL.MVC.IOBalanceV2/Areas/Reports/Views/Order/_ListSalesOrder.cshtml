@@ -5,14 +5,12 @@
         .Name("gvSO")
         .Columns(columns =>
         {
-            columns.Bound(c => c.SalesNo).Title("Sales Number").Width(300).Sortable(false).Lockable(true);
-            columns.Bound(c => c.customer.CustomerDropDownDisplay).Title("Customer Name").Width(300).Sortable(false).Lockable(true);
-            columns.Bound(c => c.DateCreatedWithFormat).Title("Date Created").Width(300).Sortable(false).Lockable(false);
+            columns.Bound(c => c.SalesNo).Title("Sales Number").Width(300);
+            columns.Bound(c => c.customer.CustomerDropDownDisplay).Title("Customer Name").Width(300);
+            columns.Bound(c => c.DateCreatedWithTimeFormat).Title("Date Ordered").Width(300);
         })
         .Scrollable()
-        .Sortable(sort => sort.AllowUnsort(false))
         .Pageable()
-        .ColumnMenu()
         .DataSource(dataSource => dataSource
             .Ajax()
             .Read(read => read.Action("GetSOReport", "Order"))
