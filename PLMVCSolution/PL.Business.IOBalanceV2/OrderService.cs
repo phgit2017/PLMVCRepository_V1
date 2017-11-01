@@ -122,7 +122,10 @@ namespace PL.Business.IOBalanceV2
                              customer = customers.Where(s => s.CustomerId == sOrder.CustomerID).FirstOrDefault(),
                              IsPrinted = sOrder.IsPrinted,
                              IsCorrected = sOrder.IsCorrected,
-                             DateCreated = sOrder.DateCreated
+                             DateCreated = sOrder.DateCreated,
+                             TotalSalesPrice = sOrder.SalesOrderDetails.Where(s => s.SalesOrderID == sOrder.SalesOrderID).Sum(s => s.SalesPrice),
+                             TotalNumberItems = sOrder.SalesOrderDetails.Where(s => s.SalesOrderID == sOrder.SalesOrderID).Count(),
+                             TotalQuantity = sOrder.SalesOrderDetails.Where(s => s.SalesOrderID == sOrder.SalesOrderID).Sum(s => s.Quantity)
                          };
 
             return result;
@@ -145,8 +148,10 @@ namespace PL.Business.IOBalanceV2
                              customer = customers.Where(s => s.CustomerId == sOrder.CustomerID).FirstOrDefault(),
                              IsPrinted = sOrder.IsPrinted,
                              IsCorrected = sOrder.IsCorrected,
-                             DateCreated = sOrder.DateCreated
-
+                             DateCreated = sOrder.DateCreated,
+                             TotalSalesPrice = sOrder.SalesOrderDetails.Where(s => s.SalesOrderID == sOrder.SalesOrderID).Sum(s => s.SalesPrice),
+                             TotalNumberItems = sOrder.SalesOrderDetails.Where(s => s.SalesOrderID == sOrder.SalesOrderID).Count(),
+                             TotalQuantity = sOrder.SalesOrderDetails.Where(s => s.SalesOrderID == sOrder.SalesOrderID).Sum(s => s.Quantity)
 
                          };
 
@@ -167,7 +172,10 @@ namespace PL.Business.IOBalanceV2
                              DateCreated = sOrder.DateCreated,
                              IsPrinted = sOrder.IsPrinted,
                              IsCorrected = sOrder.IsCorrected,
-                             customer = customers.Where(c => c.CustomerId == sOrder.CustomerID).FirstOrDefault()
+                             customer = customers.Where(c => c.CustomerId == sOrder.CustomerID).FirstOrDefault(),
+                             TotalSalesPrice = sOrder.SalesOrderDetails.Where(s => s.SalesOrderID == sOrder.SalesOrderID).Sum(s => s.SalesPrice),
+                             TotalNumberItems = sOrder.SalesOrderDetails.Where(s => s.SalesOrderID == sOrder.SalesOrderID).Count(),
+                             TotalQuantity = sOrder.SalesOrderDetails.Where(s => s.SalesOrderID == sOrder.SalesOrderID).Sum(s => s.Quantity)
                          };
 
             return result;

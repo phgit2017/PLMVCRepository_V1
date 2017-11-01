@@ -1051,7 +1051,6 @@ namespace IOBALANCEV2LINKS
                     public const string UrlPath = "~/Content/assets-common/plugins/custom-multiselect";
                     public static string Url() { return T4MVCHelpers.ProcessVirtualPath(UrlPath); }
                     public static string Url(string fileName) { return T4MVCHelpers.ProcessVirtualPath(UrlPath + "/" + fileName); }
-                    public static readonly string custom_multi_select_css = T4MVCHelpers.IsProduction() && T4Extensions.FileExists(UrlPath + "/custom-multi-select.min.css") ? Url("custom-multi-select.min.css") : Url("custom-multi-select.css");
                 }
             
                 [GeneratedCode("T4MVC", "2.0"), DebuggerNonUserCode]
@@ -1070,9 +1069,6 @@ namespace IOBALANCEV2LINKS
                     public const string UrlPath = "~/Content/assets-common/plugins/flipclock";
                     public static string Url() { return T4MVCHelpers.ProcessVirtualPath(UrlPath); }
                     public static string Url(string fileName) { return T4MVCHelpers.ProcessVirtualPath(UrlPath + "/" + fileName); }
-                    public static readonly string flipclock_css = T4MVCHelpers.IsProduction() && T4Extensions.FileExists(UrlPath + "/flipclock.min.css") ? Url("flipclock.min.css") : Url("flipclock.css");
-                    public static readonly string flipclock_js = T4MVCHelpers.IsProduction() && T4Extensions.FileExists(UrlPath + "/flipclock.min.js") ? Url("flipclock.min.js") : Url("flipclock.js");
-                    public static readonly string flipclock_min_js = Url("flipclock.min.js");
                 }
             
                 [GeneratedCode("T4MVC", "2.0"), DebuggerNonUserCode]
@@ -1080,8 +1076,6 @@ namespace IOBALANCEV2LINKS
                     public const string UrlPath = "~/Content/assets-common/plugins/jquery_countdown";
                     public static string Url() { return T4MVCHelpers.ProcessVirtualPath(UrlPath); }
                     public static string Url(string fileName) { return T4MVCHelpers.ProcessVirtualPath(UrlPath + "/" + fileName); }
-                    public static readonly string jquery_countdown_js = T4MVCHelpers.IsProduction() && T4Extensions.FileExists(UrlPath + "/jquery.countdown.min.js") ? Url("jquery.countdown.min.js") : Url("jquery.countdown.js");
-                    public static readonly string jquery_countdown_min_js = Url("jquery.countdown.min.js");
                 }
             
                 [GeneratedCode("T4MVC", "2.0"), DebuggerNonUserCode]
@@ -2266,7 +2260,6 @@ namespace IOBALANCEV2LINKS
                     {
                         public static class Assets
                         {
-                            public const string custom_multi_select_css = "~/Content/assets-common/plugins/custom-multiselect/custom-multi-select.css";
                         }
                     }
                     public static partial class custom_scrollbar 
@@ -2283,17 +2276,12 @@ namespace IOBALANCEV2LINKS
                     {
                         public static class Assets
                         {
-                            public const string flipclock_css = "~/Content/assets-common/plugins/flipclock/flipclock.css";
-                            public const string flipclock_js = "~/Content/assets-common/plugins/flipclock/flipclock.js"; 
-                            public const string flipclock_min_js = "~/Content/assets-common/plugins/flipclock/flipclock.min.js"; 
                         }
                     }
                     public static partial class jquery_countdown 
                     {
                         public static class Assets
                         {
-                            public const string jquery_countdown_js = "~/Content/assets-common/plugins/jquery_countdown/jquery.countdown.js"; 
-                            public const string jquery_countdown_min_js = "~/Content/assets-common/plugins/jquery_countdown/jquery.countdown.min.js"; 
                         }
                     }
                     public static partial class owl_carousel 

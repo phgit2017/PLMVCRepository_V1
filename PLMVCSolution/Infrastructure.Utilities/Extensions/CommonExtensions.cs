@@ -131,6 +131,19 @@ namespace Infrastructure.Utilities.Extensions
             return hasProperty;
         }
 
+        /// <summary>
+        /// Returns property name
+        /// </summary>
+        /// <typeparam name="TModel">Type of model to get the property</typeparam>
+        /// <typeparam name="TProperty">Type of property</typeparam>
+        /// <param name="model">Model to get the properrty name</param>
+        /// <param name="expression">Expression needed to find the object</param>
+        /// <returns>(String) The Property Name</returns>
+        public static string GetPropertyName<TModel, TProperty>(this TModel model, Expression<Func<TModel, TProperty>> expression)
+        {
+            var metadata = ModelMetadata.FromLambdaExpression<TModel, TProperty>(expression, new ViewDataDictionary<TModel>(model));
+            return metadata.PropertyName;
+        }
 
     }
 }

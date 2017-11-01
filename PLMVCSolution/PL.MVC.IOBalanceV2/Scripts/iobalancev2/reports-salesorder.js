@@ -68,6 +68,10 @@
         $('#mdlsearch').modal('hide');
     }
 
+    var FixCommaStringDisplay = function (obj) {
+        return INFRA.CommaAdding(obj.toFixed(2));
+    }
+
 
     var initialize = function (options) {
         try {
@@ -87,7 +91,8 @@
 
     return {
         initialize: initialize,
-        _variables: _variables
+        _variables: _variables,
+        FixCommaStringDisplay: FixCommaStringDisplay
     }
 })();
 

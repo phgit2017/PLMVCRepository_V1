@@ -5,21 +5,20 @@
                 .Name("gvSalesOderList")
         .Columns(columns =>
         {
+            columns.Bound(c => c.SalesOrderOrder).Title("#").Width(40);
             columns.Template(@<text></text>).ClientTemplate("<div class='btn-group btn-group-xs'><a href='javascript:void(0)' type='button' data-edit-selected='true' class='btn btn-info' id='edititem' data-button-type='actionbuttons' data-action-type='editbutton' " +
                     " data-orderlist-quantity='#=Quantity#' data-orderlist-price='#=SalesPrice#' data-orderlist-unitprice='#=UnitPrice#' data-orderlist-productname='#=ProductDisplay#' data-orderlist-productid='#=ProductId#' > <i class='md md-edit md-lg'></i></a> " +
                     "<a href='javascript:void(0)' type='button' class='btn btn-danger' id='removeitem' data-button-type='actionbuttons' data-action-type='deletebutton' data-orderlist-productid='#=ProductId#' " +
                     "> <i class='md md-delete md-lg'></i> </a></div>")
                 .Title("Actions")
                 .Width(95);
-            columns.Bound(c => c.ProductId).Title("Product ID").Width(180).Sortable(true).Lockable(true).Visible(false);
-            columns.Bound(c => c.SalesNo).Title("Sales Number").Width(180).Sortable(true).Lockable(true).Visible(false);
-            columns.Bound(c => c.ProductDisplay).Title("Product").Width(180).Sortable(true).Lockable(true);
-            //columns.Bound(c => c.SalesPrice).Title("Price").Width(180).Sortable(true).Lockable(true);
-            //columns.Bound(c => c.Quantity).Title("Quantity").Width(180).Sortable(true).Lockable(true);
+            columns.Bound(c => c.ProductId).Title("Product ID").Width(180).Visible(false);
+            columns.Bound(c => c.SalesNo).Title("Sales Number").Width(180).Visible(false);
+            columns.Bound(c => c.ProductDisplay).Title("Product").Width(180);
             columns.Template(@<text></text>).ClientTemplate("#=UnitPrice# x #=Quantity#")
                 .Title("Unit Price x Qty.")
                 .Width(180);
-            columns.Bound(c => c.SalesPrice).Title("Price").Width(100).Sortable(true).Lockable(true);
+            columns.Template(@<text></text>).ClientTemplate("#=ORDERMANAGEMENTSALESORDER.FixPriceToStringDisplay(data)#").Title("Price").Width(100);
         })
         .Scrollable()
         .Sortable(sort => sort.AllowUnsort(false))

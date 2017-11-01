@@ -41,6 +41,26 @@ namespace PL.Business.Dto.IOBalanceV2
 
             }
         }
+
+        public string DateCreatedWithTimeFormat
+        {
+            get
+            {
+                if (DateCreated == null)
+                {
+                    return string.Empty;
+                }
+                else
+                {
+                    return Convert.ToDateTime(DateCreated).ToString(Globals.DefaultRecordDateTimeFormat);
+                }
+
+            }
+        }
+
+        public decimal TotalSalesPrice { get; set; }
+        public decimal TotalQuantity { get; set; }
+        public decimal TotalNumberItems { get; set; }
     }
 
     public class OrderDetailDto
@@ -209,6 +229,10 @@ namespace PL.Business.Dto.IOBalanceV2
 
             }
         }
+
+        public decimal TotalSalesPrice { get; set; }
+        public decimal TotalQuantity { get; set; }
+        public decimal TotalNumberItems { get; set; }
     }
 
     public class ReportSalesOrderReceiptDto
@@ -237,5 +261,25 @@ namespace PL.Business.Dto.IOBalanceV2
 
             }
         }
+
+        public string DateCreatedWithTimeFormat
+        {
+            get
+            {
+                if (DateCreated == null)
+                {
+                    return string.Empty;
+                }
+                else
+                {
+                    return Convert.ToDateTime(DateCreated).ToString(Globals.DefaultRecordDateTimeFormat);
+                }
+
+            }
+        }
+
+        public decimal TotalSalesPrice { get; set; }
+        public decimal TotalQuantity { get; set; }
+        public decimal TotalNumberItems { get; set; }
     }
 }

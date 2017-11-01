@@ -94,10 +94,11 @@
             toastr.error(errMsg);
         } else {
             price = (originalPrice * quantity);
-
+            gridItemsCnt = gridItemsCnt + 1;
 
             grid.dataSource.add(
                 {
+                    SalesOrderOrder: gridItemsCnt,
                     SalesNo: salesNo,
                     ProductId: productId,
                     ProductDisplay: product,
@@ -126,8 +127,12 @@
 
 
         if (INFRA.IsNullOrEmpty(gridData._data)) {
-            toastr.error('please fill in the details first');
-        } else {
+            toastr.error('please add order details first');
+        }
+        else if(customerId == 0 || salesNo == "") {
+            toastr.error('Customer and Sales Number field is required');
+        }
+        else {
             $.each(gridData._data, function () {
                 var item = $(this)[0];
 
@@ -144,6 +149,7 @@
                 salesOrderDetails.push(newItem);
             });
 
+            $('.loader-mask').show();
             $.ajax({
                 url: _variables.params.saveOrderUrl,
                 type: 'POST',
@@ -154,6 +160,7 @@
                     CustomerId: customerId
                 },
                 success: function (data) {
+                    $('.loader-mask').hide();
                     if (data.isSuccess) {
                         _doGetSalesNum();
                         _doClearAll();
@@ -183,7 +190,11 @@
 
         if (INFRA.IsNullOrEmpty(gridData._data)) {
             toastr.error('please fill in the details first');
-        } else {
+        }
+        else if (customerId == 0 || salesNo == "") {
+            toastr.error('Customer and Sales Number field is required');
+        }
+        else {
             $.each(gridData._data, function () {
                 var item = $(this)[0];
                 newItem = {
@@ -199,7 +210,7 @@
                 salesOrderDetails.push(newItem);
             });
 
-
+            $('.loader-mask').show();
             $.ajax({
                 url: _variables.params.queueOrderUrl,
                 type: 'POST',
@@ -210,6 +221,7 @@
                     CustomerId: customerId
                 },
                 success: function (data) {
+                    $('.loader-mask').hide();
                     if (data.isSuccess) {
                         _doGetSalesNum();
                         _doClearAll();
@@ -273,8 +285,12 @@
 
 
         }
-        $('#divList #gridTotal').html(salesPrice.toFixed(2));
+        $('#divList #gridTotal').html(INFRA.CommaAdding(salesPrice.toFixed(2)));
         $('#divList #gridCount').html(cnt);
+    }
+
+    var FixPriceToStringDisplay = function (data) {
+        return INFRA.CommaAdding(data.SalesPrice);
     }
 
     var doClearWhenAdd = function () {
@@ -288,7 +304,12 @@
             type: 'GET',
             data: { productId: productId },
             success: function (data) {
-                $('#frmSalesOrderDetail #currProdQty').html("Current Quantity: " + data.Quantity);
+                if (data.Quantity <= 0) {
+                    $('#frmSalesOrderDetail #currProdQty').html("Current Quantity: <span style='color:red'>" + data.Quantity + "</span>");
+                } else {
+                    $('#frmSalesOrderDetail #currProdQty').html("Current Quantity: <span>" + data.Quantity + "</span>");
+                }
+                
                 $('*[data-toggle="tooltip"]').tooltip({ 'container': 'body', 'placement': 'right' });
 
             }
@@ -505,7 +526,8 @@
 
     return {
         initialize: initialize,
-        _variables: _variables
+        _variables: _variables,
+        FixPriceToStringDisplay: FixPriceToStringDisplay
     }
 })();
 

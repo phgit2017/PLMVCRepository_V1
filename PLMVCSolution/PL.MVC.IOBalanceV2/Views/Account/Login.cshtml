@@ -9,7 +9,7 @@
             @using (Html.BeginForm(new { ReturnUrl = ViewBag.ReturnUrl }))
             {
                 @Html.AntiForgeryToken()
-                @Html.ValidationSummary(true)
+                @*@Html.ValidationSummary(true)*@
 
                 <fieldset class="form-horizontal">
                     <img src="~/Content/assets-common/img/logo-sample.svg" class="logo-brand" />
@@ -31,9 +31,9 @@
                     </div>
                     <input type="submit" value="Log in" class="btn btn-block btn-primary" />
                 </fieldset>
-                <p class="well-lg text-center">
+                @*<p class="well-lg text-center">
                     Don't have an account? @Html.ActionLink("Register here.", "Register")
-                </p>
+                </p>*@
             }
         </section>
     </div>

@@ -8,7 +8,7 @@
         gvHeight: 200,
         defaultSalesOrderDetailValue: null,
         _salesOrderId: 0,
-        _selectedRowHtml : ""
+        _selectedRowHtml: ""
     };
 
     var _doShowSaveDetails = function () {
@@ -24,69 +24,48 @@
         $('#divListQueue').show();
     }
 
-    var _doSaveForm = function () {
-        var $frm = $('#frmSave');
-
-
-        $.validator.unobtrusive.parse($frm);
-        $frm.validate();
-        if ($frm.valid()) {
-            $.ajax({
-                url: _variables.params.saveUrl,
-                type: 'POST',
-                data: $frm.serialize(),
-                success: function (data) {
-                    if (data.isSuccess == true) {
-                        _doSearchDetails();
-                        _discardSaveForm();
-                    }
-
-
-                }
-            });
-        } else {
-
-        }
-
-
-
-
-    }
-
-    var _doUpdateForm = function () {
-        var $frm = $('#frmEdit');
-
-        $.validator.unobtrusive.parse($frm);
-        $frm.validate();
-        if ($frm.valid()) {
-
-            $.ajax({
-                url: _variables.params.updateUrl,
-                type: 'POST',
-                data: $frm.serialize(),
-                success: function (data) {
-                    if (data.isSuccess == true) {
-                        _doSearchDetails();
-                    }
-                }
-            });
-
-            $('#mdledit').modal('hide');
-        }
-        else {
-
-        }
-
-
-    }
-
     var _doSearchOrderListDetails = function (salesOrderId) {
         var $gv = $("#gvQueueOrderDetailList").data('kendoGrid');
+
 
         $gv.dataSource.read({
             salesOrderId: salesOrderId
         });
 
+
+        
+    }
+
+
+    var doRefreshOrderNumber = function (data) {
+        var $gv = $("#gvQueueOrderDetailList").data('kendoGrid');
+
+
+        var gridItemsCnt = 0;
+        var dataItems = $gv.dataSource._data;
+        $.each(dataItems, function () {
+            var gridDataItem = $(this)[0];
+            gridItemsCnt = gridItemsCnt + 1;
+            gridDataItem.SalesOrderOrder = gridItemsCnt;
+
+        });
+
+        doComputeTotalAndCount();
+
+        return data.SalesOrderOrder;
+
+    }
+
+    var FixPriceToStringDisplay = function (data) {
+        return INFRA.CommaAdding(data.SalesPrice);
+    }
+
+    var FixQuantityToStringDisplay = function (data) {
+        return INFRA.CommaAdding(data.Quantity);
+    }
+
+    var FixCommaStringDisplay = function (obj) {
+        return INFRA.CommaAdding(obj.toFixed(2));
     }
 
     var _doSearchOrders = function () {
@@ -106,7 +85,7 @@
                     $('#frmSalesOrder #SalesNo').val(data.order.SalesNo);
                     $('#frmSalesOrder #CustomerId').val(data.order.customer.CustomerDropDownDisplay);
                     $('#frmSalesOrder #hdfCustomerId').val(data.order.customer.CustomerId);
-                    $('*[data-toggle="tooltip"]').tooltip({'container':'body', 'placement': 'right'});
+                    $('*[data-toggle="tooltip"]').tooltip({ 'container': 'body', 'placement': 'right' });
 
                 }
             }
@@ -133,7 +112,12 @@
             type: 'GET',
             data: { productId: productId },
             success: function (data) {
-                $('#frmSalesOrderDetail #currProdQty').html("Current Quantity: "+data.Quantity);
+                if (data.Quantity <= 0) {
+                    $('#frmSalesOrderDetail #currProdQty').html("Current Quantity: <span style='color:red'>" + data.Quantity + "</span>");
+                } else {
+                    $('#frmSalesOrderDetail #currProdQty').html("Current Quantity: <span>" + data.Quantity + "</span>");
+                }
+                //$('#frmSalesOrderDetail #currProdQty').html("Current Quantity: " + data.Quantity);
             }
         });
     }
@@ -230,7 +214,6 @@
     var doComputeTotalAndCount = function () {
         var gridData = $("#gvQueueOrderDetailList").data("kendoGrid");
         var cnt = 0, salesPrice = 0;
-
         if (!INFRA.IsNullOrEmpty(gridData._data)) {
             $.each(gridData._data, function () {
                 var item = $(this)[0];
@@ -242,8 +225,8 @@
 
 
         }
-        $('#divList #gridTotal').html(salesPrice.toFixed(2));
-        $('#divList #gridCount').html(cnt);
+        $('#divListQueueOrderDetail #gridTotal').html(INFRA.CommaAdding(salesPrice.toFixed(2)));
+        $('#divListQueueOrderDetail #gridCount').html(cnt);
     }
 
     var doClearWhenAdd = function () {
@@ -259,11 +242,15 @@
 
         customerId = $('#frmSalesOrder #hdfCustomerId').val();
 
-        
+
 
         if (INFRA.IsNullOrEmpty(gridData._data)) {
             toastr.error('please fill in the details first');
-        } else {
+        }
+        else if (customerId == 0) {
+            toastr.error('Customer field is required');
+        }
+        else {
             $.each(gridData._data, function () {
                 var item = $(this)[0];
 
@@ -280,6 +267,7 @@
                 salesOrderDetails.push(newItem);
             });
 
+            $('.loader-mask').show();
             $.ajax({
                 url: _variables.params.saveOrderUrl,
                 type: 'POST',
@@ -290,6 +278,7 @@
                     salesOrderId: _variables._salesOrderId
                 },
                 success: function (data) {
+                    $('.loader-mask').hide();
                     if (data.isSuccess) {
                         //_doClearAll();
                         doComputeTotalAndCount();
@@ -314,13 +303,17 @@
         var customerId = 0;
         var salesOrderDetails = [], newItem;
 
-        
+
         customerId = $('#frmSalesOrder #hdfCustomerId').val();
 
 
         if (INFRA.IsNullOrEmpty(gridData._data)) {
             toastr.error('please fill in the details first');
-        } else {
+        }
+        else if (customerId == 0) {
+            toastr.error('Customer field is required');
+        }
+        else {
             $.each(gridData._data, function () {
                 var item = $(this)[0];
                 newItem = {
@@ -336,7 +329,7 @@
                 salesOrderDetails.push(newItem);
             });
 
-
+            $('.loader-mask').show();
             $.ajax({
                 url: _variables.params.queueOrderUrl,
                 type: 'POST',
@@ -347,6 +340,7 @@
                     salesOrderId: _variables._salesOrderId
                 },
                 success: function (data) {
+                    $('.loader-mask').hide();
                     if (data.isSuccess) {
                         //_doClearAll();
                         doComputeTotalAndCount();
@@ -372,6 +366,8 @@
 
             _doSearchOrderListDetails(_variables._salesOrderId);
             _doGetOrderAndOrderDetails(_variables._salesOrderId);
+
+            
         });
 
         $('body').on('click', '#btnDiscard', function () {
@@ -436,7 +432,7 @@
         $('body').on('click', '#btnEditOrderList', function () {
             var grid = $("#gvQueueOrderDetailList").data("kendoGrid");
             var caller = $('[data-edit-selected="true"].selected');
-            
+
             var dataItems = grid.dataSource._data;
             var editedQty = 0, editedPrice = 0, salesPrice = 0, errCnt = 0;
             var errMsg = "";
@@ -493,9 +489,9 @@
                 grid.refresh();
             }
 
-            
 
-            
+
+
 
 
         });
@@ -547,7 +543,11 @@
 
     return {
         initialize: initialize,
-        _variables: _variables
+        _variables: _variables,
+        doRefreshOrderNumber: doRefreshOrderNumber,
+        FixPriceToStringDisplay: FixPriceToStringDisplay,
+        FixQuantityToStringDisplay: FixQuantityToStringDisplay,
+        FixCommaStringDisplay: FixCommaStringDisplay
     }
 })();
 

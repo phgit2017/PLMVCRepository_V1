@@ -13,21 +13,19 @@
                 .Width(220)
                 .HeaderHtmlAttributes(new { @class = "bos-grid-text-center" })
                 .HtmlAttributes(new { @class = "bos-grid-text-center" });
-            columns.Bound(c => c.Quantity).Title("Quantity").Width(160).Sortable(true).Lockable(true);
-            columns.Bound(c => c.CategoryName).Title("Category Name").Width(140).Sortable(true).Lockable(true);
-            columns.Bound(c => c.UnitName).Title("Unit Name").Width(140).Sortable(false).Lockable(true);
-            columns.Bound(c => c.ProductCode).Title("Product Code").Width(180).Sortable(true).Lockable(true);
-            columns.Bound(c => c.ProductName).Title("Product Name").Width(300).Sortable(true).Lockable(true);
-            columns.Bound(c => c.ProductDescription).Title("Product Description").Width(300).Sortable(true).Lockable(true);
-            columns.Bound(c => c.ProductSize).Title("Product Size").Width(140).Sortable(true).Lockable(true);
-            columns.Bound(c => c.CurrentNum).Title("Current Number").Width(160).Sortable(true).Lockable(true);
-            columns.Bound(c => c.DRNum).Title("DR Number").Width(160).Sortable(true).Lockable(true);
-            columns.Bound(c => c.CartonNum).Title("Carton Number").Width(160).Sortable(true).Lockable(true);
+            columns.Template(@<text></text>).ClientTemplate("#=ORDERMANAGEMENTINVENTORY.determineQuantity(data)#").Width(160).Title("Quantity");
+            columns.Bound(c => c.CategoryName).Title("Category Name").Width(140);
+            columns.Bound(c => c.UnitName).Title("Unit Name").Width(140);
+            columns.Bound(c => c.ProductCode).Title("Product Code").Width(180);
+            columns.Bound(c => c.ProductName).Title("Product Name").Width(300);
+            columns.Bound(c => c.ProductDescription).Title("Product Description");
+            columns.Bound(c => c.ProductSize).Title("Product Size").Width(140);
+            columns.Bound(c => c.CurrentNum).Title("Current Number").Width(160);
+            columns.Bound(c => c.DRNum).Title("DR Number").Width(160);
+            columns.Bound(c => c.CartonNum).Title("Carton Number").Width(160);
         })
         .Scrollable()
-        .Sortable(sort => sort.AllowUnsort(false))
         .Pageable()
-        .ColumnMenu()
         .DataSource(dataSource => dataSource
             .Ajax()
                 .Read(read => read.Action("GetDetails", "Inventory"))

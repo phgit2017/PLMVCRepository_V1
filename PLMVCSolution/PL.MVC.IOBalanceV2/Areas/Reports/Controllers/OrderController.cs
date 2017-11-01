@@ -332,7 +332,7 @@ namespace PL.MVC.IOBalanceV2.Areas.Reports.Controllers
             foreach (var detail in list)
             {
                 workSheet.Cells["A" + rowId.ToString()].Value = detail.product.ProductInfoDisplay;
-                workSheet.Cells["B" + rowId.ToString()].Value = detail.supplier.SupplierInfoDisplay;
+                workSheet.Cells["B" + rowId.ToString()].Value = detail.SupplierInfoDisplay;
                 workSheet.Cells["C" + rowId.ToString()].Value = detail.Quantity;
                 workSheet.Cells["D" + rowId.ToString()].Value = detail.DateCreatedWithFormat;
                 rowId++;
@@ -439,7 +439,7 @@ namespace PL.MVC.IOBalanceV2.Areas.Reports.Controllers
             workSheet.Cells["H4"].Value = salesNo;
             workSheet.Cells["B5"].Value = customerDetails.CustomerDropDownDisplay;
             workSheet.Cells["B7"].Value = customerDetails.CustomerAddress;
-            workSheet.Cells["H5"].Value = DateTime.Now.ToString(Globals.DefaultRecordDateFormat);
+            workSheet.Cells["H5"].Value = DateTime.Now.ToString(Globals.DefaultRecordDateTimeFormat);
 
             rowId = 11;
             foreach (var detail in list)

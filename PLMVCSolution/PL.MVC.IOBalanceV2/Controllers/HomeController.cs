@@ -257,39 +257,6 @@ namespace PL.MVC.IOBalanceV2.Controllers
 
             IQueryable<OrderDto> list = null;
 
-            //if (searchModel.CustomerAddress.IsNull() && searchModel.CustomerCode.IsNull() && searchModel.CustomerName.IsNull() && searchModel.IsActive.IsNull())
-            //{
-            //    list = _customerService.GetAll();
-            //}
-            //else
-            //{
-            //    var predicate = PredicateBuilder.True<CustomerDto>();
-
-            //    if (!searchModel.CustomerCode.IsNull())
-            //    {
-            //        predicate = predicate.And(c => c.CustomerCode == searchModel.CustomerCode);
-            //    }
-
-            //    if (!searchModel.CustomerName.IsNull())
-            //    {
-            //        predicate = predicate.And(c => c.CustomerName.Contains(searchModel.CustomerName));
-            //    }
-
-            //    if (!searchModel.CustomerAddress.IsNull())
-            //    {
-            //        predicate = predicate.And(c => c.CustomerAddress.Contains(searchModel.CustomerAddress));
-            //    }
-
-            //    if (!searchModel.IsActive.IsNull())
-            //    {
-            //        predicate = predicate.And(c => c.IsActive == searchModel.IsActive);
-            //    }
-
-
-            //    list = _customerService.GetAll().AsExpandable().Where(predicate);
-
-            //}
-
             list = _orderService.GetAllSalesOrder().Where(so => so.IsPrinted == false && so.IsCorrected == false && so.CustomerId != Constants.CustomerIdAdmin).OrderByDescending(so => so.OrderId);
 
             return list;

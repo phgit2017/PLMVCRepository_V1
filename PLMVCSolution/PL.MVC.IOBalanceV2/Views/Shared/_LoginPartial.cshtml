@@ -1,4 +1,5 @@
-﻿@if (Request.IsAuthenticated)
+﻿
+@if (Request.IsAuthenticated)
 {
 
     <div class="btn-group">
@@ -8,7 +9,7 @@
         </span>
         <ul class="dropdown-menu">
             <li>
-                @using (Html.BeginForm("LogOff", "Account", FormMethod.Post, new { id = "logoutForm" }))
+                @using (Html.BeginForm("LogOff", "Account", new { area = "" }, FormMethod.Post, new { id = "logoutForm" }))
                 {
                     @Html.AntiForgeryToken()
                     <a class="text-danger" href="javascript:document.getElementById('logoutForm').submit()"><i class="md md-power"></i> Log off</a>

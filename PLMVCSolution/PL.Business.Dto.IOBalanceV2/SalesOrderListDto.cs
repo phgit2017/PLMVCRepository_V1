@@ -8,6 +8,8 @@ namespace PL.Business.Dto.IOBalanceV2
 {
     public class SalesOrderListDto
     {
+        
+
         public long SalesOrderId { get; set; }
         public string SalesNo { get; set; }
         public int CustomerId { get; set; }
@@ -24,5 +26,6 @@ namespace PL.Business.Dto.IOBalanceV2
         public int? CreatedBy { get; set; }
 
         public ProductDto product { get; set; }
+        public int SalesOrderOrder { get; set; }
     }
 }

@@ -10,6 +10,7 @@ using Microsoft.Web.WebPages.OAuth;
 using WebMatrix.WebData;
 using PL.MVC.IOBalanceV2.Filters;
 using PL.MVC.IOBalanceV2.Models;
+using Infrastructure.Utilities.Extensions;
 
 namespace PL.MVC.IOBalanceV2.Controllers
 {
@@ -41,13 +42,15 @@ namespace PL.MVC.IOBalanceV2.Controllers
         [ValidateAntiForgeryToken]
         public virtual ActionResult Login(LoginModel model, string returnUrl)
         {
+            string usernameName = model.GetPropertyName(x => x.UserName);
+
             if (ModelState.IsValid && WebSecurity.Login(model.UserName, model.Password, persistCookie: model.RememberMe))
             {
                 return RedirectToLocal(returnUrl);
             }
 
             // If we got this far, something failed, redisplay form
-            ModelState.AddModelError("", "The user name or password provided is incorrect.");
+            ModelState.AddModelError(usernameName, "The user name or password provided is incorrect.");
             return View(model);
         }
 

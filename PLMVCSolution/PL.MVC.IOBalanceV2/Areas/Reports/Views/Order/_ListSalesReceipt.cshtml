@@ -8,15 +8,16 @@
             columns.Template(@<text></text>).ClientTemplate("<a href='javascript:void(0)' type='button' data-edit-selected='true' class='btn btn-sm  btn-default' id='generatereceipt' data-button-type='actionbuttons' data-action-type='editbutton' " +
                     " data-reportlist-salesorderid='#=SalesOrderId#' data-reportlist-customerid='#=CustomerId#' data-reportlist-salesno='#=SalesNo#' > <i class='md md-download'></i> Download </a> ")
                 .Title("Actions")
-                .Width(115);
-            columns.Bound(c => c.SalesNo).Title("Sales Number").Width(300).Sortable(false).Lockable(true);
-            columns.Bound(c => c.customer.CustomerDropDownDisplay).Title("Customer Name").Width(300).Sortable(false).Lockable(true);
-            columns.Bound(c => c.DateCreatedWithFormat).Title("Date Created").Width(300).Sortable(false).Lockable(false);
+                .Width(130);
+            columns.Bound(c => c.SalesNo).Title("Sales Number").Width(160);
+            columns.Bound(c => c.customer.CustomerDropDownDisplay).Title("Customer Name").Width(300);
+            columns.Template(@<text></text>).ClientTemplate("#=REPORTSSO.FixCommaStringDisplay(TotalSalesPrice)#").Title("Total Price").Width(150);
+            columns.Template(@<text></text>).ClientTemplate("#=REPORTSSO.FixCommaStringDisplay(TotalQuantity)#").Title("Total Qty").Width(120);
+            columns.Bound(c => c.TotalNumberItems).Title("# Of Items").Width(100);
+            columns.Bound(c => c.DateCreatedWithTimeFormat).Title("Date Created").Width(160);
         })
         .Scrollable()
-        .Sortable(sort => sort.AllowUnsort(false))
         .Pageable()
-        .ColumnMenu()
         .DataSource(dataSource => dataSource
             .Ajax()
                 .Read(read => read.Action("GetSOReceiptReport", "Order"))

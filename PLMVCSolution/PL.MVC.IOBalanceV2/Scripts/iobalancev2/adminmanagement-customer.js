@@ -185,7 +185,7 @@
                 IsActive: $this.data('customer-isactive'),
             };
 
-            $.alertWindow("Are you sure you want to inactive this record?",
+            $.alertWindow("Are you sure you want to change the status of this record?",
             function () {
                 $('.loader-mask').show();
                 $.ajax({

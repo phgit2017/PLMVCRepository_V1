@@ -59,6 +59,9 @@ var INFRA = {
     },
     ConvertToFloat: function (obj) {
         return parseFloat(INFRA.ReplaceIfNullOrEmpty(obj, 0));
+    },
+    CommaAdding: function (obj) {
+        return obj.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",");
     }
 };
 

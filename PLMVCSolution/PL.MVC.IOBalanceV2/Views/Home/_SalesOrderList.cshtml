@@ -5,6 +5,7 @@
                 .Name("gvQueueOrderDetailList")
         .Columns(columns =>
         {
+            columns.Template(@<text></text>).ClientTemplate("#=HOMEQUEUEMANAGEMENT.doRefreshOrderNumber(data)#").Title("#").Width(40);
             columns.Template(@<text></text>).ClientTemplate("<div class='btn-group btn-group-xs'><a href='javascript:void(0)' data-toggle='tooltip' title='Edit' type='button' data-edit-selected='true' class='btn btn-info' id='edititem' data-button-type='actionbuttons' data-action-type='editbutton' " +
                     " data-orderlist-quantity='#=Quantity#' data-orderlist-price='#=SalesPrice#' data-orderlist-productname='#=product.ProductDropDownDisplay#' data-orderlist-productid='#=ProductId#' data-orderlist-unitprice='#=UnitPrice#'>  <i class='md md-edit md-lg'></i></a> " +
                     "<a href='javascript:void(0)' type='button' class='btn btn-danger' data-toggle='tooltip' title='Delete' id='removeitem' data-button-type='actionbuttons' data-action-type='deletebutton' data-orderlist-productid='#=ProductId#' " +
@@ -13,13 +14,13 @@
                 .Width(95)
                 .HeaderHtmlAttributes(new { @class = "bos-grid-text-center" })
                 .HtmlAttributes(new { @class = "bos-grid-text-center" });
-            columns.Bound(c => c.ProductId).Title("Product ID").Width(180).Sortable(true).Lockable(true).Visible(false);
-            columns.Bound(c => c.SalesNo).Title("Sales Number").Width(180).Sortable(true).Lockable(true).Visible(false);
-            columns.Bound(c => c.product.ProductDropDownDisplay).Title("Product").Width(170).Sortable(true).Lockable(true);
+            columns.Bound(c => c.ProductId).Title("Product ID").Width(180).Visible(false);
+            columns.Bound(c => c.SalesNo).Title("Sales Number").Width(180).Visible(false);
+            columns.Bound(c => c.product.ProductDropDownDisplay).Title("Product").Width(170);
             columns.Template(@<text></text>).ClientTemplate(" <div>#=UnitPrice# x #=Quantity#</div>")
            .Title("Price x Qty")
            .Width(150);
-            columns.Bound(c => c.SalesPrice).Title("Price").Width(130).Sortable(true).Lockable(true);
+            columns.Template(@<text></text>).ClientTemplate("#=HOMEQUEUEMANAGEMENT.FixPriceToStringDisplay(data)#").Title("Price").Width(130);
         })
         .Scrollable()
         .Sortable(sort => sort.AllowUnsort(false))

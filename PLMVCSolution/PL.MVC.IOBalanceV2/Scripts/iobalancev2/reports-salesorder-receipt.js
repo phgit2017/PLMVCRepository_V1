@@ -93,9 +93,14 @@
         _variables.defaultSearchValue = $('#frmSearch').serialize();
     }
 
+    var FixCommaStringDisplay = function (obj) {
+        return INFRA.CommaAdding(obj.toFixed(2));
+    }
+
     return {
         initialize: initialize,
-        _variables: _variables
+        _variables: _variables,
+        FixCommaStringDisplay: FixCommaStringDisplay
     }
 })();
 

@@ -156,6 +156,17 @@
         $('#mdlsearch').modal('hide');
     }
 
+    var determineQuantity = function (data) {
+        var templateResult = "";
+        if (data.Quantity <= 0) {
+            templateResult = "<div style='color:red;'>" + data.Quantity + "</div>";
+        } else {
+            templateResult = "<div>" + data.Quantity + "</div>";
+        }
+
+        return templateResult;
+    }
+
 
 
     var _doInitializeElements = function () {
@@ -470,7 +481,8 @@
 
     return {
         initialize: initialize,
-        _variables: _variables
+        _variables: _variables,
+        determineQuantity: determineQuantity
     }
 })();
 
