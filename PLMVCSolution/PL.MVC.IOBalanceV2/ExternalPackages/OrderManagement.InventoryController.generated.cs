@@ -180,7 +180,7 @@ namespace PL.MVC.IOBalanceV2.Areas.OrderManagement.Controllers
         [GeneratedCode("T4MVC", "2.0"), DebuggerNonUserCode]
         public class ActionParamsClass_ExportBatchUploaded
         {
-            public readonly string dataResult = "dataResult";
+            public readonly string batchInventoryId = "batchInventoryId";
         }
         static readonly ViewsClass s_views = new ViewsClass();
         [GeneratedCode("T4MVC", "2.0"), DebuggerNonUserCode]
@@ -308,14 +308,14 @@ namespace PL.MVC.IOBalanceV2.Areas.OrderManagement.Controllers
         }
 
         [NonAction]
-        partial void ExportBatchUploadedOverride(T4MVC_System_Web_Mvc_ActionResult callInfo, string dataResult);
+        partial void ExportBatchUploadedOverride(T4MVC_System_Web_Mvc_ActionResult callInfo, long batchInventoryId);
 
         [NonAction]
-        public override System.Web.Mvc.ActionResult ExportBatchUploaded(string dataResult)
+        public override System.Web.Mvc.ActionResult ExportBatchUploaded(long batchInventoryId)
         {
             var callInfo = new T4MVC_System_Web_Mvc_ActionResult(Area, Name, ActionNames.ExportBatchUploaded);
-            ModelUnbinderHelpers.AddRouteValues(callInfo.RouteValueDictionary, "dataResult", dataResult);
-            ExportBatchUploadedOverride(callInfo, dataResult);
+            ModelUnbinderHelpers.AddRouteValues(callInfo.RouteValueDictionary, "batchInventoryId", batchInventoryId);
+            ExportBatchUploadedOverride(callInfo, batchInventoryId);
             return callInfo;
         }
 

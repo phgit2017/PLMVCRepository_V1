@@ -68,6 +68,21 @@ namespace PL.Business.IOBalanceV2
             return result;
         }
 
+        public IQueryable<BatchInventoryLogDto> GetAllBatchInventory()
+        {
+            var result = from batchLogs in _batchInventoryLog.GetAll()
+                         select new BatchInventoryLogDto() 
+                         {
+                             BatchInventoryId = batchLogs.BatchInventoryId,
+                             FileName = batchLogs.FileName,
+                             CreatedBy = batchLogs.CreatedBy,
+                             DateCreated = batchLogs.DateCreated,
+                             ResultMessage = batchLogs.ResultMessage
+                         };
+
+            return result;
+        }
+
         public long SaveDetails(ProductDto newDetails)
         {
 
@@ -179,14 +194,31 @@ namespace PL.Business.IOBalanceV2
             return result;
         }
 
-        public bool SaveBatchInvetoryLogs(BatchInventoryLogDto newDetails)
+        public long SaveBatchInvetoryLogs(BatchInventoryLogDto newDetails)
         {
             this.batchInventoryLog = newDetails.DtoToEntity();
+            var insertedBatchInventoryLog = this._batchInventoryLog.Insert(this.batchInventoryLog);
 
-            if (this._batchInventoryLog.Insert(this.batchInventoryLog).IsNull())
+            if (insertedBatchInventoryLog.IsNull())
+            {
+                return 0;
+            }
+
+            return insertedBatchInventoryLog.BatchInventoryId;
+        }
+
+        public bool UpdateBatchInventoryLogs(long batchInventoryId,string resultMessage)
+        {
+            var oldDetails = GetAllBatchInventory().Where(b => b.BatchInventoryId == batchInventoryId).FirstOrDefault();
+            oldDetails.ResultMessage = resultMessage;
+
+            this.batchInventoryLog = new IOBalanceDBV2Entity.BatchInventoryLog();
+            this.batchInventoryLog = oldDetails.DtoToEntity();
+            if (this._batchInventoryLog.Update(this.batchInventoryLog, x => x.BatchInventoryId == batchInventoryId).IsNull())
             {
                 return false;
             }
+
 
             return true;
         }

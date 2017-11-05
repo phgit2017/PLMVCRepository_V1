@@ -28,6 +28,7 @@ using OfficeOpenXml;
 
 namespace PL.MVC.IOBalanceV2.Areas.OrderManagement.Controllers
 {
+    [Authorization]
     public partial class SalesOrderController : Controller
     {
         #region Declarations and constructors

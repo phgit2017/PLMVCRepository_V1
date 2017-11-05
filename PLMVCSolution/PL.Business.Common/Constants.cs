@@ -142,7 +142,9 @@ namespace PL.Business.Common
         public const string UpdateFailed = "Update Failed. Please refresh the page and try again.";
         public const string UpdateSuccess = "successfully updated record";
         public const string UpdateSuccessRecord = "{0} successfully updated";
-        public const string UploadSuccess = "{0} successfully uploaded";
+        public const string UploadSuccess = "Successfully uploaded!";
+        public const string UploadSuccessThis = "{0} successfully uploaded";
+
     }
 
     public static class Modules

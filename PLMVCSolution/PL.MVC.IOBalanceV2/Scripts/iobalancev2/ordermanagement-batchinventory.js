@@ -48,9 +48,7 @@
             $(".k-upload-status").remove();
             $('.k-filename').html(e.response.messageResult);
 
-            
-            window.open(_variables.params.exportUrl + '?' + 'dataResult=' + e.response.dataResult);
-            //doRemoveTrackerLoader();
+            window.open(_variables.params.exportUrl + '?' + 'batchInventoryId=' + e.response.batchInventoryId);
         }
     };
 

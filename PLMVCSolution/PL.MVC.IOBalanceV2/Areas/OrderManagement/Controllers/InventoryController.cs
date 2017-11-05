@@ -31,6 +31,7 @@ using WebMatrix.WebData;
 
 namespace PL.MVC.IOBalanceV2.Areas.OrderManagement.Controllers
 {
+    [Authorization]
     public partial class InventoryController : BaseController
     {
         #region Declarations and constructors
@@ -108,7 +109,7 @@ namespace PL.MVC.IOBalanceV2.Areas.OrderManagement.Controllers
                         }
                     }
 
-                    
+
                 }
 
             }
@@ -356,6 +357,7 @@ namespace PL.MVC.IOBalanceV2.Areas.OrderManagement.Controllers
             bool isSuccess = true;
             int rowId = 2;
             int? createdBy = 1;
+            long insertedBatchInventoryLogs = 0;
 
 
             var dateNow = System.DateTime.Now;
@@ -464,9 +466,11 @@ namespace PL.MVC.IOBalanceV2.Areas.OrderManagement.Controllers
                                 BatchInventoryId = 0,
                                 CreatedBy = createdBy,
                                 DateCreated = dateNow,
-                                FileName = file.FileName
+                                FileName = file.FileName,
+                                ResultMessage = null
                             };
-                            if (!_inventoryService.SaveBatchInvetoryLogs(batchInventoryDto))
+                            insertedBatchInventoryLogs = _inventoryService.SaveBatchInvetoryLogs(batchInventoryDto);
+                            if (insertedBatchInventoryLogs <= 0)
                             {
                                 isSuccess = false;
                                 messageResult = string.Format(Messages.ErrorOccuredDuringProcessingThis, "Batch Inventory Log");
@@ -474,9 +478,6 @@ namespace PL.MVC.IOBalanceV2.Areas.OrderManagement.Controllers
                             else
                             {
                                 var result = _inventoryService.SaveBatchInventory(xmlResult, createdBy);
-
-
-
 
                                 JavaScriptSerializer jsSerializer = new JavaScriptSerializer();
                                 List<Dictionary<string, object>> parentRow = new List<Dictionary<string, object>>();
@@ -493,9 +494,25 @@ namespace PL.MVC.IOBalanceV2.Areas.OrderManagement.Controllers
 
                                 dataResult = jsSerializer.Serialize(parentRow);
 
+                                if (dataResult.IsNull())
+                                {
+                                    isSuccess = false;
+                                    messageResult = string.Format(Messages.ErrorOccuredDuringProcessingThis, "of serializing the data");
+                                }
+                                else
+                                {
+                                    if (!_inventoryService.UpdateBatchInventoryLogs(insertedBatchInventoryLogs, dataResult))
+                                    {
+                                        isSuccess = false;
+                                        messageResult = string.Format(Messages.ErrorOccuredDuringProcessingThis, "of updating the batch inventory logs");
+                                    }
+                                    else
+                                    {
+                                        isSuccess = true;
+                                        messageResult = Messages.UploadSuccess;
+                                    }
+                                }
 
-                                isSuccess = true;
-                                messageResult = "Successfully uploaded!";
 
                             }
                         }
@@ -516,19 +533,20 @@ namespace PL.MVC.IOBalanceV2.Areas.OrderManagement.Controllers
             {
                 result = isSuccess,
                 messageResult = messageResult,
-                dataResult = dataResult
+                dataResult = dataResult,
+                batchInventoryId = insertedBatchInventoryLogs
             };
 
             return Json(json, Globals.ContentTypeTextPlain, JsonRequestBehavior.AllowGet);
         }
 
-        public virtual ActionResult ExportBatchUploaded(string dataResult)
+        public virtual ActionResult ExportBatchUploaded(long batchInventoryId)
         {
             int rowId = 0;
             int colId = 0;
 
 
-
+            string dataResult = _inventoryService.GetAllBatchInventory().Where(i => i.BatchInventoryId == batchInventoryId).FirstOrDefault().ResultMessage;
 
             var dir = Server.MapPath(string.Format("~/{0}", Constants.ProductExcelTemplateDir));
             var fileNameTemplate = string.Format("{0}{1}", Constants.BatchUploadInventoryReturnTemplate, ".xlsx");

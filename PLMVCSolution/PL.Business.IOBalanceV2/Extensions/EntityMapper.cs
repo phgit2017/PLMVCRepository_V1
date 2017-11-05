@@ -219,7 +219,8 @@ namespace PL.Business.IOBalanceV2.Extensions
                     BatchInventoryId = dto.BatchInventoryId,
                     CreatedBy = dto.CreatedBy,
                     DateCreated = dto.DateCreated,
-                    FileName = dto.FileName
+                    FileName = dto.FileName,
+                    ResultMessage = dto.ResultMessage
                 };
             }
 

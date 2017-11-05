@@ -61,7 +61,10 @@ namespace PL.MVC.IOBalanceV2.Controllers
         [ValidateAntiForgeryToken]
         public virtual ActionResult LogOff()
         {
+            
             WebSecurity.Logout();
+            Session.Abandon();
+            Session.Clear();
 
             return RedirectToAction("Login", "Account");
         }

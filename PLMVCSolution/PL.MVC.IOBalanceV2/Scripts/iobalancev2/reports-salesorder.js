@@ -13,8 +13,14 @@
 
         $('body').on('click', '#exportexcelbutton', function () {
             var $frm = $('#frmSearch');
+            var grid = $("#gvSO").data("kendoGrid");
+
+            if (!INFRA.IsNullOrEmpty(grid._data)) {
+                window.open(_variables.params.exportUrl + '?' + $frm.serialize());
+            } else {
+                toastr.error('Please select the correct details you are filtering');
+            }
             
-            window.open(_variables.params.exportUrl + '?' + $frm.serialize());
         });
 
         $('body').on('click', '#searchbutton', function () {

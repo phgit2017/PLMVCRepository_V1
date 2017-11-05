@@ -189,6 +189,8 @@ namespace PL.Business.Dto.IOBalanceV2
         public int? CreatedBy { get; set; }
 
         public DateTime? DateCreated { get; set; }
+
+        public string ResultMessage { get; set; }
     }
 
     public class BatchInventoryResult

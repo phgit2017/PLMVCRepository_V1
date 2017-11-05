@@ -12,11 +12,13 @@ namespace PL.Business.Interface.IOBalanceV2
     public interface IInventoryService
     {
         IQueryable<ProductDto> GetAll();
+        IQueryable<BatchInventoryLogDto> GetAllBatchInventory();
         long SaveDetails(ProductDto newDetails);
         bool UpdateDetails(ProductDto newDetails);
         bool UpdateQuantityOrder(long productId, decimal qtyUpdate, Enums.OrderType orderType = Enums.OrderType.SalesOrder);
         DataTable SaveBatchInventory(string xml, int? createdBy);
-        bool SaveBatchInvetoryLogs(BatchInventoryLogDto newDetails);
+        long SaveBatchInvetoryLogs(BatchInventoryLogDto newDetails);
+        bool UpdateBatchInventoryLogs(long batchInventoryLogId, string resultMessage);
         List<InventoryReportDto> GetAllInventoryReport(long productId);
         ProductValidationDto ValidateSaveProduct(ProductDto dto);
     }

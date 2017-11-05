@@ -8,7 +8,7 @@
             columns.Bound(c => c.product.ProductId).Visible(false);
             columns.Bound(c => c.product.ProductInfoDisplay).Title("Product Name").Width(300);
             columns.Bound(c => c.SupplierInfoDisplay).Title("Supplier").Width(300);
-            columns.Bound(c => c.DateCreatedWithFormat).Title("Date Created").Width(300);
+            columns.Bound(c => c.DateCreatedWithTimeFormat).Title("Date Purchased").Width(300);
         })
         .Scrollable()
         .Pageable()

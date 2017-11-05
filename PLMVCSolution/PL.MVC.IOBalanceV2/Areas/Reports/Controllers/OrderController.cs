@@ -31,6 +31,7 @@ using System.Data.Entity;
 
 namespace PL.MVC.IOBalanceV2.Areas.Reports.Controllers
 {
+    [Authorization]
     public partial class OrderController : BaseController
     {
         #region Declarations and constructors
@@ -334,7 +335,7 @@ namespace PL.MVC.IOBalanceV2.Areas.Reports.Controllers
                 workSheet.Cells["A" + rowId.ToString()].Value = detail.product.ProductInfoDisplay;
                 workSheet.Cells["B" + rowId.ToString()].Value = detail.SupplierInfoDisplay;
                 workSheet.Cells["C" + rowId.ToString()].Value = detail.Quantity;
-                workSheet.Cells["D" + rowId.ToString()].Value = detail.DateCreatedWithFormat;
+                workSheet.Cells["D" + rowId.ToString()].Value = detail.DateCreatedWithTimeFormat;
                 rowId++;
             }
 
