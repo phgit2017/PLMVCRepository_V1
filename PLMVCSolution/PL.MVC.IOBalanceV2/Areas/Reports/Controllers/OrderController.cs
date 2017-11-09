@@ -35,9 +35,9 @@ namespace PL.MVC.IOBalanceV2.Areas.Reports.Controllers
     public partial class OrderController : BaseController
     {
         #region Declarations and constructors
-        private readonly IInventoryService _inventoryService;
-        private readonly IOrderService _orderService;
-        private readonly ICustomerService _customerService;
+        private IInventoryService _inventoryService;
+        private IOrderService _orderService;
+        private ICustomerService _customerService;
 
         public OrderController(
             IInventoryService inventoryService,
@@ -473,6 +473,30 @@ namespace PL.MVC.IOBalanceV2.Areas.Reports.Controllers
             return File(memoryStream, contentType, fileNameGenerated);
         }
         #endregion Private methods
+
+        #region Dispose
+        protected override void Dispose(bool disposing)
+        {
+            if (disposing)
+            {
+                if (!_inventoryService.IsNull())
+                {
+                    _inventoryService = null;
+                }
+
+                if (_orderService.IsNull())
+                {
+                    _orderService = null;
+                }
+
+                if (_customerService.IsNull())
+                {
+                    _customerService = null;
+                }
+            }
+            base.Dispose(disposing);
+        }
+        #endregion Dispose
 
 
     }

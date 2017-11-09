@@ -29,9 +29,8 @@ namespace PL.MVC.IOBalanceV2.Areas.AdminManagement.Controllers
     [Authorization(Roles = "admin")]
     public partial class CategoryController : BaseController
     {
-
         #region Declarations and constructors
-        private readonly ICategoryService _categoryService;
+        private ICategoryService _categoryService;
         public CategoryController(ICategoryService categoryService)
         {
             _categoryService = categoryService;
@@ -168,5 +167,17 @@ namespace PL.MVC.IOBalanceV2.Areas.AdminManagement.Controllers
 
         }
         #endregion Private methods
+
+        #region Dispose
+        protected override void Dispose(bool disposing)
+        {
+            if (_categoryService.IsNull())
+            {
+                _categoryService = null;
+            }
+
+            base.Dispose(disposing);
+        }
+        #endregion Dispose
     }
 }

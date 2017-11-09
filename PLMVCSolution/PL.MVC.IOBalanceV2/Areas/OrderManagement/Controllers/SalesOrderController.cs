@@ -32,10 +32,10 @@ namespace PL.MVC.IOBalanceV2.Areas.OrderManagement.Controllers
     public partial class SalesOrderController : Controller
     {
         #region Declarations and constructors
-        private readonly IOrderService _orderService;
-        private readonly IInventoryService _inventoryService;
-        private readonly ICustomerPriceService _customerPriceService;
-        private readonly ICustomerService _customerService;
+        private IOrderService _orderService;
+        private IInventoryService _inventoryService;
+        private ICustomerPriceService _customerPriceService;
+        private ICustomerService _customerService;
 
         public SalesOrderController(IOrderService orderService, IInventoryService inventoryService, ICustomerPriceService customerPriceService,ICustomerService customerService)
         {
@@ -334,5 +334,32 @@ namespace PL.MVC.IOBalanceV2.Areas.OrderManagement.Controllers
             return File(memoryStream, contentType, fileNameGenerated);
         }
         #endregion Private methods
+
+        #region Dispose
+        protected override void Dispose(bool disposing)
+        {
+            if (_orderService.IsNull())
+            {
+                _orderService = null;
+            }
+
+            if (_inventoryService.IsNull())
+            {
+                _inventoryService = null;
+            }
+
+            if (_customerPriceService.IsNull())
+            {
+                _customerPriceService = null;
+            }
+
+            if (_customerService.IsNull())
+            {
+                _customerService = null;
+            }
+
+            base.Dispose(disposing);
+        }
+        #endregion Dispose
     }
 }

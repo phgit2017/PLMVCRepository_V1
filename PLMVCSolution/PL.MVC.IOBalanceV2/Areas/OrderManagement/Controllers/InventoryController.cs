@@ -665,7 +665,6 @@ namespace PL.MVC.IOBalanceV2.Areas.OrderManagement.Controllers
         }
         #endregion Private methods
 
-
         #region Dispose
         protected override void Dispose(bool disposing)
         {

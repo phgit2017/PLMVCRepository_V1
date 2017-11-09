@@ -32,7 +32,7 @@ namespace PL.MVC.IOBalanceV2.Areas.AdminManagement.Controllers
     {
 
         #region Declarations and constructors
-        private readonly ISupplierService _supplierService;
+        private ISupplierService _supplierService;
         public SupplierController(ISupplierService supplierService)
         {
             _supplierService = supplierService;
@@ -174,5 +174,16 @@ namespace PL.MVC.IOBalanceV2.Areas.AdminManagement.Controllers
 
         }
         #endregion Private methods
+
+        #region Dispose
+        protected override void Dispose(bool disposing)
+        {
+            if (_supplierService.IsNull())
+            {
+                _supplierService = null;
+            }
+            base.Dispose(disposing);
+        }
+        #endregion Dispose
     }
 }

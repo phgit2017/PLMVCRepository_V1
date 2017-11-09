@@ -31,7 +31,7 @@ namespace PL.MVC.IOBalanceV2.Areas.AdminManagement.Controllers
     public partial class CustomerController : BaseController
     {
         #region Declarations and constructors
-        private readonly ICustomerService _customerService;
+        private ICustomerService _customerService;
         public CustomerController(ICustomerService customerService)
         {
             _customerService = customerService;
@@ -144,7 +144,7 @@ namespace PL.MVC.IOBalanceV2.Areas.AdminManagement.Controllers
                 alertMessage = alertMessage
             };
 
-            
+
             return Json(jsonResult, JsonRequestBehavior.AllowGet);
         }
 
@@ -177,7 +177,7 @@ namespace PL.MVC.IOBalanceV2.Areas.AdminManagement.Controllers
                 }
             }
 
-            
+
             var jsonResult = new
             {
                 isSuccess = isSuccess,
@@ -235,6 +235,15 @@ namespace PL.MVC.IOBalanceV2.Areas.AdminManagement.Controllers
         }
         #endregion Private methods
 
-
+        #region Dispose
+        protected override void Dispose(bool disposing)
+        {
+            if (_customerService.IsNull())
+            {
+                _customerService = null;
+            }
+            base.Dispose(disposing);
+        }
+        #endregion Dispose
     }
 }

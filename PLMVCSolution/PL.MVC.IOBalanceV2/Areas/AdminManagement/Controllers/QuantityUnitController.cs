@@ -30,7 +30,7 @@ namespace PL.MVC.IOBalanceV2.Areas.AdminManagement.Controllers
     public partial class QuantityUnitController : BaseController
     {
         #region Declarations and constructors
-        private readonly IQuantityUnitService _quantityUnitService;
+        private IQuantityUnitService _quantityUnitService;
         public QuantityUnitController(IQuantityUnitService categoryService)
         {
             _quantityUnitService = categoryService;
@@ -163,5 +163,16 @@ namespace PL.MVC.IOBalanceV2.Areas.AdminManagement.Controllers
 
         }
         #endregion Private methods
+
+        #region Dispose
+        protected override void Dispose(bool disposing)
+        {
+            if (_quantityUnitService.IsNull())
+            {
+                _quantityUnitService = null;
+            }
+            base.Dispose(disposing);
+        }
+        #endregion Dispose
     }
 }
