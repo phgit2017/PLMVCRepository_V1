@@ -141,15 +141,19 @@ body {
     margin-left: $main-nav-width;
     margin-top: 60px;
     @media (max-width: $screen-sm-max) {
-        margin-top: 73px;
+        margin-top: 85px;
         margin-left: 0;
+        width: 100%;
     }
 }
 
 .panel-widget-search {
     display: inline-block;
     width: 400px;
-    display: inline-block;
+    @media (max-width: $screen-sm-max) {
+        width: 100%;
+        display: block;
+    }
 }
 
 .panel-widget-search+.btn-filter {
@@ -218,4 +222,8 @@ body {
     .loader-mask{
         left: 0 !important;
     }
+}
+
+label.required{
+    position: relative;
 }
