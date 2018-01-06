@@ -12,6 +12,11 @@ using PL.MVC.IOBalanceV2.Filters;
 using PL.MVC.IOBalanceV2.Models;
 using Infrastructure.Utilities.Extensions;
 
+//Business
+using PL.Business.Common;
+using PL.Business.Dto.IOBalanceV2;
+using PL.Business.Interface.IOBalanceV2;
+
 namespace PL.MVC.IOBalanceV2.Controllers
 {
     [Authorize]
@@ -20,6 +25,14 @@ namespace PL.MVC.IOBalanceV2.Controllers
     {
         //
         // GET: /Account/Login
+
+        #region Declarations and constructors
+        private IAccountService _accountService;
+        public AccountController(IAccountService accountService)
+        {
+            _accountService = accountService;
+        }
+        #endregion Declarations and constructors
 
         [AllowAnonymous]
         public virtual ActionResult Login(string returnUrl)
@@ -61,7 +74,7 @@ namespace PL.MVC.IOBalanceV2.Controllers
         [ValidateAntiForgeryToken]
         public virtual ActionResult LogOff()
         {
-            
+
             WebSecurity.Logout();
             Session.Abandon();
             Session.Clear();
@@ -91,8 +104,14 @@ namespace PL.MVC.IOBalanceV2.Controllers
                 // Attempt to register the user
                 try
                 {
-                    WebSecurity.CreateUserAndAccount(model.UserName, model.Password);
-                    WebSecurity.Login(model.UserName, model.Password);
+                    var userResult = WebSecurity.CreateUserAndAccount(model.UserName, model.Password);
+                    UserInRoleDto dto = new UserInRoleDto()
+                    {
+                        RoleId = Constants.RoleIdUser,
+                        UserId = WebSecurity.GetUserId(model.UserName)
+                    };
+                    _accountService.SaveUserInRoleDetails(dto);
+                    //WebSecurity.Login(model.UserName, model.Password);
                     return RedirectToAction("Index", "Home");
                 }
                 catch (MembershipCreateUserException e)

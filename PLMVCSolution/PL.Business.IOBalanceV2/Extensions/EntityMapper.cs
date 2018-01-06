@@ -89,6 +89,22 @@ namespace PL.Business.IOBalanceV2.Extensions
             return entity;
         }
 
+        public static IOBalanceDBV2Entity.webpages_UsersInRoles DtoToEntity(this UserInRoleDto dto)
+        {
+            IOBalanceDBV2Entity.webpages_UsersInRoles entity = null;
+
+            if (!dto.IsNull())
+            {
+                entity = new IOBalanceDBV2Entity.webpages_UsersInRoles
+                {
+                    RoleId = dto.RoleId,
+                    UserId = dto.UserId
+                };
+            }
+
+            return entity;
+        }
+
         public static IOBalanceDBV2Entity.Product DtoToEntity(this ProductDto dto)
         {
             IOBalanceDBV2Entity.Product entity = null;

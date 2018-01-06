@@ -43,6 +43,7 @@ namespace PL.MVC.IOBalanceV2.Infrastructure
             builder.RegisterType<InventoryService>().As<IInventoryService>().InstancePerLifetimeScope();
             builder.RegisterType<OrderService>().As<IOrderService>().InstancePerLifetimeScope();
             builder.RegisterType<CustomerPriceService>().As<ICustomerPriceService>().InstancePerLifetimeScope();
+            builder.RegisterType<AccountService>().As<IAccountService>().InstancePerLifetimeScope();
             #endregion IOBalanceV2
 
             return builder;

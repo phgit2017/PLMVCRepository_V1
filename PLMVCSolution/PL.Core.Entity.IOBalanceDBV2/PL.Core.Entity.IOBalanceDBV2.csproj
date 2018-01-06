@@ -58,6 +58,7 @@
     <Compile Include="SalesOrder.cs" />
     <Compile Include="SalesOrderDetail.cs" />
     <Compile Include="Supplier.cs" />
+    <Compile Include="webpages_UsersInRoles.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />
