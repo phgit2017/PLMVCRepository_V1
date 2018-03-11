@@ -612,8 +612,6 @@ namespace PL.MVC.IOBalanceV2.Areas.OrderManagement.Controllers
             {
                 var predicate = PredicateBuilder.True<ProductDto>();
 
-
-
                 if (!searchModel.CategoryId.IsNull())
                 {
                     predicate = predicate.And(c => c.CategoryId == searchModel.CategoryId);
@@ -621,7 +619,7 @@ namespace PL.MVC.IOBalanceV2.Areas.OrderManagement.Controllers
 
                 if (!searchModel.ProductCode.IsNull())
                 {
-                    predicate = predicate.And(c => c.ProductCode == searchModel.ProductCode);
+                    predicate = predicate.And(c => c.ProductCode.Contains(searchModel.ProductCode));
                 }
 
                 if (!searchModel.ProductName.IsNull())
@@ -636,22 +634,22 @@ namespace PL.MVC.IOBalanceV2.Areas.OrderManagement.Controllers
 
                 if (!searchModel.ProductSize.IsNull())
                 {
-                    predicate = predicate.And(c => c.ProductSize == searchModel.ProductSize);
+                    predicate = predicate.And(c => c.ProductSize.Contains( searchModel.ProductSize));
                 }
 
                 if (!searchModel.CurrentNum.IsNull())
                 {
-                    predicate = predicate.And(c => c.CurrentNum == searchModel.CurrentNum);
+                    predicate = predicate.And(c => c.CurrentNum.Contains( searchModel.CurrentNum));
                 }
 
                 if (!searchModel.DRNum.IsNull())
                 {
-                    predicate = predicate.And(c => c.DRNum == searchModel.DRNum);
+                    predicate = predicate.And(c => c.DRNum.Contains(searchModel.DRNum));
                 }
 
                 if (!searchModel.CartonNum.IsNull())
                 {
-                    predicate = predicate.And(c => c.CartonNum == searchModel.CartonNum);
+                    predicate = predicate.And(c => c.CartonNum.Contains(searchModel.CartonNum));
                 }
 
 
