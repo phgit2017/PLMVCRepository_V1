@@ -457,6 +457,22 @@
                 }
             }
         });
+        
+        $("#frmSearch #ProductCode").kendoAutoComplete({
+            dataSource: {
+                transport: {
+                    read: {
+                        dataType: "json",
+                        url: _variables.params.productAutoCompleteUrl
+                    }
+                }
+            },
+            dataTextField: "ProductCode",
+            dataValueField: "ProductCode",
+            filter: "startswith",
+            placeholder: "Select Product Code...",
+            pageSize: 80
+        });
     }
 
 
